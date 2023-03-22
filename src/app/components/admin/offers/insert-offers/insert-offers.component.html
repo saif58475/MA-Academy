@@ -1,0 +1,105 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" style="padding-bottom: 5px !important">
+                    <div >
+                        <h5 class="pb-2">عرض جديد</h5>
+
+                       <span> يرجى ملئ جميع الخانات </span>
+                    </div>
+                    <ng-template >
+                        
+                    </ng-template>
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation" autocomplete="off" 
+                    [formGroup] = "OfferFrom"
+                    (ngSubmit)="onSubmit()" 
+                    novalidate>
+                        <div class="form-row">
+                           
+                              <!-- course id  -->
+                              <!-- <div class="col-lg-6 col-sm-12  mb-3">
+                                <label for="validationCustom05"><span class="validation-required">*</span> اختر الحصة</label>
+                                <ng-select  [selectOnTab]="true" formControlName="subjectId"
+                                    class="form-control p-0" placeholder="اختر الحصة "
+                                    containerClass="" 
+                                    id="validationCustom05">
+                                    <ng-option *ngFor="let item of courses" [value]="item.subjectContentId">{{item.subjectContentName}}</ng-option>
+                                </ng-select>
+                            </div> -->
+                            <div class="col-lg-6 col-sm-12  mb-3">
+                                <label for="validationCustom06"><span class="validation-required"></span> اختر الحصة</label>
+                                <ng-multiselect-dropdown
+                                       [placeholder]="'اختر الحصة'"
+                                       [settings]="dropdownSettingscourse"
+                                       [data]="courses"
+                                      [(ngModel)]="selectedsubcoursecontent">
+                                                 </ng-multiselect-dropdown>
+                            </div>
+                              <!-- sub course id  -->
+                              <!-- <div class="col-lg-6 col-sm-12  mb-3">
+                                <label for="validationCustom05"><span class="validation-required">*</span> اختر محتوى المادة </label>
+                                <ng-select  [selectOnTab]="true" formControlName="subsubjectcontentId"
+                                    class="form-control p-0" placeholder="اختر محتوى المادة "
+                                    containerClass="" 
+                                    id="validationCustom05">
+                                    <ng-option *ngFor="let item of subcoursecontent" [value]="item.beforSubjectContentId">{{item.beforSubjectContentName}}</ng-option>
+                                </ng-select>
+                            </div> -->
+                            <div class="col-lg-6 col-sm-12  mb-3">
+                                <label for="validationCustom06"><span class="validation-required"></span> اختر محتوى المادة</label>
+                                <ng-multiselect-dropdown
+                                       [placeholder]="'اختر محتوى المواد'"
+                                       [settings]="dropdownSettings"
+                                       [data]="subcoursecontent"
+                                      [(ngModel)]="selectedsubcoursecontent">
+                                                 </ng-multiselect-dropdown>
+                            </div>
+                           
+                            <div class="col-3 mb-3">
+
+                            </div>
+                            <!-- QrCode  -->
+                            <div class="col-6 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> المساح الضوئي للعرض</label>
+                               <ngx-qrcode style="width: 60%; height: 220px;"
+                               [elementType]="elementType"
+                               [value]="QrCode"
+                               cssClass="aclass"
+                               ></ngx-qrcode>
+
+                                <input class="form-control" id="validation01" type="text" [(ngModel)]="QrCode" [ngModelOptions]="{standalone: true}"
+                                     required
+                                     placeholder="اكتب ما يميز العرض"
+                                    containerClass="" />
+                            </div>
+                          
+                            <div class="col-3 mb-3">
+
+                            </div>
+                 
+                        </div>
+                           
+
+                        <br>
+                        <ng-template #elseBlock>
+                            <button [disabled]="button" class="btn pull-right" type="submit">
+                               حفظ
+                            </button>
+                            </ng-template>
+                        <div *ngIf="update; else elseBlock">
+                            <button class="btn pull-right" type="submit">
+                                تعديل
+                            </button>
+                       </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

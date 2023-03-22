@@ -1,0 +1,102 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" style="padding-bottom: 5px !important">
+                    <div >
+                        <h5 class="pb-2">مدرس جديد</h5>
+
+                       <span> يرجى ملئ جميع الخانات </span>
+                    </div>
+                    <ng-template >
+                        
+                    </ng-template>
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation" autocomplete="off" 
+                    [formGroup] = "TeacherForm"
+                    (ngSubmit)="onSubmit()" 
+                    novalidate>
+                        <div class="form-row">
+                            <!-- Teacher Name  -->
+                            <div class="col-6 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> اسم المدرس</label>
+                                <input class="form-control" id="validation01" type="text" formControlName="teacherName"
+                                [tooltip]="fc.teacherName.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.teacherName.valid && (fc.teacherName.touched)"
+                                [class.is-invalid]="fc.teacherName.invalid && (fc.teacherName.touched)"
+                                
+                                     required
+                                     placeholder="الأسم"
+                                    containerClass="" />
+                            </div>
+                            <!-- eduction level name  -->
+                            <!-- <div class="col-6 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span>المرحلة الدراسية </label>
+                                <input class="form-control" id="validation01" type="text" formControlName="education_level"
+                                [tooltip]="fc.education_level.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.education_level.valid && (fc.education_level.touched)"
+                                [class.is-invalid]="fc.education_level.invalid && (fc.education_level.touched)"
+                                
+                                     required
+                                     placeholder="مثال : ابتدائي"
+                                    containerClass="" />
+                            </div> -->
+
+                             <!-- choose education level  -->
+                             <div class="col-lg-6 col-sm-12  mb-3">
+                                <label for="validationCustom05"><span class="validation-required">*</span> المرحلة الدراسية</label>
+                                <ng-select  [selectOnTab]="true" formControlName="educationId"
+                                    class="form-control p-0" placeholder="اختر المرحلة الدراسية"
+                                    containerClass="" 
+                                    id="validationCustom05">
+                                    <ng-option *ngFor="let item of educationlevels" [value]="item.educationId" >{{item.nameAr}}</ng-option>
+                                </ng-select>
+                            </div>
+                            
+                             <!-- choose subject  -->
+                             <div class="col-lg-6 col-sm-12  mb-3">
+                                <label for="validationCustom05"><span class="validation-required">*</span> المادة</label>
+                                <ng-select  [selectOnTab]="true" formControlName="subjectId"
+                                    class="form-control p-0" placeholder="اختر المادة "
+                                    containerClass="" 
+                                    id="validationCustom05">
+                                    <ng-option *ngFor="let item of subjects" [value]="item.subjectId">{{item.subjectName}}</ng-option>
+                                </ng-select>
+                            </div>
+
+                                                                     <!-- select subjects -->
+                     <!-- <div class="col-lg-6 col-sm-12  mb-3" style="margin-top: 7px;">
+                        <label for="validationCustom06"><span class="validation-required">*</span> اسم المادة او المواد</label>
+                        <ng-multiselect-dropdown
+                               formControlName=""
+                               [placeholder]="'اختر من القائمة'"
+                               [settings]="dropdownSettings"
+                               [data]="data"
+                               [(ngModel)]="selectedItems">
+                        </ng-multiselect-dropdown>
+                    </div> -->
+           
+                           
+                        </div>
+
+                        <br>
+                        <ng-template #elseBlock>
+                            <button [disabled]="button" class="btn pull-right" type="submit">
+                               حفظ
+                            </button>
+                            </ng-template>
+                        <div *ngIf="update; else elseBlock">
+                            <button class="btn pull-right" type="submit">
+                                تعديل
+                            </button>
+                       </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
