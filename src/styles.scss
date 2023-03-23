@@ -57,6 +57,23 @@ ngx-qrcode{
         }
     }
 }
+
+.dropdown-multiselect__caret{
+    right: 93% !important;
+    top: 3px !important;
+}
+// .selected-item-container .selected-item{
+//     max-width: 200px !important;
+// }
+span .selected-item{
+    max-width: 100% !important;
+}
+.selected-item-container{
+    float: right !important;
+}
+.aclass{
+    text-align: center !important;
+}
 thead{
     text-align: center;
 }

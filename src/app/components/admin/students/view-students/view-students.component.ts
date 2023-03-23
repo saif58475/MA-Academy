@@ -11,6 +11,7 @@ import { Image } from './../../../../../images/images';
 export class ViewStudentsComponent implements OnInit {
 students:any [];
 img:string = Image;
+filterstring:string;
   constructor(private _StudentsService:StudentsService, private _Router:Router) { }
 
   ngOnInit(): void {
@@ -32,7 +33,7 @@ showimage(data){
 }
   delete(id : number){
     Swal.fire({
-      title: 'هل تريد مسح الكورس ؟',
+      title: 'هل تريد مسح الطالب ؟',
       text: "لن يكون لك صلاحية إعادته مره اخرى",
       icon: 'warning',
       showCancelButton: true,

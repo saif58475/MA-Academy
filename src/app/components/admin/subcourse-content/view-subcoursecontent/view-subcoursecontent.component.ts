@@ -26,7 +26,8 @@ export class ViewSubcoursecontentComponent implements OnInit {
     })
   }
 
-  rearrangesubsubjectcontent(){
+  rearrangesubsubjectcontent(id : number){
+    this._SubcoursecontentService.RearrangeSubjectContent.next(id);
     this._Router.navigate(['content/admin/Rearangesubcoursecontent']); 
   }
 

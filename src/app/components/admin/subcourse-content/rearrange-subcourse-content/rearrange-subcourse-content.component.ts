@@ -11,10 +11,33 @@ import { SubcoursecontentService } from './../../../../shared/API-Service/servic
 })
 export class RearrangeSubcourseContentComponent implements OnInit {
 records:any [];
-  constructor(private _SubcoursecontentService:SubcoursecontentService) { }
+Toast = Swal.mixin({
+  toast: true,
+  position: 'top',
+  background:'#fff',
+  showConfirmButton: false,
+  timer: 5000,
+  timerProgressBar: true,
+  customClass:{
+  }
+})
+  constructor(private _SubcoursecontentService:SubcoursecontentService
+             ,private _Router:Router) { }
 
   ngOnInit(): void {
-    this.getfiltersubcoursecontent(26);
+
+    this._SubcoursecontentService.RearrangeSubjectContent.subscribe((res) => {
+      if(res != null) {
+        this.Toast.fire({
+          icon: 'warning',
+          title: 'قم بسحب اي من عناصر الجدول للموقع المراد'
+        })
+        this.getfiltersubcoursecontent(res);
+      }else{
+        this._Router.navigate(['content/admin/ViewSubCourseContent']); 
+      }
+    })
+   
   }
 
   drop(event: CdkDragDrop<string[]>){
@@ -24,12 +47,11 @@ records:any [];
 
  getfiltersubcoursecontent(id:number){
 this._SubcoursecontentService.filtersubjectcontent(id).subscribe((res) => {
-  debugger
   this.records = res.data;
    })
 }
 
-
-
-
+ngOnDestroy(){
+  this._SubcoursecontentService.RearrangeSubjectContent.next(null);
+}
 }

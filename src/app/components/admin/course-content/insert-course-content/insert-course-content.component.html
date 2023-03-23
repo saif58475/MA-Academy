@@ -102,6 +102,7 @@
                                     <ng-option *ngFor="let item of teachers" [value]="item.teacherId" >{{item.teacherName}}</ng-option>
                                 </ng-select>
                             </div>
+                         
                         <!-- to insert image for the student  -->
               <div class="col-lg-6 my-4" style="padding: 1%;">
                 <img  src="{{ imageLogo }}" style="width: 60%; height: 220px;" class="image-style p-2" *ngIf="imageLogo != null"/>
@@ -113,6 +114,20 @@
             </button>    
                         </div>
                            
+                            <!-- QrCode  -->
+                            <div class="col-6 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> المساح الضوئي للحصة</label>
+                               <ngx-qrcode style="width: 60%; height: 220px;"
+                               [elementType]="elementType"
+                               [value]="QrCode"
+                               cssClass="aclass"
+                               #qrcodeElement
+                               ></ngx-qrcode>
+                                <input class="form-control" id="validation01" type="text" [(ngModel)]="QrCode" [ngModelOptions]="{standalone: true}"
+                                     required
+                                     placeholder="اكتب ما يميز الحصة"
+                                    containerClass="" />
+                            </div>
                         </div>
 
                         <br>

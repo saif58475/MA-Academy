@@ -52,13 +52,15 @@ gender:String []= [ 'ذكر', 'انثى'];
       educationId: ['', Validators.required]
     });
   }
-  checkupdate(data?:any){
+
+  checkupdate(data:any){
     this.StudentForm = this._FormBuilder.group({
       studentName: [data.studentName, Validators.required],
       phone: [data.phone, Validators.required],
       gender: [data.gender, Validators.required],
+      location: [data.location, Validators.required],
+      password: [data.password, Validators.required],
       email: [data.email, Validators.required],
-      // password: [data.password, Validators.required],
       educationId: [data.educationId, Validators.required],
     });
     
@@ -95,12 +97,22 @@ gender:String []= [ 'ذكر', 'انثى'];
     this.button = true;
     if( this.StudentForm.status == "VALID" && this.update == false){
       this._StudentsService.CreateStudent(this.StudentForm.value).subscribe((res) => {
-        Swal.fire({
-         icon: "success",
-         title: "تم تسجيل الكورس بنجاح",
-         showConfirmButton: false,
-         timer: 1500,
-       }); 
+      //   Swal.fire({
+      //    icon: "success",
+      //    title: "تم تسجيل الكورس بنجاح",
+      //    showConfirmButton: false,
+      //    timer: 1500,
+      //  }); 
+      Swal.fire({
+        icon: "success",
+        title: `: تم تسجيل الطالب بنجاح , الرقم التسلسلي للطالب " ${res[0].code} " `,
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
        this.StudentForm.reset();
        this._Router.navigate(['content/admin/ViewStudents']);
        },(err) => {
@@ -113,11 +125,10 @@ gender:String []= [ 'ذكر', 'انثى'];
              this.button = false;
        })
     }else if(this.StudentForm.status == "VALID" && this.update == true){
-      // this.appendeddata()
       this._StudentsService.UpdateStudent(this.StudentForm.value, this.recordtoupdate.studentId).subscribe((res) => {
         Swal.fire({
          icon: "success",
-         title: "تم تعديل الكورس بنجاح",
+         title: "تم تعديل الطالب بنجاح",
          showConfirmButton: false,
          timer: 1500,
        }); 

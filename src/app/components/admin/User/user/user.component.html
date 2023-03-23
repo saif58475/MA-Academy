@@ -25,7 +25,6 @@
                                 [tooltip]="fc.name.errors?.required ? 'الحقل مطلوب' : null"
                                 [class.is-valid]="fc.name.valid && (fc.name.touched)"
                                 [class.is-invalid]="fc.name.invalid && (fc.name.touched)"
-                                
                                      required
                                      placeholder="اسم المستخدم"
                                     containerClass="" />
@@ -75,9 +74,6 @@
                                     <ng-option *ngFor="let item of gender" [value]="item">{{item}}</ng-option>
                                 </ng-select>
                             </div>
-                           x
-                           
-
                         </div>
 
                         <br>

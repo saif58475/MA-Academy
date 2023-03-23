@@ -19,7 +19,6 @@ Toast = Swal.mixin({
   timer: 5000,
   timerProgressBar: true,
   customClass:{
-
   }
 })
   constructor(private _SubcourseService:SubcourseService) { }
@@ -29,7 +28,6 @@ this.Toast.fire({
   icon: 'warning',
   title: 'قم بسحب اي من عناصر الجدول للموقع المراد'
 })
-
     this.getsubcourse(17);
   }
 

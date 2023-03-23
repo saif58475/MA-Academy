@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild , ElementRef, OnInit } from '@angular/core';
 import { TeachersService } from '../../../../shared/API-Service/services/teachers.service';
 import { CoursesService } from '../../../../shared/API-Service/services/courses.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -8,12 +8,15 @@ import { CourseContentService } from './../../../../shared/API-Service/services/
 import { SubcourseService } from './../../../../shared/API-Service/services/subcourse.service';
 import { SubcoursecontentService } from './../../../../shared/API-Service/services/subcoursecontent.service';
 import { Image } from './../../../../../images/images';
+import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
 @Component({
   selector: 'app-insert-course-content',
   templateUrl: './insert-course-content.component.html',
   styleUrls: ['./insert-course-content.component.css']
 })
 export class InsertCourseContentComponent implements OnInit {
+  @ViewChild('qrcodeElement') qrcodeElement: ElementRef;
+
 courses:any [];
 teachers:any [];
 subSubjects:any [];
@@ -28,6 +31,10 @@ update:boolean = false;
 button:boolean = false;
 recordtoupdate:any;
 subSubjectid:number;
+QrCode:string;
+title:string = 'app';
+elementType:string = NgxQrcodeElementTypes.URL;
+correctionLevel  = NgxQrcodeErrorCorrectionLevels.HIGH;
   constructor(private _CoursesService:CoursesService
              ,private _CourseContentService :CourseContentService 
              ,private _TeachersService:TeachersService
@@ -70,7 +77,11 @@ subSubjectid:number;
     })
 
   }
-
+  ngAfterViewInit() {
+    const canvasElement: HTMLCanvasElement = this.qrcodeElement.nativeElement.querySelector('canvas');
+    const imageDataUrl: string = canvasElement.toDataURL();
+    console.log(imageDataUrl);
+  }
   getdropdowns(){
     this._CoursesService.GetCourse().subscribe((res) => {
       this.courses = res.data;

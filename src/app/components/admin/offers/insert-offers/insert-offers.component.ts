@@ -52,7 +52,6 @@ correctionLevel  = NgxQrcodeErrorCorrectionLevels.HIGH;
   });
    this._SubcoursecontentService.GetSubjectContent().subscribe((res) => {
     this.subcoursecontent = res.data;
-    debugger
    })
   }
   initiate(){

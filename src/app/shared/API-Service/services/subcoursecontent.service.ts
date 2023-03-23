@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment.prod';
 export class SubcoursecontentService {
 
   public SubjectContent = new BehaviorSubject(null);
+  public RearrangeSubjectContent = new BehaviorSubject(null);
 
   constructor(private _HttpClient:HttpClient) { }
 
