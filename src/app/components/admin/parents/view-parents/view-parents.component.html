@@ -31,6 +31,7 @@
                                     <tr class=" ">
                                         <th scope="col"></th>
                                         <th scope="col">اسم ولي الامر </th>
+                                        <th scope="col">البريد الالكتروني</th>
                                         <th scope="col">الرقم المسلسل</th>    
                                         <th scope="col"></th>
                                     </tr>
@@ -38,7 +39,9 @@
                                 <tbody>
                                     <tr *ngFor="let view of parents |filter:filterstring;let x = index" class=" ">
                                         <td scope="row" class="p-2">{{x+1}}</td>
-                                        <td scope="row" class="p-2">{{view.subSubjectName}}</td>
+                                        <td scope="row" class="p-2">{{view.fatherName}}</td>
+                                        <td scope="row" class="p-2">{{view.email}}</td>
+                                        <td scope="row" class="p-2 text-danger">{{view.code}}</td>
                                             <td class="font-style chose">
                                                 <button class="btn pull-right"
                                                     style="color: rgba(35, 118, 241, 0.667); padding: 7px"
@@ -46,7 +49,7 @@
                                                     <i class="fa fa-pencil"></i>
                                                 </button>
                                                    <button class="btn  pull-right"  style="color: red; padding: 7px"
-                                                   (click)="delete(view.subSubjectId)" title="مسح تصنيف المادة">
+                                                   (click)="delete(view.fatherId)" title="مسح تصنيف المادة">
                                                     <i class="fa fa-trash"></i>
                                                        </button>
                                             </td>
