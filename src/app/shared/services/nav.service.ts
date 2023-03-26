@@ -228,6 +228,19 @@ export class NavService implements OnDestroy {
         },
       ],
     },
+    {
+      title: "تفعيل",
+      icon: "activity",
+      type: "sub",
+      badgeType: "success",
+      children: [
+        {
+          path: "admin/Activation",
+          title: "تفعيل طالب",
+          type: "link",
+        },
+      ],
+    },
   ];
 // ======================================================
   MEGAMENUITEMS: Menu[] = [

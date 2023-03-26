@@ -39,6 +39,7 @@ import { InsertParentsComponent } from './parents/insert-parents/insert-parents.
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { RearrangeSubcourseComponent } from './subcourse/rearrange-subcourse/rearrange-subcourse.component';
 import { RearrangeSubcourseContentComponent } from './subcourse-content/rearrange-subcourse-content/rearrange-subcourse-content.component';
+import { InsertActivationComponent } from './activation/insert-activation/insert-activation.component';
  @NgModule({
   declarations: [
     ViewProductComponent,
@@ -65,6 +66,7 @@ import { RearrangeSubcourseContentComponent } from './subcourse-content/rearrang
     InsertParentsComponent,
     RearrangeSubcourseComponent,
     RearrangeSubcourseContentComponent,
+    InsertActivationComponent,
   ],
   imports: [
     DxReportViewerModule,

@@ -24,7 +24,7 @@ import { LoadingBarRouterModule } from "@ngx-loading-bar/router";
 import { LoadingBarModule } from "@ngx-loading-bar/core";
 import { TokenInterceptorService } from "./token-interceptor.service";
 import { AppComponent } from "./app.component";
-
+import { NgxQrcodeReaderModule } from 'ngx-qrcode-reader';
 import { AdminModule } from "./components/admin/admin.module";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { DatePipe } from "@angular/common";
@@ -46,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SharedModule,
     AppRoutingModule,
     HttpClientModule,
+
     NgbModule,
     ToastrModule.forRoot(),
     TranslateModule.forRoot({

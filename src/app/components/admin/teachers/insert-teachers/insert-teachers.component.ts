@@ -24,7 +24,6 @@ dropdownSettings = {
   textField: 'title',
   selectAllText: 'Select All',
   unSelectAllText: 'UnSelect All',
- 
 };
 selectedItems:any [];
 data:any [];

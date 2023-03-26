@@ -9,6 +9,7 @@ import { SubcourseService } from './../../../../shared/API-Service/services/subc
 import { SubcoursecontentService } from './../../../../shared/API-Service/services/subcoursecontent.service';
 import { Image } from './../../../../../images/images';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
+
 @Component({
   selector: 'app-insert-course-content',
   templateUrl: './insert-course-content.component.html',
@@ -35,6 +36,7 @@ QrCode:string;
 title:string = 'app';
 elementType:string = NgxQrcodeElementTypes.URL;
 correctionLevel  = NgxQrcodeErrorCorrectionLevels.HIGH;
+
   constructor(private _CoursesService:CoursesService
              ,private _CourseContentService :CourseContentService 
              ,private _TeachersService:TeachersService
@@ -94,7 +96,6 @@ correctionLevel  = NgxQrcodeErrorCorrectionLevels.HIGH;
     });
      this._SubcoursecontentService.GetSubjectContent().subscribe((res) => {
       this.beforSubjectContent = res.data;
-      debugger
      }) 
   }
 
@@ -154,6 +155,14 @@ correctionLevel  = NgxQrcodeErrorCorrectionLevels.HIGH;
         };
       }
     }
+
+
+  //   public downloadQRCode() {
+  //     const fileNameToDownload = 'image_qrcode';
+  //     const base64Img = document.getElementsByClassName('aclass')[0].children[0]['src'];
+  //     console.log(base64Img);
+  //  }
+   
   onSubmit(){
     this.button = true;
     if( this.CourseLectureForm.status == "VALID" && this.update == false){

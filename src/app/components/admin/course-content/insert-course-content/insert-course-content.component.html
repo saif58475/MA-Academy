@@ -115,14 +115,13 @@
                         </div>
                            
                             <!-- QrCode  -->
-                            <div class="col-6 mb-3">
+                            <div class="col-6 mb-3" *ngIf="update == true">
                                 <label for="validation01"><span class="validation-required">*</span> المساح الضوئي للحصة</label>
                                <ngx-qrcode style="width: 60%; height: 220px;"
                                [elementType]="elementType"
                                [value]="QrCode"
-                               cssClass="aclass"
-                               #qrcodeElement
-                               ></ngx-qrcode>
+                               cssClass="aclass"></ngx-qrcode>
+
                                 <input class="form-control" id="validation01" type="text" [(ngModel)]="QrCode" [ngModelOptions]="{standalone: true}"
                                      required
                                      placeholder="اكتب ما يميز الحصة"
