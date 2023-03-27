@@ -21,13 +21,23 @@
                              <!-- choose education level  -->
                              <div class="col-lg-6 col-sm-12  mb-3">
                                 <label for="validationCustom05"><span class="validation-required">*</span> اختر الطالب</label>
-                                <ng-select  [selectOnTab]="true" formControlName="teacherId"
+                                <ng-select  [selectOnTab]="true" formControlName="studentId"
                                     class="form-control p-0" placeholder="اختر الطالب"
                                     containerClass="" 
                                     id="validationCustom05">
                                     <ng-option *ngFor="let item of students" [value]="item.studentId" >{{item.studentName}}</ng-option>
                                 </ng-select>
                             </div>
+                             <!-- choose education level  -->
+                             <!-- <div class="col-lg-6 col-sm-12  mb-3">
+                                <label for="validationCustom05"><span class="validation-required">*</span> اختر من قائمة المحتوى</label>
+                                <ng-select  [selectOnTab]="true" formControlName="subjectId"
+                                    class="form-control p-0" placeholder="اختر من قائمة المحتوى"
+                                    containerClass="" 
+                                    id="validationCustom05">
+                                    <ng-option *ngFor="let item of courses" [value]="item.subjectContentId" >{{item.subjectContentName}}</ng-option>
+                                </ng-select>
+                            </div> -->
                             
                                                                      <!-- select subjects -->
                      <div class="col-lg-6 col-sm-12  mb-3">

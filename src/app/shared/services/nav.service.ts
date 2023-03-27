@@ -229,14 +229,14 @@ export class NavService implements OnDestroy {
       ],
     },
     {
-      title: "تفعيل",
+      title: "تفعيل الطلاب",
       icon: "activity",
       type: "sub",
       badgeType: "success",
       children: [
         {
-          path: "admin/Activation",
-          title: "تفعيل طالب",
+          path: "admin/ViewActivation",
+          title: "ادارة تفعيل الطلاب",
           type: "link",
         },
       ],

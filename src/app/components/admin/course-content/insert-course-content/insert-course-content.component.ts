@@ -157,11 +157,11 @@ correctionLevel  = NgxQrcodeErrorCorrectionLevels.HIGH;
     }
 
 
-  //   public downloadQRCode() {
-  //     const fileNameToDownload = 'image_qrcode';
-  //     const base64Img = document.getElementsByClassName('aclass')[0].children[0]['src'];
-  //     console.log(base64Img);
-  //  }
+    public downloadQRCode() {
+      const fileNameToDownload = 'image_qrcode';
+      const base64Img = document.getElementsByClassName('aclass')[0].children[0]['src'];
+      console.log(base64Img);
+   }
    
   onSubmit(){
     this.button = true;

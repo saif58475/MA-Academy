@@ -4,6 +4,7 @@ import { CourseContentService } from './../../../../shared/API-Service/services/
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-insert-activation',
   templateUrl: './insert-activation.component.html',
@@ -14,7 +15,11 @@ students:any [];
 courses:any [];
 ActivateForm:FormGroup;
 update:boolean = false;
-selectedItems:any [];
+button:boolean = false;
+recordtoupdate:any;
+selectedItems:object [] = [];
+selectid:number [] = [];
+subjectid:any [] = [];
 dropdownSettings = {
   singleSelection: false,
   idField: 'subjectContentId',
@@ -34,10 +39,13 @@ dropdownSettings = {
 
   initiate(){
     this.ActivateForm = this._FormBuilder.group({
-      teacherId: ['', Validators.required],
+      studentId: ['', Validators.required],
       subjectId: ['', Validators.required],
     });
   }
+  get fc(){
+    return this.ActivateForm.controls;
+  } 
   getdropdowns(){
     this._StudentsService.GetStudent().subscribe((res) => {
       this.students = res.data;
@@ -46,8 +54,64 @@ dropdownSettings = {
       this.courses = res.data;
     });
   }
+insertarray(data:any){
+  data.forEach(element => 
+    this.selectid.push(element.subjectContentId)
+  );
+  this.ActivateForm.value.subjectId = this.selectid
+}
 
   onSubmit(){
-
+    this.button = true;
+    if( this.ActivateForm.status == "VALID" && this.update == false){
+      this.insertarray(this.selectedItems);
+      this._CourseContentService.insertactivation(this.ActivateForm.value).subscribe((res) => {
+        Swal.fire({
+         icon: "success",
+         title: "تم تسجيل محتوى المادة بنجاح",
+         showConfirmButton: false,
+         timer: 1500,
+       }); 
+       this.ActivateForm.reset();
+       this._Router.navigate(['content/admin/ViewCourseLecture']);
+       },(err) => {
+        this.button = false;
+             Swal.fire({
+               icon: 'error',
+               title: 'خطأ',
+               text: 'تأكد من ملئ جميع الخانات',
+             });
+             this.button = false;
+       })
+    }else if(this.ActivateForm.status == "VALID" && this.update == true){
+      this._CourseContentService.UpdateCourseContent(this.ActivateForm.value, this.recordtoupdate.subjectContentId).subscribe((res) => {
+        Swal.fire({
+         icon: "success",
+         title: "تم تعديل الكورس بنجاح",
+         showConfirmButton: false,
+         timer: 1500,
+       }); 
+       this.ActivateForm.reset();
+       this._Router.navigate(['content/admin/ViewCourseLecture']);
+       },(err) => {
+        this.button = false;
+             Swal.fire({
+               icon: 'error',
+               title: 'خطأ',
+               text: 'تأكد من ملئ جميع الخانات',
+             });
+             this.button = false;
+       })
+    }
+    else{
+      this.button = false;
+             Swal.fire({
+               icon: 'error',
+               title: 'خطأ',
+               text: 'تأكد من ملئ جميع الخانات',
+             });
+             this.button = false;
+    }
+   
   }
 }

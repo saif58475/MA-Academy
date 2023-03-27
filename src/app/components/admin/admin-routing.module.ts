@@ -1,6 +1,7 @@
 import { NgModule, Component } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { InsertActivationComponent } from "./activation/insert-activation/insert-activation.component";
+import { ViewActivationComponent } from "./activation/view-activation/view-activation.component";
 import { InsertCourseContentComponent } from "./course-content/insert-course-content/insert-course-content.component";
 import { ViewCourseContentComponent } from "./course-content/view-course-content/view-course-content.component";
 import { InsertCoursesComponent } from "./courses/insert-courses/insert-courses.component";
@@ -135,7 +136,11 @@ const routes: Routes = [
                 component: ChangePasswordComponent,
             },   
             {
-                path: "Activation",
+                path: "ViewActivation",
+                component: ViewActivationComponent,
+            },   
+            {
+                path: "InsertActivation",
                 component: InsertActivationComponent,
             },   
 ],
