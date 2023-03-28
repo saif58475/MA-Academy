@@ -10,6 +10,7 @@ export class CourseContentService {
 
   public coursecontent = new BehaviorSubject(null);
   public insertnewcoursecontent = new BehaviorSubject(null);
+  public studentemail = new BehaviorSubject(null);
   constructor(private _HttpClient:HttpClient) { }
 
 

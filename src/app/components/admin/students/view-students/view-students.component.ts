@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { StudentsService } from '../../../../shared/API-Service/services/students.service';
+import { CourseContentService } from './../../../../shared/API-Service/services/course-content.service';
 import { Image } from './../../../../../images/images';
 @Component({
   selector: 'app-view-students',
@@ -12,7 +13,8 @@ export class ViewStudentsComponent implements OnInit {
 students:any [];
 img:string = Image;
 filterstring:string;
-  constructor(private _StudentsService:StudentsService, private _Router:Router) { }
+  constructor(private _StudentsService:StudentsService, private _Router:Router
+             ,private _CourseContentService:CourseContentService) { }
 
   ngOnInit(): void {
     this.getstudents();
@@ -67,6 +69,10 @@ showimage(data){
   update(record:object){
     this._StudentsService.Student.next(record);
     this._Router.navigate(['content/admin/InsertStudents']);
+  }
+  addcontent(data : object){
+   this._CourseContentService.studentemail.next(data);
+   this._Router.navigate(['content/admin/InsertActivation']);
   }
 }
 

@@ -45,12 +45,19 @@ dropdownSettingssubcourse = {
 
   ngOnInit(): void {
     this.getdropdowns();
-    this.initiate();
+    this._CourseContentService.studentemail.subscribe((res) => {
+      if( res == null){
+        this.initiate();
+      }else{
+        this.initiate(res);
+      }
+    })
+   
   }
 
-  initiate(){
+  initiate(data?:any){
     this.ActivateForm = this._FormBuilder.group({
-      studentId: ['', Validators.required],
+      studentId: [ data?.studentId || '', Validators.required],
      SubjectContentIds: ['', Validators.required],
       beforSubjectContentIds: ['', Validators.required],
     });
@@ -134,4 +141,9 @@ this.ActivateForm.value.beforSubjectContentIds = this.beforesubjectselectid;
     }
    
   }
+
+  ngOnDestroy(){
+    this._CourseContentService.studentemail.next(null);
+  }
+
 }
