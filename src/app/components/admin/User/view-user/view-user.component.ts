@@ -9,6 +9,7 @@ import { RegisterService } from './../../../../shared/API-Service/services/regis
 })
 export class ViewUserComponent implements OnInit {
 Users:any;
+filterstring:string;
   constructor(private _RegisterService:RegisterService
               ,private _Router:Router) { }
 

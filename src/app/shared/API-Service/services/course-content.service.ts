@@ -32,7 +32,7 @@ export class CourseContentService {
   // ====================================
   // this is for activation a student
   viewactivation():Observable<any>{
-    return this._HttpClient.get(`${environment.Server_URL}/StudentSubjectContents`)
+    return this._HttpClient.get(`${environment.Server_URL}/listStudentSubjectContents`)
   }
   insertactivation(data : any):Observable<any>{
     return this._HttpClient.post(`${environment.Server_URL}/StudentSubjectContents/store`, data);

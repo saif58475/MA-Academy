@@ -9,6 +9,7 @@ import { CourseContentService } from './../../../../shared/API-Service/services/
 })
 export class ViewActivationComponent implements OnInit {
 activations:any [];
+filterstring:string;
   constructor(private _CourseContentService:CourseContentService
              ,private _Router:Router ) { }
 

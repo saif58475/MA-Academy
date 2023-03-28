@@ -43,7 +43,17 @@
                      <div class="col-lg-6 col-sm-12  mb-3">
                         <label for="validationCustom06"><span class="validation-required">*</span> اختر من قائمة المحتوى</label>
                         <ng-multiselect-dropdown
-                               formControlName="subjectId"
+                               formControlName="beforSubjectContentIds"
+                               [placeholder]="'اختر من القائمة'"
+                               [settings]="dropdownSettingssubcourse"
+                               [data]="subcoursecontent"
+                               [(ngModel)]="selectedbeforecourse">
+                        </ng-multiselect-dropdown>
+                    </div>
+                     <div class="col-lg-6 col-sm-12  mb-3">
+                        <label for="validationCustom06"><span class="validation-required">*</span> اختر من قائمة المحتوى</label>
+                        <ng-multiselect-dropdown
+                               formControlName="SubjectContentIds"
                                [placeholder]="'اختر من القائمة'"
                                [settings]="dropdownSettings"
                                [data]="courses"

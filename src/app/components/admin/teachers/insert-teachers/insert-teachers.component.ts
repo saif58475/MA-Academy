@@ -17,11 +17,12 @@ update:boolean = false;
 button:boolean = false;
 educationlevels:any[];
 subjects:any[];
+selectedid:number [] = [];
 recordtoupdate:any;
 dropdownSettings = {
   singleSelection: false,
-  idField: 'id',
-  textField: 'title',
+  idField: 'educationId',
+  textField: 'nameAr',
   selectAllText: 'Select All',
   unSelectAllText: 'UnSelect All',
 };
@@ -60,20 +61,24 @@ data:any [];
   initiate(){
     this.TeacherForm = this._FormBuilder.group({
       teacherName: ['', Validators.required],
-      educationId: ['', Validators.required],
-      subjectId: ['', Validators.required],
-      role: ['teacher', Validators.required],
-     
+      educationIds: ['', Validators.required],
+      subjectId: ['', Validators.required]
     });
   }
   checkupdate(data:any){
     this.TeacherForm = this._FormBuilder.group({
       teacherName: [data.teacherName, Validators.required],
-      educationId: [data.educationId, Validators.required],
+      educationIds: [data.educationIds, Validators.required],
       subjectId: [data.subjectId, Validators.required]
     });
+    this.selectedItems = data.educationIds
   }
-    
+  insertarray(data:any){
+    data.forEach(element => 
+      this.selectedid.push(element.educationId)
+    );
+    this.TeacherForm.value.educationIds = this.selectedid
+  } 
   get fc() {
     return this.TeacherForm.controls;
   }
@@ -81,6 +86,7 @@ data:any [];
   onSubmit(){
     this.button = true;
     if( this.TeacherForm.status == "VALID" && this.update == false){
+      this.insertarray(this.selectedItems);
       this._TeachersService.CreateTeacher(this.TeacherForm.value).subscribe((res) => {
         Swal.fire({
          icon: "success",
