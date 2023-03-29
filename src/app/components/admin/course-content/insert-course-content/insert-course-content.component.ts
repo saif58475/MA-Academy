@@ -36,6 +36,7 @@ QrCode:string;
 title:string = 'app';
 elementType:string = NgxQrcodeElementTypes.URL;
 correctionLevel  = NgxQrcodeErrorCorrectionLevels.HIGH;
+selectedid:number [] = [];
 dropdownSettings = {
   singleSelection: false,
   idField: 'teacherId',
@@ -138,7 +139,10 @@ dropdownSettings = {
  
   appenddata(){
     this.CourseLectureFormData = new FormData();
-    this.CourseLectureFormData.append("teacherId", this.CourseLectureForm.value.teacherId);
+    // this.CourseLectureFormData.append("teacherIds", this.CourseLectureForm.value.teacherId);
+    this.selectedItems.forEach(element => {
+      this.CourseLectureFormData.append("teacherIds[]", element.teacherId);
+    });
     this.CourseLectureFormData.append("beforSubjectContentId", this.CourseLectureForm.value.beforSubjectContentId);
     this.CourseLectureFormData.append("subSubjectId", this.CourseLectureForm.value.subSubjectId);
     this.CourseLectureFormData.append("subjectId", this.CourseLectureForm.value.subjectId);
@@ -146,9 +150,7 @@ dropdownSettings = {
     this.CourseLectureFormData.append("price", this.CourseLectureForm.value.price);
     this.CourseLectureFormData.append("video_url", this.CourseLectureForm.value.videoURL);
     this.CourseLectureFormData.append("description", this.CourseLectureForm.value.description);
-    this.CourseLectureFormData.append("subjectContentImage", this.Image);
-    this.CourseLectureFormData.append("file", this.Image);
-    
+    this.CourseLectureFormData.append("subjectContentImage", this.Image);    
   }
      // imgFile
      getLogoUrl(event: any) {
@@ -169,7 +171,7 @@ dropdownSettings = {
       const base64Img = document.getElementsByClassName('aclass')[0].children[0]['src'];
       console.log(base64Img);
    }
-   
+  
   onSubmit(){
     this.button = true;
     if( this.CourseLectureForm.status == "VALID" && this.update == false){

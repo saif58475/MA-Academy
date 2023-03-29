@@ -19,7 +19,7 @@ button:boolean = false;
 recordtoupdate:any;
 selectedItems:object [] = [];
 selectedbeforecourse:object [] = [];
-selectid:number [] = [];
+selectid:number [] = [55];
 beforesubjectselectid:number [] = [];
 subjectid:any [] = [];
 subcoursecontent:any [];

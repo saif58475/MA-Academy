@@ -982,7 +982,7 @@ class InsertActivationComponent {
         this.button = false;
         this.selectedItems = [];
         this.selectedbeforecourse = [];
-        this.selectid = [];
+        this.selectid = [55];
         this.beforesubjectselectid = [];
         this.subjectid = [];
         this.dropdownSettings = {
@@ -1839,6 +1839,7 @@ class InsertCourseContentComponent {
         this.title = 'app';
         this.elementType = _techiediaries_ngx_qrcode__WEBPACK_IMPORTED_MODULE_9__.NgxQrcodeElementTypes.URL;
         this.correctionLevel = _techiediaries_ngx_qrcode__WEBPACK_IMPORTED_MODULE_9__.NgxQrcodeErrorCorrectionLevels.HIGH;
+        this.selectedid = [];
         this.dropdownSettings = {
             singleSelection: false,
             idField: 'teacherId',
@@ -1932,7 +1933,10 @@ class InsertCourseContentComponent {
     }
     appenddata() {
         this.CourseLectureFormData = new FormData();
-        this.CourseLectureFormData.append("teacherId", this.CourseLectureForm.value.teacherId);
+        // this.CourseLectureFormData.append("teacherIds", this.CourseLectureForm.value.teacherId);
+        this.selectedItems.forEach(element => {
+            this.CourseLectureFormData.append("teacherIds[]", element.teacherId);
+        });
         this.CourseLectureFormData.append("beforSubjectContentId", this.CourseLectureForm.value.beforSubjectContentId);
         this.CourseLectureFormData.append("subSubjectId", this.CourseLectureForm.value.subSubjectId);
         this.CourseLectureFormData.append("subjectId", this.CourseLectureForm.value.subjectId);
@@ -1941,7 +1945,6 @@ class InsertCourseContentComponent {
         this.CourseLectureFormData.append("video_url", this.CourseLectureForm.value.videoURL);
         this.CourseLectureFormData.append("description", this.CourseLectureForm.value.description);
         this.CourseLectureFormData.append("subjectContentImage", this.Image);
-        this.CourseLectureFormData.append("file", this.Image);
     }
     // imgFile
     getLogoUrl(event) {
