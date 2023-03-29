@@ -24,6 +24,10 @@ export class StudentsService {
    return this._HttpClient.put(`${environment.Server_URL}/updateStudent/${id}?`, data);
   }
 
+  GetStudentContent(id:number):Observable<any>{
+    return this._HttpClient.get(`${environment.Server_URL}/listStudentSubjectContents/${id}`);
+  }
+
    DeleteStudent(id:number):Observable<any>{
    return this._HttpClient.delete(`${environment.Server_URL}/deleteStudent/${id}`);
   }

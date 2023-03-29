@@ -1004,7 +1004,9 @@ class InsertActivationComponent {
         this.getdropdowns();
         this._StudentsService.updatestudentcontent.subscribe((studentid) => {
             if (studentid != null) {
-                this.checkupdate(studentid);
+                this._StudentsService.GetStudentContent(studentid.studentId).subscribe((res) => {
+                    this.checkupdate(res.data);
+                });
             }
             else {
                 this._CourseContentService.studentemail.subscribe((res) => {
@@ -1026,12 +1028,12 @@ class InsertActivationComponent {
         });
     }
     checkupdate(data) {
-        this.selectedItems = data.SubjectContentIds;
-        this.selectedbeforecourse = data.beforesubjectselectid;
+        this.selectedItems = data.subjectContentIds;
+        this.selectedbeforecourse = data.beforSubjectContentIds;
         this.ActivateForm = this._FormBuilder.group({
             studentId: [data.studentId || '', _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required],
-            SubjectContentIds: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required],
-            beforSubjectContentIds: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required],
+            SubjectContentIds: [this.selectedItems, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required],
+            beforSubjectContentIds: [this.beforesubjectselectid, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required],
         });
     }
     get fc() {
@@ -1081,6 +1083,7 @@ class InsertActivationComponent {
             });
         }
         else if (this.ActivateForm.status == "VALID" && this.update == true) {
+            this.insertarray(this.selectedItems, this.selectedbeforecourse);
             this._CourseContentService.UpdateCourseContent(this.ActivateForm.value, this.recordtoupdate.subjectContentId).subscribe((res) => {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
                     icon: "success",
@@ -6661,6 +6664,9 @@ class StudentsService {
     }
     UpdateStudent(data, id) {
         return this._HttpClient.put(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/updateStudent/${id}?`, data);
+    }
+    GetStudentContent(id) {
+        return this._HttpClient.get(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/listStudentSubjectContents/${id}`);
     }
     DeleteStudent(id) {
         return this._HttpClient.delete(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/deleteStudent/${id}`);

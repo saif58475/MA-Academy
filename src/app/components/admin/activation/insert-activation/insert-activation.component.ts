@@ -48,7 +48,9 @@ dropdownSettingssubcourse = {
   
     this._StudentsService.updatestudentcontent.subscribe((studentid) => {
       if( studentid != null){
-       this.checkupdate(studentid);
+        this._StudentsService.GetStudentContent(studentid.studentId).subscribe((res) => {
+          this.checkupdate(res.data);
+        });
       }else {
         this._CourseContentService.studentemail.subscribe((res) => {
           if( res == null){
@@ -72,12 +74,12 @@ dropdownSettingssubcourse = {
     });
   }
   checkupdate(data:any){
-    this.selectedItems = data.SubjectContentIds;
-    this.selectedbeforecourse = data.beforesubjectselectid
+    this.selectedItems = data.subjectContentIds;
+    this.selectedbeforecourse = data.beforSubjectContentIds
     this.ActivateForm = this._FormBuilder.group({
       studentId: [ data.studentId || '', Validators.required],
-      SubjectContentIds: ['', Validators.required],
-      beforSubjectContentIds: ['', Validators.required],
+      SubjectContentIds: [this.selectedItems, Validators.required],
+      beforSubjectContentIds: [this.beforesubjectselectid, Validators.required],
     });
     
   }
@@ -130,6 +132,7 @@ this.ActivateForm.value.beforSubjectContentIds = this.beforesubjectselectid;
              this.button = false;
        })
     }else if(this.ActivateForm.status == "VALID" && this.update == true){
+      this.insertarray(this.selectedItems , this.selectedbeforecourse);
       this._CourseContentService.UpdateCourseContent(this.ActivateForm.value, this.recordtoupdate.subjectContentId).subscribe((res) => {
         Swal.fire({
          icon: "success",

@@ -1906,7 +1906,9 @@
 
             this._StudentsService.updatestudentcontent.subscribe(function (studentid) {
               if (studentid != null) {
-                _this4.checkupdate(studentid);
+                _this4._StudentsService.GetStudentContent(studentid.studentId).subscribe(function (res) {
+                  _this4.checkupdate(res.data);
+                });
               } else {
                 _this4._CourseContentService.studentemail.subscribe(function (res) {
                   if (res == null) {
@@ -1930,12 +1932,12 @@
         }, {
           key: "checkupdate",
           value: function checkupdate(data) {
-            this.selectedItems = data.SubjectContentIds;
-            this.selectedbeforecourse = data.beforesubjectselectid;
+            this.selectedItems = data.subjectContentIds;
+            this.selectedbeforecourse = data.beforSubjectContentIds;
             this.ActivateForm = this._FormBuilder.group({
               studentId: [data.studentId || '', _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required],
-              SubjectContentIds: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required],
-              beforSubjectContentIds: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required]
+              SubjectContentIds: [this.selectedItems, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required],
+              beforSubjectContentIds: [this.beforesubjectselectid, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required]
             });
           }
         }, {
@@ -2006,6 +2008,8 @@
                 _this7.button = false;
               });
             } else if (this.ActivateForm.status == "VALID" && this.update == true) {
+              this.insertarray(this.selectedItems, this.selectedbeforecourse);
+
               this._CourseContentService.UpdateCourseContent(this.ActivateForm.value, this.recordtoupdate.subjectContentId).subscribe(function (res) {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
                   icon: "success",
@@ -12747,6 +12751,11 @@
           key: "UpdateStudent",
           value: function UpdateStudent(data, id) {
             return this._HttpClient.put("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/updateStudent/").concat(id, "?"), data);
+          }
+        }, {
+          key: "GetStudentContent",
+          value: function GetStudentContent(id) {
+            return this._HttpClient.get("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/listStudentSubjectContents/").concat(id));
           }
         }, {
           key: "DeleteStudent",
