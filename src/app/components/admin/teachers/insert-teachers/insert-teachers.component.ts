@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { TeachersService } from './../../../../shared/API-Service/services/teachers.service';
 import { CoursesService } from './../../../../shared/API-Service/services/courses.service';
 import { EducationLevelService } from './../../../../shared/API-Service/services/education-level.service';
+import { async } from 'rxjs/internal/scheduler/async';
 
 @Component({
   selector: 'app-insert-teachers',
@@ -26,7 +27,7 @@ dropdownSettings = {
   selectAllText: 'Select All',
   unSelectAllText: 'UnSelect All',
 };
-selectedItems:any [];
+selectedItems:any [] = [];
 data:any [];
   TeacherForm:FormGroup;
   imageLogo:string;
@@ -65,14 +66,15 @@ data:any [];
       subjectId: ['', Validators.required]
     });
   }
-  checkupdate(data:any){
-    this.TeacherForm = this._FormBuilder.group({
+  checkupdate(data:any){   
+   this.selectedItems = data.educationIds;
+  this.TeacherForm = this._FormBuilder.group({
       teacherName: [data.teacherName, Validators.required],
-      educationIds: [data.educationIds, Validators.required],
+      educationIds: [this.selectedItems, Validators.required],
       subjectId: [data.subjectId, Validators.required]
     });
-    this.selectedItems = data.educationIds
   }
+
   insertarray(data:any){
     data.forEach(element => 
       this.selectedid.push(element.educationId)
@@ -106,6 +108,7 @@ data:any [];
              this.button = false;
        })
     }else if(this.TeacherForm.status == "VALID" && this.update == true){
+      this.insertarray(this.selectedItems);
       this._TeachersService.UpdateTeacher(this.TeacherForm.value, this.recordtoupdate.teacherId).subscribe((res) => {
         Swal.fire({
          icon: "success",
@@ -140,5 +143,6 @@ data:any [];
 
   ngOnDestroy(){
     this._TeachersService.Teacher.next(null);
+    this.selectedItems = [];
      }
 }

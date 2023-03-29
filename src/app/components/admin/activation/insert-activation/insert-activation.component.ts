@@ -45,13 +45,22 @@ dropdownSettingssubcourse = {
 
   ngOnInit(): void {
     this.getdropdowns();
-    this._CourseContentService.studentemail.subscribe((res) => {
-      if( res == null){
-        this.initiate();
-      }else{
-        this.initiate(res);
+  
+    this._StudentsService.updatestudentcontent.subscribe((studentid) => {
+      if( studentid != null){
+       this.checkupdate(studentid);
+      }else {
+        this._CourseContentService.studentemail.subscribe((res) => {
+          if( res == null){
+            this.initiate();
+          }else{
+            this.initiate(res);
+          }
+        })
       }
     })
+
+    
    
   }
 
@@ -61,6 +70,16 @@ dropdownSettingssubcourse = {
      SubjectContentIds: ['', Validators.required],
       beforSubjectContentIds: ['', Validators.required],
     });
+  }
+  checkupdate(data:any){
+    this.selectedItems = data.SubjectContentIds;
+    this.selectedbeforecourse = data.beforesubjectselectid
+    this.ActivateForm = this._FormBuilder.group({
+      studentId: [ data.studentId || '', Validators.required],
+      SubjectContentIds: ['', Validators.required],
+      beforSubjectContentIds: ['', Validators.required],
+    });
+    
   }
   get fc(){
     return this.ActivateForm.controls;
@@ -119,7 +138,7 @@ this.ActivateForm.value.beforSubjectContentIds = this.beforesubjectselectid;
          timer: 1500,
        }); 
        this.ActivateForm.reset();
-       this._Router.navigate(['content/admin/ViewActivation']);
+       this._Router.navigate(['content/admin/ViewStudents']);
        },(err) => {
         this.button = false;
              Swal.fire({
@@ -145,5 +164,4 @@ this.ActivateForm.value.beforSubjectContentIds = this.beforesubjectselectid;
   ngOnDestroy(){
     this._CourseContentService.studentemail.next(null);
   }
-
 }

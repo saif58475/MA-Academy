@@ -19,18 +19,26 @@ gender:String []= [ 'ذكر', 'انثى'];
              ,private _Router:Router) { }
 
   ngOnInit(): void {
-    this.initiate();
+    this._RegisterService.user.subscribe((res) => {
+      if( res != null){
+      this.initiate(res);
+      this.update = true;
+      }else{
+        this.initiate();
+      }
+    })
+    
   }
 
 
-  initiate(){
+  initiate(data?:any){
     this.userForm = this._FormBuilder.group({
-      name: ['', Validators.required],
-      password: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.pattern(`^01[0125]{1}[0-9]{8}`)]],
-      email: ['', [Validators.required,Validators.pattern(`^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$`)]],
-      gender: ['', Validators.required],
-      location: ['', Validators.required],
+      name: [data?.name || '', Validators.required],
+      password: [data?.password || '', Validators.required],
+      phone: [data?.phone || '', [Validators.required, Validators.pattern(`^01[0125]{1}[0-9]{8}`)]],
+      email: [data?.email || '', [Validators.required,Validators.pattern(`^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$`)]],
+      gender: [data?.gender || '', Validators.required],
+      location: [data?.location || '', Validators.required],
       role: ['admin', Validators.required]
     });
   }

@@ -17,7 +17,7 @@ import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiedi
 })
 export class InsertCourseContentComponent implements OnInit {
   @ViewChild('qrcodeElement') qrcodeElement: ElementRef;
-
+  selectedItems:any [] = [];
 courses:any [];
 teachers:any [];
 subSubjects:any [];
@@ -36,7 +36,13 @@ QrCode:string;
 title:string = 'app';
 elementType:string = NgxQrcodeElementTypes.URL;
 correctionLevel  = NgxQrcodeErrorCorrectionLevels.HIGH;
-
+dropdownSettings = {
+  singleSelection: false,
+  idField: 'teacherId',
+  textField: 'teacherName',
+  selectAllText: 'Select All',  
+  unSelectAllText: 'UnSelect All',
+};
   constructor(private _CoursesService:CoursesService
              ,private _CourseContentService :CourseContentService 
              ,private _TeachersService:TeachersService
@@ -129,6 +135,7 @@ correctionLevel  = NgxQrcodeErrorCorrectionLevels.HIGH;
   get fc(){
     return this.CourseLectureForm.controls;
   } 
+ 
   appenddata(){
     this.CourseLectureFormData = new FormData();
     this.CourseLectureFormData.append("teacherId", this.CourseLectureForm.value.teacherId);

@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment.prod';
 export class StudentsService {
 
   public Student = new BehaviorSubject(null);
-
+  public updatestudentcontent = new BehaviorSubject(null);
   constructor(private _HttpClient:HttpClient) { }
 
    GetStudent():Observable<any>{

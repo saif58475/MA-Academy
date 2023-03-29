@@ -70,6 +70,10 @@ showimage(data){
     this._StudentsService.Student.next(record);
     this._Router.navigate(['content/admin/InsertStudents']);
   }
+  updateactivate(id : number){
+    this._StudentsService.updatestudentcontent.next(id);
+    this._Router.navigate(['content/admin/InsertActivation']);
+  }
   addcontent(data : object){
    this._CourseContentService.studentemail.next(data);
    this._Router.navigate(['content/admin/InsertActivation']);

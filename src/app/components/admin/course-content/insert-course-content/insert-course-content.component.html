@@ -93,7 +93,7 @@
                                 </ng-select>
                             </div>
                             <!-- choose teacher -->
-                            <div class="col-lg-6 col-sm-12  mb-3">
+                            <!-- <div class="col-lg-6 col-sm-12  mb-3">
                                 <label for="validationCustom05"><span class="validation-required">*</span> اختر المدرس</label>
                                 <ng-select #Governorate  [selectOnTab]="true" formControlName="teacherId"
                                     class="form-control p-0" placeholder="اختر المدرس"
@@ -101,8 +101,18 @@
                                     id="validationCustom05">
                                     <ng-option *ngFor="let item of teachers" [value]="item.teacherId" >{{item.teacherName}}</ng-option>
                                 </ng-select>
-                            </div>
-                         
+                            </div> -->
+                                                                         <!-- select subjects -->
+                     <div class="col-lg-6 col-sm-12  mb-3">
+                        <label for="validationCustom06"><span class="validation-required">*</span> اختر المدرس</label>
+                        <ng-multiselect-dropdown
+                               formControlName="teacherId"
+                               [placeholder]="'اختر من القائمة'"
+                               [settings]="dropdownSettings"
+                               [data]="teachers"
+                               [(ngModel)]="selectedItems">
+                        </ng-multiselect-dropdown>
+                    </div>
                         <!-- to insert image for the student  -->
               <div class="col-lg-6 my-4" style="padding: 1%;">
                 <img  src="{{ imageLogo }}" style="width: 60%; height: 220px;" class="image-style p-2" *ngIf="imageLogo != null"/>

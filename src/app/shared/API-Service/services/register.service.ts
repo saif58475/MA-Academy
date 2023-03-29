@@ -26,6 +26,9 @@ export class RegisterService {
   //   return this._HttpClient.put(`${environment.Server_URL}/register/${id}/`, record);
   //  }
    DeleteUser(id : number):Observable<any>{
-    return this._HttpClient.delete(`${environment.Server_URL}/deleteuser${id}?`);
+    return this._HttpClient.delete(`${environment.Server_URL}/deleteuser/${id}?`);
+   }
+   UpdateUser(data:object, id:number):Observable<any>{
+    return this._HttpClient.put(`${environment.Server_URL}/updateStudent/${id}?`, data);
    }
 }
