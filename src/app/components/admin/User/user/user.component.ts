@@ -38,8 +38,9 @@ gender:String []= [ 'ذكر', 'انثى'];
       phone: [data?.phone || '', [Validators.required, Validators.pattern(`^01[0125]{1}[0-9]{8}`)]],
       email: [data?.email || '', [Validators.required,Validators.pattern(`^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$`)]],
       gender: [data?.gender || '', Validators.required],
-      location: [data?.location || '', Validators.required],
-      role: ['admin', Validators.required]
+      location: [data?.location || ''],
+      role: ['admin'],
+      
     });
   }
   get fc(){

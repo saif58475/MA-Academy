@@ -19,7 +19,7 @@ button:boolean = false;
 recordtoupdate:any;
 selectedItems:object [] = [];
 selectedbeforecourse:object [] = [];
-selectid:number [] = [55];
+selectid:number [] = [];
 beforesubjectselectid:number [] = [];
 subjectid:any [] = [];
 subcoursecontent:any [];
@@ -45,7 +45,6 @@ dropdownSettingssubcourse = {
 
   ngOnInit(): void {
     this.getdropdowns();
-  
     this._StudentsService.updatestudentcontent.subscribe((studentid) => {
       if( studentid != null){
         this._StudentsService.GetStudentContent(studentid.studentId).subscribe((res) => {
@@ -61,11 +60,7 @@ dropdownSettingssubcourse = {
         })
       }
     })
-
-    
-   
   }
-
   initiate(data?:any){
     this.ActivateForm = this._FormBuilder.group({
       studentId: [ data?.studentId || '', Validators.required],
@@ -75,13 +70,12 @@ dropdownSettingssubcourse = {
   }
   checkupdate(data:any){
     this.selectedItems = data.subjectContentIds;
-    this.selectedbeforecourse = data.beforSubjectContentIds
+    this.selectedbeforecourse = data.beforSubjectContentIds;
     this.ActivateForm = this._FormBuilder.group({
-      studentId: [ data.studentId || '', Validators.required],
+      studentId: [ data.studentId, Validators.required],
       SubjectContentIds: [this.selectedItems, Validators.required],
       beforSubjectContentIds: [this.beforesubjectselectid, Validators.required],
     });
-    
   }
   get fc(){
     return this.ActivateForm.controls;
@@ -108,7 +102,6 @@ beforecoursecontent.forEach(element => {
 });
 this.ActivateForm.value.beforSubjectContentIds = this.beforesubjectselectid;
 }
-
   onSubmit(){
     this.button = true;
     if( this.ActivateForm.status == "VALID" && this.update == false){
@@ -133,7 +126,7 @@ this.ActivateForm.value.beforSubjectContentIds = this.beforesubjectselectid;
        })
     }else if(this.ActivateForm.status == "VALID" && this.update == true){
       this.insertarray(this.selectedItems , this.selectedbeforecourse);
-      this._CourseContentService.UpdateCourseContent(this.ActivateForm.value, this.recordtoupdate.subjectContentId).subscribe((res) => {
+      this._CourseContentService.updateactivation(this.ActivateForm.value, this.recordtoupdate.subjectContentId).subscribe((res) => {
         Swal.fire({
          icon: "success",
          title: "تم تعديل تفعيل الطالب على الحصص",

@@ -38,5 +38,8 @@ export class CourseContentService {
   insertactivation(data : any):Observable<any>{
     return this._HttpClient.post(`${environment.Server_URL}/StudentSubjectContents/store`, data);
   }
+  updateactivation(data:any , id:number):Observable<any>{
+    return this._HttpClient.put(`${environment.Server_URL}/StudentSubjectContents/updateStudentSubjectContents/${id}`, data);
+  }
 }
 

@@ -52,7 +52,7 @@
                                 </ng-select>
                             </div>
                             <!-- password  -->
-                            <div class="col-6 mb-3" *ngIf="recordtoupdate == null">
+                            <div class="col-6 mb-3">
                                 <label for="validation01"><span class="validation-required">*</span> الرقم السري</label>
                                 <input class="form-control" id="validation01" type="text" formControlName="password"
                                 [tooltip]="fc.password.errors?.required ? 'الحقل مطلوب' : null"

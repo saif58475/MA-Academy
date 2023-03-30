@@ -64,6 +64,17 @@
                                      placeholder="لا يقبل الا رقم حقيقي"
                                     containerClass="" />
                             </div>
+                            <!-- location  -->
+                            <div class="col-6 mb-3">
+                                <label for="validation01"><span class="validation-required"></span> الموقع</label>
+                                <input class="form-control" id="validation01" type="text" formControlName="location"
+                                [tooltip]="fc.location.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.location.valid && (fc.location.touched)"
+                                [class.is-invalid]="fc.location.invalid && (fc.location.touched)"
+                                     required
+                                     placeholder="اكتب الموقع "
+                                    containerClass="" />
+                            </div>
                             <!-- gender -->
                             <div class="col-lg-6 col-sm-12  mb-3">
                                 <label for="validationCustom05"><span class="validation-required">*</span> اختر النوع</label>

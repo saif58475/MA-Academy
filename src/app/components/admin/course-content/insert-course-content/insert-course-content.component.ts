@@ -119,17 +119,19 @@ dropdownSettings = {
     });
   }
   checkedit(data:any){
+    this.selectedItems = data.teacherIds;
     this.CourseLectureForm = this._FormBuilder.group({
       subjectContentName: [data.subjectContentName, Validators.required],
       price: [data.price, Validators.required],
       subjectContentImage: [data.subjectContentimage, Validators.required],
       subSubjectId: [data.subSubjectId, Validators.required],
       videoURL: [data.video_url, Validators.required],
-      teacherId: [data.teacherId, Validators.required],
+      teacherId: [this.selectedItems, Validators.required],
       description: [data.description, Validators.required],
       subjectId: [data.subjectId, Validators.required],
       beforSubjectContentId: [data.beforSubjectContentId, Validators.required],
     });
+    
     this.imageLogo = this.img + data.subjectContentimage;
     this.update = true;
   }
