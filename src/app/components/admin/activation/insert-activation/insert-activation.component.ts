@@ -64,7 +64,6 @@ dropdownSettingssubcourse = {
   initiate(data?:any){
     this.ActivateForm = this._FormBuilder.group({
       studentId: [ data?.studentId || '', Validators.required],
-     SubjectContentIds: ['', Validators.required],
       beforSubjectContentIds: ['', Validators.required],
     });
   }
@@ -73,7 +72,6 @@ dropdownSettingssubcourse = {
     this.selectedbeforecourse = data.beforSubjectContentIds;
     this.ActivateForm = this._FormBuilder.group({
       studentId: [ data.studentId, Validators.required],
-      SubjectContentIds: [this.selectedItems, Validators.required],
       beforSubjectContentIds: [this.beforesubjectselectid, Validators.required],
     });
   }
@@ -91,11 +89,8 @@ dropdownSettingssubcourse = {
       this.subcoursecontent = res.data;
     })
   }
-insertarray(coursecontent:any ,beforecoursecontent:any){
-  coursecontent.forEach(element => 
-    this.selectid.push(element.subjectContentId)
-  );
-  this.ActivateForm.value.SubjectContentIds = this.selectid;
+insertarray(beforecoursecontent:any){
+
 // ===============================================
 beforecoursecontent.forEach(element => {
   this.beforesubjectselectid.push(element.beforSubjectContentId);
@@ -103,9 +98,10 @@ beforecoursecontent.forEach(element => {
 this.ActivateForm.value.beforSubjectContentIds = this.beforesubjectselectid;
 }
   onSubmit(){
+    debugger;
     this.button = true;
     if( this.ActivateForm.status == "VALID" && this.update == false){
-      this.insertarray(this.selectedItems , this.selectedbeforecourse);
+      this.insertarray(this.selectedbeforecourse);
       this._CourseContentService.insertactivation(this.ActivateForm.value).subscribe((res) => {
         Swal.fire({
          icon: "success",
@@ -125,7 +121,7 @@ this.ActivateForm.value.beforSubjectContentIds = this.beforesubjectselectid;
              this.button = false;
        })
     }else if(this.ActivateForm.status == "VALID" && this.update == true){
-      this.insertarray(this.selectedItems , this.selectedbeforecourse);
+      this.insertarray(this.selectedbeforecourse);
       this._CourseContentService.updateactivation(this.ActivateForm.value, this.recordtoupdate.subjectContentId).subscribe((res) => {
         Swal.fire({
          icon: "success",
