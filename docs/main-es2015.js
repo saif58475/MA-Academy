@@ -957,7 +957,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function InsertActivationComponent_ng_template_10_Template(rf, ctx) { }
 function InsertActivationComponent_ng_option_20_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "ng-option", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "ng-option", 18);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -966,17 +966,17 @@ function InsertActivationComponent_ng_option_20_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate"](item_r5.email);
 } }
-function InsertActivationComponent_ng_template_34_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "button", 20);
+function InsertActivationComponent_ng_template_28_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "button", 19);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1, " \u062D\u0641\u0638 ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("disabled", ctx_r3.button);
 } }
-function InsertActivationComponent_div_36_Template(rf, ctx) { if (rf & 1) {
+function InsertActivationComponent_div_30_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](1, "button", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](1, "button", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](2, " \u062A\u0639\u062F\u064A\u0644 ");
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
@@ -1033,7 +1033,6 @@ class InsertActivationComponent {
     initiate(data) {
         this.ActivateForm = this._FormBuilder.group({
             studentId: [(data === null || data === void 0 ? void 0 : data.studentId) || '', _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required],
-            SubjectContentIds: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required],
             beforSubjectContentIds: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required],
         });
     }
@@ -1042,7 +1041,6 @@ class InsertActivationComponent {
         this.selectedbeforecourse = data.beforSubjectContentIds;
         this.ActivateForm = this._FormBuilder.group({
             studentId: [data.studentId, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required],
-            SubjectContentIds: [this.selectedItems, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required],
             beforSubjectContentIds: [this.beforesubjectselectid, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required],
         });
     }
@@ -1060,9 +1058,7 @@ class InsertActivationComponent {
             this.subcoursecontent = res.data;
         });
     }
-    insertarray(coursecontent, beforecoursecontent) {
-        coursecontent.forEach(element => this.selectid.push(element.subjectContentId));
-        this.ActivateForm.value.SubjectContentIds = this.selectid;
+    insertarray(beforecoursecontent) {
         // ===============================================
         beforecoursecontent.forEach(element => {
             this.beforesubjectselectid.push(element.beforSubjectContentId);
@@ -1070,9 +1066,10 @@ class InsertActivationComponent {
         this.ActivateForm.value.beforSubjectContentIds = this.beforesubjectselectid;
     }
     onSubmit() {
+        debugger;
         this.button = true;
         if (this.ActivateForm.status == "VALID" && this.update == false) {
-            this.insertarray(this.selectedItems, this.selectedbeforecourse);
+            this.insertarray(this.selectedbeforecourse);
             this._CourseContentService.insertactivation(this.ActivateForm.value).subscribe((res) => {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
                     icon: "success",
@@ -1093,7 +1090,7 @@ class InsertActivationComponent {
             });
         }
         else if (this.ActivateForm.status == "VALID" && this.update == true) {
-            this.insertarray(this.selectedItems, this.selectedbeforecourse);
+            this.insertarray(this.selectedbeforecourse);
             this._CourseContentService.updateactivation(this.ActivateForm.value, this.recordtoupdate.subjectContentId).subscribe((res) => {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
                     icon: "success",
@@ -1128,7 +1125,7 @@ class InsertActivationComponent {
     }
 }
 InsertActivationComponent.ɵfac = function InsertActivationComponent_Factory(t) { return new (t || InsertActivationComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdirectiveInject"](_shared_API_Service_services_students_service__WEBPACK_IMPORTED_MODULE_0__.StudentsService), _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdirectiveInject"](_shared_API_Service_services_course_content_service__WEBPACK_IMPORTED_MODULE_1__.CourseContentService), _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdirectiveInject"](_shared_API_Service_services_subcoursecontent_service__WEBPACK_IMPORTED_MODULE_3__.SubcoursecontentService), _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormBuilder)); };
-InsertActivationComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineComponent"]({ type: InsertActivationComponent, selectors: [["app-insert-activation"]], decls: 37, vars: 13, consts: [[1, "container-fluid"], [1, "row"], [1, "col-md-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "pb-2"], [1, "card-body"], ["autocomplete", "off", "novalidate", "", 1, "needs-validation", 3, "formGroup", "ngSubmit"], [1, "form-row"], [1, "col-lg-6", "col-sm-12", "mb-3"], ["for", "validationCustom05"], [1, "validation-required"], ["formControlName", "studentId", "placeholder", "\u0627\u062E\u062A\u0631 \u0627\u0644\u0637\u0627\u0644\u0628", "containerClass", "", "id", "validationCustom05", 1, "form-control", "p-0", 3, "selectOnTab"], [3, "value", 4, "ngFor", "ngForOf"], ["for", "validationCustom06"], ["formControlName", "beforSubjectContentIds", 3, "placeholder", "settings", "data", "ngModel", "ngModelChange"], ["formControlName", "SubjectContentIds", 3, "placeholder", "settings", "data", "ngModel", "ngModelChange"], ["elseBlock", ""], [4, "ngIf", "ngIfElse"], [3, "value"], ["type", "submit", 1, "btn", "pull-right", 3, "disabled"], ["type", "submit", 1, "btn", "pull-right"]], template: function InsertActivationComponent_Template(rf, ctx) { if (rf & 1) {
+InsertActivationComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineComponent"]({ type: InsertActivationComponent, selectors: [["app-insert-activation"]], decls: 31, vars: 9, consts: [[1, "container-fluid"], [1, "row"], [1, "col-md-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "pb-2"], [1, "card-body"], ["autocomplete", "off", "novalidate", "", 1, "needs-validation", 3, "formGroup", "ngSubmit"], [1, "form-row"], [1, "col-lg-6", "col-sm-12", "mb-3"], ["for", "validationCustom05"], [1, "validation-required"], ["formControlName", "studentId", "placeholder", "\u0627\u062E\u062A\u0631 \u0627\u0644\u0637\u0627\u0644\u0628", "containerClass", "", "id", "validationCustom05", 1, "form-control", "p-0", 3, "selectOnTab"], [3, "value", 4, "ngFor", "ngForOf"], ["for", "validationCustom06"], ["formControlName", "beforSubjectContentIds", 3, "placeholder", "settings", "data", "ngModel", "ngModelChange"], ["elseBlock", ""], [4, "ngIf", "ngIfElse"], [3, "value"], ["type", "submit", 1, "btn", "pull-right", 3, "disabled"], ["type", "submit", 1, "btn", "pull-right"]], template: function InsertActivationComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](2, "div", 2);
@@ -1170,21 +1167,10 @@ InsertActivationComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("ngModelChange", function InsertActivationComponent_Template_ng_multiselect_dropdown_ngModelChange_26_listener($event) { return ctx.selectedbeforecourse = $event; });
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](27, "div", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](28, "label", 14);
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](29, "span", 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](30, "*");
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](31, " \u0627\u062E\u062A\u0631 \u0645\u0646 \u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0645\u062D\u062A\u0648\u0649");
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](32, "ng-multiselect-dropdown", 16);
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("ngModelChange", function InsertActivationComponent_Template_ng_multiselect_dropdown_ngModelChange_32_listener($event) { return ctx.selectedItems = $event; });
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](33, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](34, InsertActivationComponent_ng_template_34_Template, 2, 1, "ng-template", null, 17, _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplateRefExtractor"]);
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](36, InsertActivationComponent_div_36_Template, 3, 0, "div", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](27, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](28, InsertActivationComponent_ng_template_28_Template, 2, 1, "ng-template", null, 16, _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplateRefExtractor"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](30, InsertActivationComponent_div_30_Template, 3, 0, "div", 17);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
@@ -1192,7 +1178,7 @@ InsertActivationComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵreference"](35);
+        const _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵreference"](29);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](12);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("formGroup", ctx.ActivateForm);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](7);
@@ -1201,8 +1187,6 @@ InsertActivationComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("ngForOf", ctx.students);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](6);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("placeholder", "\u0627\u062E\u062A\u0631 \u0645\u0646 \u0627\u0644\u0642\u0627\u0626\u0645\u0629")("settings", ctx.dropdownSettingssubcourse)("data", ctx.subcoursecontent)("ngModel", ctx.selectedbeforecourse);
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("placeholder", "\u0627\u062E\u062A\u0631 \u0645\u0646 \u0627\u0644\u0642\u0627\u0626\u0645\u0629")("settings", ctx.dropdownSettings)("data", ctx.courses)("ngModel", ctx.selectedItems);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](4);
         _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("ngIf", ctx.update)("ngIfElse", _r2);
     } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["ɵNgNoValidate"], _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormGroupDirective, _ng_select_ng_select__WEBPACK_IMPORTED_MODULE_7__.NgSelectComponent, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControlName, _angular_common__WEBPACK_IMPORTED_MODULE_8__.NgForOf, ng_multiselect_dropdown__WEBPACK_IMPORTED_MODULE_9__.MultiSelectComponent, _angular_common__WEBPACK_IMPORTED_MODULE_8__.NgIf, _ng_select_ng_select__WEBPACK_IMPORTED_MODULE_7__["ɵr"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJpbnNlcnQtYWN0aXZhdGlvbi5jb21wb25lbnQuY3NzIn0= */"] });
