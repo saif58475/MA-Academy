@@ -23,7 +23,7 @@ export class CourseContentService {
   }
 
   UpdateCourseContent(data : any,id : number):Observable<any>{
-   return this._HttpClient.put(`${environment.Server_URL}/updateSubjectContent/${id}`, data);
+   return this._HttpClient.post(`${environment.Server_URL}/updateSubjectContent/${id}`, data);
   }
 
   DeleteCourseContent(id:number):Observable<any>{

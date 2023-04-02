@@ -4549,20 +4549,23 @@ function ViewStudentsComponent_tr_34_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](11, "td", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](12, "button", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function ViewStudentsComponent_tr_34_Template_button_click_12_listener() { const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r4); const view_r1 = restoredCtx.$implicit; const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"](); return ctx_r3.updateactivate(view_r1); });
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](13, "i", 25);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](14, "button", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function ViewStudentsComponent_tr_34_Template_button_click_14_listener() { const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r4); const view_r1 = restoredCtx.$implicit; const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"](); return ctx_r5.addcontent(view_r1); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](15, "i", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](14, "button", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function ViewStudentsComponent_tr_34_Template_button_click_14_listener() { const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r4); const view_r1 = restoredCtx.$implicit; const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"](); return ctx_r3.updateactivate(view_r1); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](15, "i", 27);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](16, "button", 26);
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function ViewStudentsComponent_tr_34_Template_button_click_16_listener() { const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r4); const view_r1 = restoredCtx.$implicit; const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"](); return ctx_r6.update(view_r1); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](17, "i", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function ViewStudentsComponent_tr_34_Template_button_click_16_listener() { const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r4); const view_r1 = restoredCtx.$implicit; const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"](); return ctx_r5.addcontent(view_r1); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](17, "i", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](18, "button", 27);
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function ViewStudentsComponent_tr_34_Template_button_click_18_listener() { const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r4); const view_r1 = restoredCtx.$implicit; const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"](); return ctx_r7.delete(view_r1.studentId); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](19, "i", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](18, "button", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function ViewStudentsComponent_tr_34_Template_button_click_18_listener() { const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r4); const view_r1 = restoredCtx.$implicit; const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"](); return ctx_r6.update(view_r1); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](19, "i", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](20, "button", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function ViewStudentsComponent_tr_34_Template_button_click_20_listener() { const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r4); const view_r1 = restoredCtx.$implicit; const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"](); return ctx_r7.delete(view_r1.studentId); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](21, "i", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
@@ -4649,7 +4652,7 @@ class ViewStudentsComponent {
     }
 }
 ViewStudentsComponent.ɵfac = function ViewStudentsComponent_Factory(t) { return new (t || ViewStudentsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdirectiveInject"](_shared_API_Service_services_students_service__WEBPACK_IMPORTED_MODULE_1__.StudentsService), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdirectiveInject"](_shared_API_Service_services_course_content_service__WEBPACK_IMPORTED_MODULE_2__.CourseContentService)); };
-ViewStudentsComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineComponent"]({ type: ViewStudentsComponent, selectors: [["app-view-students"]], decls: 36, vars: 5, consts: [[1, "container-fluid"], [1, "row"], [1, "col-sm-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "col-3"], [1, "pb-2"], [1, "col-6"], ["type", "text", "placeholder", "\u0627\u0628\u062D\u062B \u0628\u0627\u0633\u0645 \u0627\u0644\u0637\u0627\u0644\u0628 \u0627\u0648 \u0628\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u062A\u0633\u0644\u0633\u0644\u064A \u0627\u0648 \u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A", 1, "form-control", "form-control-light", 3, "ngModel", "ngModelChange"], [1, "col-3", "header-titles"], ["routerLink", "/content/admin/InsertStudents", 1, "d-block"], ["type", "button", 1, "btn", "pull-right"], [1, "m-2"], [1, "fa", "fa-plus"], [1, "card-block", "row"], [1, "col-sm-12", "col-lg-12", "col-xl-12"], [1, "table-responsive"], [1, "table", "table-responsive-sm"], [1, ""], ["scope", "col"], ["class", " ", 4, "ngFor", "ngForOf"], ["scope", "row", 1, "p-2"], ["scope", "row", 1, "p-2", "text-danger", "fw-2"], [1, "font-style", "chose"], [1, "btn", "pull-right", 2, "color", "rgba(176, 72, 11, 0.667)", "padding", "7px", 3, "click"], [1, "fa", "fa-pencil"], [1, "btn", "pull-right", 2, "color", "rgba(35, 118, 241, 0.667)", "padding", "7px", 3, "click"], [1, "btn", "pull-right", 2, "color", "red", "padding", "7px", 3, "click"], [1, "fa", "fa-trash"]], template: function ViewStudentsComponent_Template(rf, ctx) { if (rf & 1) {
+ViewStudentsComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineComponent"]({ type: ViewStudentsComponent, selectors: [["app-view-students"]], decls: 36, vars: 5, consts: [[1, "container-fluid"], [1, "row"], [1, "col-sm-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "col-3"], [1, "pb-2"], [1, "col-6"], ["type", "text", "placeholder", "\u0627\u0628\u062D\u062B \u0628\u0627\u0633\u0645 \u0627\u0644\u0637\u0627\u0644\u0628 \u0627\u0648 \u0628\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u062A\u0633\u0644\u0633\u0644\u064A \u0627\u0648 \u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A", 1, "form-control", "form-control-light", 3, "ngModel", "ngModelChange"], [1, "col-3", "header-titles"], ["routerLink", "/content/admin/InsertStudents", 1, "d-block"], ["type", "button", 1, "btn", "pull-right"], [1, "m-2"], [1, "fa", "fa-plus"], [1, "card-block", "row"], [1, "col-sm-12", "col-lg-12", "col-xl-12"], [1, "table-responsive"], [1, "table", "table-responsive-sm"], [1, ""], ["scope", "col"], ["class", " ", 4, "ngFor", "ngForOf"], ["scope", "row", 1, "p-2"], ["scope", "row", 1, "p-2", "text-danger", "fw-2"], [1, "font-style", "chose"], [1, "btn", "pull-right", 2, "color", "rgba(199, 57, 32, 0.667)", "padding", "7px"], [1, "fa", "fa-mobile"], [1, "btn", "pull-right", 2, "color", "rgba(176, 72, 11, 0.667)", "padding", "7px", 3, "click"], [1, "fa", "fa-pencil"], [1, "btn", "pull-right", 2, "color", "rgba(35, 118, 241, 0.667)", "padding", "7px", 3, "click"], [1, "btn", "pull-right", 2, "color", "red", "padding", "7px", 3, "click"], [1, "fa", "fa-trash"]], template: function ViewStudentsComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](2, "div", 2);
@@ -4701,7 +4704,7 @@ ViewStudentsComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODU
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](33, "tbody");
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtemplate"](34, ViewStudentsComponent_tr_34_Template, 20, 5, "tr", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtemplate"](34, ViewStudentsComponent_tr_34_Template, 22, 5, "tr", 20);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵpipe"](35, "filter");
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
@@ -6338,7 +6341,7 @@ class CourseContentService {
         return this._HttpClient.post(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/addSubjectContent`, data);
     }
     UpdateCourseContent(data, id) {
-        return this._HttpClient.put(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/updateSubjectContent/${id}`, data);
+        return this._HttpClient.post(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/updateSubjectContent/${id}`, data);
     }
     DeleteCourseContent(id) {
         return this._HttpClient.delete(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/deleteSubjectContent/${id}`);
