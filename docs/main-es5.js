@@ -1926,8 +1926,11 @@
 
             this._StudentsService.updatestudentcontent.subscribe(function (studentid) {
               if (studentid != null) {
-                _this4._StudentsService.GetStudentContent(studentid.studentId).subscribe(function (res) {
-                  _this4.checkupdate(res.data);
+                _this4._CourseContentService.viewactivation(studentid.studentId).subscribe(function (res) {
+                  debugger;
+                  _this4.update = true;
+
+                  _this4.checkupdate(res.data[0]);
                 });
               } else {
                 _this4._CourseContentService.studentemail.subscribe(function (res) {
@@ -1996,7 +1999,6 @@
           value: function onSubmit() {
             var _this7 = this;
 
-            debugger;
             this.button = true;
 
             if (this.ActivateForm.status == "VALID" && this.update == false) {
@@ -2012,7 +2014,7 @@
 
                 _this7.ActivateForm.reset();
 
-                _this7._Router.navigate(['content/admin/ViewActivation']);
+                _this7._Router.navigate(['content/admin/ViewStudents']);
               }, function (err) {
                 _this7.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
@@ -2059,6 +2061,8 @@
           key: "ngOnDestroy",
           value: function ngOnDestroy() {
             this._CourseContentService.studentemail.next(null);
+
+            this._StudentsService.updatestudentcontent.next(null);
           }
         }]);
 
@@ -2367,18 +2371,7 @@
 
         _createClass(_ViewActivationComponent, [{
           key: "ngOnInit",
-          value: function ngOnInit() {
-            this.getactivation();
-          }
-        }, {
-          key: "getactivation",
-          value: function getactivation() {
-            var _this8 = this;
-
-            this._CourseContentService.viewactivation().subscribe(function (res) {
-              _this8.activations = res.data;
-            });
-          }
+          value: function ngOnInit() {}
         }, {
           key: "update",
           value: function update(data) {}
@@ -3458,7 +3451,7 @@
         _createClass(_InsertCourseContentComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this9 = this;
+            var _this8 = this;
 
             this.getdropdowns(); // this._CourseContentService.coursecontent.subscribe((res) => {
             //   if( res == null){
@@ -3478,17 +3471,17 @@
 
             this._CourseContentService.insertnewcoursecontent.subscribe(function (data) {
               if (data == null) {
-                _this9._CourseContentService.coursecontent.subscribe(function (res) {
+                _this8._CourseContentService.coursecontent.subscribe(function (res) {
                   if (res == null) {
-                    _this9.initiate();
+                    _this8.initiate();
                   } else {
-                    _this9.recordtoupdate = res;
+                    _this8.recordtoupdate = res;
 
-                    _this9.checkedit(_this9.recordtoupdate);
+                    _this8.checkedit(_this8.recordtoupdate);
                   }
                 });
               } else {
-                _this9.initiate(data);
+                _this8.initiate(data);
               }
             });
           }
@@ -3502,22 +3495,22 @@
         }, {
           key: "getdropdowns",
           value: function getdropdowns() {
-            var _this10 = this;
+            var _this9 = this;
 
             this._CoursesService.GetCourse().subscribe(function (res) {
-              _this10.courses = res.data;
+              _this9.courses = res.data;
             });
 
             this._TeachersService.GetTeacher().subscribe(function (res) {
-              _this10.teachers = res.data;
+              _this9.teachers = res.data;
             });
 
             this._SubcourseService.GetSubCourse().subscribe(function (res) {
-              _this10.subSubjects = res.data;
+              _this9.subSubjects = res.data;
             });
 
             this._SubcoursecontentService.GetSubjectContent().subscribe(function (res) {
-              _this10.beforSubjectContent = res.data;
+              _this9.beforSubjectContent = res.data;
             });
           }
         }, {
@@ -3560,12 +3553,12 @@
         }, {
           key: "appenddata",
           value: function appenddata() {
-            var _this11 = this;
+            var _this10 = this;
 
             this.CourseLectureFormData = new FormData(); // this.CourseLectureFormData.append("teacherIds", this.CourseLectureForm.value.teacherId);
 
             this.selectedItems.forEach(function (element) {
-              _this11.CourseLectureFormData.append("teacherIds[]", element.teacherId);
+              _this10.CourseLectureFormData.append("teacherIds[]", element.teacherId);
             });
             this.CourseLectureFormData.append("beforSubjectContentId", this.CourseLectureForm.value.beforSubjectContentId);
             this.CourseLectureFormData.append("subSubjectId", this.CourseLectureForm.value.subSubjectId);
@@ -3580,7 +3573,7 @@
         }, {
           key: "getLogoUrl",
           value: function getLogoUrl(event) {
-            var _this12 = this;
+            var _this11 = this;
 
             var reader = new FileReader();
 
@@ -3592,7 +3585,7 @@
               reader.readAsDataURL(file);
 
               reader.onload = function () {
-                _this12.imageLogo = reader.result;
+                _this11.imageLogo = reader.result;
               };
             }
           }
@@ -3606,7 +3599,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this13 = this;
+            var _this12 = this;
 
             this.button = true;
 
@@ -3621,17 +3614,17 @@
                   timer: 1500
                 });
 
-                _this13.CourseLectureForm.reset();
+                _this12.CourseLectureForm.reset();
 
-                _this13._Router.navigate(['content/admin/ViewCourseLecture']);
+                _this12._Router.navigate(['content/admin/ViewCourseLecture']);
               }, function (err) {
-                _this13.button = false;
+                _this12.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this13.button = false;
+                _this12.button = false;
               });
             } else if (this.CourseLectureForm.status == "VALID" && this.update == true) {
               this.appenddata();
@@ -3644,17 +3637,17 @@
                   timer: 1500
                 });
 
-                _this13.CourseLectureForm.reset();
+                _this12.CourseLectureForm.reset();
 
-                _this13._Router.navigate(['content/admin/ViewCourseLecture']);
+                _this12._Router.navigate(['content/admin/ViewCourseLecture']);
               }, function (err) {
-                _this13.button = false;
+                _this12.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this13.button = false;
+                _this12.button = false;
               });
             } else {
               this.button = false;
@@ -4223,10 +4216,10 @@
         }, {
           key: "getcoursecontent",
           value: function getcoursecontent() {
-            var _this14 = this;
+            var _this13 = this;
 
             this._CourseContentService.GetCourseContent().subscribe(function (res) {
-              _this14.courselectures = res.data;
+              _this13.courselectures = res.data;
             });
           } // showimage(data){
           //   Swal.fire({
@@ -4239,7 +4232,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this15 = this;
+            var _this14 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح المحتوى ؟',
@@ -4252,7 +4245,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this15._CourseContentService.DeleteCourseContent(id).subscribe(function (res) {
+                _this14._CourseContentService.DeleteCourseContent(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -4260,7 +4253,7 @@
                     timer: 1500
                   });
 
-                  _this15.getcoursecontent();
+                  _this14.getcoursecontent();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -4268,7 +4261,7 @@
                     text: err.error.message
                   });
 
-                  _this15.getcoursecontent();
+                  _this14.getcoursecontent();
                 }, function () {
                   console.log("completed");
                 });
@@ -4610,18 +4603,18 @@
         _createClass(_InsertCoursesComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this16 = this;
+            var _this15 = this;
 
             this.getdropdown();
 
             this._CoursesService.Subject.subscribe(function (res) {
               if (res == null) {
-                _this16.initiate();
+                _this15.initiate();
               } else {
-                _this16.update = true;
-                _this16.recordtoupdate = res;
+                _this15.update = true;
+                _this15.recordtoupdate = res;
 
-                _this16.checkupdate(_this16.recordtoupdate);
+                _this15.checkupdate(_this15.recordtoupdate);
               }
             });
           }
@@ -4647,7 +4640,7 @@
         }, {
           key: "getLogoUrl",
           value: function getLogoUrl(event) {
-            var _this17 = this;
+            var _this16 = this;
 
             var reader = new FileReader();
 
@@ -4659,7 +4652,7 @@
               reader.readAsDataURL(file);
 
               reader.onload = function () {
-                _this17.imageLogo = reader.result;
+                _this16.imageLogo = reader.result;
               };
             }
           }
@@ -4671,16 +4664,16 @@
         }, {
           key: "getdropdown",
           value: function getdropdown() {
-            var _this18 = this;
+            var _this17 = this;
 
             this._EducationLevelService.GetEducationLevel().subscribe(function (res) {
-              _this18.educationlevels = res.data;
+              _this17.educationlevels = res.data;
             });
           }
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this19 = this;
+            var _this18 = this;
 
             this.button = true;
 
@@ -4693,17 +4686,17 @@
                   timer: 1500
                 });
 
-                _this19.CourseForm.reset();
+                _this18.CourseForm.reset();
 
-                _this19._Router.navigate(['content/admin/ViewCourses']);
+                _this18._Router.navigate(['content/admin/ViewCourses']);
               }, function (err) {
-                _this19.button = false;
+                _this18.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this19.button = false;
+                _this18.button = false;
               });
             } else if (this.CourseForm.status == "VALID" && this.update == true) {
               this._CoursesService.UpdateCourse(this.CourseForm.value, this.recordtoupdate.subjectId).subscribe(function (res) {
@@ -4714,17 +4707,17 @@
                   timer: 1500
                 });
 
-                _this19.CourseForm.reset();
+                _this18.CourseForm.reset();
 
-                _this19._Router.navigate(['content/admin/ViewCourses']);
+                _this18._Router.navigate(['content/admin/ViewCourses']);
               }, function (err) {
-                _this19.button = false;
+                _this18.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this19.button = false;
+                _this18.button = false;
               });
             } else {
               this.button = false;
@@ -5044,10 +5037,10 @@
         }, {
           key: "getcourses",
           value: function getcourses() {
-            var _this20 = this;
+            var _this19 = this;
 
             this._CoursesService.GetCourse().subscribe(function (res) {
-              _this20.courses = res.data;
+              _this19.courses = res.data;
             });
           }
         }, {
@@ -5066,7 +5059,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this21 = this;
+            var _this20 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح الكورس ؟',
@@ -5079,7 +5072,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this21._CoursesService.DeleteCourse(id).subscribe(function (res) {
+                _this20._CoursesService.DeleteCourse(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -5087,7 +5080,7 @@
                     timer: 1500
                   });
 
-                  _this21.getcourses();
+                  _this20.getcourses();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -5095,7 +5088,7 @@
                     text: err.error.message
                   });
 
-                  _this21.getcourses(); //     Swal.fire({
+                  _this20.getcourses(); //     Swal.fire({
                   //       icon: "success",
                   //       title: "تم المسح بنجاح",
                   //       showConfirmButton: false,
@@ -5375,7 +5368,7 @@
         _createClass(_InsertEducationlevelComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this22 = this;
+            var _this21 = this;
 
             this.dropdownSettings = {
               singleSelection: false,
@@ -5388,12 +5381,12 @@
 
             this._EducationLevelService.EducationLevel.subscribe(function (res) {
               if (res == null) {
-                _this22.initiate();
+                _this21.initiate();
               } else {
-                _this22.update = true;
-                _this22.recordtoupdate = res;
+                _this21.update = true;
+                _this21.recordtoupdate = res;
 
-                _this22.checkupdate(res);
+                _this21.checkupdate(res);
               }
             });
           }
@@ -5416,10 +5409,10 @@
         }, {
           key: "getsubjects",
           value: function getsubjects() {
-            var _this23 = this;
+            var _this22 = this;
 
             this._CoursesService.GetCourse().subscribe(function (res) {
-              _this23.subjects = res.data;
+              _this22.subjects = res.data;
             });
           }
         }, {
@@ -5430,7 +5423,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this24 = this;
+            var _this23 = this;
 
             this.button = true;
 
@@ -5443,17 +5436,17 @@
                   timer: 1500
                 });
 
-                _this24.educationlevelForm.reset();
+                _this23.educationlevelForm.reset();
 
-                _this24._Router.navigate(['content/admin/ViewEducationLevel']);
+                _this23._Router.navigate(['content/admin/ViewEducationLevel']);
               }, function (err) {
-                _this24.button = false;
+                _this23.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this24.button = false;
+                _this23.button = false;
               });
             } else if (this.educationlevelForm.status == "VALID" && this.update == true) {
               this._EducationLevelService.UpdateEducationLevel(this.educationlevelForm.value, this.recordtoupdate.educationId).subscribe(function (res) {
@@ -5464,17 +5457,17 @@
                   timer: 1500
                 });
 
-                _this24.educationlevelForm.reset();
+                _this23.educationlevelForm.reset();
 
-                _this24._Router.navigate(['content/admin/ViewEducationLevel']);
+                _this23._Router.navigate(['content/admin/ViewEducationLevel']);
               }, function (err) {
-                _this24.button = false;
+                _this23.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this24.button = false;
+                _this23.button = false;
               });
             } else {
               this.button = false;
@@ -5792,16 +5785,16 @@
         }, {
           key: "getedicationlevels",
           value: function getedicationlevels() {
-            var _this25 = this;
+            var _this24 = this;
 
             this._EducationLevelService.GetEducationLevel().subscribe(function (res) {
-              _this25.educationlevels = res.data;
+              _this24.educationlevels = res.data;
             });
           }
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this26 = this;
+            var _this25 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح الكورس ؟',
@@ -5814,7 +5807,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this26._EducationLevelService.DeleteEducationLevel(id).subscribe(function (res) {
+                _this25._EducationLevelService.DeleteEducationLevel(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -5822,7 +5815,7 @@
                     timer: 1500
                   });
 
-                  _this26.getedicationlevels();
+                  _this25.getedicationlevels();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -5830,7 +5823,7 @@
                     text: err.error.message
                   });
 
-                  _this26.getedicationlevels();
+                  _this25.getedicationlevels();
                 }, function () {
                   console.log("completed");
                 });
@@ -6125,14 +6118,14 @@
         }, {
           key: "getdropdowns",
           value: function getdropdowns() {
-            var _this27 = this;
+            var _this26 = this;
 
             this._CourseContentService.GetCourseContent().subscribe(function (res) {
-              _this27.courses = res.data;
+              _this26.courses = res.data;
             });
 
             this._SubcoursecontentService.GetSubjectContent().subscribe(function (res) {
-              _this27.subcoursecontent = res.data;
+              _this26.subcoursecontent = res.data;
             });
           }
         }, {
@@ -6771,17 +6764,17 @@
         _createClass(_InsertParentsComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this28 = this;
+            var _this27 = this;
 
             this._ParentsService.updateparent.subscribe(function (res) {
               if (res != null) {
-                _this28.recordtoupdate = res;
+                _this27.recordtoupdate = res;
 
-                _this28.initiate(res);
+                _this27.initiate(res);
 
-                _this28.update = true;
+                _this27.update = true;
               } else {
-                _this28.initiate();
+                _this27.initiate();
               }
             });
           }
@@ -6805,7 +6798,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this29 = this;
+            var _this28 = this;
 
             this.button = true;
 
@@ -6818,17 +6811,17 @@
                   timer: 1500
                 });
 
-                _this29.ParentForm.reset();
+                _this28.ParentForm.reset();
 
-                _this29._Router.navigate(['content/admin/ViewParent']);
+                _this28._Router.navigate(['content/admin/ViewParent']);
               }, function (err) {
-                _this29.button = false;
+                _this28.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this29.button = false;
+                _this28.button = false;
               });
             } else if (this.ParentForm.status == "VALID" && this.update == true) {
               this._ParentsService.UpdateParents(this.ParentForm.value, this.recordtoupdate.fatherId).subscribe(function (res) {
@@ -6839,17 +6832,17 @@
                   timer: 1500
                 });
 
-                _this29.ParentForm.reset();
+                _this28.ParentForm.reset();
 
-                _this29._Router.navigate(['content/admin/ViewParent']);
+                _this28._Router.navigate(['content/admin/ViewParent']);
               }, function (err) {
-                _this29.button = false;
+                _this28.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this29.button = false;
+                _this28.button = false;
               });
             } else {
               this.button = false;
@@ -7273,16 +7266,16 @@
         }, {
           key: "getparents",
           value: function getparents() {
-            var _this30 = this;
+            var _this29 = this;
 
             this._ParentsService.GetParents().subscribe(function (res) {
-              _this30.parents = res.data;
+              _this29.parents = res.data;
             });
           }
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this31 = this;
+            var _this30 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح ولي الامر ؟',
@@ -7295,7 +7288,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this31._ParentsService.DeleteParents(id).subscribe(function (res) {
+                _this30._ParentsService.DeleteParents(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -7303,7 +7296,7 @@
                     timer: 1500
                   });
 
-                  _this31.getparents();
+                  _this30.getparents();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -7311,7 +7304,7 @@
                     text: err.error.message
                   });
 
-                  _this31.getparents();
+                  _this30.getparents();
                 }, function () {
                   console.log("completed");
                 });
@@ -7653,10 +7646,10 @@
         }, {
           key: "getproducts",
           value: function getproducts() {
-            var _this32 = this;
+            var _this31 = this;
 
             this._ProductService.Get().subscribe(function (res) {
-              _this32.products = res.data;
+              _this31.products = res.data;
             }, function (err) {
               console.log('their is a problem');
             }, function () {
@@ -7680,7 +7673,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this33 = this;
+            var _this32 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'Are you sure?',
@@ -7692,7 +7685,7 @@
               confirmButtonText: 'Yes, delete it!'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this33._ProductService.Delete(id).subscribe(function (res) {
+                _this32._ProductService.Delete(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "Deleted Successfuly",
@@ -7700,7 +7693,7 @@
                     timer: 1500
                   });
 
-                  _this33.getproducts();
+                  _this32.getproducts();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -8038,19 +8031,19 @@
         _createClass(_InsertStudentsComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this34 = this;
+            var _this33 = this;
 
             this.geteducationlevel();
 
             this._StudentsService.Student.subscribe(function (res) {
               if (res == null) {
-                _this34.initiate();
+                _this33.initiate();
               } else {
-                _this34.update = true;
-                _this34.recordtoupdate = res;
-                _this34.imageLogo = _this34.ImageURL + _this34.recordtoupdate.StudentImage;
+                _this33.update = true;
+                _this33.recordtoupdate = res;
+                _this33.imageLogo = _this33.ImageURL + _this33.recordtoupdate.StudentImage;
 
-                _this34.checkupdate(_this34.recordtoupdate);
+                _this33.checkupdate(_this33.recordtoupdate);
               }
             });
           }
@@ -8089,17 +8082,17 @@
         }, {
           key: "geteducationlevel",
           value: function geteducationlevel() {
-            var _this35 = this;
+            var _this34 = this;
 
             this._EducationLevelService.GetEducationLevel().subscribe(function (res) {
-              _this35.educationlevels = res.data;
+              _this34.educationlevels = res.data;
             });
           } // imgFile
 
         }, {
           key: "getLogoUrl",
           value: function getLogoUrl(event) {
-            var _this36 = this;
+            var _this35 = this;
 
             var reader = new FileReader();
 
@@ -8111,7 +8104,7 @@
               reader.readAsDataURL(file);
 
               reader.onload = function () {
-                _this36.imageLogo = reader.result; // this.logoForm?.append("image", this.Image);
+                _this35.imageLogo = reader.result; // this.logoForm?.append("image", this.Image);
               };
             }
           }
@@ -8123,7 +8116,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this37 = this;
+            var _this36 = this;
 
             this.button = true;
 
@@ -8146,17 +8139,17 @@
                   }
                 });
 
-                _this37.StudentForm.reset();
+                _this36.StudentForm.reset();
 
-                _this37._Router.navigate(['content/admin/ViewStudents']);
+                _this36._Router.navigate(['content/admin/ViewStudents']);
               }, function (err) {
-                _this37.button = false;
+                _this36.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this37.button = false;
+                _this36.button = false;
               });
             } else if (this.StudentForm.status == "VALID" && this.update == true) {
               this._StudentsService.UpdateStudent(this.StudentForm.value, this.recordtoupdate.studentId).subscribe(function (res) {
@@ -8167,17 +8160,17 @@
                   timer: 1500
                 });
 
-                _this37.StudentForm.reset();
+                _this36.StudentForm.reset();
 
-                _this37._Router.navigate(['content/admin/ViewStudents']);
+                _this36._Router.navigate(['content/admin/ViewStudents']);
               }, function (err) {
-                _this37.button = false;
+                _this36.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this37.button = false;
+                _this36.button = false;
               });
             } else {
               this.button = false;
@@ -8594,6 +8587,16 @@
 
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](12, "button", 24);
 
+          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function ViewStudentsComponent_tr_34_Template_button_click_12_listener() {
+            var restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r4);
+
+            var view_r1 = restoredCtx.$implicit;
+
+            var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"]();
+
+            return ctx_r3.removethemobile(view_r1.studentId);
+          });
+
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](13, "i", 25);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
@@ -8605,60 +8608,60 @@
 
             var view_r1 = restoredCtx.$implicit;
 
-            var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"]();
+            var ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"]();
 
-            return ctx_r3.updateactivate(view_r1);
+            return ctx_r5.updateactivate(view_r1.studentId);
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](15, "i", 27);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](16, "button", 26);
+          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](16, "button", 28);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function ViewStudentsComponent_tr_34_Template_button_click_16_listener() {
             var restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r4);
 
             var view_r1 = restoredCtx.$implicit;
 
-            var ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"]();
+            var ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"]();
 
-            return ctx_r5.addcontent(view_r1);
+            return ctx_r6.addcontent(view_r1);
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](17, "i", 13);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](18, "button", 28);
+          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](18, "button", 29);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function ViewStudentsComponent_tr_34_Template_button_click_18_listener() {
             var restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r4);
 
             var view_r1 = restoredCtx.$implicit;
 
-            var ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"]();
+            var ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"]();
 
-            return ctx_r6.update(view_r1);
+            return ctx_r7.update(view_r1);
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](19, "i", 27);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](20, "button", 29);
+          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](20, "button", 30);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵlistener"]("click", function ViewStudentsComponent_tr_34_Template_button_click_20_listener() {
             var restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵrestoreView"](_r4);
 
             var view_r1 = restoredCtx.$implicit;
 
-            var ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"]();
+            var ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵnextContext"]();
 
-            return ctx_r7["delete"](view_r1.studentId);
+            return ctx_r8["delete"](view_r1.studentId);
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](21, "i", 30);
+          _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](21, "i", 31);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();
 
@@ -8711,10 +8714,10 @@
         }, {
           key: "getstudents",
           value: function getstudents() {
-            var _this38 = this;
+            var _this37 = this;
 
             this._StudentsService.GetStudent().subscribe(function (res) {
-              _this38.students = res.data;
+              _this37.students = res.data;
             });
           }
         }, {
@@ -8729,7 +8732,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this39 = this;
+            var _this38 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح الطالب ؟',
@@ -8742,7 +8745,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this39._StudentsService.DeleteStudent(id).subscribe(function (res) {
+                _this38._StudentsService.DeleteStudent(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -8750,7 +8753,7 @@
                     timer: 1500
                   });
 
-                  _this39.getstudents();
+                  _this38.getstudents();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -8758,7 +8761,7 @@
                     text: err.error.message
                   });
 
-                  _this39.getstudents();
+                  _this38.getstudents();
                 }, function () {
                   console.log("completed");
                 });
@@ -8775,9 +8778,39 @@
         }, {
           key: "updateactivate",
           value: function updateactivate(id) {
-            this._StudentsService.updatestudentcontent.next(id);
+            var _this39 = this;
 
-            this._Router.navigate(['content/admin/InsertActivation']);
+            sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+              title: 'هل تريد تعديل المحتوى المفعل للطالب ام تريد مسح المحتوى المفعل ؟',
+              icon: 'question',
+              iconHtml: '؟',
+              confirmButtonText: 'تعديل المحتوى المفعل',
+              cancelButtonText: 'مسح المحتوى المفعل',
+              showCancelButton: true,
+              showCloseButton: true,
+              reverseButtons: true
+            }).then(function (result) {
+              if (result.isConfirmed) {
+                _this39._StudentsService.updatestudentcontent.next(id);
+
+                _this39._Router.navigate(['content/admin/InsertActivation']);
+              } else {
+                _this39._StudentsService.deletestudentsubjectcontent(id).subscribe(function (res) {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+                    icon: "success",
+                    title: "تم مسح محتوى المواد المفعلة لهذا الطالب",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                }, function (err) {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+                    icon: 'error',
+                    title: 'خطأ',
+                    text: err.message
+                  });
+                });
+              }
+            });
           }
         }, {
           key: "addcontent",
@@ -8785,6 +8818,39 @@
             this._CourseContentService.studentemail.next(data);
 
             this._Router.navigate(['content/admin/InsertActivation']);
+          }
+        }, {
+          key: "removethemobile",
+          value: function removethemobile(id) {
+            var _this40 = this;
+
+            sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+              title: 'هل انت متأكد من مسح هذا الهاتف ؟',
+              text: "لن يكون لك صلاحية لاعادتة الا عن طريق الطالب نفسة",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'نعم امسح الهاتف المفعل',
+              cancelButtonText: 'الغاء'
+            }).then(function (result) {
+              if (result.isConfirmed) {
+                _this40._StudentsService.removethemobile(id).subscribe(function (res) {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+                    icon: "success",
+                    title: "تم مسح الهاتف المفعل على هذا الحساب",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                }, function (err) {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+                    icon: 'error',
+                    title: 'خطأ',
+                    text: err.message
+                  });
+                });
+              }
+            });
           }
         }]);
 
@@ -8800,7 +8866,7 @@
         selectors: [["app-view-students"]],
         decls: 36,
         vars: 5,
-        consts: [[1, "container-fluid"], [1, "row"], [1, "col-sm-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "col-3"], [1, "pb-2"], [1, "col-6"], ["type", "text", "placeholder", "\u0627\u0628\u062D\u062B \u0628\u0627\u0633\u0645 \u0627\u0644\u0637\u0627\u0644\u0628 \u0627\u0648 \u0628\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u062A\u0633\u0644\u0633\u0644\u064A \u0627\u0648 \u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A", 1, "form-control", "form-control-light", 3, "ngModel", "ngModelChange"], [1, "col-3", "header-titles"], ["routerLink", "/content/admin/InsertStudents", 1, "d-block"], ["type", "button", 1, "btn", "pull-right"], [1, "m-2"], [1, "fa", "fa-plus"], [1, "card-block", "row"], [1, "col-sm-12", "col-lg-12", "col-xl-12"], [1, "table-responsive"], [1, "table", "table-responsive-sm"], [1, ""], ["scope", "col"], ["class", " ", 4, "ngFor", "ngForOf"], ["scope", "row", 1, "p-2"], ["scope", "row", 1, "p-2", "text-danger", "fw-2"], [1, "font-style", "chose"], [1, "btn", "pull-right", 2, "color", "rgba(199, 57, 32, 0.667)", "padding", "7px"], [1, "fa", "fa-mobile"], [1, "btn", "pull-right", 2, "color", "rgba(176, 72, 11, 0.667)", "padding", "7px", 3, "click"], [1, "fa", "fa-pencil"], [1, "btn", "pull-right", 2, "color", "rgba(35, 118, 241, 0.667)", "padding", "7px", 3, "click"], [1, "btn", "pull-right", 2, "color", "red", "padding", "7px", 3, "click"], [1, "fa", "fa-trash"]],
+        consts: [[1, "container-fluid"], [1, "row"], [1, "col-sm-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "col-3"], [1, "pb-2"], [1, "col-6"], ["type", "text", "placeholder", "\u0627\u0628\u062D\u062B \u0628\u0627\u0633\u0645 \u0627\u0644\u0637\u0627\u0644\u0628 \u0627\u0648 \u0628\u0627\u0644\u0631\u0642\u0645 \u0627\u0644\u062A\u0633\u0644\u0633\u0644\u064A \u0627\u0648 \u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A", 1, "form-control", "form-control-light", 3, "ngModel", "ngModelChange"], [1, "col-3", "header-titles"], ["routerLink", "/content/admin/InsertStudents", 1, "d-block"], ["type", "button", 1, "btn", "pull-right"], [1, "m-2"], [1, "fa", "fa-plus"], [1, "card-block", "row"], [1, "col-sm-12", "col-lg-12", "col-xl-12"], [1, "table-responsive"], [1, "table", "table-responsive-sm"], [1, ""], ["scope", "col"], ["class", " ", 4, "ngFor", "ngForOf"], ["scope", "row", 1, "p-2"], ["scope", "row", 1, "p-2", "text-danger", "fw-2"], [1, "font-style", "chose"], ["title", "\u0627\u0644\u063A\u0627\u0621 \u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0647\u0627\u062A\u0641 \u0639\u0644\u0649 \u0627\u0644\u062D\u0633\u0627\u0628", 1, "btn", "pull-right", 2, "color", "rgba(199, 57, 32, 0.667)", "padding", "7px", 3, "click"], [1, "fa", "fa-mobile"], ["title", "\u062A\u0639\u062F\u064A\u0644 \u0627\u0648 \u062D\u0630\u0641 \u062A\u0641\u0639\u064A\u0644 \u0627\u0644\u0645\u0648\u0627\u062F \u0639\u0644\u0649 \u0647\u0630\u0627 \u0627\u0644\u062D\u0633\u0627\u0628", 1, "btn", "pull-right", 2, "color", "rgba(176, 72, 11, 0.667)", "padding", "7px", 3, "click"], [1, "fa", "fa-pencil"], ["title", "\u0627\u0636\u0627\u0641\u0629 \u0645\u062D\u062A\u0648\u0649 \u0645\u0648\u0627\u062F \u0644\u0647\u0630\u0627 \u0627\u0644\u062D\u0633\u0627\u0628", 1, "btn", "pull-right", 2, "color", "rgba(176, 72, 11, 0.667)", "padding", "7px", 3, "click"], ["title", "\u062A\u0639\u062F\u064A\u0644 \u062A\u0641\u0627\u0635\u064A\u0644 \u0627\u0644\u062D\u0633\u0627\u0628", 1, "btn", "pull-right", 2, "color", "rgba(35, 118, 241, 0.667)", "padding", "7px", 3, "click"], ["title", "\u062D\u0630\u0641 \u0647\u0630\u0627 \u0627\u0644\u0637\u0627\u0644\u0628", 1, "btn", "pull-right", 2, "color", "red", "padding", "7px", 3, "click"], [1, "fa", "fa-trash"]],
         template: function ViewStudentsComponent_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](0, "div", 0);
@@ -9105,25 +9171,25 @@
         _createClass(_InsertSubcoursecontentComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this40 = this;
+            var _this41 = this;
 
             this._SubcourseService.SubSubject.subscribe(function (res) {
-              _this40.getdropdowns();
+              _this41.getdropdowns();
 
               if (res == null) {
-                _this40._SubcoursecontentService.SubjectContent.subscribe(function (updatedata) {
+                _this41._SubcoursecontentService.SubjectContent.subscribe(function (updatedata) {
                   if (updatedata == null) {
-                    _this40.initiate();
+                    _this41.initiate();
                   } else {
-                    _this40.recordtoupdate = updatedata;
+                    _this41.recordtoupdate = updatedata;
 
-                    _this40.checkedit(_this40.recordtoupdate);
+                    _this41.checkedit(_this41.recordtoupdate);
 
-                    _this40.update = true;
+                    _this41.update = true;
                   }
                 });
               } else {
-                _this40.initiate(res);
+                _this41.initiate(res);
               }
             });
           }
@@ -9146,10 +9212,10 @@
         }, {
           key: "getdropdowns",
           value: function getdropdowns() {
-            var _this41 = this;
+            var _this42 = this;
 
             this._SubcourseService.GetSubCourse().subscribe(function (res) {
-              _this41.subsubjects = res.data;
+              _this42.subsubjects = res.data;
             });
           }
         }, {
@@ -9160,7 +9226,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this42 = this;
+            var _this43 = this;
 
             this.button = true;
 
@@ -9173,17 +9239,17 @@
                   timer: 1500
                 });
 
-                _this42.subcoursecontentForm.reset();
+                _this43.subcoursecontentForm.reset();
 
-                _this42._Router.navigate(['content/admin/ViewSubCourseContent']);
+                _this43._Router.navigate(['content/admin/ViewSubCourseContent']);
               }, function (err) {
-                _this42.button = false;
+                _this43.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this42.button = false;
+                _this43.button = false;
               });
             } else if (this.subcoursecontentForm.status == "VALID" && this.update == true) {
               this._SubcoursecontentService.UpdateSubjectContent(this.subcoursecontentForm.value, this.recordtoupdate.beforSubjectContentId).subscribe(function (res) {
@@ -9194,17 +9260,17 @@
                   timer: 1500
                 });
 
-                _this42.subcoursecontentForm.reset();
+                _this43.subcoursecontentForm.reset();
 
-                _this42._Router.navigate(['content/admin/ViewSubCourseContent']);
+                _this43._Router.navigate(['content/admin/ViewSubCourseContent']);
               }, function (err) {
-                _this42.button = false;
+                _this43.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this42.button = false;
+                _this43.button = false;
               });
             } else {
               this.button = false;
@@ -9492,18 +9558,18 @@
         _createClass(_RearrangeSubcourseContentComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this43 = this;
+            var _this44 = this;
 
             this._SubcoursecontentService.RearrangeSubjectContent.subscribe(function (res) {
               if (res != null) {
-                _this43.Toast.fire({
+                _this44.Toast.fire({
                   icon: 'warning',
                   title: 'قم بسحب اي من عناصر الجدول للموقع المراد'
                 });
 
-                _this43.getfiltersubcoursecontent(res);
+                _this44.getfiltersubcoursecontent(res);
               } else {
-                _this43._Router.navigate(['content/admin/ViewSubCourseContent']);
+                _this44._Router.navigate(['content/admin/ViewSubCourseContent']);
               }
             });
           }
@@ -9516,10 +9582,10 @@
         }, {
           key: "getfiltersubcoursecontent",
           value: function getfiltersubcoursecontent(id) {
-            var _this44 = this;
+            var _this45 = this;
 
             this._SubcoursecontentService.filtersubjectcontent(id).subscribe(function (res) {
-              _this44.records = res.data;
+              _this45.records = res.data;
             });
           }
         }, {
@@ -9861,10 +9927,10 @@
         }, {
           key: "getsubcontent",
           value: function getsubcontent() {
-            var _this45 = this;
+            var _this46 = this;
 
             this._SubcoursecontentService.GetSubjectContent().subscribe(function (res) {
-              _this45.subsubjects = res.data;
+              _this46.subsubjects = res.data;
             });
           }
         }, {
@@ -9884,7 +9950,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this46 = this;
+            var _this47 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح الكورس ؟',
@@ -9897,7 +9963,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this46._SubcoursecontentService.DeleteSubjectContent(id).subscribe(function (res) {
+                _this47._SubcoursecontentService.DeleteSubjectContent(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -9905,7 +9971,7 @@
                     timer: 1500
                   });
 
-                  _this46.getsubcontent();
+                  _this47.getsubcontent();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -9913,7 +9979,7 @@
                     text: err.error.message
                   });
 
-                  _this46.getsubcontent();
+                  _this47.getsubcontent();
                 }, function () {
                   console.log("completed");
                 });
@@ -10220,18 +10286,18 @@
         _createClass(_InsertSubcourseComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this47 = this;
+            var _this48 = this;
 
             this.getdropdown();
 
             this._SubcourseService.SubSubject.subscribe(function (res) {
               if (res == null) {
-                _this47.initiate();
+                _this48.initiate();
               } else {
-                _this47.recordtoupdate = res;
-                _this47.update = true;
+                _this48.recordtoupdate = res;
+                _this48.update = true;
 
-                _this47.checkupdate(_this47.recordtoupdate);
+                _this48.checkupdate(_this48.recordtoupdate);
               }
             });
           }
@@ -10259,16 +10325,16 @@
         }, {
           key: "getdropdown",
           value: function getdropdown() {
-            var _this48 = this;
+            var _this49 = this;
 
             this._CoursesService.GetCourse().subscribe(function (res) {
-              _this48.courses = res.data;
+              _this49.courses = res.data;
             });
           }
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this49 = this;
+            var _this50 = this;
 
             this.button = true;
 
@@ -10281,17 +10347,17 @@
                   timer: 1500
                 });
 
-                _this49.SubSubjectForm.reset();
+                _this50.SubSubjectForm.reset();
 
-                _this49._Router.navigate(['content/admin/ViewSubSubject']);
+                _this50._Router.navigate(['content/admin/ViewSubSubject']);
               }, function (err) {
-                _this49.button = false;
+                _this50.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this49.button = false;
+                _this50.button = false;
               });
             } else if (this.SubSubjectForm.status == "VALID" && this.update == true) {
               this._SubcourseService.UpdateSubCourse(this.SubSubjectForm.value, this.recordtoupdate.subSubjectId).subscribe(function (res) {
@@ -10302,17 +10368,17 @@
                   timer: 1500
                 });
 
-                _this49.SubSubjectForm.reset();
+                _this50.SubSubjectForm.reset();
 
-                _this49._Router.navigate(['content/admin/ViewSubSubject']);
+                _this50._Router.navigate(['content/admin/ViewSubSubject']);
               }, function (err) {
-                _this49.button = false;
+                _this50.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this49.button = false;
+                _this50.button = false;
               });
             } else {
               this.button = false;
@@ -10606,10 +10672,10 @@
         }, {
           key: "getsubcourse",
           value: function getsubcourse(id) {
-            var _this50 = this;
+            var _this51 = this;
 
             this._SubcourseService.filterSubCourse(id).subscribe(function (res) {
-              _this50.records = res.data;
+              _this51.records = res.data;
             });
           }
         }]);
@@ -10941,16 +11007,16 @@
         }, {
           key: "getsubsubjects",
           value: function getsubsubjects() {
-            var _this51 = this;
+            var _this52 = this;
 
             this._SubcourseService.GetSubCourse().subscribe(function (res) {
-              _this51.subsubjects = res.data;
+              _this52.subsubjects = res.data;
             });
           }
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this52 = this;
+            var _this53 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح الكورس ؟',
@@ -10963,7 +11029,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this52._SubcourseService.DeleteSubCourse(id).subscribe(function (res) {
+                _this53._SubcourseService.DeleteSubCourse(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -10971,7 +11037,7 @@
                     timer: 1500
                   });
 
-                  _this52.getsubsubjects();
+                  _this53.getsubsubjects();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -10979,7 +11045,7 @@
                     text: err.error.message
                   });
 
-                  _this52.getsubsubjects();
+                  _this53.getsubsubjects();
                 }, function () {
                   console.log("completed");
                 });
@@ -11322,32 +11388,32 @@
         _createClass(_InsertTeachersComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this53 = this;
+            var _this54 = this;
 
             this.getdropdowns();
 
             this._TeachersService.Teacher.subscribe(function (res) {
               if (res == null) {
-                _this53.initiate();
+                _this54.initiate();
               } else {
-                _this53.update = true;
-                _this53.recordtoupdate = res;
+                _this54.update = true;
+                _this54.recordtoupdate = res;
 
-                _this53.checkupdate(_this53.recordtoupdate);
+                _this54.checkupdate(_this54.recordtoupdate);
               }
             });
           }
         }, {
           key: "getdropdowns",
           value: function getdropdowns() {
-            var _this54 = this;
+            var _this55 = this;
 
             this._EducationLevelService.GetEducationLevel().subscribe(function (res) {
-              _this54.educationlevels = res.data;
+              _this55.educationlevels = res.data;
             });
 
             this._CoursesService.GetCourse().subscribe(function (res) {
-              _this54.subjects = res.data;
+              _this55.subjects = res.data;
             });
           }
         }, {
@@ -11372,10 +11438,10 @@
         }, {
           key: "insertarray",
           value: function insertarray(data) {
-            var _this55 = this;
+            var _this56 = this;
 
             data.forEach(function (element) {
-              return _this55.selectedid.push(element.educationId);
+              return _this56.selectedid.push(element.educationId);
             });
             this.TeacherForm.value.educationIds = this.selectedid;
           }
@@ -11387,7 +11453,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this56 = this;
+            var _this57 = this;
 
             this.button = true;
 
@@ -11402,17 +11468,17 @@
                   timer: 1500
                 });
 
-                _this56.TeacherForm.reset();
+                _this57.TeacherForm.reset();
 
-                _this56._Router.navigate(['content/admin/ViewTeachers']);
+                _this57._Router.navigate(['content/admin/ViewTeachers']);
               }, function (err) {
-                _this56.button = false;
+                _this57.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this56.button = false;
+                _this57.button = false;
               });
             } else if (this.TeacherForm.status == "VALID" && this.update == true) {
               this.insertarray(this.selectedItems);
@@ -11425,17 +11491,17 @@
                   timer: 1500
                 });
 
-                _this56.TeacherForm.reset();
+                _this57.TeacherForm.reset();
 
-                _this56._Router.navigate(['content/admin/ViewTeachers']);
+                _this57._Router.navigate(['content/admin/ViewTeachers']);
               }, function (err) {
-                _this56.button = false;
+                _this57.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this56.button = false;
+                _this57.button = false;
               });
             } else {
               this.button = false;
@@ -11800,16 +11866,16 @@
         }, {
           key: "getteachers",
           value: function getteachers() {
-            var _this57 = this;
+            var _this58 = this;
 
             this._TeachersService.GetTeacher().subscribe(function (res) {
-              _this57.teachers = res.data;
+              _this58.teachers = res.data;
             });
           }
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this58 = this;
+            var _this59 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح المدرس ؟',
@@ -11822,7 +11888,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this58._TeachersService.DeleteTeacher(id).subscribe(function (res) {
+                _this59._TeachersService.DeleteTeacher(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -11830,7 +11896,7 @@
                     timer: 1500
                   });
 
-                  _this58.getteachers();
+                  _this59.getteachers();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -11838,7 +11904,7 @@
                     text: err.error.message
                   });
 
-                  _this58.getteachers(); //     Swal.fire({
+                  _this59.getteachers(); //     Swal.fire({
                   //       icon: "success",
                   //       title: "تم المسح بنجاح",
                   //       showConfirmButton: false,
@@ -12079,8 +12145,8 @@
 
         }, {
           key: "viewactivation",
-          value: function viewactivation() {
-            return this._HttpClient.get("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/listStudentSubjectContents"));
+          value: function viewactivation(id) {
+            return this._HttpClient.get("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/listStudentSubjectContentsFlutter/").concat(id));
           }
         }, {
           key: "insertactivation",
@@ -12090,7 +12156,7 @@
         }, {
           key: "updateactivation",
           value: function updateactivation(data, id) {
-            return this._HttpClient.put("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/StudentSubjectContents/updateStudentSubjectContents/").concat(id), data);
+            return this._HttpClient.put("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/updateStudentSubjectContents/").concat(id), data);
           }
         }]);
 
@@ -12752,6 +12818,16 @@
           value: function DeleteStudent(id) {
             return this._HttpClient["delete"]("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/deleteStudent/").concat(id));
           }
+        }, {
+          key: "removethemobile",
+          value: function removethemobile(id) {
+            return this._HttpClient.post("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/restoreMobile"), id);
+          }
+        }, {
+          key: "deletestudentsubjectcontent",
+          value: function deletestudentsubjectcontent(id) {
+            return this._HttpClient["delete"]("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/StudentSubjectContents/delete/").concat(id));
+          }
         }]);
 
         return _StudentsService2;
@@ -13164,7 +13240,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this59 = this;
+            var _this60 = this;
 
             this._LoginService.user_login(this.person.value).subscribe(function (res) {
               console.log(res);
@@ -13176,7 +13252,7 @@
               });
               localStorage.setItem('Authorization', res.token);
 
-              _this59._Router.navigate(["/content/admin"]);
+              _this60._Router.navigate(["/content/admin"]);
             }, function (err) {
               console.log("their is an error");
               sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
@@ -14019,20 +14095,20 @@
         _createClass(_BookmarkComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this60 = this;
+            var _this61 = this;
 
             this.navServices.items.subscribe(function (menuItems) {
-              _this60.items = menuItems;
+              _this61.items = menuItems;
 
-              _this60.items.filter(function (items) {
+              _this61.items.filter(function (items) {
                 if (items.bookmark) {
-                  _this60.bookmarkItems.push(items);
+                  _this61.bookmarkItems.push(items);
                 }
 
                 if (!items.children) return false;
                 items.children.filter(function (subItems) {
                   if (subItems.bookmark) {
-                    _this60.bookmarkItems.push(subItems);
+                    _this61.bookmarkItems.push(subItems);
                   }
                 });
               });
@@ -14051,7 +14127,7 @@
         }, {
           key: "searchTerm",
           value: function searchTerm(term) {
-            var _this61 = this;
+            var _this62 = this;
 
             term ? this.addFix() : this.removeFix();
 
@@ -14091,9 +14167,9 @@
                 });
               });
 
-              _this61.checkSearchResultEmpty(items);
+              _this62.checkSearchResultEmpty(items);
 
-              _this61.menuItems = items;
+              _this62.menuItems = items;
             });
           }
         }, {
@@ -15409,16 +15485,16 @@
 
       var _MegaMenuComponent = /*#__PURE__*/function () {
         function _MegaMenuComponent(navServices) {
-          var _this62 = this;
+          var _this63 = this;
 
           _classCallCheck(this, _MegaMenuComponent);
 
           this.navServices = navServices;
           this.navServices.megaItems.subscribe(function (megaItems) {
-            return _this62.megaItems = megaItems;
+            return _this63.megaItems = megaItems;
           });
           this.navServices.levelmenuitems.subscribe(function (levelmenuitems) {
-            return _this62.levelmenuitems = levelmenuitems;
+            return _this63.levelmenuitems = levelmenuitems;
           });
         }
 
@@ -15449,11 +15525,11 @@
         }, {
           key: "toggletNavActive",
           value: function toggletNavActive(item) {
-            var _this63 = this;
+            var _this64 = this;
 
             if (!item.active) {
               this.megaItems.forEach(function (a) {
-                if (_this63.megaItems.includes(item)) {
+                if (_this64.megaItems.includes(item)) {
                   a.active = false;
                 }
 
@@ -16217,7 +16293,7 @@
 
       var _SearchComponent = /*#__PURE__*/function () {
         function _SearchComponent(navServices) {
-          var _this64 = this;
+          var _this65 = this;
 
           _classCallCheck(this, _SearchComponent);
 
@@ -16225,7 +16301,7 @@
           this.searchResult = false;
           this.searchResultEmpty = false;
           this.navServices.items.subscribe(function (menuItems) {
-            return _this64.items = menuItems;
+            return _this65.items = menuItems;
           });
         }
 
@@ -16240,7 +16316,7 @@
         }, {
           key: "searchTerm",
           value: function searchTerm(term) {
-            var _this65 = this;
+            var _this66 = this;
 
             term ? this.addFix() : this.removeFix();
             if (!term) return this.menuItems = [];
@@ -16269,9 +16345,9 @@
                 });
               });
 
-              _this65.checkSearchResultEmpty(items);
+              _this66.checkSearchResultEmpty(items);
 
-              _this65.menuItems = items;
+              _this66.menuItems = items;
             });
           }
         }, {
@@ -16754,7 +16830,7 @@
 
       var _ContentComponent = /*#__PURE__*/function () {
         function _ContentComponent(route, navServices, layout) {
-          var _this66 = this;
+          var _this67 = this;
 
           _classCallCheck(this, _ContentComponent);
 
@@ -16762,7 +16838,7 @@
           this.navServices = navServices;
           this.layout = layout;
           this.route.queryParams.subscribe(function (params) {
-            _this66.layout.config.settings.layout = params.layout ? params.layout : _this66.layout.config.settings.layout;
+            _this67.layout.config.settings.layout = params.layout ? params.layout : _this67.layout.config.settings.layout;
           });
         }
 
@@ -17017,13 +17093,13 @@
 
       var _LoaderComponent = /*#__PURE__*/function () {
         function _LoaderComponent() {
-          var _this67 = this;
+          var _this68 = this;
 
           _classCallCheck(this, _LoaderComponent);
 
           this.show = true;
           setTimeout(function () {
-            _this67.show = false;
+            _this68.show = false;
           }, 3000);
         }
 
@@ -18631,7 +18707,7 @@
 
       var _SidebarComponent = /*#__PURE__*/function () {
         function _SidebarComponent(router, navServices, layout) {
-          var _this68 = this;
+          var _this69 = this;
 
           _classCallCheck(this, _SidebarComponent);
 
@@ -18646,15 +18722,15 @@
           this.Role = localStorage.getItem('RiskRole'); // this.UserRole =  Roles.Agent;
 
           this.navServices.items.subscribe(function (res) {
-            _this68.menuRolus = res; // this.navServices.itemss.subscribe((res)=>{
+            _this69.menuRolus = res; // this.navServices.itemss.subscribe((res)=>{
             //   this.donationRolus = res
             // })
 
-            _this68.router.events.subscribe(function (event) {
+            _this69.router.events.subscribe(function (event) {
               if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_4__.NavigationEnd) {
                 res.filter(function (items) {
                   if (items.path === event.url) {
-                    _this68.setNavActive(items);
+                    _this69.setNavActive(items);
                   }
 
                   if (!items.children) {
@@ -18663,7 +18739,7 @@
 
                   items.children.filter(function (subItems) {
                     if (subItems.path === event.url) {
-                      _this68.setNavActive(subItems);
+                      _this69.setNavActive(subItems);
                     }
 
                     if (!subItems.children) {
@@ -18672,7 +18748,7 @@
 
                     subItems.children.filter(function (subSubItems) {
                       if (subSubItems.path === event.url) {
-                        _this68.setNavActive(subSubItems);
+                        _this69.setNavActive(subSubItems);
                       }
                     });
                   });
@@ -18722,11 +18798,11 @@
         }, {
           key: "toggletNavActive",
           value: function toggletNavActive(item) {
-            var _this69 = this;
+            var _this70 = this;
 
             if (!item.active) {
               this.menuRolus.forEach(function (a) {
-                if (_this69.menuRolus.includes(item)) {
+                if (_this70.menuRolus.includes(item)) {
                   a.active = false;
                 }
 
@@ -19984,7 +20060,7 @@
 
       var _NavService = /*#__PURE__*/function () {
         function _NavService(router) {
-          var _this70 = this;
+          var _this71 = this;
 
           _classCallCheck(this, _NavService);
 
@@ -20310,25 +20386,25 @@
           this.levelmenuitems = new rxjs__WEBPACK_IMPORTED_MODULE_1__.BehaviorSubject(this.LEVELMENUITEMS);
           this.setScreenWidth(window.innerWidth);
           (0, rxjs__WEBPACK_IMPORTED_MODULE_2__.fromEvent)(window, "resize").pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.debounceTime)(1000), (0, rxjs_operators__WEBPACK_IMPORTED_MODULE_4__.takeUntil)(this.unsubscriber)).subscribe(function (evt) {
-            _this70.setScreenWidth(evt.target.innerWidth);
+            _this71.setScreenWidth(evt.target.innerWidth);
 
             if (evt.target.innerWidth < 991) {
-              _this70.collapseSidebar = true;
-              _this70.megaMenu = false;
-              _this70.levelMenu = false;
+              _this71.collapseSidebar = true;
+              _this71.megaMenu = false;
+              _this71.levelMenu = false;
             }
 
             if (evt.target.innerWidth < 1199) {
-              _this70.megaMenuColapse = true;
+              _this71.megaMenuColapse = true;
             }
           });
 
           if (window.innerWidth < 991) {
             // Detect Route change sidebar close
             this.router.events.subscribe(function (event) {
-              _this70.collapseSidebar = true;
-              _this70.megaMenu = false;
-              _this70.levelMenu = false;
+              _this71.collapseSidebar = true;
+              _this71.megaMenu = false;
+              _this71.levelMenu = false;
             });
           }
         }
