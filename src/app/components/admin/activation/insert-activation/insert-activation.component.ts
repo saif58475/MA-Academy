@@ -47,10 +47,10 @@ dropdownSettingssubcourse = {
     this.getdropdowns();
     this._StudentsService.updatestudentcontent.subscribe((studentid) => {
       if( studentid != null){
-        this._CourseContentService.viewactivation(studentid.studentId).subscribe((res) => {
-          debugger
+        this._CourseContentService.viewactivation(studentid).subscribe((res) => {
           this.update = true;
           this.checkupdate(res.data[0]);
+          this.recordtoupdate = res.data[0];
         });
       }else {
         this._CourseContentService.studentemail.subscribe((res) => {
@@ -123,7 +123,7 @@ this.ActivateForm.value.beforSubjectContentIds = this.beforesubjectselectid;
        })
     }else if(this.ActivateForm.status == "VALID" && this.update == true){
       this.insertarray(this.selectedbeforecourse);
-      this._CourseContentService.updateactivation(this.ActivateForm.value, this.recordtoupdate.subjectContentId).subscribe((res) => {
+      this._CourseContentService.updateactivation({"beforSubjectContentIds" : this.beforesubjectselectid}, this.recordtoupdate.studentId).subscribe((res) => {
         Swal.fire({
          icon: "success",
          title: "تم تعديل تفعيل الطالب على الحصص",

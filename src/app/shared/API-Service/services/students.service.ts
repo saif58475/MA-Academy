@@ -31,7 +31,7 @@ export class StudentsService {
    return this._HttpClient.delete(`${environment.Server_URL}/deleteStudent/${id}`);
   }
 
-  
+  // these are for the subject content acttivation or mobile activated
   removethemobile(id:number):Observable<any>{
     return this._HttpClient.post(`${environment.Server_URL}/restoreMobile`, id);
   }
