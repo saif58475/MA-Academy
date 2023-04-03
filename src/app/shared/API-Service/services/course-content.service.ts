@@ -29,7 +29,6 @@ export class CourseContentService {
   DeleteCourseContent(id:number):Observable<any>{
     return this._HttpClient.delete(`${environment.Server_URL}/deleteSubjectContent/${id}`);
   }
-
   // ====================================
   // this is for activation a student
   viewactivation(id:number):Observable<any>{
