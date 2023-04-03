@@ -71,13 +71,74 @@ showimage(data){
     this._Router.navigate(['content/admin/InsertStudents']);
   }
   updateactivate(id : number){
-    this._StudentsService.updatestudentcontent.next(id);
-    this._Router.navigate(['content/admin/InsertActivation']);
+    Swal.fire({
+      title: 'هل تريد تعديل المحتوى المفعل للطالب ام تريد مسح المحتوى المفعل ؟',
+      icon: 'question',
+      iconHtml: '؟',
+      confirmButtonText: 'تعديل المحتوى المفعل',
+      cancelButtonText: 'مسح المحتوى المفعل',
+      showCancelButton: true,
+      showCloseButton: true,
+      reverseButtons: true
+    }).then((result) => {
+      if(result.isConfirmed){
+        this._StudentsService.updatestudentcontent.next(id);
+        this._Router.navigate(['content/admin/InsertActivation']);
+      }else {
+      this._StudentsService.deletestudentsubjectcontent(id).subscribe((res) =>{
+        Swal.fire({
+          icon: "success",
+          title: "تم مسح محتوى المواد المفعلة لهذا الطالب",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      },(err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'خطأ',
+          text:err.message    
+        })
+      })
+      }
+    })
+
+
+    
   }
   addcontent(data : object){
    this._CourseContentService.studentemail.next(data);
    this._Router.navigate(['content/admin/InsertActivation']);
   }
+  removethemobile(id:number){
+    Swal.fire({
+      title: 'هل انت متأكد من مسح هذا الهاتف ؟',
+      text: "لن يكون لك صلاحية لاعادتة الا عن طريق الطالب نفسة",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'نعم امسح الهاتف المفعل',
+      cancelButtonText: 'الغاء'
+    }).then((result) => {
+      if (result.isConfirmed) {
+       this._StudentsService.removethemobile(id).subscribe((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "تم مسح الهاتف المفعل على هذا الحساب",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+       },(err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'خطأ',
+          text:err.message    
+        })
+       })
+    }
+    
+  })
 }
 
+}
 

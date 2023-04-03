@@ -14,14 +14,10 @@ filterstring:string;
              ,private _Router:Router ) { }
 
   ngOnInit(): void {
-    this.getactivation();
+    
   }
 
-  getactivation(){
-    this._CourseContentService.viewactivation().subscribe((res) => {
-      this.activations = res.data;
-    })
-  }
+ 
 
   update(data:object){
 

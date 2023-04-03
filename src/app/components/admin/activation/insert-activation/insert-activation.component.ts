@@ -47,8 +47,10 @@ dropdownSettingssubcourse = {
     this.getdropdowns();
     this._StudentsService.updatestudentcontent.subscribe((studentid) => {
       if( studentid != null){
-        this._StudentsService.GetStudentContent(studentid.studentId).subscribe((res) => {
-          this.checkupdate(res.data);
+        this._CourseContentService.viewactivation(studentid.studentId).subscribe((res) => {
+          debugger
+          this.update = true;
+          this.checkupdate(res.data[0]);
         });
       }else {
         this._CourseContentService.studentemail.subscribe((res) => {
@@ -98,7 +100,6 @@ beforecoursecontent.forEach(element => {
 this.ActivateForm.value.beforSubjectContentIds = this.beforesubjectselectid;
 }
   onSubmit(){
-    debugger;
     this.button = true;
     if( this.ActivateForm.status == "VALID" && this.update == false){
       this.insertarray(this.selectedbeforecourse);
@@ -110,7 +111,7 @@ this.ActivateForm.value.beforSubjectContentIds = this.beforesubjectselectid;
          timer: 1500,
        }); 
        this.ActivateForm.reset();
-       this._Router.navigate(['content/admin/ViewActivation']);
+       this._Router.navigate(['content/admin/ViewStudents']);
        },(err) => {
         this.button = false;
              Swal.fire({
@@ -155,5 +156,6 @@ this.ActivateForm.value.beforSubjectContentIds = this.beforesubjectselectid;
 
   ngOnDestroy(){
     this._CourseContentService.studentemail.next(null);
+    this._StudentsService.updatestudentcontent.next(null);
   }
 }

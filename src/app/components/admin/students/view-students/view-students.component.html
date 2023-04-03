@@ -50,26 +50,31 @@
                                             <td class="font-style chose">
                                                 <button class="btn pull-right"
                                                 style="color: rgba(199, 57, 32, 0.667); padding: 7px"
-                                                >
+                                                title="الغاء تفعيل الهاتف على الحساب"
+                                                (click)="removethemobile(view.studentId)">
                                                 <i class="fa fa-mobile"></i>
                                             </button>
                                                 <button class="btn pull-right"
                                                 style="color: rgba(176, 72, 11, 0.667); padding: 7px"
-                                                (click)="updateactivate(view)">
+                                                (click)="updateactivate(view.studentId)"
+                                                title="تعديل او حذف تفعيل المواد على هذا الحساب">
                                                 <i class="fa fa-pencil"></i>
                                             </button>
                                                 <button class="btn pull-right"
                                                     style="color: rgba(176, 72, 11, 0.667); padding: 7px"
-                                                    (click)="addcontent(view)">
+                                                    (click)="addcontent(view)"
+                                                    title="اضافة محتوى مواد لهذا الحساب">
                                                     <i class="fa fa-plus"></i>
                                                 </button>
                                                 <button class="btn pull-right"
                                                     style="color: rgba(35, 118, 241, 0.667); padding: 7px"
-                                                    (click)="update(view)">
+                                                    (click)="update(view)"
+                                                    title="تعديل تفاصيل الحساب">
                                                     <i class="fa fa-pencil"></i>
                                                 </button>
                                                    <button class="btn  pull-right"  style="color: red; padding: 7px"
-                                                   (click)="delete(view.studentId)">
+                                                   (click)="delete(view.studentId)"
+                                                   title="حذف هذا الطالب">
                                                     <i class="fa fa-trash"></i>
                                                        </button>
                                                 

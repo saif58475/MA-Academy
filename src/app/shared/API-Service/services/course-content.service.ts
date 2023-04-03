@@ -32,14 +32,14 @@ export class CourseContentService {
 
   // ====================================
   // this is for activation a student
-  viewactivation():Observable<any>{
-    return this._HttpClient.get(`${environment.Server_URL}/listStudentSubjectContents`)
+  viewactivation(id:number):Observable<any>{
+    return this._HttpClient.get(`${environment.Server_URL}/listStudentSubjectContentsFlutter/${id}`)
   }
   insertactivation(data : any):Observable<any>{
     return this._HttpClient.post(`${environment.Server_URL}/StudentSubjectContents/store`, data);
   }
   updateactivation(data:any , id:number):Observable<any>{
-    return this._HttpClient.put(`${environment.Server_URL}/StudentSubjectContents/updateStudentSubjectContents/${id}`, data);
+    return this._HttpClient.put(`${environment.Server_URL}/updateStudentSubjectContents/${id}`, data);
   }
 }
 
