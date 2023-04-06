@@ -68,4 +68,8 @@ update(record:object){
   this._CourseContentService.coursecontent.next(record);
   this._Router.navigate(['content/admin/InsertCourseLecture']);
 }
+insertpdf(id:number){
+  this._CourseContentService.insertpdfId.next(id);
+  this._Router.navigate(['content/admin/ViewCoursesPdf']);
+}
 }

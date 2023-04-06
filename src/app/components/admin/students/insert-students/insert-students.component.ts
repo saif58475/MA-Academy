@@ -44,11 +44,11 @@ gender:String []= [ 'ذكر', 'انثى'];
   initiate(){
     this.StudentForm = this._FormBuilder.group({
       studentName: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern(`^01[0125]{1}[0-9]{8}`)]],
       gender: ['', Validators.required],
       location: ['', Validators.required],
-      email: ['', [Validators.required,Validators.email]],
-      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.pattern(`^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$`)]],
       educationId: ['', Validators.required]
     });
   }
@@ -56,21 +56,16 @@ gender:String []= [ 'ذكر', 'انثى'];
   checkupdate(data:any){
     this.StudentForm = this._FormBuilder.group({
       studentName: [data.studentName, Validators.required],
-      phone: [data.phone, Validators.required],
+      phone: [data.phone, [Validators.required, Validators.pattern(`^1[0125]{1}[0-9]{8}`)]],
       gender: [data.gender, Validators.required],
       location: [data.location, Validators.required],
-      password: [data.password, Validators.required],
+      password: [data.password, [Validators.required, Validators.pattern(`^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$`)]],
       email: [data.email, Validators.required],
       educationId: [data.educationId, Validators.required],
     });
     
   }
-  // appendeddata(){
-  //   this.StudentFormdata = new FormData();
-  //   this.StudentFormdata.append("studentName", this.StudentForm.value.studentName);
-  //   this.StudentFormdata.append("educationId", this.StudentForm.value.educationId);
-  //   this.StudentFormdata.append("studentImage", this.Image);
-  // }
+  
   geteducationlevel(){
    this._EducationLevelService.GetEducationLevel().subscribe((res) => {
     this.educationlevels = res.data;
@@ -92,7 +87,6 @@ gender:String []= [ 'ذكر', 'انثى'];
   get fc(){
     return this.StudentForm.controls;
   }
-  
   onSubmit(){
     this.button = true;
     if( this.StudentForm.status == "VALID" && this.update == false){

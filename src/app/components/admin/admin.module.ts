@@ -41,6 +41,8 @@ import { RearrangeSubcourseComponent } from './subcourse/rearrange-subcourse/rea
 import { RearrangeSubcourseContentComponent } from './subcourse-content/rearrange-subcourse-content/rearrange-subcourse-content.component';
 import { InsertActivationComponent } from './activation/insert-activation/insert-activation.component';
 import { ViewActivationComponent } from './activation/view-activation/view-activation.component';
+import { InsertPdfComponent } from './course-content/insert-pdf/insert-pdf.component';
+import { ViewPdfComponent } from './course-content/view-pdf/view-pdf.component';
  @NgModule({
   declarations: [
     ViewProductComponent,
@@ -69,6 +71,8 @@ import { ViewActivationComponent } from './activation/view-activation/view-activ
     RearrangeSubcourseContentComponent,
     InsertActivationComponent,
     ViewActivationComponent,
+    InsertPdfComponent,
+    ViewPdfComponent,
   ],
   imports: [
     DxReportViewerModule,

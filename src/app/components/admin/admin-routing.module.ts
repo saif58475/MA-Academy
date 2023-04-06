@@ -30,6 +30,8 @@ import { ViewTeachersComponent } from "./teachers/view-teachers/view-teachers.co
 import { ChangePasswordComponent } from "./User/change-password/change-password.component";
 import { UserComponent } from "./User/user/user.component";
 import { ViewUserComponent } from "./User/view-user/view-user.component";
+import { InsertPdfComponent } from "./course-content/insert-pdf/insert-pdf.component";
+import { ViewPdfComponent } from "./course-content/view-pdf/view-pdf.component";
 
 
 
@@ -66,6 +68,14 @@ const routes: Routes = [
             {
                 path: "InsertCourses",
                 component: InsertCoursesComponent,
+            },
+            {
+                path: "InsertCoursesPdf",
+                component: InsertPdfComponent,
+            },
+            {
+                path: "ViewCoursesPdf",
+                component: ViewPdfComponent,
             },
             {
                 path: "ViewUser",

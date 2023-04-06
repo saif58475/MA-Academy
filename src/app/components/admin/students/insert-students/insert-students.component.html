@@ -58,10 +58,9 @@
                                 [tooltip]="fc.password.errors?.required ? 'الحقل مطلوب' : null"
                                 [class.is-valid]="fc.password.valid && (fc.password.touched)"
                                 [class.is-invalid]="fc.password.invalid && (fc.password.touched)"
-                                onlyNumbers
                                      required
-                                     placeholder="********"
-                                    containerClass="" />
+                                     placeholder="مثال (Ne_w12@34)"
+                                    containerClass=""/>
                             </div>
                              <!-- phone  -->
                              <div class="col-6 mb-3">
@@ -93,7 +92,6 @@
                                 [tooltip]="fc.location.errors?.required ? 'الحقل مطلوب' : null"
                                 [class.is-valid]="fc.location.valid && (fc.location.touched)"
                                 [class.is-invalid]="fc.location.invalid && (fc.location.touched)"
-                                
                                      required
                                      placeholder="اكتب الموقع"
                                     containerClass="" />
