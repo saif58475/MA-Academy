@@ -9641,6 +9641,8 @@
                               _this45._StudentsService.updatestudentcontent.next(id);
 
                               _this45._Router.navigate(['content/admin/InsertActivation']);
+
+                              document.getElementsByClassName('swal2-container')[0].remove();
                             } else if (value === 'delete') {
                               _this45._StudentsService.deletestudentsubjectcontent(id).subscribe(function (res) {
                                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
