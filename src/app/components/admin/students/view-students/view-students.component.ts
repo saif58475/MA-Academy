@@ -92,6 +92,7 @@ async updateactivate(id : number){
           if (value === 'update') {
             this._StudentsService.updatestudentcontent.next(id);
             this._Router.navigate(['content/admin/InsertActivation']);
+            document.getElementsByClassName('swal2-container')[0].remove();
           } else if(value === 'delete'){
             this._StudentsService.deletestudentsubjectcontent(id).subscribe((res) =>{
               Swal.fire({
