@@ -22,10 +22,10 @@
                              <div class="col-lg-6 col-sm-12  mb-3" *ngIf="update">
                                 <label for="validationCustom05"><span class="validation-required">*</span> اختر الطالب</label>
                                 <ng-select  [selectOnTab]="true" formControlName="studentId"
-                                    class="form-control p-0" placeholder="اختر الطالب"
+                                    class="form-control p-0" placeholder="اختر الطالب" 
                                     containerClass="" 
                                     id="validationCustom05">
-                                    <ng-option *ngFor="let item of students" [value]="item.studentId" >{{item.email}}</ng-option>
+                                    <ng-option *ngFor="let item of students" [value]="item.studentId" [disabled]="update">{{item.email}}</ng-option>
                                 </ng-select>
                             </div>
                              <!-- choose education level  -->

@@ -162,7 +162,7 @@ async updateactivate(id : number){
       cancelButtonText: 'الغاء'
     }).then((result) => {
       if (result.isConfirmed) {
-       this._StudentsService.removethemobile(id).subscribe((res) => {
+       this._StudentsService.removethemobile({"studentId" : id}).subscribe((res) => {
         Swal.fire({
           icon: "success",
           title: "تم مسح الهاتف المفعل على هذا الحساب",

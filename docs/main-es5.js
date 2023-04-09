@@ -1847,7 +1847,9 @@
         if (rf & 2) {
           var item_r7 = ctx.$implicit;
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("value", item_r7.studentId);
+          var ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("value", item_r7.studentId)("disabled", ctx_r6.update);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](1);
 
@@ -1873,7 +1875,7 @@
 
           _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](5, "ng-select", 17);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](6, InsertActivationComponent_div_14_ng_option_6_Template, 2, 2, "ng-option", 18);
+          _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](6, InsertActivationComponent_div_14_ng_option_6_Template, 2, 3, "ng-option", 18);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
 
@@ -1895,7 +1897,7 @@
 
       function InsertActivationComponent_div_15_ng_option_6_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "ng-option", 19);
+          _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "ng-option", 21);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1);
 
@@ -1931,7 +1933,7 @@
 
           _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](5, "ng-select", 17);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](6, InsertActivationComponent_div_15_ng_option_6_Template, 2, 2, "ng-option", 18);
+          _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](6, InsertActivationComponent_div_15_ng_option_6_Template, 2, 2, "ng-option", 20);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
 
@@ -1953,7 +1955,7 @@
 
       function InsertActivationComponent_ng_template_23_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "button", 20);
+          _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "button", 22);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1, " \u062D\u0641\u0638 ");
 
@@ -1971,7 +1973,7 @@
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "div");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](1, "button", 21);
+          _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](1, "button", 23);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](2, " \u062A\u0639\u062F\u064A\u0644 ");
 
@@ -2177,7 +2179,7 @@
         selectors: [["app-insert-activation"]],
         decls: 26,
         vars: 9,
-        consts: [[1, "container-fluid"], [1, "row"], [1, "col-md-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "pb-2"], [1, "card-body"], ["autocomplete", "off", "novalidate", "", 1, "needs-validation", 3, "formGroup", "ngSubmit"], [1, "form-row"], ["class", "col-lg-6 col-sm-12  mb-3", 4, "ngIf"], [1, "col-lg-6", "col-sm-12", "mb-3"], ["for", "validationCustom06"], [1, "validation-required"], ["formControlName", "beforSubjectContentIds", 3, "placeholder", "settings", "data", "ngModel", "ngModelChange"], ["elseBlock", ""], [4, "ngIf", "ngIfElse"], ["for", "validationCustom05"], ["formControlName", "studentId", "placeholder", "\u0627\u062E\u062A\u0631 \u0627\u0644\u0637\u0627\u0644\u0628", "containerClass", "", "id", "validationCustom05", 1, "form-control", "p-0", 3, "selectOnTab"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["type", "submit", 1, "btn", "pull-right", 3, "disabled"], ["type", "submit", 1, "btn", "pull-right"]],
+        consts: [[1, "container-fluid"], [1, "row"], [1, "col-md-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "pb-2"], [1, "card-body"], ["autocomplete", "off", "novalidate", "", 1, "needs-validation", 3, "formGroup", "ngSubmit"], [1, "form-row"], ["class", "col-lg-6 col-sm-12  mb-3", 4, "ngIf"], [1, "col-lg-6", "col-sm-12", "mb-3"], ["for", "validationCustom06"], [1, "validation-required"], ["formControlName", "beforSubjectContentIds", 3, "placeholder", "settings", "data", "ngModel", "ngModelChange"], ["elseBlock", ""], [4, "ngIf", "ngIfElse"], ["for", "validationCustom05"], ["formControlName", "studentId", "placeholder", "\u0627\u062E\u062A\u0631 \u0627\u0644\u0637\u0627\u0644\u0628", "containerClass", "", "id", "validationCustom05", 1, "form-control", "p-0", 3, "selectOnTab"], [3, "value", "disabled", 4, "ngFor", "ngForOf"], [3, "value", "disabled"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["type", "submit", 1, "btn", "pull-right", 3, "disabled"], ["type", "submit", 1, "btn", "pull-right"]],
         template: function InsertActivationComponent_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "div", 0);
@@ -9694,7 +9696,9 @@
               cancelButtonText: 'الغاء'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this46._StudentsService.removethemobile(id).subscribe(function (res) {
+                _this46._StudentsService.removethemobile({
+                  "studentId": id
+                }).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم مسح الهاتف المفعل على هذا الحساب",
@@ -13702,8 +13706,8 @@
 
         }, {
           key: "removethemobile",
-          value: function removethemobile(id) {
-            return this._HttpClient.post("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/restoreMobile"), id);
+          value: function removethemobile(data) {
+            return this._HttpClient.post("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/restoreMobile"), data);
           }
         }, {
           key: "deletestudentsubjectcontent",
@@ -21079,17 +21083,20 @@
               title: "ادارة العروض",
               type: "link"
             }]
-          }, {
-            title: "تفعيل الطلاب",
-            icon: "activity",
-            type: "sub",
-            badgeType: "success",
-            children: [{
-              path: "admin/InsertActivation",
-              title: "ادارة تفعيل الطلاب",
-              type: "link"
-            }]
-          }]; // ======================================================
+          } // {
+          //   title: "تفعيل الطلاب",
+          //   icon: "activity",
+          //   type: "sub",
+          //   badgeType: "success",
+          //   children: [
+          //     {
+          //       path: "admin/InsertActivation",
+          //       title: "ادارة تفعيل الطلاب",
+          //       type: "link",
+          //     },
+          //   ],
+          // },
+          ]; // ======================================================
 
           this.MEGAMENUITEMS = [{
             title: "Error Pages",

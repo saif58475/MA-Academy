@@ -32,8 +32,8 @@ export class StudentsService {
   }
 
   // these are for the subject content acttivation or mobile activated
-  removethemobile(id:number):Observable<any>{
-    return this._HttpClient.post(`${environment.Server_URL}/restoreMobile`, id);
+  removethemobile(data:object):Observable<any>{
+    return this._HttpClient.post(`${environment.Server_URL}/restoreMobile`, data);
   }
   deletestudentsubjectcontent(id:number){
     return this._HttpClient.delete(`${environment.Server_URL}/StudentSubjectContents/delete/${id}`);
