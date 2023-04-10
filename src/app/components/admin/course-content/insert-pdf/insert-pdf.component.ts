@@ -13,7 +13,7 @@ export class InsertPdfComponent implements OnInit {
 coursecontentpdf:FormGroup;
 coursecontentpdfFormData:FormData;
 Pdf:File;
-Logopdf:string;
+Logopdf:string; 
 button:boolean = false;
 update:boolean = false;
 recordtoupdate:any;
@@ -60,10 +60,12 @@ recordtoupdate:any;
       const [file] = event.target.files;
       this.Pdf = event.target.files[0];
       reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.Logopdf = reader.result as string;
-      };
+      // reader.onload = () => {
+      //   // this.Logopdf = reader.result as string;
+      // };
+      this.Logopdf = './../../../../../assets/images/pdflogo.jpg';
     }
+    
   }
 
   appenddata(){
