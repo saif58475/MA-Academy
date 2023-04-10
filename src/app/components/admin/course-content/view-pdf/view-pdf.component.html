@@ -31,7 +31,7 @@
                                 <tbody>
                                     <tr *ngFor="let view of pdfs; let x = index" class=" ">
                                         <td scope="row" class="p-2">{{x+1}}</td>
-                                        <td scope="row" class="p-2"><a [href]=view.pdfs>{{view.pdfs}}</a></td>
+                                        <td scope="row" class="p-2"><a target="_blank" [href]='baseURL + view.pdfs'>{{view.pdfs}}</a></td>
                                                                               
                                             <td class="font-style chose">
                                                 <!-- <button class="btn pull-right"

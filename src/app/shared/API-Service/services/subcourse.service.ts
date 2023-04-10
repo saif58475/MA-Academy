@@ -31,4 +31,8 @@ public filtersubsubjectid = new BehaviorSubject(null);
   filterSubCourse(id:number):Observable<any>{
    return this._HttpClient.get(`${environment.Server_URL}/filterSubSubject/${id}?`);
   }
+
+  rearrange(data:any):Observable<any>{
+    return this._HttpClient.post(`${environment.Server_URL}/arrangeSubjectContent`, data);
+  }
 }

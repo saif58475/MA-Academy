@@ -40,6 +40,7 @@ export class CourseContentService {
   ListPdf(id:number):Observable<any>{
     return this._HttpClient.get(`${environment.Server_URL}/listPdfSubjectContent/${id}`);
   }
+ 
   deletepdf(id:number):Observable<any>{
    return this._HttpClient.delete(`${environment.Server_URL}/deletePdfSubjectContent/${id}`);
   }

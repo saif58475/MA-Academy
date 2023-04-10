@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CourseContentService } from './../../../../shared/API-Service/services/course-content.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Server_URL } from 'src/environments/environment';
 
 @Component({
   selector: 'app-view-pdf',
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2';
 export class ViewPdfComponent implements OnInit {
 pdfs:any;
 subjectcontentid:number;
+baseURL:string = Server_URL.slice(0, -3);
   constructor(private _CourseContentService:CourseContentService
              ,private _Router:Router ) { }
 
@@ -32,7 +34,6 @@ subjectcontentid:number;
       
     })
   }
-
  
   delete(id:number){
     Swal.fire({
