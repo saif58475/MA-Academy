@@ -1044,6 +1044,7 @@ class InsertActivationComponent {
         this.selectid = [];
         this.beforesubjectselectid = [];
         this.subjectid = [];
+        this.subcoursecontent = [];
         this.dropdownSettings = {
             singleSelection: false,
             idField: 'subjectContentId',
@@ -1107,6 +1108,7 @@ class InsertActivationComponent {
         });
         this._SubcoursecontentService.GetSubjectContent().subscribe((res) => {
             this.subcoursecontent = res.data;
+            this.subcoursecontent = this.subcoursecontent.filter(c => c.subject_content_count != 0);
         });
     }
     insertarray(beforecoursecontent) {
@@ -1508,7 +1510,7 @@ const routes = [
                 component: _subcourse_view_subcourse_view_subcourse_component__WEBPACK_IMPORTED_MODULE_20__.ViewSubcourseComponent,
             },
             {
-                path: "RearrangeSubSubject",
+                path: "RearrangeSubSubject/:id",
                 component: _subcourse_rearrange_subcourse_rearrange_subcourse_component__WEBPACK_IMPORTED_MODULE_19__.RearrangeSubcourseComponent,
             },
             {
@@ -5601,7 +5603,6 @@ class RearrangeSubcourseContentComponent {
         this.records.forEach(element => {
             this.arrangedrecords.push(element.subjectContentId);
         });
-        console.log(this.arrangedrecords);
     }
     onSubmit() {
         this.gettheprimarykeysoftherecords();
@@ -6119,7 +6120,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/cdk/drag-drop */ 77310);
 /* harmony import */ var _shared_API_Service_services_subcourse_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../shared/API-Service/services/subcourse.service */ 17936);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 38583);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 38583);
+
+
+
 
 
 
@@ -6145,8 +6150,11 @@ function RearrangeSubcourseComponent_tr_20_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](view_r1.beforSubjectContentName);
 } }
 class RearrangeSubcourseComponent {
-    constructor(_SubcourseService) {
+    constructor(_SubcourseService, _Router, _ActivatedRoute) {
         this._SubcourseService = _SubcourseService;
+        this._Router = _Router;
+        this._ActivatedRoute = _ActivatedRoute;
+        this.arrangedrecords = [];
         this.Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().mixin({
             toast: true,
             position: 'top',
@@ -6162,20 +6170,43 @@ class RearrangeSubcourseComponent {
             icon: 'warning',
             title: 'قم بسحب اي من عناصر الجدول للموقع المراد'
         });
-        this.getsubcourse(17);
+        this._ActivatedRoute.queryParams.subscribe(params => {
+            this.getsubcourse(params['id']);
+        });
     }
     drop(event) {
         (0,_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_3__.moveItemInArray)(this.records, event.previousIndex, event.currentIndex);
-        console.log(this.records);
     }
     getsubcourse(id) {
         this._SubcourseService.filterSubCourse(id).subscribe((res) => {
             this.records = res.data;
         });
     }
+    gettheprimarykeysoftherecords() {
+        this.records.forEach(element => {
+            this.arrangedrecords.push(element.beforSubjectContentId);
+        });
+    }
+    onSubmit() {
+        this.gettheprimarykeysoftherecords();
+        this._SubcourseService.rearrangebeforesubcourse(this.arrangedrecords).subscribe((res) => {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+                icon: "success",
+                title: "تم الترتيب بنجاح",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }, (err) => {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+                icon: "error",
+                title: "خطأ",
+                text: err.error.message
+            });
+        });
+    }
 }
-RearrangeSubcourseComponent.ɵfac = function RearrangeSubcourseComponent_Factory(t) { return new (t || RearrangeSubcourseComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_shared_API_Service_services_subcourse_service__WEBPACK_IMPORTED_MODULE_1__.SubcourseService)); };
-RearrangeSubcourseComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: RearrangeSubcourseComponent, selectors: [["app-rearrange-subcourse"]], decls: 24, vars: 1, consts: [[1, "container-fluid"], [1, "row"], [1, "col-sm-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "col-6"], [1, "pb-2"], [1, "card-block", "row"], [1, "col-sm-12", "col-lg-12", "col-xl-12"], [1, "table-responsive"], [1, "table", "table-responsive-sm"], [1, ""], ["scope", "col"], ["cdkDropList", "", 3, "cdkDropListDropped"], ["cdkDrag", "", "class", " ", 4, "ngFor", "ngForOf"], [1, "col-12", "my-lg-3"], ["type", "submit", 1, "btn", "w-100"], ["cdkDrag", "", 1, ""], ["scope", "row", 1, "p-2"]], template: function RearrangeSubcourseComponent_Template(rf, ctx) { if (rf & 1) {
+RearrangeSubcourseComponent.ɵfac = function RearrangeSubcourseComponent_Factory(t) { return new (t || RearrangeSubcourseComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_shared_API_Service_services_subcourse_service__WEBPACK_IMPORTED_MODULE_1__.SubcourseService), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__.ActivatedRoute)); };
+RearrangeSubcourseComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: RearrangeSubcourseComponent, selectors: [["app-rearrange-subcourse"]], decls: 24, vars: 1, consts: [[1, "container-fluid"], [1, "row"], [1, "col-sm-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "col-6"], [1, "pb-2"], [1, "card-block", "row"], [1, "col-sm-12", "col-lg-12", "col-xl-12"], [1, "table-responsive"], [1, "table", "table-responsive-sm"], [1, ""], ["scope", "col"], ["cdkDropList", "", 3, "cdkDropListDropped"], ["cdkDrag", "", "class", " ", 4, "ngFor", "ngForOf"], [1, "col-12", "my-lg-3"], ["type", "submit", 1, "btn", "w-100", 3, "click"], ["cdkDrag", "", 1, ""], ["scope", "row", 1, "p-2"]], template: function RearrangeSubcourseComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](2, "div", 2);
@@ -6213,6 +6244,7 @@ RearrangeSubcourseComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTE
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](21, "div", 15);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](22, "button", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function RearrangeSubcourseComponent_Template_button_click_22_listener() { return ctx.onSubmit(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](23, " \u062D\u0641\u0638 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 ");
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -6222,7 +6254,7 @@ RearrangeSubcourseComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTE
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](20);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx.records);
-    } }, directives: [_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_3__.CdkDropList, _angular_common__WEBPACK_IMPORTED_MODULE_4__.NgForOf, _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_3__.CdkDrag], styles: ["td[_ngcontent-%COMP%]{\r\n    height: 3rem !important;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlYXJyYW5nZS1zdWJjb3Vyc2UuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHVCQUF1QjtBQUMzQiIsImZpbGUiOiJyZWFycmFuZ2Utc3ViY291cnNlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0ZHtcclxuICAgIGhlaWdodDogM3JlbSAhaW1wb3J0YW50O1xyXG59Il19 */"] });
+    } }, directives: [_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_3__.CdkDropList, _angular_common__WEBPACK_IMPORTED_MODULE_5__.NgForOf, _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_3__.CdkDrag], styles: ["td[_ngcontent-%COMP%]{\r\n    height: 3rem !important;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlYXJyYW5nZS1zdWJjb3Vyc2UuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHVCQUF1QjtBQUMzQiIsImZpbGUiOiJyZWFycmFuZ2Utc3ViY291cnNlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0ZHtcclxuICAgIGhlaWdodDogM3JlbSAhaW1wb3J0YW50O1xyXG59Il19 */"] });
 
 
 /***/ }),
@@ -6272,7 +6304,7 @@ function ViewSubcourseComponent_tr_30_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](7, "td", 22);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](8, "button", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("click", function ViewSubcourseComponent_tr_30_Template_button_click_8_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r4); const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"](); return ctx_r3.rearrangesubsubject(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("click", function ViewSubcourseComponent_tr_30_Template_button_click_8_listener() { const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r4); const view_r1 = restoredCtx.$implicit; const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"](); return ctx_r3.rearrangesubsubject(view_r1.subSubjectId); });
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](9, "i", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](10, "button", 25);
@@ -6308,8 +6340,8 @@ class ViewSubcourseComponent {
     ngOnInit() {
         this.getsubsubjects();
     }
-    rearrangesubsubject() {
-        this._Router.navigate(['content/admin/RearrangeSubSubject']);
+    rearrangesubsubject(id) {
+        this._Router.navigate([`content/admin/RearrangeSubSubject/${id}`], { queryParams: { id: id } });
     }
     getsubsubjects() {
         this._SubcourseService.GetSubCourse().subscribe((res) => {
@@ -7305,8 +7337,12 @@ class SubcourseService {
     DeleteSubCourse(id) {
         return this._HttpClient.delete(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/deleteSubSubject/${id}`);
     }
+    //filteration on the subsubject that contain many beforesubsubjects
     filterSubCourse(id) {
-        return this._HttpClient.get(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/filterSubSubject/${id}?`);
+        return this._HttpClient.get(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/filterSubSubject/${id}`);
+    }
+    rearrangebeforesubcourse(data) {
+        return this._HttpClient.post(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/arrangeBeforSubjectContent?`, data);
     }
     rearrange(data) {
         return this._HttpClient.post(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/arrangeSubjectContent`, data);

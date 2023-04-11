@@ -1999,6 +1999,7 @@
           this.selectid = [];
           this.beforesubjectselectid = [];
           this.subjectid = [];
+          this.subcoursecontent = [];
           this.dropdownSettings = {
             singleSelection: false,
             idField: 'subjectContentId',
@@ -2080,6 +2081,9 @@
 
             this._SubcoursecontentService.GetSubjectContent().subscribe(function (res) {
               _this5.subcoursecontent = res.data;
+              _this5.subcoursecontent = _this5.subcoursecontent.filter(function (c) {
+                return c.subject_content_count != 0;
+              });
             });
           }
         }, {
@@ -2862,7 +2866,7 @@
           path: "ViewSubSubject",
           component: _subcourse_view_subcourse_view_subcourse_component__WEBPACK_IMPORTED_MODULE_20__.ViewSubcourseComponent
         }, {
-          path: "RearrangeSubSubject",
+          path: "RearrangeSubSubject/:id",
           component: _subcourse_rearrange_subcourse_rearrange_subcourse_component__WEBPACK_IMPORTED_MODULE_19__.RearrangeSubcourseComponent
         }, {
           path: "ViewEducationLevel",
@@ -10474,7 +10478,6 @@
             this.records.forEach(function (element) {
               _this51.arrangedrecords.push(element.subjectContentId);
             });
-            console.log(this.arrangedrecords);
           }
         }, {
           key: "onSubmit",
@@ -11507,7 +11510,13 @@
       /* harmony import */
 
 
-      var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @angular/router */
+      39895);
+      /* harmony import */
+
+
+      var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! @angular/common */
       38583);
 
@@ -11545,10 +11554,13 @@
       }
 
       var _RearrangeSubcourseComponent = /*#__PURE__*/function () {
-        function _RearrangeSubcourseComponent(_SubcourseService) {
+        function _RearrangeSubcourseComponent(_SubcourseService, _Router, _ActivatedRoute) {
           _classCallCheck(this, _RearrangeSubcourseComponent);
 
           this._SubcourseService = _SubcourseService;
+          this._Router = _Router;
+          this._ActivatedRoute = _ActivatedRoute;
+          this.arrangedrecords = [];
           this.Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().mixin({
             toast: true,
             position: 'top',
@@ -11563,25 +11575,58 @@
         _createClass(_RearrangeSubcourseComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
+            var _this57 = this;
+
             this.Toast.fire({
               icon: 'warning',
               title: 'قم بسحب اي من عناصر الجدول للموقع المراد'
             });
-            this.getsubcourse(17);
+
+            this._ActivatedRoute.queryParams.subscribe(function (params) {
+              _this57.getsubcourse(params['id']);
+            });
           }
         }, {
           key: "drop",
           value: function drop(event) {
             (0, _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_3__.moveItemInArray)(this.records, event.previousIndex, event.currentIndex);
-            console.log(this.records);
           }
         }, {
           key: "getsubcourse",
           value: function getsubcourse(id) {
-            var _this57 = this;
+            var _this58 = this;
 
             this._SubcourseService.filterSubCourse(id).subscribe(function (res) {
-              _this57.records = res.data;
+              _this58.records = res.data;
+            });
+          }
+        }, {
+          key: "gettheprimarykeysoftherecords",
+          value: function gettheprimarykeysoftherecords() {
+            var _this59 = this;
+
+            this.records.forEach(function (element) {
+              _this59.arrangedrecords.push(element.beforSubjectContentId);
+            });
+          }
+        }, {
+          key: "onSubmit",
+          value: function onSubmit() {
+            this.gettheprimarykeysoftherecords();
+
+            this._SubcourseService.rearrangebeforesubcourse(this.arrangedrecords).subscribe(function (res) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+                icon: "success",
+                title: "تم الترتيب بنجاح",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }, function (err) {
+              sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+                icon: "error",
+                title: "خطأ",
+                text: err.error.message
+              });
             });
           }
         }]);
@@ -11590,7 +11635,7 @@
       }();
 
       _RearrangeSubcourseComponent.ɵfac = function RearrangeSubcourseComponent_Factory(t) {
-        return new (t || _RearrangeSubcourseComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_shared_API_Service_services_subcourse_service__WEBPACK_IMPORTED_MODULE_1__.SubcourseService));
+        return new (t || _RearrangeSubcourseComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_shared_API_Service_services_subcourse_service__WEBPACK_IMPORTED_MODULE_1__.SubcourseService), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__.ActivatedRoute));
       };
 
       _RearrangeSubcourseComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
@@ -11598,7 +11643,7 @@
         selectors: [["app-rearrange-subcourse"]],
         decls: 24,
         vars: 1,
-        consts: [[1, "container-fluid"], [1, "row"], [1, "col-sm-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "col-6"], [1, "pb-2"], [1, "card-block", "row"], [1, "col-sm-12", "col-lg-12", "col-xl-12"], [1, "table-responsive"], [1, "table", "table-responsive-sm"], [1, ""], ["scope", "col"], ["cdkDropList", "", 3, "cdkDropListDropped"], ["cdkDrag", "", "class", " ", 4, "ngFor", "ngForOf"], [1, "col-12", "my-lg-3"], ["type", "submit", 1, "btn", "w-100"], ["cdkDrag", "", 1, ""], ["scope", "row", 1, "p-2"]],
+        consts: [[1, "container-fluid"], [1, "row"], [1, "col-sm-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "col-6"], [1, "pb-2"], [1, "card-block", "row"], [1, "col-sm-12", "col-lg-12", "col-xl-12"], [1, "table-responsive"], [1, "table", "table-responsive-sm"], [1, ""], ["scope", "col"], ["cdkDropList", "", 3, "cdkDropListDropped"], ["cdkDrag", "", "class", " ", 4, "ngFor", "ngForOf"], [1, "col-12", "my-lg-3"], ["type", "submit", 1, "btn", "w-100", 3, "click"], ["cdkDrag", "", 1, ""], ["scope", "row", 1, "p-2"]],
         template: function RearrangeSubcourseComponent_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0);
@@ -11677,6 +11722,10 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](22, "button", 16);
 
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function RearrangeSubcourseComponent_Template_button_click_22_listener() {
+              return ctx.onSubmit();
+            });
+
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](23, " \u062D\u0641\u0638 \u0627\u0644\u062A\u0631\u062A\u064A\u0628 ");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -11696,7 +11745,7 @@
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx.records);
           }
         },
-        directives: [_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_3__.CdkDropList, _angular_common__WEBPACK_IMPORTED_MODULE_4__.NgForOf, _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_3__.CdkDrag],
+        directives: [_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_3__.CdkDropList, _angular_common__WEBPACK_IMPORTED_MODULE_5__.NgForOf, _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_3__.CdkDrag],
         styles: ["td[_ngcontent-%COMP%]{\r\n    height: 3rem !important;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlYXJyYW5nZS1zdWJjb3Vyc2UuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHVCQUF1QjtBQUMzQiIsImZpbGUiOiJyZWFycmFuZ2Utc3ViY291cnNlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0ZHtcclxuICAgIGhlaWdodDogM3JlbSAhaW1wb3J0YW50O1xyXG59Il19 */"]
       });
       /***/
@@ -11809,11 +11858,13 @@
           _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](8, "button", 23);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"]("click", function ViewSubcourseComponent_tr_30_Template_button_click_8_listener() {
-            _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r4);
+            var restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](_r4);
+
+            var view_r1 = restoredCtx.$implicit;
 
             var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"]();
 
-            return ctx_r3.rearrangesubsubject();
+            return ctx_r3.rearrangesubsubject(view_r1.subSubjectId);
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](9, "i", 24);
@@ -11907,22 +11958,26 @@
           }
         }, {
           key: "rearrangesubsubject",
-          value: function rearrangesubsubject() {
-            this._Router.navigate(['content/admin/RearrangeSubSubject']);
+          value: function rearrangesubsubject(id) {
+            this._Router.navigate(["content/admin/RearrangeSubSubject/".concat(id)], {
+              queryParams: {
+                id: id
+              }
+            });
           }
         }, {
           key: "getsubsubjects",
           value: function getsubsubjects() {
-            var _this58 = this;
+            var _this60 = this;
 
             this._SubcourseService.GetSubCourse().subscribe(function (res) {
-              _this58.subsubjects = res.data;
+              _this60.subsubjects = res.data;
             });
           }
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this59 = this;
+            var _this61 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح الكورس ؟',
@@ -11935,7 +11990,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this59._SubcourseService.DeleteSubCourse(id).subscribe(function (res) {
+                _this61._SubcourseService.DeleteSubCourse(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -11943,7 +11998,7 @@
                     timer: 1500
                   });
 
-                  _this59.getsubsubjects();
+                  _this61.getsubsubjects();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -11951,7 +12006,7 @@
                     text: err.error.message
                   });
 
-                  _this59.getsubsubjects();
+                  _this61.getsubsubjects();
                 }, function () {
                   console.log("completed");
                 });
@@ -12294,32 +12349,32 @@
         _createClass(_InsertTeachersComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this60 = this;
+            var _this62 = this;
 
             this.getdropdowns();
 
             this._TeachersService.Teacher.subscribe(function (res) {
               if (res == null) {
-                _this60.initiate();
+                _this62.initiate();
               } else {
-                _this60.update = true;
-                _this60.recordtoupdate = res;
+                _this62.update = true;
+                _this62.recordtoupdate = res;
 
-                _this60.checkupdate(_this60.recordtoupdate);
+                _this62.checkupdate(_this62.recordtoupdate);
               }
             });
           }
         }, {
           key: "getdropdowns",
           value: function getdropdowns() {
-            var _this61 = this;
+            var _this63 = this;
 
             this._EducationLevelService.GetEducationLevel().subscribe(function (res) {
-              _this61.educationlevels = res.data;
+              _this63.educationlevels = res.data;
             });
 
             this._CoursesService.GetCourse().subscribe(function (res) {
-              _this61.subjects = res.data;
+              _this63.subjects = res.data;
             });
           }
         }, {
@@ -12344,10 +12399,10 @@
         }, {
           key: "insertarray",
           value: function insertarray(data) {
-            var _this62 = this;
+            var _this64 = this;
 
             data.forEach(function (element) {
-              return _this62.selectedid.push(element.educationId);
+              return _this64.selectedid.push(element.educationId);
             });
             this.TeacherForm.value.educationIds = this.selectedid;
           }
@@ -12359,7 +12414,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this63 = this;
+            var _this65 = this;
 
             this.button = true;
 
@@ -12374,17 +12429,17 @@
                   timer: 1500
                 });
 
-                _this63.TeacherForm.reset();
+                _this65.TeacherForm.reset();
 
-                _this63._Router.navigate(['content/admin/ViewTeachers']);
+                _this65._Router.navigate(['content/admin/ViewTeachers']);
               }, function (err) {
-                _this63.button = false;
+                _this65.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this63.button = false;
+                _this65.button = false;
               });
             } else if (this.TeacherForm.status == "VALID" && this.update == true) {
               this.insertarray(this.selectedItems);
@@ -12397,17 +12452,17 @@
                   timer: 1500
                 });
 
-                _this63.TeacherForm.reset();
+                _this65.TeacherForm.reset();
 
-                _this63._Router.navigate(['content/admin/ViewTeachers']);
+                _this65._Router.navigate(['content/admin/ViewTeachers']);
               }, function (err) {
-                _this63.button = false;
+                _this65.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this63.button = false;
+                _this65.button = false;
               });
             } else {
               this.button = false;
@@ -12772,16 +12827,16 @@
         }, {
           key: "getteachers",
           value: function getteachers() {
-            var _this64 = this;
+            var _this66 = this;
 
             this._TeachersService.GetTeacher().subscribe(function (res) {
-              _this64.teachers = res.data;
+              _this66.teachers = res.data;
             });
           }
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this65 = this;
+            var _this67 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح المدرس ؟',
@@ -12794,7 +12849,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this65._TeachersService.DeleteTeacher(id).subscribe(function (res) {
+                _this67._TeachersService.DeleteTeacher(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -12802,7 +12857,7 @@
                     timer: 1500
                   });
 
-                  _this65.getteachers();
+                  _this67.getteachers();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -12810,7 +12865,7 @@
                     text: err.error.message
                   });
 
-                  _this65.getteachers(); //     Swal.fire({
+                  _this67.getteachers(); //     Swal.fire({
                   //       icon: "success",
                   //       title: "تم المسح بنجاح",
                   //       showConfirmButton: false,
@@ -13852,11 +13907,17 @@
           key: "DeleteSubCourse",
           value: function DeleteSubCourse(id) {
             return this._HttpClient["delete"]("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/deleteSubSubject/").concat(id));
-          }
+          } //filteration on the subsubject that contain many beforesubsubjects
+
         }, {
           key: "filterSubCourse",
           value: function filterSubCourse(id) {
-            return this._HttpClient.get("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/filterSubSubject/").concat(id, "?"));
+            return this._HttpClient.get("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/filterSubSubject/").concat(id));
+          }
+        }, {
+          key: "rearrangebeforesubcourse",
+          value: function rearrangebeforesubcourse(data) {
+            return this._HttpClient.post("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/arrangeBeforSubjectContent?"), data);
           }
         }, {
           key: "rearrange",
@@ -14174,7 +14235,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this66 = this;
+            var _this68 = this;
 
             this._LoginService.user_login(this.person.value).subscribe(function (res) {
               console.log(res);
@@ -14186,7 +14247,7 @@
               });
               localStorage.setItem('Authorization', res.token);
 
-              _this66._Router.navigate(["/content/admin"]);
+              _this68._Router.navigate(["/content/admin"]);
             }, function (err) {
               console.log("their is an error");
               sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
@@ -15021,20 +15082,20 @@
         _createClass(_BookmarkComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this67 = this;
+            var _this69 = this;
 
             this.navServices.items.subscribe(function (menuItems) {
-              _this67.items = menuItems;
+              _this69.items = menuItems;
 
-              _this67.items.filter(function (items) {
+              _this69.items.filter(function (items) {
                 if (items.bookmark) {
-                  _this67.bookmarkItems.push(items);
+                  _this69.bookmarkItems.push(items);
                 }
 
                 if (!items.children) return false;
                 items.children.filter(function (subItems) {
                   if (subItems.bookmark) {
-                    _this67.bookmarkItems.push(subItems);
+                    _this69.bookmarkItems.push(subItems);
                   }
                 });
               });
@@ -15053,7 +15114,7 @@
         }, {
           key: "searchTerm",
           value: function searchTerm(term) {
-            var _this68 = this;
+            var _this70 = this;
 
             term ? this.addFix() : this.removeFix();
 
@@ -15093,9 +15154,9 @@
                 });
               });
 
-              _this68.checkSearchResultEmpty(items);
+              _this70.checkSearchResultEmpty(items);
 
-              _this68.menuItems = items;
+              _this70.menuItems = items;
             });
           }
         }, {
@@ -16411,16 +16472,16 @@
 
       var _MegaMenuComponent = /*#__PURE__*/function () {
         function _MegaMenuComponent(navServices) {
-          var _this69 = this;
+          var _this71 = this;
 
           _classCallCheck(this, _MegaMenuComponent);
 
           this.navServices = navServices;
           this.navServices.megaItems.subscribe(function (megaItems) {
-            return _this69.megaItems = megaItems;
+            return _this71.megaItems = megaItems;
           });
           this.navServices.levelmenuitems.subscribe(function (levelmenuitems) {
-            return _this69.levelmenuitems = levelmenuitems;
+            return _this71.levelmenuitems = levelmenuitems;
           });
         }
 
@@ -16451,11 +16512,11 @@
         }, {
           key: "toggletNavActive",
           value: function toggletNavActive(item) {
-            var _this70 = this;
+            var _this72 = this;
 
             if (!item.active) {
               this.megaItems.forEach(function (a) {
-                if (_this70.megaItems.includes(item)) {
+                if (_this72.megaItems.includes(item)) {
                   a.active = false;
                 }
 
@@ -17219,7 +17280,7 @@
 
       var _SearchComponent = /*#__PURE__*/function () {
         function _SearchComponent(navServices) {
-          var _this71 = this;
+          var _this73 = this;
 
           _classCallCheck(this, _SearchComponent);
 
@@ -17227,7 +17288,7 @@
           this.searchResult = false;
           this.searchResultEmpty = false;
           this.navServices.items.subscribe(function (menuItems) {
-            return _this71.items = menuItems;
+            return _this73.items = menuItems;
           });
         }
 
@@ -17242,7 +17303,7 @@
         }, {
           key: "searchTerm",
           value: function searchTerm(term) {
-            var _this72 = this;
+            var _this74 = this;
 
             term ? this.addFix() : this.removeFix();
             if (!term) return this.menuItems = [];
@@ -17271,9 +17332,9 @@
                 });
               });
 
-              _this72.checkSearchResultEmpty(items);
+              _this74.checkSearchResultEmpty(items);
 
-              _this72.menuItems = items;
+              _this74.menuItems = items;
             });
           }
         }, {
@@ -17756,7 +17817,7 @@
 
       var _ContentComponent = /*#__PURE__*/function () {
         function _ContentComponent(route, navServices, layout) {
-          var _this73 = this;
+          var _this75 = this;
 
           _classCallCheck(this, _ContentComponent);
 
@@ -17764,7 +17825,7 @@
           this.navServices = navServices;
           this.layout = layout;
           this.route.queryParams.subscribe(function (params) {
-            _this73.layout.config.settings.layout = params.layout ? params.layout : _this73.layout.config.settings.layout;
+            _this75.layout.config.settings.layout = params.layout ? params.layout : _this75.layout.config.settings.layout;
           });
         }
 
@@ -18019,13 +18080,13 @@
 
       var _LoaderComponent = /*#__PURE__*/function () {
         function _LoaderComponent() {
-          var _this74 = this;
+          var _this76 = this;
 
           _classCallCheck(this, _LoaderComponent);
 
           this.show = true;
           setTimeout(function () {
-            _this74.show = false;
+            _this76.show = false;
           }, 3000);
         }
 
@@ -19633,7 +19694,7 @@
 
       var _SidebarComponent = /*#__PURE__*/function () {
         function _SidebarComponent(router, navServices, layout) {
-          var _this75 = this;
+          var _this77 = this;
 
           _classCallCheck(this, _SidebarComponent);
 
@@ -19648,15 +19709,15 @@
           this.Role = localStorage.getItem('RiskRole'); // this.UserRole =  Roles.Agent;
 
           this.navServices.items.subscribe(function (res) {
-            _this75.menuRolus = res; // this.navServices.itemss.subscribe((res)=>{
+            _this77.menuRolus = res; // this.navServices.itemss.subscribe((res)=>{
             //   this.donationRolus = res
             // })
 
-            _this75.router.events.subscribe(function (event) {
+            _this77.router.events.subscribe(function (event) {
               if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_4__.NavigationEnd) {
                 res.filter(function (items) {
                   if (items.path === event.url) {
-                    _this75.setNavActive(items);
+                    _this77.setNavActive(items);
                   }
 
                   if (!items.children) {
@@ -19665,7 +19726,7 @@
 
                   items.children.filter(function (subItems) {
                     if (subItems.path === event.url) {
-                      _this75.setNavActive(subItems);
+                      _this77.setNavActive(subItems);
                     }
 
                     if (!subItems.children) {
@@ -19674,7 +19735,7 @@
 
                     subItems.children.filter(function (subSubItems) {
                       if (subSubItems.path === event.url) {
-                        _this75.setNavActive(subSubItems);
+                        _this77.setNavActive(subSubItems);
                       }
                     });
                   });
@@ -19724,11 +19785,11 @@
         }, {
           key: "toggletNavActive",
           value: function toggletNavActive(item) {
-            var _this76 = this;
+            var _this78 = this;
 
             if (!item.active) {
               this.menuRolus.forEach(function (a) {
-                if (_this76.menuRolus.includes(item)) {
+                if (_this78.menuRolus.includes(item)) {
                   a.active = false;
                 }
 
@@ -20986,7 +21047,7 @@
 
       var _NavService = /*#__PURE__*/function () {
         function _NavService(router) {
-          var _this77 = this;
+          var _this79 = this;
 
           _classCallCheck(this, _NavService);
 
@@ -21315,25 +21376,25 @@
           this.levelmenuitems = new rxjs__WEBPACK_IMPORTED_MODULE_1__.BehaviorSubject(this.LEVELMENUITEMS);
           this.setScreenWidth(window.innerWidth);
           (0, rxjs__WEBPACK_IMPORTED_MODULE_2__.fromEvent)(window, "resize").pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.debounceTime)(1000), (0, rxjs_operators__WEBPACK_IMPORTED_MODULE_4__.takeUntil)(this.unsubscriber)).subscribe(function (evt) {
-            _this77.setScreenWidth(evt.target.innerWidth);
+            _this79.setScreenWidth(evt.target.innerWidth);
 
             if (evt.target.innerWidth < 991) {
-              _this77.collapseSidebar = true;
-              _this77.megaMenu = false;
-              _this77.levelMenu = false;
+              _this79.collapseSidebar = true;
+              _this79.megaMenu = false;
+              _this79.levelMenu = false;
             }
 
             if (evt.target.innerWidth < 1199) {
-              _this77.megaMenuColapse = true;
+              _this79.megaMenuColapse = true;
             }
           });
 
           if (window.innerWidth < 991) {
             // Detect Route change sidebar close
             this.router.events.subscribe(function (event) {
-              _this77.collapseSidebar = true;
-              _this77.megaMenu = false;
-              _this77.levelMenu = false;
+              _this79.collapseSidebar = true;
+              _this79.megaMenu = false;
+              _this79.levelMenu = false;
             });
           }
         }
