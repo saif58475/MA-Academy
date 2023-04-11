@@ -28,8 +28,13 @@ public filtersubsubjectid = new BehaviorSubject(null);
     return this._HttpClient.delete(`${environment.Server_URL}/deleteSubSubject/${id}`);
   }
 
+  //filteration on the subsubject that contain many beforesubsubjects
   filterSubCourse(id:number):Observable<any>{
-   return this._HttpClient.get(`${environment.Server_URL}/filterSubSubject/${id}?`);
+   return this._HttpClient.get(`${environment.Server_URL}/filterSubSubject/${id}`);
+  }
+
+  rearrangebeforesubcourse(data:any):Observable<any>{
+    return this._HttpClient.post(`${environment.Server_URL}/arrangeBeforSubjectContent?`, data);
   }
 
   rearrange(data:any):Observable<any>{

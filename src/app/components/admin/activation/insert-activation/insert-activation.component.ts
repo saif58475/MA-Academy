@@ -22,7 +22,7 @@ selectedbeforecourse:object [] = [];
 selectid:number [] = [];
 beforesubjectselectid:number [] = [];
 subjectid:any [] = [];
-subcoursecontent:any [];
+subcoursecontent:any []=[];
 dropdownSettings = {
   singleSelection: false,
   idField: 'subjectContentId',
@@ -88,8 +88,9 @@ dropdownSettingssubcourse = {
       this.courses = res.data;
     });
     this._SubcoursecontentService.GetSubjectContent().subscribe((res) => {
-      this.subcoursecontent = res.data;
-    })
+         this.subcoursecontent = res.data;
+         this.subcoursecontent = this.subcoursecontent.filter(c => c.subject_content_count != 0);
+    });
   }
 insertarray(beforecoursecontent:any){
 

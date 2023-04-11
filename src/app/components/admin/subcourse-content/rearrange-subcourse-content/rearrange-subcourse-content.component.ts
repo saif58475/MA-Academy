@@ -60,7 +60,6 @@ gettheprimarykeysoftherecords(){
   this.records.forEach(element => {
     this.arrangedrecords.push(element.subjectContentId);
   });
-  console.log(this.arrangedrecords);
 }
 onSubmit(){
   this.gettheprimarykeysoftherecords();

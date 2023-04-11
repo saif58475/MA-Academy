@@ -20,8 +20,8 @@ filterstring:string;
     this.getsubsubjects();
   }
 
-  rearrangesubsubject(){
-    this._Router.navigate(['content/admin/RearrangeSubSubject']);
+  rearrangesubsubject(id:number){
+    this._Router.navigate([`content/admin/RearrangeSubSubject/${id}`], { queryParams: { id: id } });
   }
   getsubsubjects(){
     this._SubcourseService.GetSubCourse().subscribe((res) => {

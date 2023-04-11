@@ -98,7 +98,7 @@ const routes: Routes = [
                 component: ViewSubcourseComponent,
             },
             {
-                path: "RearrangeSubSubject",
+                path: "RearrangeSubSubject/:id",
                 component: RearrangeSubcourseComponent,
             },
             {
