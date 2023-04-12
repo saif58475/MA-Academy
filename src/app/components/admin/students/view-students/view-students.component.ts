@@ -14,6 +14,10 @@ export class ViewStudentsComponent implements OnInit {
 students:any [];
 img:string = Image;
 filterstring:string;
+title='pagination';
+page: number = 1;
+  count :number = 0 ;
+  tableSize: number = 20;
   constructor(private _StudentsService:StudentsService, private _Router:Router
              ,private _CourseContentService:CourseContentService) { }
 
@@ -26,7 +30,10 @@ getstudents(){
     this.students = res.data; 
   })
 }
-
+onTableDataChange(event:any){
+  this.page = event;
+  this.getstudents();
+    }
 showimage(data){
   Swal.fire({
     imageUrl: `${this.img}${data}`,

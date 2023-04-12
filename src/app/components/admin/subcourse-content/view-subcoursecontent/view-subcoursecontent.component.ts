@@ -11,6 +11,10 @@ import { CourseContentService } from './../../../../shared/API-Service/services/
 })
 export class ViewSubcoursecontentComponent implements OnInit {
   subsubjects:any [];
+  title='pagination';
+page: number = 1;
+  count :number = 0 ;
+  tableSize: number = 20;
   constructor(private _SubcoursecontentService:SubcoursecontentService
              ,private _Router:Router
              ,private _CourseContentService:CourseContentService) { }
@@ -25,12 +29,14 @@ export class ViewSubcoursecontentComponent implements OnInit {
       this.subsubjects = res.data;
     })
   }
-
+  onTableDataChange(event:any){
+    this.page = event;
+    this.getsubcontent();
+  }
   rearrangesubsubjectcontent(id : number){
     this._SubcoursecontentService.RearrangeSubjectContent.next(id);
     this._Router.navigate(['content/admin/Rearangesubcoursecontent']); 
   }
-
   addcontent(data:any){
     this._CourseContentService.insertnewcoursecontent.next(data);
     this._Router.navigate(['content/admin/InsertCourseLecture']);

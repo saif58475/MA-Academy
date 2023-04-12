@@ -11,6 +11,10 @@ import { CourseContentService } from './../../../../shared/API-Service/services/
 export class ViewCourseContentComponent implements OnInit {
   courselectures:any [];
   filterstring:string;
+  title='pagination';
+page: number = 1;
+  count :number = 0 ;
+  tableSize: number = 20;
   constructor(private _CourseContentService:CourseContentService
              ,private _Router:Router) { }
 
@@ -23,14 +27,10 @@ export class ViewCourseContentComponent implements OnInit {
     this.courselectures = res.data;
   })
   }
-// showimage(data){
-//   Swal.fire({
-//     imageUrl: `${this.img}${data}`,
-//     imageHeight: 300,
-//     imageAlt: 'A tall image'
-//   })
-// }
-
+  onTableDataChange(event:any){
+    this.page = event;
+    this.getcoursecontent();
+      }
 delete(id : number){
   Swal.fire({
     title: 'هل تريد مسح المحتوى ؟',

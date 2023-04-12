@@ -33,7 +33,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let view of teachers;let x = index" class=" ">
+                                    <tr *ngFor="let view of teachers | paginate : {
+                                        itemsPerPage: tableSize,
+                                        currentPage: page,
+                                        totalItems: count };;let x = index" class=" ">
                                         <td scope="row" class="p-2">{{x+1}}</td>
                                         <td scope="row" class="p-2">{{view.teacherName}}</td>
                                         <td scope="row" class="p-2">{{view.nameAr}}</td>
@@ -61,6 +64,12 @@
             </div>
         </div>
     </div>
+    <pagination-controls
+    previousLabel="السابق"
+    nextLabel="التالي"
+    (pageChange)="onTableDataChange($event)"
+    class="text-center">
+    </pagination-controls>
 </div>
 
 

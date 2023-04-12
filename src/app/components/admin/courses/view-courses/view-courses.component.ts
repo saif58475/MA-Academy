@@ -11,23 +11,28 @@ import { CoursesService } from './../../../../shared/API-Service/services/course
 })
 export class ViewCoursesComponent implements OnInit {
 courses:any [];
+title='pagination';
+page: number = 1;
+  count :number = 0 ;
+  tableSize: number = 20;
   constructor(private _CoursesService:CoursesService, private _Router:Router) { }
 
   ngOnInit(): void {
     this.getcourses();
   }
-
   getcourses(){
     this._CoursesService.GetCourse().subscribe((res) => {
       this.courses = res.data;
     })
   }
+  onTableDataChange(event:any){
+    this.page = event;
+    this.getcourses();
+      }
   update(record:object){
     this._CoursesService.Subject.next(record);
     this._Router.navigate(['content/admin/InsertCourses']);
   }
-
-  
 drop(event: CdkDragDrop<string[]>){
   moveItemInArray(this.courses, event.previousIndex, event.currentIndex);
   console.log(this.courses);

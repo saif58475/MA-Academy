@@ -11,7 +11,10 @@ import { ParentsService } from './../../../../shared/API-Service/services/parent
 export class ViewParentsComponent implements OnInit {
   parents:any [];
   filterstring:string;
-
+  title='pagination';
+  page: number = 1;
+    count :number = 0 ;
+    tableSize: number = 20;
   constructor(private _ParentsService:ParentsService
             ,private _Router:Router) { }
 
@@ -24,8 +27,10 @@ getparents(){
     this.parents = res.data;
   })
 }
-
-
+onTableDataChange(event:any){
+  this.page = event;
+  this.getparents();
+    }
 delete(id : number){
   Swal.fire({
     title: 'هل تريد مسح ولي الامر ؟',

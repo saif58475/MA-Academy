@@ -9,8 +9,10 @@ import { TeachersService} from './../../../../shared/API-Service/services/teache
 })
 export class ViewTeachersComponent implements OnInit {
 teachers:any = [];
-
-
+title='pagination';
+page: number = 1;
+  count :number = 0 ;
+  tableSize: number = 20;
   constructor(private _TeachersService:TeachersService , private _Router:Router) { }
 
   ngOnInit(): void {
@@ -23,7 +25,10 @@ getteachers(){
     
    })
 }
-
+onTableDataChange(event:any){
+  this.page = event;
+  this.getteachers();
+    }
   delete(id : number){
     Swal.fire({
       title: 'هل تريد مسح المدرس ؟',

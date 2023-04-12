@@ -11,6 +11,10 @@ import { RegisterService } from './../../../../shared/API-Service/services/regis
 export class ViewUserComponent implements OnInit {
 Users:any;
 filterstring:string;
+title='pagination';
+  page: number = 1;
+    count :number = 0 ;
+    tableSize: number = 10;
   constructor(private _RegisterService:RegisterService
               ,private _Router:Router) { }
 
@@ -23,7 +27,10 @@ filterstring:string;
       this.Users = res;
     })
   }
-
+  onTableDataChange(event:any){
+    this.page = event;
+    this.getusers();
+      }
   delete(id : number){
    this._RegisterService.DeleteUser(id).subscribe(res => {
     Swal.fire({

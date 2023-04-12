@@ -10,6 +10,10 @@ import { EducationLevelService } from './../../../../shared/API-Service/services
 })
 export class ViewEducationlevelComponent implements OnInit {
 educationlevels:any [];
+title='pagination';
+page: number = 1;
+  count :number = 0 ;
+  tableSize: number = 20;
   constructor(private _EducationLevelService:EducationLevelService
               ,private _Router:Router) { }
 
@@ -22,7 +26,10 @@ educationlevels:any [];
       this.educationlevels = res.data;
     })
   }
-
+  onTableDataChange(event:any){
+    this.page = event;
+    this.getedicationlevels();
+      }
   delete(id : number){
     Swal.fire({
       title: 'هل تريد مسح الكورس ؟',
