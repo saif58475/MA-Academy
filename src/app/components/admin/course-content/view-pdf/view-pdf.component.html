@@ -24,6 +24,7 @@
                                 <thead>
                                     <tr class=" ">
                                         <th scope="col"></th>
+                                        <th scope="col">اسم الملف</th>
                                         <th scope="col">ملفات الخاصة بالحصص</th>
                                         <th scope="col"></th>
                                     </tr>
@@ -31,7 +32,9 @@
                                 <tbody>
                                     <tr *ngFor="let view of pdfs; let x = index" class=" ">
                                         <td scope="row" class="p-2">{{x+1}}</td>
+                                        <td scope="row" class="p-2">{{view.namePdf}}</td>
                                         <td scope="row" class="p-2"><a target="_blank" [href]='baseURL + view.pdfs'>{{view.pdfs}}</a></td>
+                                        
                                                                               
                                             <td class="font-style chose">
                                                 <!-- <button class="btn pull-right"

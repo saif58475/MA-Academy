@@ -18,6 +18,19 @@
                     (ngSubmit)="onSubmit()" 
                     novalidate>
                         <div class="form-row">
+
+                             <!-- Student Name  -->
+                            <div class="col-6 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> اسم الملف</label>
+                                <input class="form-control" id="validation01" type="text" formControlName="namePdf"
+                                [tooltip]="fc.namePdf.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.namePdf.valid && (fc.namePdf.touched)"
+                                [class.is-invalid]="fc.namePdf.invalid && (fc.namePdf.touched)"
+                                
+                                     required
+                                     placeholder="اكتب الملف"
+                                    containerClass=""/>
+                            </div>
                         <!-- to insert image for the student  -->
               <div class="col-lg-6 my-4" style="padding: 1%;">
                 <img  src="{{ Logopdf }}" style="width: 60%; height: 220px;" class="image-style p-2" *ngIf="Logopdf != null"/>

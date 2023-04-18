@@ -44,13 +44,15 @@ recordtoupdate:any;
   initiate(id:number){
     this.coursecontentpdf = this._FormBuilder.group({
       subjectContentId: [id, Validators.required],
-      pdf: ['', Validators.required]
+      pdf: ['', Validators.required],
+      namePdf: ['', Validators.required],
     });
   }
   updatePdf(data:any){
     this.coursecontentpdf = this._FormBuilder.group({
       subjectContentId: [data.id, Validators.required],
-      pdf: [data.pdfs, Validators.required]
+      pdf: [data.pdfs, Validators.required],
+      namePdf: [data.namePdf, Validators.required],
     });
   }
    // pdfFile
@@ -67,10 +69,13 @@ recordtoupdate:any;
     }
     
   }
-
+get fc(){
+  return this.coursecontentpdf.controls;
+}
   appenddata(){
     this.coursecontentpdfFormData = new FormData();
     this.coursecontentpdfFormData.append("subjectContentId", this.coursecontentpdf.value.subjectContentId);    
+    this.coursecontentpdfFormData.append("namePdf", this.coursecontentpdf.value.namePdf);    
     this.coursecontentpdfFormData.append("pdf", this.Pdf);    
   }
 
