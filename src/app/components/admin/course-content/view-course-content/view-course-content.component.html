@@ -50,7 +50,7 @@
                                         <td scope="row" class="p-2">{{view.subjectName}}</td>
                                         
                                             <td class="font-style chose">
-                                                <button class="btn pull-right" *ngIf="view.zoom != '' "
+                                                <button class="btn pull-right" *ngIf="view.zoom != null"
                                                     style="color: rgba(35, 61, 161, 0.667); padding: 7px"
                                                     (click)="RemoveZoom(view.subjectContentId)"
                                                     title="وقف المحاضرة الاونلاين لهذه الحصة">
