@@ -137,6 +137,13 @@
                                      placeholder="اكتب ما يميز الحصة"
                                     containerClass="" />
                             </div>
+                            <div class="col-6 mb-3" *ngIf="update == true">
+                                <label for="validation01" style="font-size: 1.5rem; font-weight: 700;"><span class="validation-required"></span> اكتب لينك الزووم</label>
+                                <input class="form-control" id="validation01" type="text" [(ngModel)]="zoom" [ngModelOptions]="{standalone: true}"
+                                     required
+                                     placeholder="اكتب لينك الزووم"
+                                    containerClass="" />
+                            </div>
                         </div>
 
                         <br>

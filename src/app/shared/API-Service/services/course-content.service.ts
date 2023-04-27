@@ -55,5 +55,10 @@ export class CourseContentService {
   updateactivation(data:any , id:number):Observable<any>{
     return this._HttpClient.put(`${environment.Server_URL}/updateStudentSubjectContents/${id}`, data);
   }
+  // ===========================================
+  // Remove Zoom URL
+  RemoveZoomURL(id:number):Observable<any>{
+    return this._HttpClient.get(`${environment.Server_URL}/expireZoom/${id}`)
+  }
 }
 

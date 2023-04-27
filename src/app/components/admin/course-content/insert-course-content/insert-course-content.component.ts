@@ -33,6 +33,7 @@ button:boolean = false;
 recordtoupdate:any;
 subSubjectid:number;
 QrCode:string;
+zoom:string = ' ';
 title:string = 'app';
 elementType:string = NgxQrcodeElementTypes.URL;
 correctionLevel  = NgxQrcodeErrorCorrectionLevels.HIGH;
@@ -152,7 +153,28 @@ dropdownSettings = {
     this.CourseLectureFormData.append("price", this.CourseLectureForm.value.price);
     this.CourseLectureFormData.append("video_url", this.CourseLectureForm.value.videoURL);
     this.CourseLectureFormData.append("description", this.CourseLectureForm.value.description);
-    this.CourseLectureFormData.append("subjectContentImage", this.Image);    
+    this.CourseLectureFormData.append("subjectContentImage", this.Image);   
+    this.CourseLectureFormData.append("zoom", this.zoom); 
+  }
+
+  Addzoom(){
+    this.appenddata();
+    this._CourseContentService.UpdateCourseContent(this.CourseLectureFormData, 2).subscribe((res) => {
+      Swal.fire({
+        icon: "success",
+        title: "تم تسجيل محتوى المادة بنجاح",
+        showConfirmButton: false,
+        timer: 1500,
+      }); 
+      this.CourseLectureForm.reset();
+      this._Router.navigate(['content/admin/ViewCourseLecture']);
+    },(err) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'خطأ',
+        text: 'تأكد من ملئ جميع الخانات',
+      });
+    })
   }
      // imgFile
      getLogoUrl(event: any) {

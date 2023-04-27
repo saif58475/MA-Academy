@@ -72,4 +72,34 @@ insertpdf(id:number){
   this._CourseContentService.insertpdfId.next(id);
   this._Router.navigate(['content/admin/ViewCoursesPdf']);
 }
+RemoveZoom(id:number){
+  Swal.fire({
+    title: 'هل تريد وقف الحلقة ؟',
+    text: "",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    cancelButtonText: 'الغاء',
+    confirmButtonText: 'اوقف البث !'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this._CourseContentService.RemoveZoomURL(id).subscribe((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "تم المسح بنجاح",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.getcoursecontent();
+      },(err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'خطأ',
+          text:err.error.message    
+        })  
+      })
+    }
+  })
+}
 }

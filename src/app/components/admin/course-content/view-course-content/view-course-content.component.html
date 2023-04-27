@@ -50,6 +50,12 @@
                                         <td scope="row" class="p-2">{{view.subjectName}}</td>
                                         
                                             <td class="font-style chose">
+                                                <button class="btn pull-right" *ngIf="view.zoom != '' "
+                                                    style="color: rgba(35, 61, 161, 0.667); padding: 7px"
+                                                    (click)="RemoveZoom(view.subjectContentId)"
+                                                    title="وقف المحاضرة الاونلاين لهذه الحصة">
+                                                    <i class="fa fa-caret-square-o-right"></i>
+                                                </button>
                                                 <button class="btn pull-right"
                                                     style="color: rgba(220, 79, 57, 0.667); padding: 7px"
                                                     (click)="insertpdf(view.subjectContentId)"

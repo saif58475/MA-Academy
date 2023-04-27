@@ -216,6 +216,19 @@ export class NavService implements OnDestroy {
       ],
     },
     {
+      title: "المحاضرات الاونلاين",
+      icon: "user-plus",
+      type: "sub",
+      badgeType: "success",
+      children: [
+        {
+          path: "admin/InsertZoom",
+          title: "ادارة محاضرات اونلاين",
+          type: "link",
+        },
+      ],
+    },
+    {
       title: "العروض",
       icon: "activity",
       type: "sub",
@@ -228,6 +241,19 @@ export class NavService implements OnDestroy {
         },
       ],
     },
+    // {
+    //   title: "ZOOM",
+    //   icon: "activity",
+    //   type: "sub",
+    //   badgeType: "success",
+    //   children: [
+    //     {
+    //       path: "admin/InsertZoom",
+    //       title: "Zoom Manage",
+    //       type: "link",
+    //     },
+    //   ],
+    // },
     // {
     //   title: "تفعيل الطلاب",
     //   icon: "activity",
