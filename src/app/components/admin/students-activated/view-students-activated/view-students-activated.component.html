@@ -13,10 +13,10 @@
                             placeholder="ابحث باسم الطالب او بالرقم التسلسلي او البريد الالكتروني" [(ngModel)]="filterstring">
                           </div> -->
                         <div class="col-6">
-                            <button class="btn pull-right mx-2" type="button">
+                            <button class="btn pull-right mx-2" type="button" (click)="onSubmit()">
                                 <span class="m-2">الغاء التفعيل [ {{numberofstudents}} ]</span>
                             </button>
-                            <button class="btn pull-right mx-2" type="button">
+                            <button class="btn pull-right mx-2" type="button" (click)="selectallstudents()">
                                 <span class="m-2">اختر جميع الطلبة</span>
                             </button>
                         </div>
@@ -34,7 +34,7 @@
                                         <th scope="col">البريد الالكتروني</th>         
                                         <th scope="col">الموقع</th>         
                                         <th scope="col">الرقم التسلسلي</th>         
-                                        <th scope="col">الغاء تفعيل الطالب</th>         
+                                        <th scope="col" *ngIf="allstudents">الغاء تفعيل الطالب</th>         
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
@@ -45,8 +45,8 @@
                                         <td scope="row" class="p-2">{{view.email}}</td>
                                         <td scope="row" class="p-2">{{view.location}}</td>
                                         <td scope="row" class="p-2">{{view.code}}</td>
-                                        <td scope="row" class="p-2">
-                                                <input type="checkbox" value="view.studentId" (change)="selectstudent(view.studentId)">
+                                        <td scope="row" class="p-2" *ngIf="allstudents">
+                                                <input type="checkbox" value="view.studentId" id="view.studentId" (change)="selectstudent(view.studentId)">
                                         </td>                                         
                                         <!-- <td class="font-style chose">
                                                 <button class="btn  pull-right"  style="color: red; padding: 7px">

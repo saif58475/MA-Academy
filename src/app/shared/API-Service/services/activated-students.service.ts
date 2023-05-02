@@ -13,4 +13,7 @@ export class ActivatedStudentsService {
   GetActivatedStudents(id):Observable<any>{
   return this._HttpClient.get(`${environment.Server_URL}/countStudentBefore/${id}`);
   }
+  deleteActivatedStudents(id, data):Observable<any>{
+  return this._HttpClient.post(`${environment.Server_URL}/deleteStudentBefore/${id}`, data);
+  }
 }
