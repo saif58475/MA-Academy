@@ -13,6 +13,8 @@ export class ViewPdfComponent implements OnInit {
 pdfs:any;
 subjectcontentid:number;
 baseURL:string = Server_URL.slice(0, -3);
+visilblity:object [] = [{ id: 1 , title: "يسمح للطالب بالتحميل"}, { id: 0 ,title:"لا يسمح للطالب بالتحميل"}];
+
   constructor(private _CourseContentService:CourseContentService
              ,private _Router:Router ) { }
 
@@ -68,8 +70,68 @@ baseURL:string = Server_URL.slice(0, -3);
       }
     }) 
   }
-  update(data:any){
-    this._CourseContentService.updatepdfId.next(data);
-    this._Router.navigate(['content/admin/InsertCoursesPdf']);
-  }
+ async update(data:any){
+    if(data.flag == 0){
+      Swal.fire({
+        title: 'هل تريد السماح بتحميل هذا الملف ؟',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'الغاء',
+        confirmButtonText: 'اسمح بالتحميل !'
+      }).then((result) => {
+        if (result.isConfirmed) {
+         this._CourseContentService.updateFlagPdf(data.id).subscribe((res) => {
+          Swal.fire({
+            icon: "success",
+            title: "تم السماح بنجاح",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+       this.getpdfs(this.subjectcontentid);
+         },(err) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'خطأ',
+            text:err.error.message    
+          })
+          this.getpdfs(this.subjectcontentid);
+         })
+        } 
+      }) 
+    }else{
+      Swal.fire({
+        title: 'هل تريد منع تحميل هذا الملف ؟',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'الغاء',
+        confirmButtonText: 'امنع التحميل !'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this._CourseContentService.updateFlagPdf(data.id).subscribe((res) => {
+            Swal.fire({
+              icon: "success",
+              title: "تم منع التحميل بنجاح",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+         this.getpdfs(this.subjectcontentid);
+          },(err) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'خطأ',
+              text:err.error.message    
+            })
+            this.getpdfs(this.subjectcontentid);
+           })
+          
+        }
+      }) 
+    }
+ }
+
+
 }

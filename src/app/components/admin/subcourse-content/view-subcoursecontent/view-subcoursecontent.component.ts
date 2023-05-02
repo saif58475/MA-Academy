@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { SubcoursecontentService } from './../../../../shared/API-Service/services/subcoursecontent.service';
 import { CourseContentService } from './../../../../shared/API-Service/services/course-content.service';
+import { CoursesService } from './../../../../shared/API-Service/services/courses.service';
 @Component({
   selector: 'app-view-subcoursecontent',
   templateUrl: './view-subcoursecontent.component.html',
@@ -17,7 +18,8 @@ page: number = 1;
   tableSize: number = 20;
   constructor(private _SubcoursecontentService:SubcoursecontentService
              ,private _Router:Router
-             ,private _CourseContentService:CourseContentService) { }
+             ,private _CourseContentService:CourseContentService
+             ,private _CoursesService:CoursesService) { }
 
   ngOnInit(): void {
     this.getsubcontent();
@@ -77,5 +79,15 @@ page: number = 1;
   update(record:object){
     this._SubcoursecontentService.SubjectContent.next(record);
     this._Router.navigate(['content/admin/InsertSubCourseContent']);
+  }
+
+  GettheStudentsInTheSubSubjectContent(beforSubjectContentId:number){
+    this._Router.navigate(['content/admin/ViewActivatedStudents/${id}'], { queryParams: { id: beforSubjectContentId } });
+    //  this._CoursesService.GetCourse().subscribe((res) => {
+    //  let subject = res.data.filter((T) => T.subjectId == id);
+    //   this._Router.navigate([`content/admin/ViewActivatedStudents/${id}`], { queryParams: { id: beforSubjectContentId } });
+    //  },(err) => {
+    //   console.log('sorry');
+    //  })
   }
 }

@@ -33,6 +33,7 @@ import { ViewUserComponent } from "./User/view-user/view-user.component";
 import { InsertPdfComponent } from "./course-content/insert-pdf/insert-pdf.component";
 import { ViewPdfComponent } from "./course-content/view-pdf/view-pdf.component";
 import { InsertZoommeetingComponent } from "./zoom/insert-zoommeeting/insert-zoommeeting.component";
+import { ViewStudentsActivatedComponent } from "./students-activated/view-students-activated/view-students-activated.component";
 
 
 
@@ -157,6 +158,10 @@ const routes: Routes = [
             {
                 path: "InsertZoom",
                 component: InsertZoommeetingComponent,
+            },   
+            {
+                path: "ViewActivatedStudents/:id",
+                component: ViewStudentsActivatedComponent,
             },   
 ],
     },

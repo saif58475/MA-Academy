@@ -37,6 +37,9 @@ export class CourseContentService {
   updatePdf(id:number ,data:any):Observable<any>{
     return this._HttpClient.post(`${environment.Server_URL}/updatePdfSubjectContent/${id}`, data);
   }
+  updateFlagPdf(id:number):Observable<any>{
+    return this._HttpClient.get(`${environment.Server_URL}/updateFlag/${id}`);
+  }
   ListPdf(id:number):Observable<any>{
     return this._HttpClient.get(`${environment.Server_URL}/listPdfSubjectContent/${id}`);
   }

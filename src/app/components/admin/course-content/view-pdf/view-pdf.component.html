@@ -26,6 +26,7 @@
                                         <th scope="col"></th>
                                         <th scope="col">اسم الملف</th>
                                         <th scope="col">ملفات الخاصة بالحصص</th>
+                                        <th scope="col">امكانية تحميل الملف</th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
@@ -34,13 +35,27 @@
                                         <td scope="row" class="p-2">{{x+1}}</td>
                                         <td scope="row" class="p-2">{{view.namePdf}}</td>
                                         <td scope="row" class="p-2"><a target="_blank" [href]='baseURL + view.pdfs'>{{view.pdfs}}</a></td>
-                                        
-                                                                              
+                                        <td scope="row" class="p-2">
+                                            <span *ngIf="view.flag == 1"
+                                            style="color: rgba(79, 200, 68, 0.667); padding: 7px;cursor:pointer;"
+                                            title="تعديل امكانية تحميل الطالب للملف"
+                                            (click)="update(view)">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                            <span *ngIf="view.flag == 0"
+                                            style="color: red; padding: 7px; cursor:pointer;"
+                                            title="تعديل امكانية تحميل الطالب للملف" 
+                                            (click)="update(view)">
+                                            <i class="icon-close"></i>
+                                                 </span>
+
+                                        </td>
+                                                                          
                                             <td class="font-style chose">
                                                 <!-- <button class="btn pull-right"
-                                                    style="color: rgba(35, 118, 241, 0.667); padding: 7px"
+                                                    style="color: rgba(200, 110, 42, 0.667); padding: 7px"
                                                     (click)="update(view)"
-                                                    title="تعديل تفاصيل الحساب">
+                                                    title="تعديل امكانية تحميل الطالب للملف">
                                                     <i class="fa fa-pencil"></i>
                                                 </button> -->
                                                    <button class="btn  pull-right"  style="color: red; padding: 7px"

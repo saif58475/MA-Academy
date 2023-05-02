@@ -17,6 +17,7 @@ Logopdf:string;
 button:boolean = false;
 update:boolean = false;
 recordtoupdate:any;
+visilblity:object [] = [{ id: 1 , title: "يسمح للطالب بالتحميل"}, { id: 0 ,title:"لا يسمح للطالب بالتحميل"}];
   constructor(private _CourseContentService:CourseContentService
              ,private _FormBuilder:FormBuilder
              ,private _Router:Router) { }
@@ -46,6 +47,7 @@ recordtoupdate:any;
       subjectContentId: [id, Validators.required],
       pdf: ['', Validators.required],
       namePdf: ['', Validators.required],
+      flag: ['', Validators.required],
     });
   }
   updatePdf(data:any){
@@ -76,6 +78,7 @@ get fc(){
     this.coursecontentpdfFormData = new FormData();
     this.coursecontentpdfFormData.append("subjectContentId", this.coursecontentpdf.value.subjectContentId);    
     this.coursecontentpdfFormData.append("namePdf", this.coursecontentpdf.value.namePdf);    
+    this.coursecontentpdfFormData.append("flag", this.coursecontentpdf.value.flag);    
     this.coursecontentpdfFormData.append("pdf", this.Pdf);    
   }
 

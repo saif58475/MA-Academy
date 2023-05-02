@@ -44,6 +44,7 @@ import { ViewActivationComponent } from './activation/view-activation/view-activ
 import { InsertPdfComponent } from './course-content/insert-pdf/insert-pdf.component';
 import { ViewPdfComponent } from './course-content/view-pdf/view-pdf.component';
 import { InsertZoommeetingComponent } from './zoom/insert-zoommeeting/insert-zoommeeting.component';
+import { ViewStudentsActivatedComponent } from './students-activated/view-students-activated/view-students-activated.component';
  @NgModule({
   declarations: [
     ViewProductComponent,
@@ -75,6 +76,7 @@ import { InsertZoommeetingComponent } from './zoom/insert-zoommeeting/insert-zoo
     InsertPdfComponent,
     ViewPdfComponent,
     InsertZoommeetingComponent,
+    ViewStudentsActivatedComponent,
   ],
   imports: [
     DxReportViewerModule,
