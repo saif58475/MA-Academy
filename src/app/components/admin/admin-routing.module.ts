@@ -92,6 +92,10 @@ const routes: Routes = [
                 component: ViewCourseContentComponent,
             },
             {
+                path: "ViewCourseLecture/:id",
+                component: ViewCourseContentComponent,
+            },
+            {
                 path: "InsertSubSubject",
                 component: InsertSubcourseComponent,
             },

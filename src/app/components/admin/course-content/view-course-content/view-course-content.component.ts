@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CourseContentService } from './../../../../shared/API-Service/services/course-content.service';
-
+import { SubcoursecontentService } from './../../../../shared/API-Service/services/subcoursecontent.service'
 @Component({
   selector: 'app-view-course-content',
   templateUrl: './view-course-content.component.html',
@@ -16,10 +16,20 @@ page: number = 1;
   count :number = 0 ;
   tableSize: number = 20;
   constructor(private _CourseContentService:CourseContentService
-             ,private _Router:Router) { }
+             ,private _Router:Router
+             ,private _ActivatedRoute:ActivatedRoute
+             ,private _SubcoursecontentService:SubcoursecontentService) { }
 
   ngOnInit(): void {
-    this.getcoursecontent();
+    this._ActivatedRoute.queryParams.subscribe(params => {
+     if(params['id'] == null){
+      this.getcoursecontent();
+     }else{
+      this._SubcoursecontentService.filtersubjectcontent(params['id']).subscribe((res) => {
+      this.courselectures = res.data;
+      })
+     }
+    });
   }
 
   getcoursecontent(){

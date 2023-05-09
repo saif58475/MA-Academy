@@ -6,9 +6,7 @@
                     <div class="row">
                         <div class="col-6">
                             <h5 class="pb-2">قائمة تصنيف محتوى المواد</h5>
-               
                         </div>
-
                         <div class="col-6 header-titles">
                             <a routerLink="/content/admin/InsertSubCourseContent" class="d-block">
                                 <button class="btn pull-right" type="button">
@@ -50,6 +48,11 @@
                                                     style="color: rgba(14, 14, 14, 0.667); padding: 7px"
                                                     (click)="GettheStudentsInTheSubSubjectContent(view.beforSubjectContentId)" title="الطلبة المسجلين في هذا المحتوى">
                                                     <i class="fa fa-arrow-right"></i>
+                                                </button>
+                                                <button class="btn pull-right"
+                                                    style="color: rgba(234, 220, 25, 0.667); padding: 7px"
+                                                    (click)="getallthecourses(view.beforSubjectContentId)" title="عرض جميع حصص هذا التصنيف">
+                                                    <i class="fa fa-folder"></i>
                                                 </button>
                                                 <button class="btn pull-right"
                                                     style="color: rgba(186, 79, 79, 0.667); padding: 7px"

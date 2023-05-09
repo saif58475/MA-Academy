@@ -90,4 +90,8 @@ page: number = 1;
     //   console.log('sorry');
     //  })
   }
+  getallthecourses(id:number){
+    this._Router.navigate(['content/admin/ViewCourseLecture/${id}'], { queryParams: { id: id } });
+  }
+
 }
