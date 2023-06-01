@@ -14,6 +14,7 @@ export class ViewStudentsComponent implements OnInit {
 students:any [];
 img:string = Image;
 filterstring:string;
+numberofstudents:number;
 title='pagination';
 page: number = 1;
   count :number = 0 ;
@@ -28,8 +29,10 @@ page: number = 1;
 getstudents(){
   this._StudentsService.GetStudent().subscribe((res) => {
     this.students = res.data; 
+    this.numberofstudents = this.students.length;
   })
 }
+
 onTableDataChange(event:any){
   this.page = event;
   this.getstudents();

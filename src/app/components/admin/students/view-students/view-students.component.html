@@ -4,11 +4,14 @@
             <div class="card">
                 <div class="card-header" style="padding-bottom: 5px !important">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-2">
                             <h5 class="pb-2">قائمة الطلاب</h5>               
                         </div>
                                
-                        <div class="col-6">
+                        <div class="col-2">
+                            <h5 class="text-danger">[ {{ numberofstudents }}  طالب ]</h5>
+                          </div>
+                        <div class="col-5">
                             <input class="form-control form-control-light" type="text" 
                             placeholder="ابحث باسم الطالب او بالرقم التسلسلي او البريد الالكتروني" [(ngModel)]="filterstring">
                           </div>
