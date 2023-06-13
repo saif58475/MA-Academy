@@ -39,37 +39,7 @@
                                     <ng-option *ngFor="let item of educationlevels" [value]="item.educationId">{{item.nameAr}}</ng-option>
                                 </ng-select>
                             </div>
-                            <!-- educationlevel  -->
-                            <!-- <div class="col-6 mb-3">
-                                <label for="validation01"><span class="validation-required">*</span>المرحلة الدراسية</label>
-                                <input class="form-control" id="validation01" type="text" formControlName="Educationlevel"
-                                [tooltip]="fc.Educationlevel.errors?.required ? 'الحقل مطلوب' : null"
-                                [class.is-valid]="fc.Educationlevel.valid && (fc.Educationlevel.touched)"
-                                [class.is-invalid]="fc.Educationlevel.invalid && (fc.Educationlevel.touched)"
-                                onlyNumbers
-                                     required
-                                     placeholder="اسم المرحلة الدراسية"
-                                    containerClass="" />
-                            </div> -->
-                            <!-- QrCode  -->
-                            <!-- <div class="col-6 mb-3">
-                                <label for="validation01"><span class="validation-required">*</span>المساح الضوئي للكورس</label>
-                               <ngx-qrcode style="width: 60%; height: 220px;"
-                               [elementType]="elementType"
-                               [value]="QrCode"
-                               cssClass="aclass"
-                               ></ngx-qrcode>
-
-                                <input class="form-control" id="validation01" type="text" [(ngModel)]="QrCode" [ngModelOptions]="{standalone: true}"
-                                     required
-                                     placeholder="اكتب ما يميز الكورس"
-                                    containerClass="" />
-                            </div> -->
-                          
-                 
                         </div>
-                           
-
                         <br>
                         <ng-template #elseBlock>
                             <button [disabled]="button" class="btn pull-right" type="submit">

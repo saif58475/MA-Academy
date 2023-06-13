@@ -99,7 +99,7 @@ export class InsertSubcoursecontentComponent implements OnInit {
              Swal.fire({
                icon: 'error',
                title: 'خطأ',
-               text: 'تأكد من ملئ جميع الخانات',
+               text: 'لم تقم بتغيير اي شئ',
              });
              this.button = false;
        })

@@ -241,32 +241,6 @@ export class NavService implements OnDestroy {
         },
       ],
     },
-    // {
-    //   title: "ZOOM",
-    //   icon: "activity",
-    //   type: "sub",
-    //   badgeType: "success",
-    //   children: [
-    //     {
-    //       path: "admin/InsertZoom",
-    //       title: "Zoom Manage",
-    //       type: "link",
-    //     },
-    //   ],
-    // },
-    // {
-    //   title: "تفعيل الطلاب",
-    //   icon: "activity",
-    //   type: "sub",
-    //   badgeType: "success",
-    //   children: [
-    //     {
-    //       path: "admin/InsertActivation",
-    //       title: "ادارة تفعيل الطلاب",
-    //       type: "link",
-    //     },
-    //   ],
-    // },
   ];
 // ======================================================
   MEGAMENUITEMS: Menu[] = [

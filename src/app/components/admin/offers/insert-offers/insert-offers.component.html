@@ -18,18 +18,17 @@
                     (ngSubmit)="onSubmit()" 
                     novalidate>
                         <div class="form-row">
-                           
-                              <!-- course id  -->
-                              <!-- <div class="col-lg-6 col-sm-12  mb-3">
-                                <label for="validationCustom05"><span class="validation-required">*</span> اختر الحصة</label>
-                                <ng-select  [selectOnTab]="true" formControlName="subjectId"
-                                    class="form-control p-0" placeholder="اختر الحصة "
+                              <!-- teahcer id  -->
+                              <div class="col-lg-6 col-sm-12  mb-3" *ngIf="oneoffour[0].state">
+                                <label for="validationCustom05"><span class="validation-required"></span> اختر المدرس </label>
+                                <ng-select  [selectOnTab]="true" formControlName="subsubjectcontentId"
+                                    class="form-control p-0" placeholder="اختر المدرس "
                                     containerClass="" 
-                                    id="validationCustom05">
-                                    <ng-option *ngFor="let item of courses" [value]="item.subjectContentId">{{item.subjectContentName}}</ng-option>
+                                    id="validationCustom05" (change)="getId(oneoffour[0])">
+                                    <ng-option *ngFor="let item of teachers" [value]="item.teacherId" >{{item.teacherName}}</ng-option>
                                 </ng-select>
-                            </div> -->
-                            <div class="col-lg-6 col-sm-12  mb-3">
+                            </div>
+                            <!-- <div class="col-lg-6 col-sm-12  mb-3">
                                 <label for="validationCustom06"><span class="validation-required"></span> اختر الحصة</label>
                                 <ng-multiselect-dropdown
                                        [placeholder]="'اختر الحصة'"
@@ -37,52 +36,62 @@
                                        [data]="courses"
                                       [(ngModel)]="selectedsubcoursecontent">
                                                  </ng-multiselect-dropdown>
-                            </div>
-                              <!-- sub course id  -->
-                              <!-- <div class="col-lg-6 col-sm-12  mb-3">
-                                <label for="validationCustom05"><span class="validation-required">*</span> اختر محتوى المادة </label>
-                                <ng-select  [selectOnTab]="true" formControlName="subsubjectcontentId"
-                                    class="form-control p-0" placeholder="اختر محتوى المادة "
-                                    containerClass="" 
-                                    id="validationCustom05">
-                                    <ng-option *ngFor="let item of subcoursecontent" [value]="item.beforSubjectContentId">{{item.beforSubjectContentName}}</ng-option>
-                                </ng-select>
                             </div> -->
-                            <div class="col-lg-6 col-sm-12  mb-3">
+                            <!-- subcourse  -->
+                            <div class="col-lg-6 col-sm-12  mb-3" *ngIf="oneoffour[2].state">
+                                <label for="validationCustom06"><span class="validation-required"></span> اختر محتوى </label>
+                                <ng-multiselect-dropdown
+                                       [placeholder]="'اختر محتوى '"
+                                       [settings]="dropdownSettingscourse"
+                                       [data]="subcourse"
+                                      [(ngModel)]="selectedsubcourse"
+                                      (click)="getId(oneoffour[2])"
+                                      [ngModelOptions]="{standalone: true}">
+                                </ng-multiselect-dropdown>
+                            </div>
+                            <!-- subcoursecontent  -->
+                            <div class="col-lg-6 col-sm-12  mb-3" *ngIf="oneoffour[1].state">
                                 <label for="validationCustom06"><span class="validation-required"></span> اختر محتوى المادة</label>
                                 <ng-multiselect-dropdown
                                        [placeholder]="'اختر محتوى المواد'"
                                        [settings]="dropdownSettings"
                                        [data]="subcoursecontent"
-                                      [(ngModel)]="selectedsubcoursecontent">
-                                                 </ng-multiselect-dropdown>
+                                      [(ngModel)]="selectedsubcoursecontent"
+                                      (click)="getId(oneoffour[1])"
+                                      [ngModelOptions]="{standalone: true}">
+                                </ng-multiselect-dropdown>
                             </div>
-                           
-                            <div class="col-3 mb-3">
+                            
+                            <div class="col-lg-6">
 
                             </div>
                             <!-- QrCode  -->
                             <div class="col-6 mb-3">
-                                <label for="validation01"><span class="validation-required">*</span> المساح الضوئي للعرض</label>
-                               <ngx-qrcode style="width: 60%; height: 220px;"
-                               [elementType]="elementType"
-                               [value]="QrCode"
-                               cssClass="aclass"
-                               ></ngx-qrcode>
-
-                                <input class="form-control" id="validation01" type="text" [(ngModel)]="QrCode" [ngModelOptions]="{standalone: true}"
+                                <input class="form-control" id="validation01" type="text" [(ngModel)]="NumberOfStudents" [ngModelOptions]="{standalone: true}"
                                      required
-                                     placeholder="اكتب ما يميز العرض"
-                                    containerClass="" />
+                                     placeholder="اكتب عدد الطلاب المراد تفعيلهم لهذا العرض"
+                                    containerClass="" onlyNumbers (input)="checknumberofstudents()"/>  
                             </div>
-                          
+                            <!-- Button to generate the qr codes -->
                             <div class="col-3 mb-3">
-
+                            <button (click)="getQRCodes()" class="btn" [disabled]="qrbutton">
+                                اضغط لانتاج QR Codes
+                            </button>
                             </div>
-                 
+                            <!-- Button to print the qr codes -->
+                            <div class="col-3 mb-3">
+                            <button (click)="printQRCode()" class="btn" [disabled]="printqrbutton">
+                                اضغط لطباعة QR Codes
+                            </button>
+                            </div>
+                            <div id="printDiv" class="col-12 row">
+                            <div class="col-lg-3" *ngFor="let view of QrCode;let x = index">
+                                <label for="validation01"><span class="validation-required"></span> الماسح الضوئي رقم {{x + 1}}</label>
+                                <ngx-qrcode style="width: 80%; height: 220px;"
+                                class="m-auto " [elementType]="elementType" [value]="view" cssClass="aclass"></ngx-qrcode>
+                            </div>
                         </div>
-                           
-
+                        </div>
                         <br>
                         <ng-template #elseBlock>
                             <button [disabled]="button" class="btn pull-right" type="submit">

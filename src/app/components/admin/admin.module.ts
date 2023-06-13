@@ -45,6 +45,8 @@ import { InsertPdfComponent } from './course-content/insert-pdf/insert-pdf.compo
 import { ViewPdfComponent } from './course-content/view-pdf/view-pdf.component';
 import { InsertZoommeetingComponent } from './zoom/insert-zoommeeting/insert-zoommeeting.component';
 import { ViewStudentsActivatedComponent } from './students-activated/view-students-activated/view-students-activated.component';
+import { ViewTeachercoursesComponent } from './teacherCourses/view-teachercourses/view-teachercourses.component';
+
  @NgModule({
   declarations: [
     ViewProductComponent,
@@ -77,6 +79,7 @@ import { ViewStudentsActivatedComponent } from './students-activated/view-studen
     ViewPdfComponent,
     InsertZoommeetingComponent,
     ViewStudentsActivatedComponent,
+    ViewTeachercoursesComponent,
   ],
   imports: [
     DxReportViewerModule,
@@ -97,6 +100,6 @@ import { ViewStudentsActivatedComponent } from './students-activated/view-studen
   providers: [
    CookieService
   ],
-  exports:[ ]
+  exports:[]
 })
 export class AdminModule { }
