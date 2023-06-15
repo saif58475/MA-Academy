@@ -19,7 +19,7 @@
                     novalidate>
                         <div class="form-row">
                               <!-- teahcer id  -->
-                              <div class="col-lg-6 col-sm-12  mb-3" *ngIf="oneoffour[0].state">
+                              <!-- <div class="col-lg-6 col-sm-12  mb-3" *ngIf="oneoffour[0].state">
                                 <label for="validationCustom05"><span class="validation-required"></span> اختر المدرس </label>
                                 <ng-select  [selectOnTab]="true" formControlName="subsubjectcontentId"
                                     class="form-control p-0" placeholder="اختر المدرس "
@@ -27,7 +27,7 @@
                                     id="validationCustom05" (change)="getId(oneoffour[0])">
                                     <ng-option *ngFor="let item of teachers" [value]="item.teacherId" >{{item.teacherName}}</ng-option>
                                 </ng-select>
-                            </div>
+                            </div> -->
                             <!-- <div class="col-lg-6 col-sm-12  mb-3">
                                 <label for="validationCustom06"><span class="validation-required"></span> اختر الحصة</label>
                                 <ng-multiselect-dropdown
@@ -38,7 +38,7 @@
                                                  </ng-multiselect-dropdown>
                             </div> -->
                             <!-- subcourse  -->
-                            <div class="col-lg-6 col-sm-12  mb-3" *ngIf="oneoffour[2].state">
+                            <!-- <div class="col-lg-6 col-sm-12  mb-3" *ngIf="oneoffour[2].state">
                                 <label for="validationCustom06"><span class="validation-required"></span> اختر محتوى </label>
                                 <ng-multiselect-dropdown
                                        [placeholder]="'اختر محتوى '"
@@ -48,6 +48,25 @@
                                       (click)="getId(oneoffour[2])"
                                       [ngModelOptions]="{standalone: true}">
                                 </ng-multiselect-dropdown>
+                            </div> -->
+                            
+                            <!-- from date  -->
+                            <div class="col-6 mb-3">
+                                <label for="validationCustom05"><span class="validation-required">*</span> العرض مفعل من</label>
+                                <input class="form-control" id="validation01" type="date"
+                                     required
+                                     placeholder=""
+                                     formControlName="date_start"
+                                    containerClass="" />  
+                            </div>
+                            <!-- to date  -->
+                            <div class="col-6 mb-3">
+                                <label for="validationCustom05"><span class="validation-required">*</span> العرض مفعل الى</label>
+                                <input class="form-control" id="validation01" type="date"
+                                     required
+                                     placeholder=""
+                                     formControlName="date_end"
+                                    containerClass="" />  
                             </div>
                             <!-- subcoursecontent  -->
                             <div class="col-lg-6 col-sm-12  mb-3" *ngIf="oneoffour[1].state">
@@ -61,9 +80,11 @@
                                       [ngModelOptions]="{standalone: true}">
                                 </ng-multiselect-dropdown>
                             </div>
-                            
-                            <div class="col-lg-6">
-
+                            <!-- name of the offer -->
+                            <div class="col-6 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> اسم العرض</label>
+                                <input class="form-control" id="validation01" type="text"
+                                 required placeholder="اكتب اسم العرض"/>
                             </div>
                             <!-- QrCode  -->
                             <div class="col-6 mb-3">
@@ -74,13 +95,13 @@
                             </div>
                             <!-- Button to generate the qr codes -->
                             <div class="col-3 mb-3">
-                            <button (click)="getQRCodes()" class="btn" [disabled]="qrbutton">
+                            <button (click)="getQRCodes()" class="btn" type="button" [disabled]="qrbutton">
                                 اضغط لانتاج QR Codes
                             </button>
                             </div>
                             <!-- Button to print the qr codes -->
                             <div class="col-3 mb-3">
-                            <button (click)="printQRCode()" class="btn" [disabled]="printqrbutton">
+                            <button (click)="printQRCode()" class="btn" type="button" [disabled]="printqrbutton">
                                 اضغط لطباعة QR Codes
                             </button>
                             </div>

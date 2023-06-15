@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import { SubcourseService } from './../../../../shared/API-Service/services/subcourse.service';
 import { SubcoursecontentService } from './../../../../shared/API-Service/services/subcoursecontent.service';
 import { TeachersService } from './../../../../shared/API-Service/services/teachers.service';
-
+import { QroffersService } from './../../../../shared/API-Service/services/qroffers.service'
 
 @Component({
   selector: 'app-insert-offers',
@@ -16,9 +16,11 @@ import { TeachersService } from './../../../../shared/API-Service/services/teach
 export class InsertOffersComponent implements OnInit {
   @ViewChildren('myDivs', { read: ElementRef }) myDivs: QueryList<ElementRef>;
 OfferFrom:FormGroup;
+OfferFromData:FormData;
 update:boolean = false;
+button:boolean = false;
 courses:any [];
-QrCode:string [] = [];
+QrCode:string [];
 teachers:any;
 NumberOfStudents:number;
 dropdownSettings:any = {};
@@ -38,7 +40,8 @@ oneoffour:any []= [{name:'teacher', state:true} , {name:'subcoursecontent',state
              , private _FormBuilder:FormBuilder
              , private _SubcourseService:SubcourseService 
              , private _SubcoursecontentService:SubcoursecontentService
-             , private _TeachersService:TeachersService) { }
+             , private _TeachersService:TeachersService
+             , private _QroffersService:QroffersService) { }
 
   ngOnInit(): void {
     this.dropdownSettings = {
@@ -60,9 +63,13 @@ oneoffour:any []= [{name:'teacher', state:true} , {name:'subcoursecontent',state
   }
   initiate(){
     this.OfferFrom = this._FormBuilder.group({
-      teahcerId: [''],
-      subsubjectId: [''],
-      subsubjectcontentId: [''],
+      teacherId: [''],
+      subSubjectId: [''],
+      subSubjectContentId: [this.selectedsubcoursecontent],
+      date_start: [''],
+      date_end: [''],
+      status: [true],
+      QR: [this.QrCode],
     });
   }
   getId(data : object){
@@ -74,13 +81,15 @@ oneoffour:any []= [{name:'teacher', state:true} , {name:'subcoursecontent',state
    } 
   }
   }
+  get fc(){
+    return this.OfferFrom.controls;
+  }
   getQRCodes(){
     this.QrCode = [];
     for(var i = 0 ; i < this.NumberOfStudents; i++){
      this.QrCode.push(Math.random().toString(36).substring(2, 15));
     }
     this.printqrbutton = false;
-    console.log(this.myDivs);
   }
   
   removeAndAdd(arr1, arr2) {
@@ -150,12 +159,45 @@ printWindow.document.write('</html>');
    })
   }
   
+  appendData(){
+   this.OfferFromData = new FormData();
+   this.OfferFromData.append("teacherId", this.OfferFrom.value.teacherId);    
+   this.OfferFromData.append("subSubjectId", this.OfferFrom.value.subSubjectId);    
+   this.selectedsubcoursecontent.forEach(element => {
+    this.OfferFromData.append("beforSubjectContentId[]", element.beforSubjectContentId);        
+   });
+   this.OfferFromData.append("date_start", this.OfferFrom.value.date_start);    
+   this.OfferFromData.append("date_end", this.OfferFrom.value.date_end);    
+   this.OfferFromData.append("status", this.OfferFrom.value.status); 
+   this.QrCode.forEach(element => {
+    this.OfferFromData.append("QR[]", element);    
+   });   
+  }
 
   onSubmit(){
+    this.button = true;
+    if( this.OfferFrom.status == "VALID"){
+      this.appendData();
+      this._QroffersService.CreateQR(this.OfferFromData).subscribe((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "تم تسجيل العرض بنجاح",
+          showConfirmButton: false,
+          timer: 1500,
+        }); 
+        this._Router.navigate(['content/admin/ViewOffer']);
+      },(err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'خطأ',
+          text: 'تأكد من ملئ جميع الخانات',
+        });
+        this.button = false;
+      })
+    }
+  }
 
+  ngOnDestroy(){
+    this._QroffersService.Data.next(null);
   }
 }
-function html2canvas(targetDiv: any) {
-  throw new Error('Function not implemented.');
-}
-
