@@ -14,6 +14,9 @@ export class QroffersService {
   CreateQR(data : object):Observable<any>{
     return this._HttpClient.post(`${environment.Server_URL}/addQROffers?`, data);
    }
+  UpdateQR(data : object, id : number):Observable<any>{
+    return this._HttpClient.post(`${environment.Server_URL}/updateQROffers/${id}`, data);
+   }
   GetQR():Observable<any>{
     return this._HttpClient.get(`${environment.Server_URL}/listQROffers`);
   }

@@ -31,6 +31,7 @@ myDivTags:any [];
 selectedsubcoursecontent:any [];
 selectedsubcourse:any [];
 title:string = 'app';
+OfferId:number;
 elementType:string = NgxQrcodeElementTypes.URL;
 correctionLevel  = NgxQrcodeErrorCorrectionLevels.HIGH;
 qrbutton:boolean = true;
@@ -59,28 +60,49 @@ oneoffour:any []= [{name:'teacher', state:true} , {name:'subcoursecontent',state
       unSelectAllText: 'UnSelect All'
     };
   this.getdropdowns();
-  this.initiate();
+  this._QroffersService.Data.subscribe((res) => {
+    if( res != null){
+      
+      this.initiate(res);
+      this.OfferId = res.offersId;
+   this.update = true;
+   this.QrCode = res.QR;
+   this.NumberOfStudents = this.QrCode.length;
+  //  this.filterObjectsById(this.subcoursecontent, res.beforSubjectContentId);
+   this.selectedsubcoursecontent = res.beforSubjectContentId
+    }else{
+      this.initiate();
+    }
+  })
   }
-  initiate(){
+  initiate(data?:any){
+    
     this.OfferFrom = this._FormBuilder.group({
       teacherId: [''],
       subSubjectId: [''],
-      subSubjectContentId: [this.selectedsubcoursecontent],
-      date_start: [''],
-      date_end: [''],
+      date_start: [data?.date_start || '', Validators.required],
+      date_end: [data?.date_end || '', Validators.required],
       status: [true],
+      name: [data?.name || '', Validators.required],
       QR: [this.QrCode],
     });
   }
-  getId(data : object){
-  for(let i = 0 ; i <= this.oneoffour.length; i++){
-   if( this.oneoffour[i] == data){
+  
+  filterObjectsById(objects: any[], ids: number[]) {  
+   this.selectedsubcoursecontent = objects.filter(obj => ids.includes(obj.beforSubjectContentId));
+   debugger
+  }
+
+
+  // getId(data : object){
+  // for(let i = 0 ; i <= this.oneoffour.length; i++){
+  //  if( this.oneoffour[i] == data){
    
-   }else{
-    this.oneoffour[i].state = false;
-   } 
-  }
-  }
+  //  }else{
+  //   this.oneoffour[i].state = false;
+  //  } 
+  // }
+  // }
   get fc(){
     return this.OfferFrom.controls;
   }
@@ -111,25 +133,6 @@ printWindow.document.write('<h1>' + 'كل ماسح  ضوئي صالح للاست
 printWindow.document.write('<div class="row">');
 printWindow.document.write(document.getElementById('printDiv').innerHTML);
 printWindow.document.write('</div>');
-// printWindow.document.write('<table class="table">');
-// printWindow.document.write('<thead><tr><th></th><th></th><th></th><th></th></tr></thead>');
-// printWindow.document.write('<tbody>');
-// for( let i = 1; i <= lines; i++){
-
-//     printWindow.document.write('<tr>');
-//     this.removeAndAdd(this.myDivs, this.myDivTags);
-//     for(let j = 1; j <= this.myDivTags.length ; j++){
-//     printWindow.document.write(`
-//     <td style="padding:3%">
-//     ${this.myDivTags[i]}
-//     </td>
-//     `);
-//     this.NumberOfStudents -= 1;
-//   }
-//     printWindow.document.write('</tr>');
-// }
-// printWindow.document.write('</tbody>');
-// printWindow.document.write('</table>');
 printWindow.document.write('</body>');
 printWindow.document.write('<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>');
 printWindow.document.write('</html>');
@@ -169,19 +172,59 @@ printWindow.document.write('</html>');
    this.OfferFromData.append("date_start", this.OfferFrom.value.date_start);    
    this.OfferFromData.append("date_end", this.OfferFrom.value.date_end);    
    this.OfferFromData.append("status", this.OfferFrom.value.status); 
+   this.OfferFromData.append("name", this.OfferFrom.value.name); 
    this.QrCode.forEach(element => {
     this.OfferFromData.append("QR[]", element);    
    });   
   }
 
+  isFirstDateBeforeSecondDate(date1: Date, date2: Date): boolean {
+    return this.OfferFrom.value.date_start < this.OfferFrom.value.date_end;
+  }
   onSubmit(){
+    if(this.isFirstDateBeforeSecondDate(this.OfferFrom.value.date_start , this.OfferFrom.value.date_end)){
+      this.SendData();
+    } else if(this.OfferFrom.get('name').value === ''){
+      Swal.fire({
+        icon: 'error',
+        title: 'خطأ',
+        text: 'تأكد من ملئ جميع الخانات',
+      });
+    }
+    else{
+      Swal.fire({
+        icon: 'error',
+        title: 'خطأ',
+        text: 'تأكد من ان تاريخ بدء العرض يكون قبل تاريخ انتهاء العرض',
+      });
+    }
+  }
+  SendData(){
     this.button = true;
-    if( this.OfferFrom.status == "VALID"){
+    if( this.OfferFrom.status == "VALID" && this.update == false){
       this.appendData();
       this._QroffersService.CreateQR(this.OfferFromData).subscribe((res) => {
         Swal.fire({
           icon: "success",
           title: "تم تسجيل العرض بنجاح",
+          showConfirmButton: false,
+          timer: 1500,
+        }); 
+        this._Router.navigate(['content/admin/ViewOffer']);
+      },(err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'خطأ',
+          text: 'تأكد من ملئ جميع الخانات',
+        });
+        this.button = false;
+      })
+    }else if(this.OfferFrom.status == "VALID" && this.update == true){
+      this.appendData();
+      this._QroffersService.UpdateQR(this.OfferFromData, this.OfferId).subscribe((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "تم تعديل العرض بنجاح",
           showConfirmButton: false,
           timer: 1500,
         }); 

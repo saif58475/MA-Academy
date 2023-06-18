@@ -26,6 +26,7 @@
                                 <thead>
                                     <tr class=" ">
                                         <th scope="col"></th>
+                                        <th scope="col">اسم العرض</th>
                                         <th scope="col">العرض من</th>
                                         <th scope="col">العرض الى</th>
                                         <th scope="col"></th>
@@ -34,6 +35,7 @@
                                 <tbody>
                                     <tr *ngFor="let view of Offers;let x = index" class=" ">
                                         <td scope="row" class="p-2">{{x+1}}</td>
+                                        <td scope="row" class="p-2">{{view.name}}</td>
                                         <td scope="row" class="p-2">{{view.date_start}}</td>
                                         <td scope="row" class="p-2">{{view.date_end}}</td>
                                         

@@ -54,6 +54,9 @@
                             <div class="col-6 mb-3">
                                 <label for="validationCustom05"><span class="validation-required">*</span> العرض مفعل من</label>
                                 <input class="form-control" id="validation01" type="date"
+                                [tooltip]="fc.date_start.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.date_start.valid && (fc.date_start.touched)"
+                                [class.is-invalid]="fc.date_start.invalid && (fc.date_start.touched)"
                                      required
                                      placeholder=""
                                      formControlName="date_start"
@@ -63,28 +66,33 @@
                             <div class="col-6 mb-3">
                                 <label for="validationCustom05"><span class="validation-required">*</span> العرض مفعل الى</label>
                                 <input class="form-control" id="validation01" type="date"
+                                [tooltip]="fc.date_end.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.date_end.valid && (fc.date_end.touched)"
+                                [class.is-invalid]="fc.date_end.invalid && (fc.date_end.touched)"
                                      required
                                      placeholder=""
                                      formControlName="date_end"
                                     containerClass="" />  
                             </div>
                             <!-- subcoursecontent  -->
-                            <div class="col-lg-6 col-sm-12  mb-3" *ngIf="oneoffour[1].state">
-                                <label for="validationCustom06"><span class="validation-required"></span> اختر محتوى المادة</label>
+                            <div class="col-lg-6 col-sm-12  mb-3">
+                                <label for="validationCustom06"><span class="validation-required">*</span> اختر محتوى المادة</label>
                                 <ng-multiselect-dropdown
                                        [placeholder]="'اختر محتوى المواد'"
                                        [settings]="dropdownSettings"
                                        [data]="subcoursecontent"
                                       [(ngModel)]="selectedsubcoursecontent"
-                                      (click)="getId(oneoffour[1])"
                                       [ngModelOptions]="{standalone: true}">
                                 </ng-multiselect-dropdown>
                             </div>
                             <!-- name of the offer -->
                             <div class="col-6 mb-3">
                                 <label for="validation01"><span class="validation-required">*</span> اسم العرض</label>
-                                <input class="form-control" id="validation01" type="text"
-                                 required placeholder="اكتب اسم العرض"/>
+                                <input class="form-control" id="validation01" type="text" formControlName="name"
+                                [tooltip]="fc.name.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.name.valid && (fc.name.touched)"
+                                [class.is-invalid]="fc.name.invalid && (fc.name.touched)"
+                                 required placeholder="اكتب اسم العرض" />
                             </div>
                             <!-- QrCode  -->
                             <div class="col-6 mb-3">
