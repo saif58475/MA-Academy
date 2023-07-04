@@ -241,6 +241,19 @@ export class NavService implements OnDestroy {
         },
       ],
     },
+    // {
+    //   title: "الامتحانات",
+    //   icon: "activity",
+    //   type: "sub",
+    //   badgeType: "success",
+    //   children: [
+    //     {
+    //       path: "admin/InsertExams",
+    //       title: "ادارة الامتحانات",
+    //       type: "link",
+    //     },
+    //   ],
+    // },
   ];
 // ======================================================
   MEGAMENUITEMS: Menu[] = [

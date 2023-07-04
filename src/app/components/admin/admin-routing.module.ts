@@ -35,6 +35,8 @@ import { ViewPdfComponent } from "./course-content/view-pdf/view-pdf.component";
 import { InsertZoommeetingComponent } from "./zoom/insert-zoommeeting/insert-zoommeeting.component";
 import { ViewStudentsActivatedComponent } from "./students-activated/view-students-activated/view-students-activated.component";
 import { ViewTeachercoursesComponent } from "./teacherCourses/view-teachercourses/view-teachercourses.component";
+import { InsertExamsComponent } from "./exams/insert-exams/insert-exams.component";
+import { ViewExamsComponent } from "./exams/view-exams/view-exams.component";
 
 
 
@@ -171,6 +173,14 @@ const routes: Routes = [
             {
                 path: "ViewActivatedStudents/:id",
                 component: ViewStudentsActivatedComponent,
+            },   
+            {
+                path: "ViewExams",
+                component: ViewExamsComponent,
+            },   
+            {
+                path: "InsertExams/:id",
+                component: InsertExamsComponent,
             },   
 ],
     },

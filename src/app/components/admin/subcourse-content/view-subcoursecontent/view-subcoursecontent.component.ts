@@ -43,6 +43,7 @@ page: number = 1;
     this._CourseContentService.insertnewcoursecontent.next(data);
     this._Router.navigate(['content/admin/InsertCourseLecture']);
   }
+  
   delete(id : number){
     Swal.fire({
       title: 'هل تريد مسح الكورس ؟',

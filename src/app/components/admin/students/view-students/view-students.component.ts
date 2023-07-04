@@ -4,7 +4,6 @@ import Swal from 'sweetalert2';
 import { StudentsService } from '../../../../shared/API-Service/services/students.service';
 import { CourseContentService } from './../../../../shared/API-Service/services/course-content.service';
 import { Image } from './../../../../../images/images';
-import { error } from '@angular/compiler/src/util';
 @Component({
   selector: 'app-view-students',
   templateUrl: './view-students.component.html',
@@ -19,8 +18,9 @@ title='pagination';
 page: number = 1;
   count :number = 0 ;
   tableSize: number = 20;
-  constructor(private _StudentsService:StudentsService, private _Router:Router
-             ,private _CourseContentService:CourseContentService) { }
+  constructor( private _StudentsService:StudentsService
+             , private _Router:Router
+             , private _CourseContentService:CourseContentService) { }
 
   ngOnInit(): void {
     this.getstudents();
@@ -122,40 +122,9 @@ async updateactivate(id : number){
         })
       }
   })
-    // Swal.fire({
-    //   title: 'هل تريد تعديل المحتوى المفعل للطالب ام تريد مسح المحتوى المفعل ؟',
-    //   icon: 'question',
-    //   iconHtml: '؟',
-    //   confirmButtonText: 'تعديل المحتوى المفعل',
-    //   cancelButtonText: 'مسح المحتوى المفعل',
-    //   showCancelButton: true,
-    //   showCloseButton: true,
-    //   reverseButtons: true
-    // }).then((result) => {
-    //   if(result.isConfirmed){
-    //     this._StudentsService.updatestudentcontent.next(id);
-    //     this._Router.navigate(['content/admin/InsertActivation']);
-    //   }else {
-    //   this._StudentsService.deletestudentsubjectcontent(id).subscribe((res) =>{
-    //     Swal.fire({
-    //       icon: "success",
-    //       title: "تم مسح محتوى المواد المفعلة لهذا الطالب",
-    //       showConfirmButton: false,
-    //       timer: 1500,
-    //     });
-    //   },(err) => {
-    //     Swal.fire({
-    //       icon: 'error',
-    //       title: 'خطأ',
-    //       text:err.message    
-    //     })
-    //   })
-    //   }
-    // })
+}
 
 
-    
-  }
   addcontent(data : object){
    this._CourseContentService.studentemail.next(data);
    this._Router.navigate(['content/admin/InsertActivation']);

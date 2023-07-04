@@ -39,7 +39,6 @@ drop(event: CdkDragDrop<string[]>){
 }
 
 
-
   delete(id:number){
     Swal.fire({
       title: 'هل تريد مسح الكورس ؟',

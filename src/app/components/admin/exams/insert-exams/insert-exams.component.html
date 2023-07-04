@@ -1,0 +1,227 @@
+<div class="container">
+ <!-- <div class="row">
+    <div class="col-lg-4 p-3 selectquestion" (click)="newquestion(1)">
+        <div class="card bg-primary">
+            <div class="card-body">
+              <div class="media faq-widgets">
+                <div class="media-body">
+                  <h5>اضافة سؤال مقالي</h5>
+                </div>
+                <i data-feather="book-open"></i>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="col-lg-4 p-3 selectquestion" (click)="newquestion(2)">
+        <div class="card bg-primary">
+            <div class="card-body">
+              <div class="media faq-widgets">
+                <div class="media-body">
+                  <h5>اضافة سؤال اختياري</h5>
+                </div><i data-feather="book-open"></i>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="col-lg-4 p-3 selectquestion" (click)="newquestion(3)">
+        <div class="card bg-primary">
+            <div class="card-body">
+              <div class="media faq-widgets">
+                <div class="media-body">
+                  <h5>اضافة سؤال صح و خطأ</h5>
+                </div><i data-feather="book-open"></i>
+              </div>
+            </div>
+          </div>
+    </div>
+ </div> -->
+ <button class="btn w-100 mt-5" (click)="Exam()">سؤال جديد</button>
+</div> 
+
+
+
+
+
+<!-- ======================================================================================================================================== -->
+<!--                                          Questions Of The Exams                                                                          -->
+<!-- ======================================================================================================================================== -->
+<div class="container">
+  <div class="row">
+    <div class="col-12" *ngFor="let view of Exams">
+      <div class="card">  
+          <div class="card-header">
+              <h5>سؤال :- {{view.qusetion}}</h5>
+          </div>
+          <div class="card-body">
+              <p [ngSwitch]="view.typeid">
+                <span *ngSwitchCase="'1'">
+                  <input type="text" class="form-control w-100">
+                </span>
+                <span *ngSwitchCase="'2'">
+                  <span><input type="radio" class="mx-3">{{view.firstChoice}}</span>
+                  <span><input type="radio" class="mx-3">{{view.secondChoice}}</span>
+                  <span><input type="radio" class="mx-3">{{view.thirdChoice}}</span>
+                </span>
+                <span *ngSwitchCase="'3'">
+                  <span><input type="radio" class="mx-3">صح</span>
+                  <span><input type="radio" class="mx-3">خطأ</span>
+                </span>
+              </p>
+          </div>
+      </div>
+  </div>
+  </div>
+</div>
+
+<div class="card-body" *ngIf="question1">
+  <form class="needs-validation" autocomplete="off" 
+                    [formGroup] = "ExamForm"
+                    (ngSubmit)="onSubmit()" 
+                    novalidate>
+                        <div class="form-row">
+                            <!-- qusetion  -->
+                            <div class="col-6 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> رأس السؤال</label>
+                                <input class="form-control" id="validation01" type="text" formControlName="qusetion"
+                                [tooltip]="fc.qusetion.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.qusetion.valid && (fc.qusetion.touched)"
+                                [class.is-invalid]="fc.qusetion.invalid && (fc.qusetion.touched)"
+                                     required
+                                     placeholder="اكتب نص السؤال المقالي"
+                                    containerClass="" />
+                            </div>
+                            <!-- fitanswer  -->
+                            <div class="col-12 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> اكتب هنا الاجابة النموذجية</label>
+                                <textarea class="form-control" id="validation01" type="text" formControlName="fitanswer"
+                                [tooltip]="fc.fitanswer.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.fitanswer.valid && (fc.fitanswer.touched)"
+                                [class.is-invalid]="fc.fitanswer.invalid && (fc.fitanswer.touched)"
+                                     required
+                                     placeholder="اكتب الاجابة النموذجية"></textarea>
+                            </div>
+                        </div>
+                        <br>
+                            <button class="btn pull-right" type="submit">
+                               حفظ
+                            </button>
+                    </form>
+</div>
+<div class="card-body" *ngIf="question2">
+  <form class="needs-validation" autocomplete="off" 
+                    [formGroup] = "ExamForm"
+                    (ngSubmit)="onSubmit()" 
+                    novalidate>
+                        <div class="form-row">
+                            <!-- qusetion  -->
+                            <div class="col-12 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> رأس السؤال</label>
+                                <input class="form-control" id="validation01" type="text" formControlName="qusetion"
+                                [tooltip]="fc.qusetion.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.qusetion.valid && (fc.qusetion.touched)"
+                                [class.is-invalid]="fc.qusetion.invalid && (fc.qusetion.touched)"
+                                     required
+                                     placeholder="اكتب نص السؤال"
+                                    containerClass="" />
+                            </div>
+                            <!-- firstChoice  -->
+                            <div class="col-3 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> الاختيار الاول</label>
+                                <input class="form-control" id="validation01" type="text" formControlName="firstChoice"
+                                [tooltip]="fc.firstChoice.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.firstChoice.valid && (fc.firstChoice.touched)"
+                                [class.is-invalid]="fc.firstChoice.invalid && (fc.firstChoice.touched)"
+                                     required
+                                     placeholder="الاختيار الاول"/>
+                            </div>
+                            <!-- secondChoice  -->
+                            <div class="col-3 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> الاختيار الثاني</label>
+                                <input class="form-control" id="validation01" type="text" formControlName="secondChoice"
+                                [tooltip]="fc.secondChoice.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.secondChoice.valid && (fc.secondChoice.touched)"
+                                [class.is-invalid]="fc.secondChoice.invalid && (fc.secondChoice.touched)"
+                                     required
+                                     placeholder="الاختيار الثاني"/>
+                            </div>
+                            <!-- thirdChoice  -->
+                            <div class="col-3 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> الاختيار الثالث</label>
+                                <input class="form-control" id="validation01" type="text" formControlName="thirdChoice"
+                                [tooltip]="fc.thirdChoice.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.thirdChoice.valid && (fc.thirdChoice.touched)"
+                                [class.is-invalid]="fc.thirdChoice.invalid && (fc.thirdChoice.touched)"
+                                     required
+                                     placeholder="الاختيار الثالث"/>
+                            </div>
+                            <!-- fourChoice  -->
+                            <div class="col-3 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> الاختيار الرابع</label>
+                                <input class="form-control" id="validation01" type="text" formControlName="fourChoice"
+                                [tooltip]="fc.fourChoice.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.fourChoice.valid && (fc.fourChoice.touched)"
+                                [class.is-invalid]="fc.fourChoice.invalid && (fc.fourChoice.touched)"
+                                     required
+                                     placeholder="الاختيار الرابع"/>
+                            </div>
+                            <!-- correctChoice -->
+                            <div class="col-6 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> الاختيار الصحيح</label>
+                                <input class="form-control" id="validation01" type="text" formControlName="correctChoice"
+                                [tooltip]="fc.correctChoice.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.correctChoice.valid && (fc.correctChoice.touched)"
+                                [class.is-invalid]="fc.correctChoice.invalid && (fc.correctChoice.touched)"
+                                     required
+                                     placeholder="الاختيار الصحيح"/>
+                            </div>
+                        </div>
+                        <br>
+                            <button class="btn pull-right" type="submit">
+                               حفظ
+                            </button>
+                    </form>
+</div>
+<div class="card-body" *ngIf="question3">
+  <form class="needs-validation" autocomplete="off" 
+                    [formGroup] = "ExamForm"
+                    (ngSubmit)="onSubmit()" 
+                    novalidate>
+                        <div class="form-row">
+                            <!-- qusetion  -->
+                            <div class="col-12 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> رأس السؤال</label>
+                                <input class="form-control" id="validation01" type="text" formControlName="qusetion"
+                                [tooltip]="fc.qusetion.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.qusetion.valid && (fc.qusetion.touched)"
+                                [class.is-invalid]="fc.qusetion.invalid && (fc.qusetion.touched)"
+                                     required
+                                     placeholder="اكتب نص السؤال"
+                                    containerClass="" />
+                            </div>
+                            <!-- correct answer  -->
+                            <div class="col-12 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> الاجابة الصحيحة</label>
+                            </div>
+                            <div class="col-6 mb-3 px-5">
+                              <div class="radio radio-primary">
+                                <input id="radioinline1" type="radio" name="radio1" value="true" formControlName="correctChoice">
+                                <label class="mb-0" for="radioinline1"> صح</label>
+                              </div>
+                              <div class="radio radio-primary">
+                                <input id="radioinline2" type="radio" name="radio1" value="false" formControlName="correctChoice">
+                                <label class="mb-0" for="radioinline2"> خطأ</label>
+                              </div>
+                            </div>
+                        </div>
+                        <br>
+                            <button class="btn pull-right" type="submit">
+                               حفظ
+                            </button>
+                    </form>
+</div>
+
+<div class="card-body" *ngIf="button">
+  <button class="btn pull-right" (click)="examSubmit()">
+    حفظ المتحان
+ </button>
+</div>

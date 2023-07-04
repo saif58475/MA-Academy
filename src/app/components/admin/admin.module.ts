@@ -46,6 +46,8 @@ import { ViewPdfComponent } from './course-content/view-pdf/view-pdf.component';
 import { InsertZoommeetingComponent } from './zoom/insert-zoommeeting/insert-zoommeeting.component';
 import { ViewStudentsActivatedComponent } from './students-activated/view-students-activated/view-students-activated.component';
 import { ViewTeachercoursesComponent } from './teacherCourses/view-teachercourses/view-teachercourses.component';
+import { ViewExamsComponent } from './exams/view-exams/view-exams.component';
+import { InsertExamsComponent } from './exams/insert-exams/insert-exams.component';
 
  @NgModule({
   declarations: [
@@ -80,6 +82,8 @@ import { ViewTeachercoursesComponent } from './teacherCourses/view-teachercourse
     InsertZoommeetingComponent,
     ViewStudentsActivatedComponent,
     ViewTeachercoursesComponent,
+    ViewExamsComponent,
+    InsertExamsComponent,
   ],
   imports: [
     DxReportViewerModule,

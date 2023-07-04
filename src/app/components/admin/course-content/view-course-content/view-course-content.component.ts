@@ -37,6 +37,10 @@ page: number = 1;
     this.courselectures = res.data;
   })
   }
+  addExam(id:number){
+    this._Router.navigate([`content/admin/InsertExams/${id}`], { queryParams: { id: id } });
+
+  }
   onTableDataChange(event:any){
     this.page = event;
     this.getcoursecontent();
