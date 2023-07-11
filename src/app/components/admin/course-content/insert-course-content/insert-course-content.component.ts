@@ -78,6 +78,7 @@ dropdownSettings = {
               this.initiate();
             }else{
               this.recordtoupdate = res;
+              // this.selectedItems = res.teacherId;
               this.checkedit(this.recordtoupdate);
             }
           })
@@ -125,7 +126,7 @@ dropdownSettings = {
       subjectContentName: [data.subjectContentName, Validators.required],
       price: [data.price, Validators.required],
       subjectContentImage: [data.subjectContentimage, Validators.required],
-      subSubjectId: [data.subSubjectId, Validators.required],
+      subSubjectId: [data.SubSubjectId, Validators.required],
       videoURL: [data.video_url, Validators.required],
       teacherId: [this.selectedItems, Validators.required],
       description: [data.description, Validators.required],

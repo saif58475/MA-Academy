@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CourseContentService } from './../../../../shared/API-Service/services/course-content.service';
-import { SubcoursecontentService } from './../../../../shared/API-Service/services/subcoursecontent.service'
+import { SubcoursecontentService } from './../../../../shared/API-Service/services/subcoursecontent.service';
+import { CoursesService } from './../../../../shared/API-Service/services/courses.service';
 @Component({
   selector: 'app-view-course-content',
   templateUrl: './view-course-content.component.html',
@@ -10,19 +11,27 @@ import { SubcoursecontentService } from './../../../../shared/API-Service/servic
 })
 export class ViewCourseContentComponent implements OnInit {
   courselectures:any [];
+  filteredcourselectures:any [];
+  SubjectsName:any [];
   filterstring:string;
+  notFiltered:boolean = false;
   title='pagination';
 page: number = 1;
   count :number = 0 ;
   tableSize: number = 20;
   constructor(private _CourseContentService:CourseContentService
              ,private _Router:Router
+             ,private _CourseService:CoursesService
              ,private _ActivatedRoute:ActivatedRoute
              ,private _SubcoursecontentService:SubcoursecontentService) { }
 
   ngOnInit(): void {
     this._ActivatedRoute.queryParams.subscribe(params => {
      if(params['id'] == null){
+      this.notFiltered = true;
+      this._CourseService.GetCourse().subscribe(res => {
+        this.SubjectsName = res.data;
+      });
       this.getcoursecontent();
      }else{
       this._SubcoursecontentService.filtersubjectcontent(params['id']).subscribe((res) => {
@@ -35,6 +44,7 @@ page: number = 1;
   getcoursecontent(){
   this._CourseContentService.GetCourseContent().subscribe((res) => {
     this.courselectures = res.data;
+    this.filteredcourselectures = res.data;
   })
   }
   addExam(id:number){
@@ -43,7 +53,9 @@ page: number = 1;
   }
   onTableDataChange(event:any){
     this.page = event;
-    this.getcoursecontent();
+      }
+  filter(subjectId:any){
+  this.filteredcourselectures = this.courselectures.filter(r => r.subjectId == subjectId);
       }
 delete(id : number){
   Swal.fire({

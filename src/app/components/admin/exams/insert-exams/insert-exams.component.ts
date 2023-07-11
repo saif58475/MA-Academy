@@ -34,6 +34,7 @@ export class InsertExamsComponent implements OnInit {
     switch(id != null) {
     case id == 1 :
     this.ExamForm = this._FormBuilder.group({
+      id:[this.Exams.length + 1],
       typeid: [ 1, Validators.required],
       qusetion: ['', Validators.required],
       fitanswer: ['', Validators.required],
@@ -41,6 +42,7 @@ export class InsertExamsComponent implements OnInit {
     break;
     case id == 2 :
       this.ExamForm = this._FormBuilder.group({
+        id:[this.Exams.length + 1],
         typeid: [ 2, Validators.required],
         qusetion: ['', Validators.required],
         firstChoice: ['', Validators.required],
@@ -48,13 +50,16 @@ export class InsertExamsComponent implements OnInit {
         thirdChoice: ['', Validators.required],
         fourChoice: ['', Validators.required],
         correctChoice: ['', Validators.required],
+        selectedChoice: ['']
       });
       break;
       case id == 3 :
         this.ExamForm = this._FormBuilder.group({
+          id:[this.Exams.length + 1],
           typeid: [ 3, Validators.required],
           qusetion: ['', Validators.required],
           correctChoice: ['', Validators.required],
+          selectedChoice: ['']
         });
         break;
         default : 

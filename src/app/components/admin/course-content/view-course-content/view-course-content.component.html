@@ -34,12 +34,20 @@
                                         <th scope="col">اسم محتوى المادة</th>
                                         <th scope="col">السعر</th>
                                         <th scope="col">اسم تصنيف المادة </th>
-                                        <th scope="col">اسم المادة</th>
+                                        <th scope="col" [ngSwitch]="notFiltered">
+                                            <span *ngSwitchCase="false">اسم المادة</span>
+                                            <span *ngSwitchCase="true">
+
+  <ng-select  [selectOnTab]="true" class="form-control p-0" placeholder="اختر المادة" id="validationCustom05" (change)="filter($event)">
+                                         <ng-option *ngFor="let item of SubjectsName" [value]="item.subjectId">{{item.subjectName}}</ng-option></ng-select>
+
+                                            </span>
+                                        </th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let view of courselectures |filter:filterstring | paginate : {
+                                    <tr *ngFor="let view of filteredcourselectures | filter:filterstring | paginate : {
                                         itemsPerPage: tableSize,
                                         currentPage: page,
                                         totalItems: count };let x = index" class=" ">

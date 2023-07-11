@@ -12,6 +12,7 @@ import { CoursesService } from './../../../../shared/API-Service/services/course
 })
 export class ViewSubcoursecontentComponent implements OnInit {
   subsubjects:any [];
+  filterstring:string;
   title='pagination';
 page: number = 1;
   count :number = 0 ;
