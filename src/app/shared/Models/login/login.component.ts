@@ -49,7 +49,7 @@ person:FormGroup ;
             timer: 1500,
           });
           localStorage.setItem('Authorization', res.token);
-          this._Router.navigate(["/content/admin"]);
+          this._Router.navigate(["/content/admin/ViewStudents"]);
     },(err) =>{
     console.log("their is an error");
     Swal.fire({

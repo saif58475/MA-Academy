@@ -18,6 +18,8 @@ export class InsertExamsComponent implements OnInit {
   question1:boolean = false;
   question2:boolean = false;
   question3:boolean = false;
+  question4:boolean = false;
+  question5:boolean = false;
   Exams:Question [] = [];
   constructor(private _ExamsService:ExamsService
              ,private _Router:Router
@@ -62,6 +64,19 @@ export class InsertExamsComponent implements OnInit {
           selectedChoice: ['']
         });
         break;
+      case id == 4 :
+        this.ExamForm = this._FormBuilder.group({
+          id:[this.Exams.length + 1],
+          typeid: [ 4, Validators.required],
+          Imagequsetion: ['', Validators.required],
+          firstImageChoice: ['', Validators.required],
+          secondImageChoice: ['', Validators.required],
+          thirdImageChoice: ['', Validators.required],
+          fourImageChoice: ['', Validators.required],
+          correctImageChoice: ['', Validators.required],
+          selectedImageChoice: ['']
+        });
+        break;
         default : 
         alert('no question');
         break;
@@ -85,6 +100,10 @@ export class InsertExamsComponent implements OnInit {
           this.initiate(3);
           this.question3 = true;
           break;
+        case id==4:
+          this.initiate(4);
+          this.question4 = true;
+          break;
           default : 
           alert('ververbre');
           break;
@@ -107,7 +126,8 @@ export class InsertExamsComponent implements OnInit {
       inputOptions: {
         'essayQuestion':'اضافة سؤال مقالي', 
         'SelectQuestion': 'اضافة سؤال اختيار من متعدد',
-        'TrueFalse': 'اضافة سؤال صح و خطأ'
+        'TrueFalse': 'اضافة سؤال صح و خطأ',
+        'ImageSelectQuestion': 'اضافة سؤال اختيار من صور متعددة',
       },
       inputPlaceholder: 'اختر نوع السؤال',
       showCancelButton: true,
@@ -126,6 +146,10 @@ export class InsertExamsComponent implements OnInit {
             break;
           case 'TrueFalse':
             this.newquestion(3);
+            document.getElementsByClassName('swal2-container')[0].remove();
+            break;
+          case 'ImageSelectQuestion':
+            this.newquestion(4);
             document.getElementsByClassName('swal2-container')[0].remove();
             break;
             default :
