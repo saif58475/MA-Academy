@@ -15,6 +15,7 @@ export class ViewCourseContentComponent implements OnInit {
   SubjectsName:any [];
   filterstring:string;
   notFiltered:boolean = false;
+  filteredisok:boolean = false;
   title='pagination';
 page: number = 1;
   count :number = 0 ;
@@ -31,11 +32,14 @@ page: number = 1;
       this.notFiltered = true;
       this._CourseService.GetCourse().subscribe(res => {
         this.SubjectsName = res.data;
+        this.filteredisok = true;
       });
       this.getcoursecontent();
      }else{
       this._SubcoursecontentService.filtersubjectcontent(params['id']).subscribe((res) => {
       this.courselectures = res.data;
+      this.filteredisok = false;
+      debugger
       })
      }
     });

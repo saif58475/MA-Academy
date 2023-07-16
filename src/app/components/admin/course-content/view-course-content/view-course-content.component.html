@@ -46,8 +46,52 @@
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody *ngIf="filteredisok">
                                     <tr *ngFor="let view of filteredcourselectures | filter:filterstring | paginate : {
+                                        itemsPerPage: tableSize,
+                                        currentPage: page,
+                                        totalItems: count };let x = index" class=" ">
+                                        <td scope="row" class="p-2">{{x+1}}</td>
+                                        <td scope="row" class="p-2">{{view.subjectContentName}}</td>
+                                        <td scope="row" class="p-2">{{view.price}}</td>
+                                        <td scope="row" class="p-2">{{view.subSubjectName}}</td>
+                                        <td scope="row" class="p-2">{{view.subjectName}}</td>
+                                        
+                                            <td class="font-style chose">
+                                                <button class="btn pull-right" *ngIf="view.zoom != null"
+                                                    style="color: rgba(35, 61, 161, 0.667); padding: 7px"
+                                                    (click)="RemoveZoom(view.subjectContentId)"
+                                                    title="وقف المحاضرة الاونلاين لهذه الحصة">
+                                                    <i class="fa fa-caret-square-o-right"></i>
+                                                </button>
+                                                <button class="btn pull-right"
+                                                    style="color: rgba(27, 26, 25, 0.667); padding: 7px"
+                                                    (click)="addExam(view.subjectContentId)"
+                                                    title="اضافة أمتحان لهذه الحصة">
+                                                    <i class="fa fa-plus-square-o"></i>
+                                                </button>
+                                                <button class="btn pull-right"
+                                                    style="color: rgba(220, 79, 57, 0.667); padding: 7px"
+                                                    (click)="insertpdf(view.subjectContentId)"
+                                                    title="اضافة ملفات لهذه الحصة">
+                                                    <i class="fa fa-file"></i>
+                                                </button>
+                                                <button class="btn pull-right"
+                                                    style="color: rgba(35, 118, 241, 0.667); padding: 7px"
+                                                    (click)="update(view)"
+                                                    title="تعديل هذه الحصة">
+                                                    <i class="fa fa-pencil"></i>
+                                                </button>
+                                                   <button class="btn  pull-right"  style="color: red; padding: 7px"
+                                                   (click)="delete(view.subjectContentId)"
+                                                   title="مسح هذه الحصة">
+                                                    <i class="fa fa-trash"></i>
+                                                       </button>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                                <tbody *ngIf="!filteredisok">
+                                    <tr *ngFor="let view of courselectures | filter:filterstring | paginate : {
                                         itemsPerPage: tableSize,
                                         currentPage: page,
                                         totalItems: count };let x = index" class=" ">
