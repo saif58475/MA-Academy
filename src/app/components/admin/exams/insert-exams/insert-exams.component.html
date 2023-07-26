@@ -76,7 +76,7 @@
 <!-- ======================================================================================================================================== -->
 <!--                                          Questions Of The Images Exams                                                                   -->
 <!-- ======================================================================================================================================== -->
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-12" *ngFor="let view of Exams">
       <div class="card">  
@@ -100,7 +100,7 @@
       </div>
   </div>
   </div>
-</div>
+</div> -->
 <!-- ======================================================================================================================================== -->
 <!-- ======================================================================================================================================== -->
 <div class="card-body" *ngIf="question1">
@@ -117,8 +117,7 @@
                                 [class.is-valid]="fc.qusetion.valid && (fc.qusetion.touched)"
                                 [class.is-invalid]="fc.qusetion.invalid && (fc.qusetion.touched)"
                                      required
-                                     placeholder="اكتب نص السؤال المقالي"
-                                    containerClass="" />
+                                     placeholder="اكتب نص السؤال المقالي"/>
                             </div>
                             <!-- fitanswer  -->
                             <div class="col-12 mb-3">
@@ -193,18 +192,21 @@
                                 [class.is-invalid]="fc.fourChoice.invalid && (fc.fourChoice.touched)"
                                      required
                                      placeholder="الاختيار الرابع"/>
-                            </div>
-                            <!-- correctChoice -->
-                            <div class="col-6 mb-3">
-                                <label for="validation01"><span class="validation-required">*</span> الاختيار الصحيح</label>
-                                <input class="form-control" id="validation01" type="text" formControlName="correctChoice"
-                                [tooltip]="fc.correctChoice.errors?.required ? 'الحقل مطلوب' : null"
-                                [class.is-valid]="fc.correctChoice.valid && (fc.correctChoice.touched)"
-                                [class.is-invalid]="fc.correctChoice.invalid && (fc.correctChoice.touched)"
-                                     required
-                                     placeholder="الاختيار الصحيح"/>
-                            </div>
-                        </div>
+                                    </div>
+                  <!-- Correct Choice  -->
+                  <div class="col-lg-6  mb-3">
+                    <label for="validationCustom05"><span class="validation-required">*</span> اختار الاجابة الصحيحة</label>
+                    <br><br>
+                    <ng-select  [selectOnTab]="true" formControlName="correctChoice"
+                        class="form-control p-0" placeholder="اختر الاجابة الصحيحة"
+                        id="validationCustom05">
+                        <ng-option *ngFor="let item of questionDropDown" [value]="item.text">{{item.type}}</ng-option>
+                    </ng-select>
+                </div>
+
+
+
+                      </div>
                         <br>
                             <button class="btn pull-right" type="submit">
                                حفظ

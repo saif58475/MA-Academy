@@ -15,6 +15,11 @@ export class InsertExamsComponent implements OnInit {
   button:boolean = false;
   coursecontentId:number;
   writeorwrong:boolean;
+  questionDropDown:Object [] = [
+    { text : 'firstChoice', type: 'الاختيار الاول'},
+    { text : 'secondChoice', type: 'الاختيار الثاني'},
+    { text : 'thirdChoice', type: 'الاختيار الثالث'},
+    { text : 'fourChoice', type: 'الاختيار الرابع'},]; 
   question1:boolean = false;
   question2:boolean = false;
   question3:boolean = false;
@@ -124,10 +129,9 @@ export class InsertExamsComponent implements OnInit {
       title: 'قم بأحتيار نوع السؤال المراد اضافته في الامتحان',
       input: 'select',
       inputOptions: {
-        'essayQuestion':'اضافة سؤال مقالي', 
+        // 'essayQuestion':'اضافة سؤال مقالي', 
         'SelectQuestion': 'اضافة سؤال اختيار من متعدد',
         'TrueFalse': 'اضافة سؤال صح و خطأ',
-        'ImageSelectQuestion': 'اضافة سؤال اختيار من صور متعددة',
       },
       inputPlaceholder: 'اختر نوع السؤال',
       showCancelButton: true,
