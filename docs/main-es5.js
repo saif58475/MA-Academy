@@ -9114,13 +9114,19 @@
       /* harmony import */
 
 
+      var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      /*! tslib */
+      64762);
+      /* harmony import */
+
+
       var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! @angular/core */
       37716);
       /* harmony import */
 
 
-      var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
       /*! @angular/forms */
       3679);
       /* harmony import */
@@ -9166,21 +9172,21 @@
       /* harmony import */
 
 
-      var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+      var _angular_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
       /*! @angular/router */
       39895);
       /* harmony import */
 
 
-      var ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+      var ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
       /*! ngx-bootstrap/tooltip */
       27799);
       /* harmony import */
 
 
-      var ng_multiselect_dropdown__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
-      /*! ng-multiselect-dropdown */
-      1305);
+      var _angular_common__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+      /*! @angular/common */
+      38583);
       /* harmony import */
 
 
@@ -9190,50 +9196,156 @@
       /* harmony import */
 
 
-      var _angular_common__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
-      /*! @angular/common */
-      38583);
+      var ng_multiselect_dropdown__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+      /*! ng-multiselect-dropdown */
+      1305);
 
       var _c0 = ["myDivs"];
 
-      function InsertOffersComponent_ng_template_10_Template(rf, ctx) {}
+      var _c1 = function _c1() {
+        return {
+          standalone: true
+        };
+      };
 
-      function InsertOffersComponent_div_47_Template(rf, ctx) {
+      function InsertOffersComponent_div_36_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](0, "div", 26);
+          var _r8 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵgetCurrentView"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](1, "label", 17);
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](0, "div", 31);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelement"](2, "span", 11);
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](1, "div");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](3);
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](2, "label", 32);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](3, "span", 15);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](4, "*");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelement"](4, "ngx-qrcode", 27);
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](5, " \u0627\u062E\u062A\u0631 \u0627\u0628\u0648\u0627\u0628 \u0627\u0644\u0639\u0631\u0636");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](6, "ng-multiselect-dropdown", 33);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵlistener"]("ngModelChange", function InsertOffersComponent_div_36_Template_ng_multiselect_dropdown_ngModelChange_6_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵrestoreView"](_r8);
+
+            var ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵnextContext"]();
+
+            return ctx_r7.selectedsubcoursecontent = $event;
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          var view_r5 = ctx.$implicit;
-          var x_r6 = ctx.index;
+          var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵnextContext"]();
 
-          var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵnextContext"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](6);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](3);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtextInterpolate1"](" \u0627\u0644\u0645\u0627\u0633\u062D \u0627\u0644\u0636\u0648\u0626\u064A \u0631\u0642\u0645 ", x_r6 + 1, "");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](1);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("elementType", ctx_r1.elementType)("value", view_r5);
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("placeholder", "\u0627\u062E\u062A\u0631 \u0645\u062D\u062A\u0648\u0649 \u0627\u0644\u0645\u0648\u0627\u062F")("settings", ctx_r0.dropdownSettings)("data", ctx_r0.subcoursecontent)("ngModel", ctx_r0.selectedsubcoursecontent)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpureFunction0"](5, _c1));
         }
       }
 
-      function InsertOffersComponent_ng_template_49_Template(rf, ctx) {
+      function InsertOffersComponent_div_37_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](0, "button", 28);
+          var _r10 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵgetCurrentView"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](0, "div");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](1, "div");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](2, "label", 32);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](3, "span", 15);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](4, "*");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](5, " \u0627\u062E\u062A\u0631 \u062D\u0635\u0635 \u0627\u0644\u0639\u0631\u0636");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](6, "ng-multiselect-dropdown", 33);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵlistener"]("ngModelChange", function InsertOffersComponent_div_37_Template_ng_multiselect_dropdown_ngModelChange_6_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵrestoreView"](_r10);
+
+            var ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵnextContext"]();
+
+            return ctx_r9.selectedsubcourse = $event;
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵnextContext"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("placeholder", "\u0627\u062E\u062A\u0631 \u0627\u0644\u062D\u0635\u0629")("settings", ctx_r1.dropdownSettingscourse)("data", ctx_r1.subcourse)("ngModel", ctx_r1.selectedsubcourse)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpureFunction0"](5, _c1));
+        }
+      }
+
+      function InsertOffersComponent_div_38_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](0, "div");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](1, "Default content");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+        }
+      }
+
+      function InsertOffersComponent_div_54_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](0, "div", 34);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](1, "label", 22);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelement"](2, "span", 15);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelement"](4, "ngx-qrcode", 35);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          var view_r11 = ctx.$implicit;
+          var x_r12 = ctx.index;
+
+          var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵnextContext"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtextInterpolate1"](" \u0627\u0644\u0645\u0627\u0633\u062D \u0627\u0644\u0636\u0648\u0626\u064A \u0631\u0642\u0645 ", x_r12 + 1, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("elementType", ctx_r3.elementType)("value", view_r11);
+        }
+      }
+
+      function InsertOffersComponent_ng_template_56_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](0, "button", 36);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](1, " \u062D\u0641\u0638 ");
 
@@ -9241,17 +9353,17 @@
         }
 
         if (rf & 2) {
-          var ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵnextContext"]();
+          var ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵnextContext"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("disabled", ctx_r3.button);
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("disabled", ctx_r5.button);
         }
       }
 
-      function InsertOffersComponent_div_51_Template(rf, ctx) {
+      function InsertOffersComponent_div_58_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](0, "div");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](1, "button", 29);
+          _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](1, "button", 37);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](2, " \u062A\u0639\u062F\u064A\u0644 ");
 
@@ -9260,12 +9372,6 @@
           _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
         }
       }
-
-      var _c1 = function _c1() {
-        return {
-          standalone: true
-        };
-      };
 
       var _InsertOffersComponent = /*#__PURE__*/function () {
         function _InsertOffersComponent(_Router, _FormBuilder, _SubcourseService, _SubcoursecontentService, _TeachersService, _QroffersService) {
@@ -9277,6 +9383,7 @@
           this._SubcoursecontentService = _SubcoursecontentService;
           this._TeachersService = _TeachersService;
           this._QroffersService = _QroffersService;
+          this["case"] = 1;
           this.update = false;
           this.button = false;
           this.dropdownSettings = {};
@@ -9301,51 +9408,81 @@
         _createClass(_InsertOffersComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this38 = this;
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+              var _this38 = this;
 
-            this.dropdownSettings = {
-              singleSelection: false,
-              idField: 'beforSubjectContentId',
-              textField: 'beforSubjectContentName',
-              selectAllText: 'Select All',
-              unSelectAllText: 'UnSelect All'
-            };
-            this.dropdownSettingscourse = {
-              singleSelection: false,
-              idField: 'subSubjectId',
-              textField: 'subSubjectName',
-              selectAllText: 'Select All',
-              unSelectAllText: 'UnSelect All'
-            };
-            this.getdropdowns();
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                while (1) {
+                  switch (_context3.prev = _context3.next) {
+                    case 0:
+                      this.dropdownSettings = {
+                        singleSelection: false,
+                        idField: 'beforSubjectContentId',
+                        textField: 'beforSubjectContentName',
+                        selectAllText: 'Select All',
+                        unSelectAllText: 'UnSelect All'
+                      };
+                      this.dropdownSettingscourse = {
+                        singleSelection: false,
+                        idField: 'subSubjectId',
+                        textField: 'subSubjectName',
+                        selectAllText: 'Select All',
+                        unSelectAllText: 'UnSelect All'
+                      };
+                      this.getdropdowns();
 
-            this._QroffersService.Data.subscribe(function (res) {
-              if (res != null) {
-                _this38.initiate(res);
+                      this._QroffersService.Data.subscribe(function (res) {
+                        if (res != null) {
+                          _this38.initiate(res);
 
-                _this38.OfferId = res.offersId;
-                _this38.update = true;
-                _this38.QrCode = res.QR;
-                _this38.NumberOfStudents = _this38.QrCode.length; //  this.filterObjectsById(this.subcoursecontent, res.beforSubjectContentId);
+                          _this38.OfferId = res.offersId;
+                          _this38.update = true;
+                          _this38.QrCode = res.QR;
+                          _this38.NumberOfStudents = _this38.QrCode.length; //  this.filterObjectsById(this.subcoursecontent, res.beforSubjectContentId);
 
-                _this38.selectedsubcoursecontent = res.beforSubjectContentId;
-              } else {
-                _this38.initiate();
-              }
-            });
+                          _this38.selectedsubcoursecontent = res.beforSubjectContentId;
+                        } else {
+                          _this38.initiate();
+                        }
+                      });
+
+                    case 4:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }
+              }, _callee3, this);
+            }));
           }
         }, {
           key: "initiate",
           value: function initiate(data) {
             this.OfferFrom = this._FormBuilder.group({
               teacherId: [''],
-              subSubjectId: [''],
-              date_start: [(data === null || data === void 0 ? void 0 : data.date_start) || '', _angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required],
-              date_end: [(data === null || data === void 0 ? void 0 : data.date_end) || '', _angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required],
+              subjectContentId: [''],
+              date_start: [(data === null || data === void 0 ? void 0 : data.date_start) || '', _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required],
+              date_end: [(data === null || data === void 0 ? void 0 : data.date_end) || '', _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required],
               status: [true],
-              name: [(data === null || data === void 0 ? void 0 : data.name) || '', _angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required],
-              QR: [this.QrCode]
+              name: [(data === null || data === void 0 ? void 0 : data.name) || '', _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required],
+              QRSubjectContent: [this.QrCode]
             });
+          }
+        }, {
+          key: "selectpackage",
+          value: function selectpackage(id) {
+            switch (id) {
+              case 1:
+                this["case"] = 1;
+                break;
+
+              case 2:
+                this["case"] = 2;
+                break;
+
+              default:
+                alert('welhvwe');
+                break;
+            }
           }
         }, {
           key: "filterObjectsById",
@@ -9353,7 +9490,6 @@
             this.selectedsubcoursecontent = objects.filter(function (obj) {
               return ids.includes(obj.beforSubjectContentId);
             });
-            debugger;
           } // getId(data : object){
           // for(let i = 0 ; i <= this.oneoffour.length; i++){
           //  if( this.oneoffour[i] == data){
@@ -9457,6 +9593,25 @@
             });
           }
         }, {
+          key: "appendLessonData",
+          value: function appendLessonData() {
+            var _this41 = this;
+
+            this.OfferFromData = new FormData();
+            this.OfferFromData.append("teacherId", this.OfferFrom.value.teacherId);
+            this.OfferFromData.append("subSubjectId", this.OfferFrom.value.subSubjectId);
+            this.selectedsubcourse.forEach(function (element) {
+              _this41.OfferFromData.append("subjectContentId[]", element.subSubjectId);
+            });
+            this.OfferFromData.append("date_start", this.OfferFrom.value.date_start);
+            this.OfferFromData.append("date_end", this.OfferFrom.value.date_end);
+            this.OfferFromData.append("status", this.OfferFrom.value.status);
+            this.OfferFromData.append("name", this.OfferFrom.value.name);
+            this.QrCode.forEach(function (element) {
+              _this41.OfferFromData.append("QRSubjectContent[]", element);
+            });
+          }
+        }, {
           key: "isFirstDateBeforeSecondDate",
           value: function isFirstDateBeforeSecondDate(date1, date2) {
             return this.OfferFrom.value.date_start < this.OfferFrom.value.date_end;
@@ -9483,11 +9638,11 @@
         }, {
           key: "SendData",
           value: function SendData() {
-            var _this41 = this;
+            var _this42 = this;
 
             this.button = true;
 
-            if (this.OfferFrom.status == "VALID" && this.update == false) {
+            if (this.OfferFrom.status == "VALID" && this.update == false && this["case"] == 1) {
               this.appendData();
 
               this._QroffersService.CreateQR(this.OfferFromData).subscribe(function (res) {
@@ -9498,14 +9653,34 @@
                   timer: 1500
                 });
 
-                _this41._Router.navigate(['content/admin/ViewOffer']);
+                _this42._Router.navigate(['content/admin/ViewOffer']);
               }, function (err) {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this41.button = false;
+                _this42.button = false;
+              });
+            } else if (this.OfferFrom.status == "VALID" && this.update == false && this["case"] == 2) {
+              this.appendLessonData();
+
+              this._QroffersService.CreateSubjectQR(this.OfferFromData).subscribe(function (res) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+                  icon: "success",
+                  title: "تم تسجيل العرض بنجاح",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+
+                _this42._Router.navigate(['content/admin/ViewOffer']);
+              }, function (err) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+                  icon: 'error',
+                  title: 'خطأ',
+                  text: 'تأكد من ملئ جميع الخانات'
+                });
+                _this42.button = false;
               });
             } else if (this.OfferFrom.status == "VALID" && this.update == true) {
               this.appendData();
@@ -9518,14 +9693,14 @@
                   timer: 1500
                 });
 
-                _this41._Router.navigate(['content/admin/ViewOffer']);
+                _this42._Router.navigate(['content/admin/ViewOffer']);
               }, function (err) {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this41.button = false;
+                _this42.button = false;
               });
             }
           }
@@ -9540,7 +9715,7 @@
       }();
 
       _InsertOffersComponent.ɵfac = function InsertOffersComponent_Factory(t) {
-        return new (t || _InsertOffersComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_9__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_8__.FormBuilder), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_shared_API_Service_services_subcourse_service__WEBPACK_IMPORTED_MODULE_1__.SubcourseService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_shared_API_Service_services_subcoursecontent_service__WEBPACK_IMPORTED_MODULE_2__.SubcoursecontentService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_shared_API_Service_services_teachers_service__WEBPACK_IMPORTED_MODULE_3__.TeachersService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_shared_API_Service_services_qroffers_service__WEBPACK_IMPORTED_MODULE_4__.QroffersService));
+        return new (t || _InsertOffersComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_10__.Router), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_9__.FormBuilder), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_shared_API_Service_services_subcourse_service__WEBPACK_IMPORTED_MODULE_1__.SubcourseService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_shared_API_Service_services_subcoursecontent_service__WEBPACK_IMPORTED_MODULE_2__.SubcoursecontentService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_shared_API_Service_services_teachers_service__WEBPACK_IMPORTED_MODULE_3__.TeachersService), _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdirectiveInject"](_shared_API_Service_services_qroffers_service__WEBPACK_IMPORTED_MODULE_4__.QroffersService));
       };
 
       _InsertOffersComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineComponent"]({
@@ -9557,9 +9732,9 @@
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵloadQuery"]()) && (ctx.myDivs = _t);
           }
         },
-        decls: 52,
-        vars: 30,
-        consts: [[1, "container-fluid"], [1, "row"], [1, "col-md-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "pb-2"], [1, "card-body"], ["autocomplete", "off", "novalidate", "", 1, "needs-validation", 3, "formGroup", "ngSubmit"], [1, "form-row"], [1, "col-6", "mb-3"], ["for", "validationCustom05"], [1, "validation-required"], ["id", "validation01", "type", "date", "required", "", "placeholder", "", "formControlName", "date_start", "containerClass", "", 1, "form-control", 3, "tooltip"], ["id", "validation01", "type", "date", "required", "", "placeholder", "", "formControlName", "date_end", "containerClass", "", 1, "form-control", 3, "tooltip"], [1, "col-lg-6", "col-sm-12", "mb-3"], ["for", "validationCustom06"], [3, "placeholder", "settings", "data", "ngModel", "ngModelOptions", "ngModelChange"], ["for", "validation01"], ["id", "validation01", "type", "text", "formControlName", "name", "required", "", "placeholder", "\u0627\u0643\u062A\u0628 \u0627\u0633\u0645 \u0627\u0644\u0639\u0631\u0636", 1, "form-control", 3, "tooltip"], ["id", "validation01", "type", "text", "required", "", "placeholder", "\u0627\u0643\u062A\u0628 \u0639\u062F\u062F \u0627\u0644\u0637\u0644\u0627\u0628 \u0627\u0644\u0645\u0631\u0627\u062F \u062A\u0641\u0639\u064A\u0644\u0647\u0645 \u0644\u0647\u0630\u0627 \u0627\u0644\u0639\u0631\u0636", "containerClass", "", "onlyNumbers", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange", "input"], [1, "col-3", "mb-3"], ["type", "button", 1, "btn", 3, "disabled", "click"], ["id", "printDiv", 1, "col-12", "row"], ["class", "col-lg-3", 4, "ngFor", "ngForOf"], ["elseBlock", ""], [4, "ngIf", "ngIfElse"], [1, "col-lg-3"], ["cssClass", "aclass", 1, "m-auto", 2, "width", "80%", "height", "220px", 3, "elementType", "value"], ["type", "submit", 1, "btn", "pull-right", 3, "disabled"], ["type", "submit", 1, "btn", "pull-right"]],
+        decls: 59,
+        vars: 27,
+        consts: [[1, "container-fluid"], [1, "row"], [1, "col-md-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "pb-2"], [1, "col-12", "header-titles"], [1, "d-block", "mx-1", 3, "click"], ["type", "button", 1, "btn", "pull-right"], [1, "m-2"], [1, "card-body"], ["autocomplete", "off", "novalidate", "", 1, "needs-validation", 3, "formGroup", "ngSubmit"], [1, "form-row"], [1, "col-6", "mb-3"], ["for", "validationCustom05"], [1, "validation-required"], ["id", "validation01", "type", "date", "required", "", "placeholder", "", "formControlName", "date_start", "containerClass", "", 1, "form-control", 3, "tooltip"], ["id", "validation01", "type", "date", "required", "", "placeholder", "", "formControlName", "date_end", "containerClass", "", 1, "form-control", 3, "tooltip"], [1, "col-6", "mb-3", 3, "ngSwitch"], ["class", "w-100", 4, "ngSwitchCase"], [4, "ngSwitchCase"], [4, "ngSwitchDefault"], ["for", "validation01"], ["id", "validation01", "type", "text", "formControlName", "name", "required", "", "placeholder", "\u0627\u0643\u062A\u0628 \u0627\u0633\u0645 \u0627\u0644\u0639\u0631\u0636", 1, "form-control", 3, "tooltip"], ["id", "validation01", "type", "text", "required", "", "placeholder", "\u0627\u0643\u062A\u0628 \u0639\u062F\u062F \u0627\u0644\u0637\u0644\u0627\u0628 \u0627\u0644\u0645\u0631\u0627\u062F \u062A\u0641\u0639\u064A\u0644\u0647\u0645 \u0644\u0647\u0630\u0627 \u0627\u0644\u0639\u0631\u0636", "containerClass", "", "onlyNumbers", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange", "input"], [1, "col-3", "mb-3"], ["type", "button", 1, "btn", 3, "disabled", "click"], ["id", "printDiv", 1, "col-12", "row"], ["class", "col-lg-3", 4, "ngFor", "ngForOf"], ["elseBlock", ""], [4, "ngIf", "ngIfElse"], [1, "w-100"], ["for", "validationCustom06"], [3, "placeholder", "settings", "data", "ngModel", "ngModelOptions", "ngModelChange"], [1, "col-lg-3"], ["cssClass", "aclass", 1, "m-auto", 2, "width", "80%", "height", "220px", 3, "elementType", "value"], ["type", "submit", 1, "btn", "pull-right", 3, "disabled"], ["type", "submit", 1, "btn", "pull-right"]],
         template: function InsertOffersComponent_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](0, "div", 0);
@@ -9588,105 +9763,133 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](10, InsertOffersComponent_ng_template_10_Template, 0, 0, "ng-template");
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](10, "div", 1);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](11, "div", 6);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](12, "form", 7);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](12, "a", 7);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵlistener"]("ngSubmit", function InsertOffersComponent_Template_form_ngSubmit_12_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵlistener"]("click", function InsertOffersComponent_Template_a_click_12_listener() {
+              return ctx.selectpackage(1);
+            });
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](13, "button", 8);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](14, "span", 9);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](15, "\u0639\u0631\u0636 \u0644\u0627\u0628\u0648\u0627\u0628 \u0627\u0644\u0645\u0648\u0627\u062F");
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](16, "a", 7);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵlistener"]("click", function InsertOffersComponent_Template_a_click_16_listener() {
+              return ctx.selectpackage(2);
+            });
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](17, "button", 8);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](18, "span", 9);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](19, "\u0639\u0631\u0648\u0636 \u0644\u062D\u0635\u0635 \u0627\u0644\u0645\u0648\u0627\u062F");
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](20, "div", 10);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](21, "form", 11);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵlistener"]("ngSubmit", function InsertOffersComponent_Template_form_ngSubmit_21_listener() {
               return ctx.onSubmit();
             });
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](13, "div", 8);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](22, "div", 12);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](14, "div", 9);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](23, "div", 13);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](15, "label", 10);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](24, "label", 14);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](16, "span", 11);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](25, "span", 15);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](17, "*");
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](18, " \u0627\u0644\u0639\u0631\u0636 \u0645\u0641\u0639\u0644 \u0645\u0646");
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](26, "*");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelement"](19, "input", 12);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](27, " \u0627\u0644\u0639\u0631\u0636 \u0645\u0641\u0639\u0644 \u0645\u0646");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](20, "div", 9);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](21, "label", 10);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](22, "span", 11);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](23, "*");
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelement"](28, "input", 16);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](24, " \u0627\u0644\u0639\u0631\u0636 \u0645\u0641\u0639\u0644 \u0627\u0644\u0649");
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](29, "div", 13);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](30, "label", 14);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](31, "span", 15);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](32, "*");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelement"](25, "input", 13);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](33, " \u0627\u0644\u0639\u0631\u0636 \u0645\u0641\u0639\u0644 \u0627\u0644\u0649");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](26, "div", 14);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](27, "label", 15);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](28, "span", 11);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](29, "*");
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelement"](34, "input", 17);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](30, " \u0627\u062E\u062A\u0631 \u0645\u062D\u062A\u0648\u0649 \u0627\u0644\u0645\u0627\u062F\u0629");
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](35, "div", 18);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](36, InsertOffersComponent_div_36_Template, 7, 6, "div", 19);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](37, InsertOffersComponent_div_37_Template, 7, 6, "div", 20);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](38, InsertOffersComponent_div_38_Template, 2, 0, "div", 21);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](31, "ng-multiselect-dropdown", 16);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](39, "div", 13);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵlistener"]("ngModelChange", function InsertOffersComponent_Template_ng_multiselect_dropdown_ngModelChange_31_listener($event) {
-              return ctx.selectedsubcoursecontent = $event;
-            });
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](40, "label", 22);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](41, "span", 15);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](32, "div", 9);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](33, "label", 17);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](34, "span", 11);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](35, "*");
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](42, "*");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](36, " \u0627\u0633\u0645 \u0627\u0644\u0639\u0631\u0636");
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](43, " \u0627\u0633\u0645 \u0627\u0644\u0639\u0631\u0636");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelement"](37, "input", 18);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelement"](44, "input", 23);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](38, "div", 9);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](45, "div", 13);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](39, "input", 19);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](46, "input", 24);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵlistener"]("ngModelChange", function InsertOffersComponent_Template_input_ngModelChange_39_listener($event) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵlistener"]("ngModelChange", function InsertOffersComponent_Template_input_ngModelChange_46_listener($event) {
               return ctx.NumberOfStudents = $event;
-            })("input", function InsertOffersComponent_Template_input_input_39_listener() {
+            })("input", function InsertOffersComponent_Template_input_input_46_listener() {
               return ctx.checknumberofstudents();
             });
 
@@ -9694,47 +9897,47 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](40, "div", 20);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](47, "div", 25);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](41, "button", 21);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](48, "button", 26);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵlistener"]("click", function InsertOffersComponent_Template_button_click_41_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵlistener"]("click", function InsertOffersComponent_Template_button_click_48_listener() {
               return ctx.getQRCodes();
             });
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](42, " \u0627\u0636\u063A\u0637 \u0644\u0627\u0646\u062A\u0627\u062C QR Codes ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](49, " \u0627\u0636\u063A\u0637 \u0644\u0627\u0646\u062A\u0627\u062C QR Codes ");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](43, "div", 20);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](50, "div", 25);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](44, "button", 21);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](51, "button", 26);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵlistener"]("click", function InsertOffersComponent_Template_button_click_44_listener() {
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵlistener"]("click", function InsertOffersComponent_Template_button_click_51_listener() {
               return ctx.printQRCode();
             });
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](45, " \u0627\u0636\u063A\u0637 \u0644\u0637\u0628\u0627\u0639\u0629 QR Codes ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](52, " \u0627\u0636\u063A\u0637 \u0644\u0637\u0628\u0627\u0639\u0629 QR Codes ");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](46, "div", 22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](53, "div", 27);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](47, InsertOffersComponent_div_47_Template, 5, 3, "div", 23);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](54, InsertOffersComponent_div_54_Template, 5, 3, "div", 28);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelement"](48, "br");
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](49, InsertOffersComponent_ng_template_49_Template, 2, 1, "ng-template", null, 24, _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplateRefExtractor"]);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelement"](55, "br");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](51, InsertOffersComponent_div_51_Template, 3, 0, "div", 25);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](56, InsertOffersComponent_ng_template_56_Template, 2, 1, "ng-template", null, 29, _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplateRefExtractor"]);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtemplate"](58, InsertOffersComponent_div_58_Template, 3, 0, "div", 30);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
 
@@ -9750,9 +9953,9 @@
           }
 
           if (rf & 2) {
-            var _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵreference"](50);
+            var _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵreference"](57);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](12);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](21);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("formGroup", ctx.OfferFrom);
 
@@ -9768,11 +9971,19 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("tooltip", (ctx.fc.date_end.errors == null ? null : ctx.fc.date_end.errors.required) ? "\u0627\u0644\u062D\u0642\u0644 \u0645\u0637\u0644\u0648\u0628" : null);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](1);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("placeholder", "\u0627\u062E\u062A\u0631 \u0645\u062D\u062A\u0648\u0649 \u0627\u0644\u0645\u0648\u0627\u062F")("settings", ctx.dropdownSettings)("data", ctx.subcoursecontent)("ngModel", ctx.selectedsubcoursecontent)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpureFunction0"](28, _c1));
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("ngSwitch", ctx["case"]);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](1);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("ngSwitchCase", "1");
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](1);
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("ngSwitchCase", "2");
+
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](7);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵclassProp"]("is-valid", ctx.fc.name.valid && ctx.fc.name.touched)("is-invalid", ctx.fc.name.invalid && ctx.fc.name.touched);
 
@@ -9780,7 +9991,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](2);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("ngModel", ctx.NumberOfStudents)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpureFunction0"](29, _c1));
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("ngModel", ctx.NumberOfStudents)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵpureFunction0"](26, _c1));
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](2);
 
@@ -9796,10 +10007,10 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵadvance"](4);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("ngIf", ctx.update)("ngIfElse", _r2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵproperty"]("ngIf", ctx.update)("ngIfElse", _r4);
           }
         },
-        directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_8__["ɵNgNoValidate"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.FormGroupDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.RequiredValidator, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.FormControlName, ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_10__.TooltipDirective, ng_multiselect_dropdown__WEBPACK_IMPORTED_MODULE_11__.MultiSelectComponent, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.NgModel, _shared_directives_only_numbers_directive__WEBPACK_IMPORTED_MODULE_5__.OnlyNumbersDirective, _angular_common__WEBPACK_IMPORTED_MODULE_12__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_12__.NgIf, _techiediaries_ngx_qrcode__WEBPACK_IMPORTED_MODULE_7__.QrcodeComponent],
+        directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_9__["ɵNgNoValidate"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_9__.FormGroupDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_9__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_9__.RequiredValidator, _angular_forms__WEBPACK_IMPORTED_MODULE_9__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_9__.FormControlName, ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_11__.TooltipDirective, _angular_common__WEBPACK_IMPORTED_MODULE_12__.NgSwitch, _angular_common__WEBPACK_IMPORTED_MODULE_12__.NgSwitchCase, _angular_common__WEBPACK_IMPORTED_MODULE_12__.NgSwitchDefault, _shared_directives_only_numbers_directive__WEBPACK_IMPORTED_MODULE_5__.OnlyNumbersDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_9__.NgModel, _angular_common__WEBPACK_IMPORTED_MODULE_12__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_12__.NgIf, ng_multiselect_dropdown__WEBPACK_IMPORTED_MODULE_13__.MultiSelectComponent, _techiediaries_ngx_qrcode__WEBPACK_IMPORTED_MODULE_7__.QrcodeComponent],
         styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJpbnNlcnQtb2ZmZXJzLmNvbXBvbmVudC5jc3MifQ== */"]
       });
       /***/
@@ -9986,10 +10197,10 @@
         }, {
           key: "getoffers",
           value: function getoffers() {
-            var _this42 = this;
+            var _this43 = this;
 
             this._QroffersService.GetQR().subscribe(function (res) {
-              _this42.Offers = res.data;
+              _this43.Offers = res.data;
             });
           }
         }, {
@@ -10002,7 +10213,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this43 = this;
+            var _this44 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
               title: 'هل تريد مسح العرض ؟',
@@ -10015,7 +10226,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this43._QroffersService.DeleteQR(id).subscribe(function (res) {
+                _this44._QroffersService.DeleteQR(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -10023,7 +10234,7 @@
                     timer: 1500
                   });
 
-                  _this43.getoffers();
+                  _this44.getoffers();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
                     icon: 'error',
@@ -10031,7 +10242,7 @@
                     text: err.error.message
                   });
 
-                  _this43.getoffers();
+                  _this44.getoffers();
                 }, function () {
                   console.log("completed");
                 });
@@ -10357,17 +10568,17 @@
         _createClass(_InsertParentsComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this44 = this;
+            var _this45 = this;
 
             this._ParentsService.updateparent.subscribe(function (res) {
               if (res != null) {
-                _this44.recordtoupdate = res;
+                _this45.recordtoupdate = res;
 
-                _this44.initiate(res);
+                _this45.initiate(res);
 
-                _this44.update = true;
+                _this45.update = true;
               } else {
-                _this44.initiate();
+                _this45.initiate();
               }
             });
           }
@@ -10391,7 +10602,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this45 = this;
+            var _this46 = this;
 
             this.button = true;
 
@@ -10404,17 +10615,17 @@
                   timer: 1500
                 });
 
-                _this45.ParentForm.reset();
+                _this46.ParentForm.reset();
 
-                _this45._Router.navigate(['content/admin/ViewParent']);
+                _this46._Router.navigate(['content/admin/ViewParent']);
               }, function (err) {
-                _this45.button = false;
+                _this46.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this45.button = false;
+                _this46.button = false;
               });
             } else if (this.ParentForm.status == "VALID" && this.update == true) {
               this._ParentsService.UpdateParents(this.ParentForm.value, this.recordtoupdate.fatherId).subscribe(function (res) {
@@ -10425,17 +10636,17 @@
                   timer: 1500
                 });
 
-                _this45.ParentForm.reset();
+                _this46.ParentForm.reset();
 
-                _this45._Router.navigate(['content/admin/ViewParent']);
+                _this46._Router.navigate(['content/admin/ViewParent']);
               }, function (err) {
-                _this45.button = false;
+                _this46.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this45.button = false;
+                _this46.button = false;
               });
             } else {
               this.button = false;
@@ -10877,10 +11088,10 @@
         }, {
           key: "getparents",
           value: function getparents() {
-            var _this46 = this;
+            var _this47 = this;
 
             this._ParentsService.GetParents().subscribe(function (res) {
-              _this46.parents = res.data;
+              _this47.parents = res.data;
             });
           }
         }, {
@@ -10892,7 +11103,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this47 = this;
+            var _this48 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح ولي الامر ؟',
@@ -10905,7 +11116,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this47._ParentsService.DeleteParents(id).subscribe(function (res) {
+                _this48._ParentsService.DeleteParents(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -10913,7 +11124,7 @@
                     timer: 1500
                   });
 
-                  _this47.getparents();
+                  _this48.getparents();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -10921,7 +11132,7 @@
                     text: err.error.message
                   });
 
-                  _this47.getparents();
+                  _this48.getparents();
                 }, function () {
                   console.log("completed");
                 });
@@ -11273,10 +11484,10 @@
         }, {
           key: "getproducts",
           value: function getproducts() {
-            var _this48 = this;
+            var _this49 = this;
 
             this._ProductService.Get().subscribe(function (res) {
-              _this48.products = res.data;
+              _this49.products = res.data;
             }, function (err) {
               console.log('their is a problem');
             }, function () {
@@ -11300,7 +11511,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this49 = this;
+            var _this50 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'Are you sure?',
@@ -11312,7 +11523,7 @@
               confirmButtonText: 'Yes, delete it!'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this49._ProductService.Delete(id).subscribe(function (res) {
+                _this50._ProductService.Delete(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "Deleted Successfuly",
@@ -11320,7 +11531,7 @@
                     timer: 1500
                   });
 
-                  _this49.getproducts();
+                  _this50.getproducts();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -11659,14 +11870,14 @@
         _createClass(_ViewStudentsActivatedComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this50 = this;
+            var _this51 = this;
 
             this._ActivatedRoute.queryParams.subscribe(function (params) {
-              _this50.beforeSubjectContentId = params['id'];
+              _this51.beforeSubjectContentId = params['id'];
 
-              _this50._ActivatedStudentsService.GetActivatedStudents(params['id']).subscribe(function (res) {
-                _this50.NumberOfActivateStudents = res.students_count;
-                _this50.ActivatedStudents = res.data;
+              _this51._ActivatedStudentsService.GetActivatedStudents(params['id']).subscribe(function (res) {
+                _this51.NumberOfActivateStudents = res.students_count;
+                _this51.ActivatedStudents = res.data;
               });
             });
           }
@@ -11686,10 +11897,10 @@
         }, {
           key: "selectallstudents",
           value: function selectallstudents() {
-            var _this51 = this;
+            var _this52 = this;
 
             this.ActivatedStudents.forEach(function (element) {
-              _this51.ToUnActivate.push(element.studentId);
+              _this52.ToUnActivate.push(element.studentId);
             });
             this.ToUnActivate = _toConsumableArray(new Set(this.ToUnActivate));
             this.numberofstudents = this.ToUnActivate.length;
@@ -11698,7 +11909,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this52 = this;
+            var _this53 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
               title: 'هل انت متأكد من الغاء تفعيل الطلاب ؟',
@@ -11710,8 +11921,8 @@
               cancelButtonText: 'رجوع'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this52._ActivatedStudentsService.deleteActivatedStudents(_this52.beforeSubjectContentId, {
-                  studentIds: _this52.ToUnActivate
+                _this53._ActivatedStudentsService.deleteActivatedStudents(_this53.beforeSubjectContentId, {
+                  studentIds: _this53.ToUnActivate
                 }).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
                     icon: "success",
@@ -11720,7 +11931,7 @@
                     timer: 1500
                   });
 
-                  _this52._Router.navigate(['content/admin/ViewSubCourseContent']);
+                  _this53._Router.navigate(['content/admin/ViewSubCourseContent']);
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
                     icon: 'error',
@@ -12103,19 +12314,19 @@
         _createClass(_InsertStudentsComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this53 = this;
+            var _this54 = this;
 
             this.geteducationlevel();
 
             this._StudentsService.Student.subscribe(function (res) {
               if (res == null) {
-                _this53.initiate();
+                _this54.initiate();
               } else {
-                _this53.update = true;
-                _this53.recordtoupdate = res;
-                _this53.imageLogo = _this53.ImageURL + _this53.recordtoupdate.StudentImage;
+                _this54.update = true;
+                _this54.recordtoupdate = res;
+                _this54.imageLogo = _this54.ImageURL + _this54.recordtoupdate.StudentImage;
 
-                _this53.checkupdate(_this53.recordtoupdate);
+                _this54.checkupdate(_this54.recordtoupdate);
               }
             });
           }
@@ -12148,17 +12359,17 @@
         }, {
           key: "geteducationlevel",
           value: function geteducationlevel() {
-            var _this54 = this;
+            var _this55 = this;
 
             this._EducationLevelService.GetEducationLevel().subscribe(function (res) {
-              _this54.educationlevels = res.data;
+              _this55.educationlevels = res.data;
             });
           } // imgFile
 
         }, {
           key: "getLogoUrl",
           value: function getLogoUrl(event) {
-            var _this55 = this;
+            var _this56 = this;
 
             var reader = new FileReader();
 
@@ -12170,7 +12381,7 @@
               reader.readAsDataURL(file);
 
               reader.onload = function () {
-                _this55.imageLogo = reader.result; // this.logoForm?.append("image", this.Image);
+                _this56.imageLogo = reader.result; // this.logoForm?.append("image", this.Image);
               };
             }
           }
@@ -12182,7 +12393,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this56 = this;
+            var _this57 = this;
 
             this.button = true;
 
@@ -12205,17 +12416,17 @@
                   }
                 });
 
-                _this56.StudentForm.reset();
+                _this57.StudentForm.reset();
 
-                _this56._Router.navigate(['content/admin/ViewStudents']);
+                _this57._Router.navigate(['content/admin/ViewStudents']);
               }, function (err) {
-                _this56.button = false;
+                _this57.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this56.button = false;
+                _this57.button = false;
               });
             } else if (this.StudentForm.status == "VALID" && this.update == true) {
               this._StudentsService.UpdateStudent(this.StudentForm.value, this.recordtoupdate.studentId).subscribe(function (res) {
@@ -12226,17 +12437,17 @@
                   timer: 1500
                 });
 
-                _this56.StudentForm.reset();
+                _this57.StudentForm.reset();
 
-                _this56._Router.navigate(['content/admin/ViewStudents']);
+                _this57._Router.navigate(['content/admin/ViewStudents']);
               }, function (err) {
-                _this56.button = false;
+                _this57.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this56.button = false;
+                _this57.button = false;
               });
             } else {
               this.button = false;
@@ -12804,11 +13015,11 @@
         }, {
           key: "getstudents",
           value: function getstudents() {
-            var _this57 = this;
+            var _this58 = this;
 
             this._StudentsService.GetStudent().subscribe(function (res) {
-              _this57.students = res.data;
-              _this57.numberofstudents = _this57.students.length;
+              _this58.students = res.data;
+              _this58.numberofstudents = _this58.students.length;
             });
           }
         }, {
@@ -12829,7 +13040,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this58 = this;
+            var _this59 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح الطالب ؟',
@@ -12842,7 +13053,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this58._StudentsService.DeleteStudent(id).subscribe(function (res) {
+                _this59._StudentsService.DeleteStudent(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -12850,7 +13061,7 @@
                     timer: 1500
                   });
 
-                  _this58.getstudents();
+                  _this59.getstudents();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -12858,7 +13069,7 @@
                     text: err.error.message
                   });
 
-                  _this58.getstudents();
+                  _this59.getstudents();
                 }, function () {
                   console.log("completed");
                 });
@@ -12875,14 +13086,14 @@
         }, {
           key: "updateactivate",
           value: function updateactivate(id) {
-            return (0, tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-              var _this59 = this;
+            return (0, tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+              var _this60 = this;
 
-              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              return regeneratorRuntime.wrap(function _callee4$(_context4) {
                 while (1) {
-                  switch (_context3.prev = _context3.next) {
+                  switch (_context4.prev = _context4.next) {
                     case 0:
-                      _context3.next = 2;
+                      _context4.next = 2;
                       return sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                         title: 'تعديل او مسح المواد المفعلة لهذا الطالب',
                         input: 'select',
@@ -12899,13 +13110,13 @@
                         inputValidator: function inputValidator(value) {
                           return new Promise(function (resolve) {
                             if (value === 'update') {
-                              _this59._StudentsService.updatestudentcontent.next(id);
+                              _this60._StudentsService.updatestudentcontent.next(id);
 
-                              _this59._Router.navigate(['content/admin/InsertActivation']);
+                              _this60._Router.navigate(['content/admin/InsertActivation']);
 
                               document.getElementsByClassName('swal2-container')[0].remove();
                             } else if (value === 'delete') {
-                              _this59._StudentsService.deletestudentsubjectcontent(id).subscribe(function (res) {
+                              _this60._StudentsService.deletestudentsubjectcontent(id).subscribe(function (res) {
                                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                                   icon: "success",
                                   title: "تم مسح محتوى المواد المفعلة لهذا الطالب",
@@ -12926,10 +13137,10 @@
 
                     case 2:
                     case "end":
-                      return _context3.stop();
+                      return _context4.stop();
                   }
                 }
-              }, _callee3);
+              }, _callee4);
             }));
           }
         }, {
@@ -12942,7 +13153,7 @@
         }, {
           key: "removethemobile",
           value: function removethemobile(id) {
-            var _this60 = this;
+            var _this61 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل انت متأكد من مسح هذا الهاتف ؟',
@@ -12955,7 +13166,7 @@
               cancelButtonText: 'الغاء'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this60._StudentsService.removethemobile({
+                _this61._StudentsService.removethemobile({
                   "studentId": id
                 }).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
@@ -13317,25 +13528,25 @@
         _createClass(_InsertSubcoursecontentComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this61 = this;
+            var _this62 = this;
 
             this._SubcourseService.SubSubject.subscribe(function (res) {
-              _this61.getdropdowns();
+              _this62.getdropdowns();
 
               if (res == null) {
-                _this61._SubcoursecontentService.SubjectContent.subscribe(function (updatedata) {
+                _this62._SubcoursecontentService.SubjectContent.subscribe(function (updatedata) {
                   if (updatedata == null) {
-                    _this61.initiate();
+                    _this62.initiate();
                   } else {
-                    _this61.recordtoupdate = updatedata;
+                    _this62.recordtoupdate = updatedata;
 
-                    _this61.checkedit(_this61.recordtoupdate);
+                    _this62.checkedit(_this62.recordtoupdate);
 
-                    _this61.update = true;
+                    _this62.update = true;
                   }
                 });
               } else {
-                _this61.initiate(res);
+                _this62.initiate(res);
               }
             });
           }
@@ -13358,10 +13569,10 @@
         }, {
           key: "getdropdowns",
           value: function getdropdowns() {
-            var _this62 = this;
+            var _this63 = this;
 
             this._SubcourseService.GetSubCourse().subscribe(function (res) {
-              _this62.subsubjects = res.data;
+              _this63.subsubjects = res.data;
             });
           }
         }, {
@@ -13372,7 +13583,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this63 = this;
+            var _this64 = this;
 
             this.button = true;
 
@@ -13385,17 +13596,17 @@
                   timer: 1500
                 });
 
-                _this63.subcoursecontentForm.reset();
+                _this64.subcoursecontentForm.reset();
 
-                _this63._Router.navigate(['content/admin/ViewSubCourseContent']);
+                _this64._Router.navigate(['content/admin/ViewSubCourseContent']);
               }, function (err) {
-                _this63.button = false;
+                _this64.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this63.button = false;
+                _this64.button = false;
               });
             } else if (this.subcoursecontentForm.status == "VALID" && this.update == true) {
               this._SubcoursecontentService.UpdateSubjectContent(this.subcoursecontentForm.value, this.recordtoupdate.beforSubjectContentId).subscribe(function (res) {
@@ -13406,17 +13617,17 @@
                   timer: 1500
                 });
 
-                _this63.subcoursecontentForm.reset();
+                _this64.subcoursecontentForm.reset();
 
-                _this63._Router.navigate(['content/admin/ViewSubCourseContent']);
+                _this64._Router.navigate(['content/admin/ViewSubCourseContent']);
               }, function (err) {
-                _this63.button = false;
+                _this64.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'لم تقم بتغيير اي شئ'
                 });
-                _this63.button = false;
+                _this64.button = false;
               });
             } else {
               this.button = false;
@@ -13712,18 +13923,18 @@
         _createClass(_RearrangeSubcourseContentComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this64 = this;
+            var _this65 = this;
 
             this._SubcoursecontentService.RearrangeSubjectContent.subscribe(function (res) {
               if (res != null) {
-                _this64.Toast.fire({
+                _this65.Toast.fire({
                   icon: 'warning',
                   title: 'قم بسحب اي من عناصر الجدول للموقع المراد'
                 });
 
-                _this64.getfiltersubcoursecontent(res);
+                _this65.getfiltersubcoursecontent(res);
               } else {
-                _this64._Router.navigate(['content/admin/ViewSubCourseContent']);
+                _this65._Router.navigate(['content/admin/ViewSubCourseContent']);
               }
             });
           }
@@ -13736,19 +13947,19 @@
         }, {
           key: "getfiltersubcoursecontent",
           value: function getfiltersubcoursecontent(id) {
-            var _this65 = this;
+            var _this66 = this;
 
             this._SubcoursecontentService.filtersubjectcontent(id).subscribe(function (res) {
-              _this65.records = res.data;
+              _this66.records = res.data;
             });
           }
         }, {
           key: "gettheprimarykeysoftherecords",
           value: function gettheprimarykeysoftherecords() {
-            var _this66 = this;
+            var _this67 = this;
 
             this.records.forEach(function (element) {
-              _this66.arrangedrecords.push(element.subjectContentId);
+              _this67.arrangedrecords.push(element.subjectContentId);
             });
           }
         }, {
@@ -14177,10 +14388,10 @@
         }, {
           key: "getsubcontent",
           value: function getsubcontent() {
-            var _this67 = this;
+            var _this68 = this;
 
             this._SubcoursecontentService.GetSubjectContent().subscribe(function (res) {
-              _this67.subsubjects = res.data;
+              _this68.subsubjects = res.data;
             });
           }
         }, {
@@ -14206,7 +14417,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this68 = this;
+            var _this69 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح الكورس ؟',
@@ -14219,7 +14430,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this68._SubcoursecontentService.DeleteSubjectContent(id).subscribe(function (res) {
+                _this69._SubcoursecontentService.DeleteSubjectContent(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -14227,7 +14438,7 @@
                     timer: 1500
                   });
 
-                  _this68.getsubcontent();
+                  _this69.getsubcontent();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -14235,7 +14446,7 @@
                     text: err.error.message
                   });
 
-                  _this68.getsubcontent();
+                  _this69.getsubcontent();
                 }, function () {
                   console.log("completed");
                 });
@@ -14595,18 +14806,18 @@
         _createClass(_InsertSubcourseComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this69 = this;
+            var _this70 = this;
 
             this.getdropdown();
 
             this._SubcourseService.SubSubject.subscribe(function (res) {
               if (res == null) {
-                _this69.initiate();
+                _this70.initiate();
               } else {
-                _this69.recordtoupdate = res;
-                _this69.update = true;
+                _this70.recordtoupdate = res;
+                _this70.update = true;
 
-                _this69.checkupdate(_this69.recordtoupdate);
+                _this70.checkupdate(_this70.recordtoupdate);
               }
             });
           }
@@ -14634,16 +14845,16 @@
         }, {
           key: "getdropdown",
           value: function getdropdown() {
-            var _this70 = this;
+            var _this71 = this;
 
             this._CoursesService.GetCourse().subscribe(function (res) {
-              _this70.courses = res.data;
+              _this71.courses = res.data;
             });
           }
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this71 = this;
+            var _this72 = this;
 
             this.button = true;
 
@@ -14656,17 +14867,17 @@
                   timer: 1500
                 });
 
-                _this71.SubSubjectForm.reset();
+                _this72.SubSubjectForm.reset();
 
-                _this71._Router.navigate(['content/admin/ViewSubSubject']);
+                _this72._Router.navigate(['content/admin/ViewSubSubject']);
               }, function (err) {
-                _this71.button = false;
+                _this72.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this71.button = false;
+                _this72.button = false;
               });
             } else if (this.SubSubjectForm.status == "VALID" && this.update == true) {
               this._SubcourseService.UpdateSubCourse(this.SubSubjectForm.value, this.recordtoupdate.subSubjectId).subscribe(function (res) {
@@ -14677,17 +14888,17 @@
                   timer: 1500
                 });
 
-                _this71.SubSubjectForm.reset();
+                _this72.SubSubjectForm.reset();
 
-                _this71._Router.navigate(['content/admin/ViewSubSubject']);
+                _this72._Router.navigate(['content/admin/ViewSubSubject']);
               }, function (err) {
-                _this71.button = false;
+                _this72.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this71.button = false;
+                _this72.button = false;
               });
             } else {
               this.button = false;
@@ -14975,7 +15186,7 @@
         _createClass(_RearrangeSubcourseComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this72 = this;
+            var _this73 = this;
 
             this.Toast.fire({
               icon: 'warning',
@@ -14983,7 +15194,7 @@
             });
 
             this._ActivatedRoute.queryParams.subscribe(function (params) {
-              _this72.getsubcourse(params['id']);
+              _this73.getsubcourse(params['id']);
             });
           }
         }, {
@@ -14994,19 +15205,19 @@
         }, {
           key: "getsubcourse",
           value: function getsubcourse(id) {
-            var _this73 = this;
+            var _this74 = this;
 
             this._SubcourseService.filterSubCourse(id).subscribe(function (res) {
-              _this73.records = res.data;
+              _this74.records = res.data;
             });
           }
         }, {
           key: "gettheprimarykeysoftherecords",
           value: function gettheprimarykeysoftherecords() {
-            var _this74 = this;
+            var _this75 = this;
 
             this.records.forEach(function (element) {
-              _this74.arrangedrecords.push(element.beforSubjectContentId);
+              _this75.arrangedrecords.push(element.beforSubjectContentId);
             });
           }
         }, {
@@ -15392,16 +15603,16 @@
         }, {
           key: "getsubsubjects",
           value: function getsubsubjects() {
-            var _this75 = this;
+            var _this76 = this;
 
             this._SubcourseService.GetSubCourse().subscribe(function (res) {
-              _this75.subsubjects = res.data;
+              _this76.subsubjects = res.data;
             });
           }
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this76 = this;
+            var _this77 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح الكورس ؟',
@@ -15414,7 +15625,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this76._SubcourseService.DeleteSubCourse(id).subscribe(function (res) {
+                _this77._SubcourseService.DeleteSubCourse(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -15422,7 +15633,7 @@
                     timer: 1500
                   });
 
-                  _this76.getsubsubjects();
+                  _this77.getsubsubjects();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -15430,7 +15641,7 @@
                     text: err.error.message
                   });
 
-                  _this76.getsubsubjects();
+                  _this77.getsubsubjects();
                 }, function () {
                   console.log("completed");
                 });
@@ -15742,23 +15953,23 @@
         _createClass(_ViewTeachercoursesComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this77 = this;
+            var _this78 = this;
 
             //here is to get the teacher's id & the teacher's name
             this.route.params.subscribe(function (params) {
-              _this77.TeacherId = +params['id'];
-              _this77.TeacherName = params['teacherName'];
+              _this78.TeacherId = +params['id'];
+              _this78.TeacherName = params['teacherName'];
             });
             this.getTeacherCourses();
           }
         }, {
           key: "getTeacherCourses",
           value: function getTeacherCourses() {
-            var _this78 = this;
+            var _this79 = this;
 
             //this to fetch courses related to the teacher
             this._TeachersService.TeacherCourse(this.TeacherId).subscribe(function (res) {
-              _this78.courselectures = res.data;
+              _this79.courselectures = res.data;
             }, function (err) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
                 icon: 'error',
@@ -16077,32 +16288,32 @@
         _createClass(_InsertTeachersComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this79 = this;
+            var _this80 = this;
 
             this.getdropdowns();
 
             this._TeachersService.Teacher.subscribe(function (res) {
               if (res == null) {
-                _this79.initiate();
+                _this80.initiate();
               } else {
-                _this79.update = true;
-                _this79.recordtoupdate = res;
+                _this80.update = true;
+                _this80.recordtoupdate = res;
 
-                _this79.checkupdate(_this79.recordtoupdate);
+                _this80.checkupdate(_this80.recordtoupdate);
               }
             });
           }
         }, {
           key: "getdropdowns",
           value: function getdropdowns() {
-            var _this80 = this;
+            var _this81 = this;
 
             this._EducationLevelService.GetEducationLevel().subscribe(function (res) {
-              _this80.educationlevels = res.data;
+              _this81.educationlevels = res.data;
             });
 
             this._CoursesService.GetCourse().subscribe(function (res) {
-              _this80.subjects = res.data;
+              _this81.subjects = res.data;
             });
           }
         }, {
@@ -16127,10 +16338,10 @@
         }, {
           key: "insertarray",
           value: function insertarray(data) {
-            var _this81 = this;
+            var _this82 = this;
 
             data.forEach(function (element) {
-              return _this81.selectedid.push(element.educationId);
+              return _this82.selectedid.push(element.educationId);
             });
             this.TeacherForm.value.educationIds = this.selectedid;
           }
@@ -16142,7 +16353,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this82 = this;
+            var _this83 = this;
 
             this.button = true;
 
@@ -16157,17 +16368,17 @@
                   timer: 1500
                 });
 
-                _this82.TeacherForm.reset();
+                _this83.TeacherForm.reset();
 
-                _this82._Router.navigate(['content/admin/ViewTeachers']);
+                _this83._Router.navigate(['content/admin/ViewTeachers']);
               }, function (err) {
-                _this82.button = false;
+                _this83.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this82.button = false;
+                _this83.button = false;
               });
             } else if (this.TeacherForm.status == "VALID" && this.update == true) {
               this.insertarray(this.selectedItems);
@@ -16180,17 +16391,17 @@
                   timer: 1500
                 });
 
-                _this82.TeacherForm.reset();
+                _this83.TeacherForm.reset();
 
-                _this82._Router.navigate(['content/admin/ViewTeachers']);
+                _this83._Router.navigate(['content/admin/ViewTeachers']);
               }, function (err) {
-                _this82.button = false;
+                _this83.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'لم تقم بتغيير اي شئ'
                 });
-                _this82.button = false;
+                _this83.button = false;
               });
             } else {
               this.button = false;
@@ -16589,10 +16800,10 @@
         }, {
           key: "getteachers",
           value: function getteachers() {
-            var _this83 = this;
+            var _this84 = this;
 
             this._TeachersService.GetTeacher().subscribe(function (res) {
-              _this83.teachers = res.data;
+              _this84.teachers = res.data;
             });
           }
         }, {
@@ -16609,7 +16820,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this84 = this;
+            var _this85 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح المدرس ؟',
@@ -16622,7 +16833,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this84._TeachersService.DeleteTeacher(id).subscribe(function (res) {
+                _this85._TeachersService.DeleteTeacher(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -16630,7 +16841,7 @@
                     timer: 1500
                   });
 
-                  _this84.getteachers();
+                  _this85.getteachers();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -16638,7 +16849,7 @@
                     text: err.error.message
                   });
 
-                  _this84.getteachers(); //     Swal.fire({
+                  _this85.getteachers(); //     Swal.fire({
                   //       icon: "success",
                   //       title: "تم المسح بنجاح",
                   //       showConfirmButton: false,
@@ -17947,6 +18158,12 @@
           key: "DeleteQR",
           value: function DeleteQR(id) {
             return this._HttpClient["delete"]("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/deleteQROffers/").concat(id));
+          } // for the subject offers 
+
+        }, {
+          key: "CreateSubjectQR",
+          value: function CreateSubjectQR(data) {
+            return this._HttpClient.post("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/addQRSubjectContent?"), data);
           }
         }]);
 
@@ -18586,7 +18803,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this85 = this;
+            var _this86 = this;
 
             this._LoginService.user_login(this.person.value).subscribe(function (res) {
               console.log(res);
@@ -18598,7 +18815,7 @@
               });
               localStorage.setItem('Authorization', res.token);
 
-              _this85._Router.navigate(["/content/admin/ViewStudents"]);
+              _this86._Router.navigate(["/content/admin/ViewStudents"]);
             }, function (err) {
               console.log("their is an error");
               sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
@@ -19433,20 +19650,20 @@
         _createClass(_BookmarkComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this86 = this;
+            var _this87 = this;
 
             this.navServices.items.subscribe(function (menuItems) {
-              _this86.items = menuItems;
+              _this87.items = menuItems;
 
-              _this86.items.filter(function (items) {
+              _this87.items.filter(function (items) {
                 if (items.bookmark) {
-                  _this86.bookmarkItems.push(items);
+                  _this87.bookmarkItems.push(items);
                 }
 
                 if (!items.children) return false;
                 items.children.filter(function (subItems) {
                   if (subItems.bookmark) {
-                    _this86.bookmarkItems.push(subItems);
+                    _this87.bookmarkItems.push(subItems);
                   }
                 });
               });
@@ -19465,7 +19682,7 @@
         }, {
           key: "searchTerm",
           value: function searchTerm(term) {
-            var _this87 = this;
+            var _this88 = this;
 
             term ? this.addFix() : this.removeFix();
 
@@ -19505,9 +19722,9 @@
                 });
               });
 
-              _this87.checkSearchResultEmpty(items);
+              _this88.checkSearchResultEmpty(items);
 
-              _this87.menuItems = items;
+              _this88.menuItems = items;
             });
           }
         }, {
@@ -20823,16 +21040,16 @@
 
       var _MegaMenuComponent = /*#__PURE__*/function () {
         function _MegaMenuComponent(navServices) {
-          var _this88 = this;
+          var _this89 = this;
 
           _classCallCheck(this, _MegaMenuComponent);
 
           this.navServices = navServices;
           this.navServices.megaItems.subscribe(function (megaItems) {
-            return _this88.megaItems = megaItems;
+            return _this89.megaItems = megaItems;
           });
           this.navServices.levelmenuitems.subscribe(function (levelmenuitems) {
-            return _this88.levelmenuitems = levelmenuitems;
+            return _this89.levelmenuitems = levelmenuitems;
           });
         }
 
@@ -20863,11 +21080,11 @@
         }, {
           key: "toggletNavActive",
           value: function toggletNavActive(item) {
-            var _this89 = this;
+            var _this90 = this;
 
             if (!item.active) {
               this.megaItems.forEach(function (a) {
-                if (_this89.megaItems.includes(item)) {
+                if (_this90.megaItems.includes(item)) {
                   a.active = false;
                 }
 
@@ -21631,7 +21848,7 @@
 
       var _SearchComponent = /*#__PURE__*/function () {
         function _SearchComponent(navServices) {
-          var _this90 = this;
+          var _this91 = this;
 
           _classCallCheck(this, _SearchComponent);
 
@@ -21639,7 +21856,7 @@
           this.searchResult = false;
           this.searchResultEmpty = false;
           this.navServices.items.subscribe(function (menuItems) {
-            return _this90.items = menuItems;
+            return _this91.items = menuItems;
           });
         }
 
@@ -21654,7 +21871,7 @@
         }, {
           key: "searchTerm",
           value: function searchTerm(term) {
-            var _this91 = this;
+            var _this92 = this;
 
             term ? this.addFix() : this.removeFix();
             if (!term) return this.menuItems = [];
@@ -21683,9 +21900,9 @@
                 });
               });
 
-              _this91.checkSearchResultEmpty(items);
+              _this92.checkSearchResultEmpty(items);
 
-              _this91.menuItems = items;
+              _this92.menuItems = items;
             });
           }
         }, {
@@ -22168,7 +22385,7 @@
 
       var _ContentComponent = /*#__PURE__*/function () {
         function _ContentComponent(route, navServices, layout) {
-          var _this92 = this;
+          var _this93 = this;
 
           _classCallCheck(this, _ContentComponent);
 
@@ -22176,7 +22393,7 @@
           this.navServices = navServices;
           this.layout = layout;
           this.route.queryParams.subscribe(function (params) {
-            _this92.layout.config.settings.layout = params.layout ? params.layout : _this92.layout.config.settings.layout;
+            _this93.layout.config.settings.layout = params.layout ? params.layout : _this93.layout.config.settings.layout;
           });
         }
 
@@ -22431,13 +22648,13 @@
 
       var _LoaderComponent = /*#__PURE__*/function () {
         function _LoaderComponent() {
-          var _this93 = this;
+          var _this94 = this;
 
           _classCallCheck(this, _LoaderComponent);
 
           this.show = true;
           setTimeout(function () {
-            _this93.show = false;
+            _this94.show = false;
           }, 3000);
         }
 
@@ -24045,7 +24262,7 @@
 
       var _SidebarComponent = /*#__PURE__*/function () {
         function _SidebarComponent(router, navServices, layout) {
-          var _this94 = this;
+          var _this95 = this;
 
           _classCallCheck(this, _SidebarComponent);
 
@@ -24060,15 +24277,15 @@
           this.Role = localStorage.getItem('RiskRole'); // this.UserRole =  Roles.Agent;
 
           this.navServices.items.subscribe(function (res) {
-            _this94.menuRolus = res; // this.navServices.itemss.subscribe((res)=>{
+            _this95.menuRolus = res; // this.navServices.itemss.subscribe((res)=>{
             //   this.donationRolus = res
             // })
 
-            _this94.router.events.subscribe(function (event) {
+            _this95.router.events.subscribe(function (event) {
               if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_4__.NavigationEnd) {
                 res.filter(function (items) {
                   if (items.path === event.url) {
-                    _this94.setNavActive(items);
+                    _this95.setNavActive(items);
                   }
 
                   if (!items.children) {
@@ -24077,7 +24294,7 @@
 
                   items.children.filter(function (subItems) {
                     if (subItems.path === event.url) {
-                      _this94.setNavActive(subItems);
+                      _this95.setNavActive(subItems);
                     }
 
                     if (!subItems.children) {
@@ -24086,7 +24303,7 @@
 
                     subItems.children.filter(function (subSubItems) {
                       if (subSubItems.path === event.url) {
-                        _this94.setNavActive(subSubItems);
+                        _this95.setNavActive(subSubItems);
                       }
                     });
                   });
@@ -24136,11 +24353,11 @@
         }, {
           key: "toggletNavActive",
           value: function toggletNavActive(item) {
-            var _this95 = this;
+            var _this96 = this;
 
             if (!item.active) {
               this.menuRolus.forEach(function (a) {
-                if (_this95.menuRolus.includes(item)) {
+                if (_this96.menuRolus.includes(item)) {
                   a.active = false;
                 }
 
@@ -25398,7 +25615,7 @@
 
       var _NavService = /*#__PURE__*/function () {
         function _NavService(router) {
-          var _this96 = this;
+          var _this97 = this;
 
           _classCallCheck(this, _NavService);
 
@@ -25737,25 +25954,25 @@
           this.levelmenuitems = new rxjs__WEBPACK_IMPORTED_MODULE_1__.BehaviorSubject(this.LEVELMENUITEMS);
           this.setScreenWidth(window.innerWidth);
           (0, rxjs__WEBPACK_IMPORTED_MODULE_2__.fromEvent)(window, "resize").pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.debounceTime)(1000), (0, rxjs_operators__WEBPACK_IMPORTED_MODULE_4__.takeUntil)(this.unsubscriber)).subscribe(function (evt) {
-            _this96.setScreenWidth(evt.target.innerWidth);
+            _this97.setScreenWidth(evt.target.innerWidth);
 
             if (evt.target.innerWidth < 991) {
-              _this96.collapseSidebar = true;
-              _this96.megaMenu = false;
-              _this96.levelMenu = false;
+              _this97.collapseSidebar = true;
+              _this97.megaMenu = false;
+              _this97.levelMenu = false;
             }
 
             if (evt.target.innerWidth < 1199) {
-              _this96.megaMenuColapse = true;
+              _this97.megaMenuColapse = true;
             }
           });
 
           if (window.innerWidth < 991) {
             // Detect Route change sidebar close
             this.router.events.subscribe(function (event) {
-              _this96.collapseSidebar = true;
-              _this96.megaMenu = false;
-              _this96.levelMenu = false;
+              _this97.collapseSidebar = true;
+              _this97.megaMenu = false;
+              _this97.levelMenu = false;
             });
           }
         }
