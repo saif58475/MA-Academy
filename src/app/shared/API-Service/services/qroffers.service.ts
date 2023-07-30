@@ -23,5 +23,10 @@ export class QroffersService {
   DeleteQR(id : number):Observable<any>{
     return this._HttpClient.delete(`${environment.Server_URL}/deleteQROffers/${id}`);
   }
+
+  // for the subject offers 
+  CreateSubjectQR(data : object):Observable<any>{
+    return this._HttpClient.post(`${environment.Server_URL}/addQRSubjectContent?`, data);
+   }
  
 }

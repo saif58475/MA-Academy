@@ -3,14 +3,24 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header" style="padding-bottom: 5px !important">
-                    <div >
+                    <div>
                         <h5 class="pb-2">عرض جديد</h5>
-
                        <span> يرجى ملئ جميع الخانات </span>
                     </div>
-                    <ng-template >
-                        
-                    </ng-template>
+                    <div class="row">
+                        <div class="col-12 header-titles">
+                            <a class="d-block mx-1" (click)="selectpackage(1)">
+                                <button class="btn pull-right" type="button">
+                                    <span class="m-2">عرض لابواب المواد</span>
+                                </button>
+                            </a>
+                            <a class="d-block mx-1" (click)="selectpackage(2)">
+                                <button class="btn pull-right" type="button">
+                                    <span class="m-2">عروض لحصص المواد</span>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <form class="needs-validation" autocomplete="off" 
@@ -74,9 +84,12 @@
                                      formControlName="date_end"
                                     containerClass="" />  
                             </div>
-                            <!-- subcoursecontent  -->
-                            <div class="col-lg-6 col-sm-12  mb-3">
-                                <label for="validationCustom06"><span class="validation-required">*</span> اختر محتوى المادة</label>
+
+                            <div [ngSwitch]="case" class="col-6 mb-3">
+                                <div class="w-100" *ngSwitchCase="'1'">
+                                    <!-- subcoursecontent -->
+                            <div>
+                                <label for="validationCustom06"><span class="validation-required">*</span> اختر ابواب العرض</label>
                                 <ng-multiselect-dropdown
                                        [placeholder]="'اختر محتوى المواد'"
                                        [settings]="dropdownSettings"
@@ -85,6 +98,23 @@
                                       [ngModelOptions]="{standalone: true}">
                                 </ng-multiselect-dropdown>
                             </div>
+                                </div>
+                                <div *ngSwitchCase="'2'">
+                                          <!-- subcoursecontent -->
+                            <div>
+                                <label for="validationCustom06"><span class="validation-required">*</span> اختر حصص العرض</label>
+                                <ng-multiselect-dropdown
+                                       [placeholder]="'اختر الحصة'"
+                                       [settings]="dropdownSettingscourse"
+                                       [data]="subcourse"
+                                      [(ngModel)]="selectedsubcourse"
+                                      [ngModelOptions]="{standalone: true}">
+                                </ng-multiselect-dropdown>
+                            </div>
+                                </div>
+                                <div *ngSwitchDefault>Default content</div>
+                              </div>
+                            
                             <!-- name of the offer -->
                             <div class="col-6 mb-3">
                                 <label for="validation01"><span class="validation-required">*</span> اسم العرض</label>
@@ -94,7 +124,7 @@
                                 [class.is-invalid]="fc.name.invalid && (fc.name.touched)"
                                  required placeholder="اكتب اسم العرض" />
                             </div>
-                            <!-- QrCode  -->
+                            <!-- QrCode -->
                             <div class="col-6 mb-3">
                                 <input class="form-control" id="validation01" type="text" [(ngModel)]="NumberOfStudents" [ngModelOptions]="{standalone: true}"
                                      required

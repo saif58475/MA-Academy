@@ -7,6 +7,7 @@ import { SubcourseService } from './../../../../shared/API-Service/services/subc
 import { SubcoursecontentService } from './../../../../shared/API-Service/services/subcoursecontent.service';
 import { TeachersService } from './../../../../shared/API-Service/services/teachers.service';
 import { QroffersService } from './../../../../shared/API-Service/services/qroffers.service'
+import { triggerHandler } from 'devextreme/events';
 
 @Component({
   selector: 'app-insert-offers',
@@ -17,6 +18,7 @@ export class InsertOffersComponent implements OnInit {
   @ViewChildren('myDivs', { read: ElementRef }) myDivs: QueryList<ElementRef>;
 OfferFrom:FormGroup;
 OfferFromData:FormData;
+case : number = 1;
 update:boolean = false;
 button:boolean = false;
 courses:any [];
@@ -44,7 +46,7 @@ oneoffour:any []= [{name:'teacher', state:true} , {name:'subcoursecontent',state
              , private _TeachersService:TeachersService
              , private _QroffersService:QroffersService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'beforSubjectContentId',
@@ -59,10 +61,10 @@ oneoffour:any []= [{name:'teacher', state:true} , {name:'subcoursecontent',state
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All'
     };
+    
   this.getdropdowns();
   this._QroffersService.Data.subscribe((res) => {
     if( res != null){
-      
       this.initiate(res);
       this.OfferId = res.offersId;
    this.update = true;
@@ -70,27 +72,41 @@ oneoffour:any []= [{name:'teacher', state:true} , {name:'subcoursecontent',state
    this.NumberOfStudents = this.QrCode.length;
   //  this.filterObjectsById(this.subcoursecontent, res.beforSubjectContentId);
    this.selectedsubcoursecontent = res.beforSubjectContentId
-    }else{
+    }  else{
       this.initiate();
-    }
-  })
   }
+})
+}
+
+
+
   initiate(data?:any){
-    
     this.OfferFrom = this._FormBuilder.group({
       teacherId: [''],
-      subSubjectId: [''],
+      subjectContentId: [''],
       date_start: [data?.date_start || '', Validators.required],
       date_end: [data?.date_end || '', Validators.required],
       status: [true],
       name: [data?.name || '', Validators.required],
-      QR: [this.QrCode],
+      QRSubjectContent: [this.QrCode],
     });
   }
   
+  selectpackage(id:any){
+     switch(id){
+    case 1 :
+      this.case =1 ;
+      break;
+    case 2 :
+      this.case = 2;
+      break;
+      default :
+      alert('welhvwe');
+      break;
+     }
+  }
   filterObjectsById(objects: any[], ids: number[]) {  
    this.selectedsubcoursecontent = objects.filter(obj => ids.includes(obj.beforSubjectContentId));
-   debugger
   }
 
 
@@ -159,7 +175,7 @@ printWindow.document.write('</html>');
    })
    this._TeachersService.GetTeacher().subscribe((res) => {
     this.teachers = res.data;
-   })
+   });
   }
   
   appendData(){
@@ -175,6 +191,21 @@ printWindow.document.write('</html>');
    this.OfferFromData.append("name", this.OfferFrom.value.name); 
    this.QrCode.forEach(element => {
     this.OfferFromData.append("QR[]", element);    
+   });   
+  }
+  appendLessonData(){
+   this.OfferFromData = new FormData();
+   this.OfferFromData.append("teacherId", this.OfferFrom.value.teacherId);    
+   this.OfferFromData.append("subSubjectId", this.OfferFrom.value.subSubjectId);    
+   this.selectedsubcourse.forEach(element => {
+    this.OfferFromData.append("subjectContentId[]", element.subSubjectId);        
+   });
+   this.OfferFromData.append("date_start", this.OfferFrom.value.date_start);    
+   this.OfferFromData.append("date_end", this.OfferFrom.value.date_end);    
+   this.OfferFromData.append("status", this.OfferFrom.value.status); 
+   this.OfferFromData.append("name", this.OfferFrom.value.name); 
+   this.QrCode.forEach(element => {
+    this.OfferFromData.append("QRSubjectContent[]", element);    
    });   
   }
 
@@ -201,7 +232,7 @@ printWindow.document.write('</html>');
   }
   SendData(){
     this.button = true;
-    if( this.OfferFrom.status == "VALID" && this.update == false){
+    if( this.OfferFrom.status == "VALID" && this.update == false && this.case == 1){
       this.appendData();
       this._QroffersService.CreateQR(this.OfferFromData).subscribe((res) => {
         Swal.fire({
@@ -219,7 +250,26 @@ printWindow.document.write('</html>');
         });
         this.button = false;
       })
-    }else if(this.OfferFrom.status == "VALID" && this.update == true){
+    }else if( this.OfferFrom.status == "VALID" && this.update == false && this.case == 2){
+      this.appendLessonData();
+      this._QroffersService.CreateSubjectQR(this.OfferFromData).subscribe((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "تم تسجيل العرض بنجاح",
+          showConfirmButton: false,
+          timer: 1500,
+        }); 
+        this._Router.navigate(['content/admin/ViewOffer']);
+      },(err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'خطأ',
+          text: 'تأكد من ملئ جميع الخانات',
+        });
+        this.button = false;
+      })
+    }
+    else if(this.OfferFrom.status == "VALID" && this.update == true){
       this.appendData();
       this._QroffersService.UpdateQR(this.OfferFromData, this.OfferId).subscribe((res) => {
         Swal.fire({
