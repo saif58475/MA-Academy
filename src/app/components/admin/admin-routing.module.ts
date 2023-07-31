@@ -175,7 +175,7 @@ const routes: Routes = [
                 component: ViewStudentsActivatedComponent,
             },   
             {
-                path: "ViewExams",
+                path: "ViewExams/:id",
                 component: ViewExamsComponent,
             },   
             {

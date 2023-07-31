@@ -34,7 +34,7 @@ export class InsertExamsComponent implements OnInit {
   ngOnInit(): void {
     this._ActivatedRoute.params.subscribe(params => {
       this.coursecontentId = params['id'];
-    })
+    });
   }
 
   initiate(id?:number){

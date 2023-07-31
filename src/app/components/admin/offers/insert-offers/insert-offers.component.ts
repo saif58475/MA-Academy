@@ -8,7 +8,7 @@ import { SubcoursecontentService } from './../../../../shared/API-Service/servic
 import { TeachersService } from './../../../../shared/API-Service/services/teachers.service';
 import { QroffersService } from './../../../../shared/API-Service/services/qroffers.service'
 import { triggerHandler } from 'devextreme/events';
-
+import { CourseContentService } from './../../../../shared/API-Service/services/course-content.service';
 @Component({
   selector: 'app-insert-offers',
   templateUrl: './insert-offers.component.html',
@@ -44,7 +44,8 @@ oneoffour:any []= [{name:'teacher', state:true} , {name:'subcoursecontent',state
              , private _SubcourseService:SubcourseService 
              , private _SubcoursecontentService:SubcoursecontentService
              , private _TeachersService:TeachersService
-             , private _QroffersService:QroffersService) { }
+             , private _QroffersService:QroffersService
+             , private _CourseContentService:CourseContentService) { }
 
   async ngOnInit(): Promise<void> {
     this.dropdownSettings = {
@@ -56,8 +57,8 @@ oneoffour:any []= [{name:'teacher', state:true} , {name:'subcoursecontent',state
     };
     this.dropdownSettingscourse = {
       singleSelection: false,
-      idField: 'subSubjectId',
-      textField: 'subSubjectName',
+      idField: 'subjectContentId',
+      textField: 'subjectContentName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All'
     };
@@ -165,14 +166,17 @@ printWindow.document.write('</html>');
   }
   getdropdowns(){
   // this._CourseContentService.GetCourseContent().subscribe((res) => {
-  //   this.courses = res.data;
+  //    this.courses = res.data;
   // });
-  this._SubcourseService.GetSubCourse().subscribe((res) => {
+  // this._SubcourseService.GetSubCourse().subscribe((res) => {
+  //    this.subcourse = res.data;
+  // });
+  this._CourseContentService.GetCourseContent().subscribe((res) => {
     this.subcourse = res.data;
-  })
+  });
    this._SubcoursecontentService.GetSubjectContent().subscribe((res) => {
     this.subcoursecontent = res.data;
-   })
+   });
    this._TeachersService.GetTeacher().subscribe((res) => {
     this.teachers = res.data;
    });

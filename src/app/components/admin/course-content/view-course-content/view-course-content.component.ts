@@ -39,7 +39,6 @@ page: number = 1;
       this._SubcoursecontentService.filtersubjectcontent(params['id']).subscribe((res) => {
       this.courselectures = res.data;
       this.filteredisok = false;
-      debugger
       })
      }
     });
@@ -52,8 +51,7 @@ page: number = 1;
   })
   }
   addExam(id:number){
-    this._Router.navigate([`content/admin/InsertExams/${id}`], { queryParams: { id: id } });
-
+    this._Router.navigate([`content/admin/ViewExams/${id}`], { queryParams: { id: id } });
   }
   onTableDataChange(event:any){
     this.page = event;
