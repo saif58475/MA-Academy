@@ -48,6 +48,7 @@ import { ViewStudentsActivatedComponent } from './students-activated/view-studen
 import { ViewTeachercoursesComponent } from './teacherCourses/view-teachercourses/view-teachercourses.component';
 import { ViewExamsComponent } from './exams/view-exams/view-exams.component';
 import { InsertExamsComponent } from './exams/insert-exams/insert-exams.component';
+import { StudentReportingComponent } from './students/student-reporting/student-reporting.component';
 
  @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { InsertExamsComponent } from './exams/insert-exams/insert-exams.componen
     ViewTeachercoursesComponent,
     ViewExamsComponent,
     InsertExamsComponent,
+    StudentReportingComponent,
   ],
   imports: [
     DxReportViewerModule,

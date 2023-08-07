@@ -50,7 +50,23 @@
     <div class="col-12" *ngFor="let view of Exams">
       <div class="card">  
           <div class="card-header">
-              <h5>سؤال :- {{view.qusetion}}</h5>
+            <div class="row">
+              <div class="col-9">
+                <h5>سؤال :- {{view.qusetion}}</h5>
+              </div>
+              <div class="col-3">
+                <button class="btn pull-left"
+                style="color: rgba(35, 118, 241, 0.667);background-color: white !important; padding: 7px"
+                (click)="Update(view)">
+                <i class="fa fa-pencil"></i>
+            </button>
+            <!-- <ng-template #elseBlock>  -->
+                <button class="btn  pull-left"  style="color: red;background-color: white !important; padding: 7px"
+                (click)="delete(view.id)">
+                <i class="fa fa-trash"></i>
+                   </button>
+              </div>
+            </div>
           </div>
           <div class="card-body">
               <p [ngSwitch]="view.typeid">

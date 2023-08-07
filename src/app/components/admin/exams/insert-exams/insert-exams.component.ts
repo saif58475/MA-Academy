@@ -15,6 +15,8 @@ export class InsertExamsComponent implements OnInit {
   button:boolean = false;
   coursecontentId:number;
   writeorwrong:boolean;
+  update:boolean = false;
+  exam_id:number;
   questionDropDown:Object [] = [
     { text : 'firstChoice', type: 'الاختيار الاول'},
     { text : 'secondChoice', type: 'الاختيار الثاني'},
@@ -25,16 +27,26 @@ export class InsertExamsComponent implements OnInit {
   question3:boolean = false;
   question4:boolean = false;
   question5:boolean = false;
-  Exams:Question [] = [];
+  Exams:any [] = [];
   constructor(private _ExamsService:ExamsService
              ,private _Router:Router
              ,private _FormBuilder:FormBuilder
              ,private _ActivatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this._ActivatedRoute.params.subscribe(params => {
-      this.coursecontentId = params['id'];
+    this._ExamsService.data.subscribe((res) => {
+     if( res != null ){
+      this.Exams = res.examBody;
+      this.update = true;
+      this.exam_id = res.exam_id;
+      this.coursecontentId = res.subjectContentId;
+     }else{
+      this._ActivatedRoute.params.subscribe(params => {
+        this.coursecontentId = params['id'];
+      });
+     }
     });
+    
   }
 
   initiate(id?:number){
@@ -114,7 +126,62 @@ export class InsertExamsComponent implements OnInit {
           break;
     }
   }
-  
+  delete(id : number){
+    Swal.fire({
+      title: 'هل تريد مسح السؤال ؟',
+      text: "لن يكون لك صلاحية إعادته مره اخرى",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'الغاء',
+      confirmButtonText: 'امسح السؤال !'
+    }).then((result) => {
+      if (result.isConfirmed) {
+         this.Exams.splice(this.Exams.findIndex(r => r.id == id),1);
+        Swal.fire({
+            icon: "success",
+            title: "تم المسح بنجاح",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+      }
+    }) 
+  }
+  Update(data:any){
+    switch( data.typeid ){
+   case 1:
+    break;
+   case 2:
+    this.ExamForm = this._FormBuilder.group({
+      id:[data.id],
+      typeid: [ 2, Validators.required],
+      qusetion: [data.qusetion, Validators.required],
+      firstChoice: [data.firstChoice, Validators.required],
+      secondChoice: [data.secondChoice, Validators.required],
+      thirdChoice: [data.thirdChoice, Validators.required],
+      fourChoice: [data.fourChoice, Validators.required],
+      correctChoice: [data.correctChoice, Validators.required],
+      selectedChoice: [data.selectedChoice]
+    });
+    this.question2 = true;
+    break;
+   case 3:
+    this.ExamForm = this._FormBuilder.group({
+      id:[data.id],
+      typeid: [ 3, Validators.required],
+      qusetion: [data.qusetion, Validators.required],
+      correctChoice: [data.correctChoice, Validators.required],
+      selectedChoice: [data.selectedChoice]
+    });
+    this.question3 = true;
+    break;
+    default:
+      alert('no record to update');
+      break;
+    }
+    this.Exams.splice(this.Exams.findIndex(r => r.id == this.ExamForm.value.id),1);
+  }
   onSubmit(){
     this.Exams.push(this.ExamForm.value);
     this.ExamForm.reset();
@@ -224,6 +291,7 @@ export class InsertExamsComponent implements OnInit {
   //   }
   // }
   examSubmit(){
+    if( this.update == false ){
     this._ExamsService.CreateExam({subjectContentId : this.coursecontentId, examBody: this.Exams }).subscribe((res) => {
       Swal.fire({
         icon: "success",
@@ -241,7 +309,27 @@ export class InsertExamsComponent implements OnInit {
         text: 'تأكد من ملئ جميع الخانات',
       });
     })
+    }else if( this.update == true ){
+     this._ExamsService.UpdateExam({subjectContentId : this.coursecontentId, examBody: this.Exams }, this.exam_id).subscribe((res) => {
+      Swal.fire({
+        icon: "success",
+        title: "تم تعديل الامتحان بنجاح",
+        showConfirmButton: false,
+        timer: 1500,
+      }); 
+      this.button = false;
+      this.Exams = [];
+      this._Router.navigate(['/content/admin/ViewCourseLecture']);
+    },(err) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'خطأ',
+        text: 'تأكد من ملئ جميع الخانات',
+      });
+     })
     }
+
+  }
   ngOnDestroy(){
     this._ExamsService.data.next(null);
      }

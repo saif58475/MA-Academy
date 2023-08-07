@@ -38,16 +38,16 @@
                                         <td class="p-2">{{view.created_at}}</td>
                                          
                                         <td class="font-style chose">
+                                            <button class="btn pull-right"
+                                                style="color: rgba(35, 118, 241, 0.667); padding: 7px"
+                                                (click)="Update(view)">
+                                                <i class="fa fa-pencil"></i>
+                                            </button>
                                             <!-- <ng-template #elseBlock>  -->
                                                 <button class="btn  pull-right"  style="color: red; padding: 7px"
                                                 (click)="delete(view.exam_id)">
                                                 <i class="fa fa-trash"></i>
                                                    </button>
-                                            <!-- <button class="btn pull-right"
-                                                style="color: rgba(35, 118, 241, 0.667); padding: 7px"
-                                                (click)="Update(view)">
-                                                <i class="fa fa-pencil"></i>
-                                            </button> -->
                                         </td>
                                     </tr>
                                 </tbody>

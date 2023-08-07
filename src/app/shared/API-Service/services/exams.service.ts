@@ -19,7 +19,7 @@ export class ExamsService {
     return this._HttpClient.post(`${environment.Server_URL}/addExam`, data);
    }
    UpdateExam( data : object , id : number):Observable<any>{
-    return this._HttpClient.put(`${environment.Server_URL}/updateExam/${id}`, data);
+    return this._HttpClient.post(`${environment.Server_URL}/updateExam/${id}`, data);
    }
     DeleteExam(id:number):Observable<any>{
     return this._HttpClient.delete(`${environment.Server_URL}/deleteExam/${id}`);
