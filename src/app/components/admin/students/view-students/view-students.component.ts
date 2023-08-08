@@ -123,8 +123,6 @@ async updateactivate(id : number){
       }
   })
 }
-
-
   addcontent(data : object){
    this._CourseContentService.studentemail.next(data);
    this._Router.navigate(['content/admin/InsertActivation']);
@@ -159,6 +157,8 @@ async updateactivate(id : number){
     
   })
 }
-
+student_reporting(id:number){
+  this._Router.navigate([`content/admin/ViewReports/:id`], { queryParams: { id: id } })
+}
 }
 

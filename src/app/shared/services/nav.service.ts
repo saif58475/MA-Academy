@@ -99,6 +99,19 @@ export class NavService implements OnDestroy {
       headTitle2: "إدارة المحتوى التعليمي",
     },
     {
+      title: "المنشورات",
+      icon: "activity",
+      type: "sub",
+      badgeType: "success",
+      children: [
+        {
+          path: "admin/ViewPosts",
+          title: "ادارة المنشورات",
+          type: "link",
+        },
+      ],
+    },
+    {
       title: "المراحل الدراسية",
       icon: "user",
       type: "sub",

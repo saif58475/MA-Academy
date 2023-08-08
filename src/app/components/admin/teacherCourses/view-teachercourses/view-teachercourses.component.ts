@@ -20,7 +20,6 @@ page: number = 1;
              ,private _TeachersService:TeachersService) { }
 
   ngOnInit(): void {
-    //here is to get the teacher's id & the teacher's name
     this.route.params.subscribe(params => {
       this.TeacherId = +params['id'];
       this.TeacherName = params['teacherName'];

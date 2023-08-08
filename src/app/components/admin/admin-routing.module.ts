@@ -37,6 +37,9 @@ import { ViewStudentsActivatedComponent } from "./students-activated/view-studen
 import { ViewTeachercoursesComponent } from "./teacherCourses/view-teachercourses/view-teachercourses.component";
 import { InsertExamsComponent } from "./exams/insert-exams/insert-exams.component";
 import { ViewExamsComponent } from "./exams/view-exams/view-exams.component";
+import { StudentReportingComponent } from "./students/student-reporting/student-reporting.component";
+import { ViewPostsComponent } from "./posts/view-posts/view-posts.component";
+import { InsertPostsComponent } from "./posts/insert-posts/insert-posts.component";
 
 
 
@@ -182,6 +185,19 @@ const routes: Routes = [
                 path: "InsertExams/:id",
                 component: InsertExamsComponent,
             },   
+            {
+                path: "ViewReports/:id",
+                component: StudentReportingComponent
+            },
+            {
+             path: "ViewPosts",
+             component: ViewPostsComponent
+            },
+            {
+             path: "InsertPosts",
+             component: InsertPostsComponent
+            }
+            
 ],
     },
 ];
