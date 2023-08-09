@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./student-reporting.component.css']
 })
 export class StudentReportingComponent implements OnInit {
-  chart: Chart;
+  // chart: Chart;
   FilterData:any;
   FilterDataExams:any;
   constructor( private _ReportsService:ReportsService
@@ -30,23 +30,24 @@ export class StudentReportingComponent implements OnInit {
    })
   }
   charts(data:any){
-    this.chart = new Chart(document.getElementById('myChart1') as HTMLCanvasElement, {
-      type: 'pie',
-      data: {
-        labels: ['عدد الامتحانات', 'عدد الامتحانات المستخدمة'], // x-axis labels
-        datasets: [
-          {
-            label: 'Dataset 1',
-            data: [data.total, data.attendted],
-            backgroundColor: [
-              'rgb(255, 99, 132)',
-              'rgb(54, 162, 235)'
-            ],
-            borderColor: 'rgba(75, 192, 192, 1)', // bar border color
-            borderWidth: 1 // bar border width
-          }
-        ]
-      },
-    });
+    // this.chart = new Chart(document.getElementById('myChart1') as HTMLCanvasElement, {
+    //   type: 'pie',
+    //   data: {
+    //     labels: ['عدد الامتحانات', 'عدد الامتحانات المستخدمة'], // x-axis labels
+    //     datasets: [
+    //       {
+    //         label: 'Dataset 1',
+    //         data: [data.total, data.attendted],
+    //         backgroundColor: [
+    //           'rgb(255, 99, 132)',
+    //           'rgb(54, 162, 235)'
+    //         ],
+    //         borderColor: 'rgba(75, 192, 192, 1)', // bar border color
+    //         borderWidth: 1 // bar border width
+    //       }
+    //     ]
+    //   },
+    // });
+    
   }
 }
