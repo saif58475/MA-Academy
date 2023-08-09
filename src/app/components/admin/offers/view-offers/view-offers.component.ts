@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class ViewOffersComponent implements OnInit {
 Offers:any [];
-
+SubjectOffers:any [];
   constructor( private _FormBuilder:FormBuilder
              , private sanitizer: DomSanitizer
              , private _QroffersService :QroffersService
@@ -25,6 +25,9 @@ Offers:any [];
  getoffers(){
   this._QroffersService.GetQR().subscribe((res) => {
     this.Offers = res.data;
+  });
+  this._QroffersService.GetLessonQR().subscribe((res) => {
+    this.SubjectOffers = res.data;
   })
  }
  update(data:object){
@@ -64,7 +67,12 @@ Offers:any [];
     }
   }) 
 }
+deleteLesson(id :number){
 
+}
+updateLesson(data:object){
+
+}
 
 
 }

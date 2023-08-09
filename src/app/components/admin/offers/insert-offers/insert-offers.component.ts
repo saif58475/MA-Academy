@@ -184,8 +184,7 @@ printWindow.document.write('</html>');
   
   appendData(){
    this.OfferFromData = new FormData();
-   this.OfferFromData.append("teacherId", this.OfferFrom.value.teacherId);    
-   this.OfferFromData.append("subSubjectId", this.OfferFrom.value.subSubjectId);    
+  //  this.OfferFromData.append("subSubjectId", this.OfferFrom.value.subSubjectId);    
    this.selectedsubcoursecontent.forEach(element => {
     this.OfferFromData.append("beforSubjectContentId[]", element.beforSubjectContentId);        
    });

@@ -20,6 +20,10 @@ export class QroffersService {
   GetQR():Observable<any>{
     return this._HttpClient.get(`${environment.Server_URL}/listQROffers`);
   }
+  GetLessonQR():Observable<any>{
+    return this._HttpClient.get(`${environment.Server_URL}/listQRSubjectContent`);
+  }
+
   DeleteQR(id : number):Observable<any>{
     return this._HttpClient.delete(`${environment.Server_URL}/deleteQROffers/${id}`);
   }
