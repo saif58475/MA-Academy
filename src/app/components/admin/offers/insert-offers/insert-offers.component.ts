@@ -30,7 +30,7 @@ dropdownSettingscourse:any = {};
 subcoursecontent:any [];
 subcourse:any [];
 myDivTags:any [];
-selectedsubcoursecontent:any [];
+selectedsubcoursecontent:any [];  
 selectedsubcourse:any [];
 title:string = 'app';
 OfferId:number;
@@ -66,11 +66,18 @@ oneoffour:any []= [{name:'teacher', state:true} , {name:'subcoursecontent',state
   this.getdropdowns();
   this._QroffersService.Data.subscribe((res) => {
     if( res != null){
+      if( res.QRSubjectContentId != null){
+       this.case = 2;
+      this.OfferId = res.QRSubjectContentId;
+      }
+      else{
+        this.OfferId = res.offersId;
+        }
       this.initiate(res);
-      this.OfferId = res.offersId;
-   this.update = true;
-   this.QrCode = res.QR;
-   this.NumberOfStudents = this.QrCode.length;
+       this.update = true;
+       this.QrCode = res.QR;
+       this.NumberOfStudents = this.QrCode.length;
+      
   //  this.filterObjectsById(this.subcoursecontent, res.beforSubjectContentId);
    this.selectedsubcoursecontent = res.beforSubjectContentId
     }  else{
@@ -83,7 +90,6 @@ oneoffour:any []= [{name:'teacher', state:true} , {name:'subcoursecontent',state
 
   initiate(data?:any){
     this.OfferFrom = this._FormBuilder.group({
-      teacherId: [''],
       subjectContentId: [''],
       date_start: [data?.date_start || '', Validators.required],
       date_end: [data?.date_end || '', Validators.required],

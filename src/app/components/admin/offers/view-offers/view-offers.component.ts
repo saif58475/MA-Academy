@@ -68,10 +68,41 @@ SubjectOffers:any [];
   }) 
 }
 deleteLesson(id :number){
-
+  Swal.fire({
+    title: 'هل تريد مسح العرض ؟',
+    text: "لن يكون لك صلاحية إعادته مره اخرى",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    cancelButtonText: 'الغاء',
+    confirmButtonText: 'امسح العنصر !'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this._QroffersService.DeleteSubjectQR(id).subscribe((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "تم المسح بنجاح",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+     this.getoffers();
+      },(err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'خطأ',
+          text:err.error.message    
+        })
+        this.getoffers();
+      },() => {
+        console.log("completed");
+      })
+    }
+  }) 
 }
 updateLesson(data:object){
-
+  this._QroffersService.Data.next(data);
+  this._Router.navigate(['content/admin/InsertOffer']);
 }
 
 

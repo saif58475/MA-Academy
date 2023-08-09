@@ -17,6 +17,9 @@ export class QroffersService {
   UpdateQR(data : object, id : number):Observable<any>{
     return this._HttpClient.post(`${environment.Server_URL}/updateQROffers/${id}`, data);
    }
+  UpdateSubjectQR(data : object, id : number):Observable<any>{
+    return this._HttpClient.post(`${environment.Server_URL}/updateQRSubjectContent/${id}`, data);
+   }
   GetQR():Observable<any>{
     return this._HttpClient.get(`${environment.Server_URL}/listQROffers`);
   }
@@ -26,6 +29,9 @@ export class QroffersService {
 
   DeleteQR(id : number):Observable<any>{
     return this._HttpClient.delete(`${environment.Server_URL}/deleteQROffers/${id}`);
+  }
+  DeleteSubjectQR(id : number):Observable<any>{
+    return this._HttpClient.delete(`${environment.Server_URL}/deleteQRSubjectContent/${id}`);
   }
 
   // for the subject offers 
