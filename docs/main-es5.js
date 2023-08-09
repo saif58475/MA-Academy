@@ -9941,9 +9941,15 @@
 
                       this._QroffersService.Data.subscribe(function (res) {
                         if (res != null) {
+                          if (res.QRSubjectContentId != null) {
+                            _this43["case"] = 2;
+                            _this43.OfferId = res.QRSubjectContentId;
+                          } else {
+                            _this43.OfferId = res.offersId;
+                          }
+
                           _this43.initiate(res);
 
-                          _this43.OfferId = res.offersId;
                           _this43.update = true;
                           _this43.QrCode = res.QR;
                           _this43.NumberOfStudents = _this43.QrCode.length; //  this.filterObjectsById(this.subcoursecontent, res.beforSubjectContentId);
@@ -9966,7 +9972,6 @@
           key: "initiate",
           value: function initiate(data) {
             this.OfferFrom = this._FormBuilder.group({
-              teacherId: [''],
               subjectContentId: [''],
               date_start: [(data === null || data === void 0 ? void 0 : data.date_start) || '', _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required],
               date_end: [(data === null || data === void 0 ? void 0 : data.date_end) || '', _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required],
@@ -10746,7 +10751,7 @@
 
             var ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
 
-            return ctx_r11.deleteLesson(view_r7.offersId);
+            return ctx_r11.deleteLesson(view_r7.QRSubjectContentId);
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](13, "i", 23);
@@ -10856,10 +10861,50 @@
           }
         }, {
           key: "deleteLesson",
-          value: function deleteLesson(id) {}
+          value: function deleteLesson(id) {
+            var _this50 = this;
+
+            sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
+              title: 'هل تريد مسح العرض ؟',
+              text: "لن يكون لك صلاحية إعادته مره اخرى",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              cancelButtonText: 'الغاء',
+              confirmButtonText: 'امسح العنصر !'
+            }).then(function (result) {
+              if (result.isConfirmed) {
+                _this50._QroffersService.DeleteSubjectQR(id).subscribe(function (res) {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
+                    icon: "success",
+                    title: "تم المسح بنجاح",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+
+                  _this50.getoffers();
+                }, function (err) {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
+                    icon: 'error',
+                    title: 'خطأ',
+                    text: err.error.message
+                  });
+
+                  _this50.getoffers();
+                }, function () {
+                  console.log("completed");
+                });
+              }
+            });
+          }
         }, {
           key: "updateLesson",
-          value: function updateLesson(data) {}
+          value: function updateLesson(data) {
+            this._QroffersService.Data.next(data);
+
+            this._Router.navigate(['content/admin/InsertOffer']);
+          }
         }]);
 
         return _ViewOffersComponent;
@@ -11267,17 +11312,17 @@
         _createClass(_InsertParentsComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this50 = this;
+            var _this51 = this;
 
             this._ParentsService.updateparent.subscribe(function (res) {
               if (res != null) {
-                _this50.recordtoupdate = res;
+                _this51.recordtoupdate = res;
 
-                _this50.initiate(res);
+                _this51.initiate(res);
 
-                _this50.update = true;
+                _this51.update = true;
               } else {
-                _this50.initiate();
+                _this51.initiate();
               }
             });
           }
@@ -11301,7 +11346,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this51 = this;
+            var _this52 = this;
 
             this.button = true;
 
@@ -11314,17 +11359,17 @@
                   timer: 1500
                 });
 
-                _this51.ParentForm.reset();
+                _this52.ParentForm.reset();
 
-                _this51._Router.navigate(['content/admin/ViewParent']);
+                _this52._Router.navigate(['content/admin/ViewParent']);
               }, function (err) {
-                _this51.button = false;
+                _this52.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this51.button = false;
+                _this52.button = false;
               });
             } else if (this.ParentForm.status == "VALID" && this.update == true) {
               this._ParentsService.UpdateParents(this.ParentForm.value, this.recordtoupdate.fatherId).subscribe(function (res) {
@@ -11335,17 +11380,17 @@
                   timer: 1500
                 });
 
-                _this51.ParentForm.reset();
+                _this52.ParentForm.reset();
 
-                _this51._Router.navigate(['content/admin/ViewParent']);
+                _this52._Router.navigate(['content/admin/ViewParent']);
               }, function (err) {
-                _this51.button = false;
+                _this52.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this51.button = false;
+                _this52.button = false;
               });
             } else {
               this.button = false;
@@ -11787,10 +11832,10 @@
         }, {
           key: "getparents",
           value: function getparents() {
-            var _this52 = this;
+            var _this53 = this;
 
             this._ParentsService.GetParents().subscribe(function (res) {
-              _this52.parents = res.data;
+              _this53.parents = res.data;
             });
           }
         }, {
@@ -11802,7 +11847,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this53 = this;
+            var _this54 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح ولي الامر ؟',
@@ -11815,7 +11860,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this53._ParentsService.DeleteParents(id).subscribe(function (res) {
+                _this54._ParentsService.DeleteParents(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -11823,7 +11868,7 @@
                     timer: 1500
                   });
 
-                  _this53.getparents();
+                  _this54.getparents();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -11831,7 +11876,7 @@
                     text: err.error.message
                   });
 
-                  _this53.getparents();
+                  _this54.getparents();
                 }, function () {
                   console.log("completed");
                 });
@@ -12180,19 +12225,19 @@
         _createClass(_InsertPostsComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this54 = this;
+            var _this55 = this;
 
             this._PostsService.Data.subscribe(function (res) {
-              _this54.getdropdown();
+              _this55.getdropdown();
 
               if (res != null) {
-                _this54.update = true;
-                _this54.recordtoupdate = res;
-                _this54.imageLogo = 'https://www.maapp.misrpedia.com/public/' + res.availbleOfferImage;
+                _this55.update = true;
+                _this55.recordtoupdate = res;
+                _this55.imageLogo = 'https://www.maapp.misrpedia.com/public/' + res.availbleOfferImage;
 
-                _this54.initiate(res);
+                _this55.initiate(res);
               } else {
-                _this54.initiate();
+                _this55.initiate();
               }
             });
           }
@@ -12209,17 +12254,17 @@
         }, {
           key: "getdropdown",
           value: function getdropdown() {
-            var _this55 = this;
+            var _this56 = this;
 
             this._CourseContentService.GetCourseContent().subscribe(function (res) {
-              _this55.coursecontent = res.data;
+              _this56.coursecontent = res.data;
             });
           } // imgFile
 
         }, {
           key: "getLogoUrl",
           value: function getLogoUrl(event) {
-            var _this56 = this;
+            var _this57 = this;
 
             var reader = new FileReader();
 
@@ -12231,7 +12276,7 @@
               reader.readAsDataURL(file);
 
               reader.onload = function () {
-                _this56.imageLogo = reader.result;
+                _this57.imageLogo = reader.result;
               };
             }
           }
@@ -12253,7 +12298,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this57 = this;
+            var _this58 = this;
 
             this.button = true;
 
@@ -12268,17 +12313,17 @@
                   timer: 1500
                 });
 
-                _this57.PostForm.reset();
+                _this58.PostForm.reset();
 
-                _this57._Router.navigate(['content/admin/ViewPosts']);
+                _this58._Router.navigate(['content/admin/ViewPosts']);
               }, function (err) {
-                _this57.button = false;
+                _this58.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this57.button = false;
+                _this58.button = false;
               });
             } else if (this.PostForm.status == "VALID" && this.update == true) {
               this.appendPostData();
@@ -12291,17 +12336,17 @@
                   timer: 1500
                 });
 
-                _this57.PostForm.reset();
+                _this58.PostForm.reset();
 
-                _this57._Router.navigate(['content/admin/ViewPosts']);
+                _this58._Router.navigate(['content/admin/ViewPosts']);
               }, function (err) {
-                _this57.button = false;
+                _this58.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this57.button = false;
+                _this58.button = false;
               });
             } else {
               this.button = false;
@@ -12710,10 +12755,10 @@
         }, {
           key: "getPosts",
           value: function getPosts() {
-            var _this58 = this;
+            var _this59 = this;
 
             this._PostsService.Get().subscribe(function (res) {
-              _this58.posts = res.data;
+              _this59.posts = res.data;
             });
           }
         }, {
@@ -12732,7 +12777,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this59 = this;
+            var _this60 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح المنشور ؟',
@@ -12745,7 +12790,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this59._PostsService.Delete(id).subscribe(function (res) {
+                _this60._PostsService.Delete(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -12753,7 +12798,7 @@
                     timer: 1500
                   });
 
-                  _this59.getPosts();
+                  _this60.getPosts();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -12761,7 +12806,7 @@
                     text: err.error.message
                   });
 
-                  _this59.getPosts(); //     Swal.fire({
+                  _this60.getPosts(); //     Swal.fire({
                   //       icon: "success",
                   //       title: "تم المسح بنجاح",
                   //       showConfirmButton: false,
@@ -13083,10 +13128,10 @@
         }, {
           key: "getproducts",
           value: function getproducts() {
-            var _this60 = this;
+            var _this61 = this;
 
             this._ProductService.Get().subscribe(function (res) {
-              _this60.products = res.data;
+              _this61.products = res.data;
             }, function (err) {
               console.log('their is a problem');
             }, function () {
@@ -13110,7 +13155,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this61 = this;
+            var _this62 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'Are you sure?',
@@ -13122,7 +13167,7 @@
               confirmButtonText: 'Yes, delete it!'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this61._ProductService.Delete(id).subscribe(function (res) {
+                _this62._ProductService.Delete(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "Deleted Successfuly",
@@ -13130,7 +13175,7 @@
                     timer: 1500
                   });
 
-                  _this61.getproducts();
+                  _this62.getproducts();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -13469,14 +13514,14 @@
         _createClass(_ViewStudentsActivatedComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this62 = this;
+            var _this63 = this;
 
             this._ActivatedRoute.queryParams.subscribe(function (params) {
-              _this62.beforeSubjectContentId = params['id'];
+              _this63.beforeSubjectContentId = params['id'];
 
-              _this62._ActivatedStudentsService.GetActivatedStudents(params['id']).subscribe(function (res) {
-                _this62.NumberOfActivateStudents = res.students_count;
-                _this62.ActivatedStudents = res.data;
+              _this63._ActivatedStudentsService.GetActivatedStudents(params['id']).subscribe(function (res) {
+                _this63.NumberOfActivateStudents = res.students_count;
+                _this63.ActivatedStudents = res.data;
               });
             });
           }
@@ -13496,10 +13541,10 @@
         }, {
           key: "selectallstudents",
           value: function selectallstudents() {
-            var _this63 = this;
+            var _this64 = this;
 
             this.ActivatedStudents.forEach(function (element) {
-              _this63.ToUnActivate.push(element.studentId);
+              _this64.ToUnActivate.push(element.studentId);
             });
             this.ToUnActivate = _toConsumableArray(new Set(this.ToUnActivate));
             this.numberofstudents = this.ToUnActivate.length;
@@ -13508,7 +13553,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this64 = this;
+            var _this65 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
               title: 'هل انت متأكد من الغاء تفعيل الطلاب ؟',
@@ -13520,8 +13565,8 @@
               cancelButtonText: 'رجوع'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this64._ActivatedStudentsService.deleteActivatedStudents(_this64.beforeSubjectContentId, {
-                  studentIds: _this64.ToUnActivate
+                _this65._ActivatedStudentsService.deleteActivatedStudents(_this65.beforeSubjectContentId, {
+                  studentIds: _this65.ToUnActivate
                 }).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
                     icon: "success",
@@ -13530,7 +13575,7 @@
                     timer: 1500
                   });
 
-                  _this64._Router.navigate(['content/admin/ViewSubCourseContent']);
+                  _this65._Router.navigate(['content/admin/ViewSubCourseContent']);
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
                     icon: 'error',
@@ -13913,19 +13958,19 @@
         _createClass(_InsertStudentsComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this65 = this;
+            var _this66 = this;
 
             this.geteducationlevel();
 
             this._StudentsService.Student.subscribe(function (res) {
               if (res == null) {
-                _this65.initiate();
+                _this66.initiate();
               } else {
-                _this65.update = true;
-                _this65.recordtoupdate = res;
-                _this65.imageLogo = _this65.ImageURL + _this65.recordtoupdate.StudentImage;
+                _this66.update = true;
+                _this66.recordtoupdate = res;
+                _this66.imageLogo = _this66.ImageURL + _this66.recordtoupdate.StudentImage;
 
-                _this65.checkupdate(_this65.recordtoupdate);
+                _this66.checkupdate(_this66.recordtoupdate);
               }
             });
           }
@@ -13958,17 +14003,17 @@
         }, {
           key: "geteducationlevel",
           value: function geteducationlevel() {
-            var _this66 = this;
+            var _this67 = this;
 
             this._EducationLevelService.GetEducationLevel().subscribe(function (res) {
-              _this66.educationlevels = res.data;
+              _this67.educationlevels = res.data;
             });
           } // imgFile
 
         }, {
           key: "getLogoUrl",
           value: function getLogoUrl(event) {
-            var _this67 = this;
+            var _this68 = this;
 
             var reader = new FileReader();
 
@@ -13980,7 +14025,7 @@
               reader.readAsDataURL(file);
 
               reader.onload = function () {
-                _this67.imageLogo = reader.result; // this.logoForm?.append("image", this.Image);
+                _this68.imageLogo = reader.result; // this.logoForm?.append("image", this.Image);
               };
             }
           }
@@ -13992,7 +14037,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this68 = this;
+            var _this69 = this;
 
             this.button = true;
 
@@ -14015,17 +14060,17 @@
                   }
                 });
 
-                _this68.StudentForm.reset();
+                _this69.StudentForm.reset();
 
-                _this68._Router.navigate(['content/admin/ViewStudents']);
+                _this69._Router.navigate(['content/admin/ViewStudents']);
               }, function (err) {
-                _this68.button = false;
+                _this69.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this68.button = false;
+                _this69.button = false;
               });
             } else if (this.StudentForm.status == "VALID" && this.update == true) {
               this._StudentsService.UpdateStudent(this.StudentForm.value, this.recordtoupdate.studentId).subscribe(function (res) {
@@ -14036,17 +14081,17 @@
                   timer: 1500
                 });
 
-                _this68.StudentForm.reset();
+                _this69.StudentForm.reset();
 
-                _this68._Router.navigate(['content/admin/ViewStudents']);
+                _this69._Router.navigate(['content/admin/ViewStudents']);
               }, function (err) {
-                _this68.button = false;
+                _this69.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this68.button = false;
+                _this69.button = false;
               });
             } else {
               this.button = false;
@@ -14455,22 +14500,22 @@
         _createClass(_StudentReportingComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this69 = this;
+            var _this70 = this;
 
             this._ActivatedRoute.queryParams.subscribe(function (queryParams) {
-              _this69.getReports(queryParams['id']);
+              _this70.getReports(queryParams['id']);
             });
           }
         }, {
           key: "getReports",
           value: function getReports(id) {
-            var _this70 = this;
+            var _this71 = this;
 
             this._ReportsService.Get(id, {}).subscribe(function (res) {
-              _this70.FilterData = res;
-              _this70.FilterDataExams = res.data;
+              _this71.FilterData = res;
+              _this71.FilterDataExams = res.data;
 
-              _this70.charts(res);
+              _this71.charts(res);
             });
           }
         }, {
@@ -15182,11 +15227,11 @@
         }, {
           key: "getstudents",
           value: function getstudents() {
-            var _this71 = this;
+            var _this72 = this;
 
             this._StudentsService.GetStudent().subscribe(function (res) {
-              _this71.students = res.data;
-              _this71.numberofstudents = _this71.students.length;
+              _this72.students = res.data;
+              _this72.numberofstudents = _this72.students.length;
             });
           }
         }, {
@@ -15207,7 +15252,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this72 = this;
+            var _this73 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح الطالب ؟',
@@ -15220,7 +15265,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this72._StudentsService.DeleteStudent(id).subscribe(function (res) {
+                _this73._StudentsService.DeleteStudent(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -15228,7 +15273,7 @@
                     timer: 1500
                   });
 
-                  _this72.getstudents();
+                  _this73.getstudents();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -15236,7 +15281,7 @@
                     text: err.error.message
                   });
 
-                  _this72.getstudents();
+                  _this73.getstudents();
                 }, function () {
                   console.log("completed");
                 });
@@ -15254,7 +15299,7 @@
           key: "updateactivate",
           value: function updateactivate(id) {
             return (0, tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-              var _this73 = this;
+              var _this74 = this;
 
               return regeneratorRuntime.wrap(function _callee4$(_context4) {
                 while (1) {
@@ -15277,13 +15322,13 @@
                         inputValidator: function inputValidator(value) {
                           return new Promise(function (resolve) {
                             if (value === 'update') {
-                              _this73._StudentsService.updatestudentcontent.next(id);
+                              _this74._StudentsService.updatestudentcontent.next(id);
 
-                              _this73._Router.navigate(['content/admin/InsertActivation']);
+                              _this74._Router.navigate(['content/admin/InsertActivation']);
 
                               document.getElementsByClassName('swal2-container')[0].remove();
                             } else if (value === 'delete') {
-                              _this73._StudentsService.deletestudentsubjectcontent(id).subscribe(function (res) {
+                              _this74._StudentsService.deletestudentsubjectcontent(id).subscribe(function (res) {
                                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                                   icon: "success",
                                   title: "تم مسح محتوى المواد المفعلة لهذا الطالب",
@@ -15320,7 +15365,7 @@
         }, {
           key: "removethemobile",
           value: function removethemobile(id) {
-            var _this74 = this;
+            var _this75 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل انت متأكد من مسح هذا الهاتف ؟',
@@ -15333,7 +15378,7 @@
               cancelButtonText: 'الغاء'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this74._StudentsService.removethemobile({
+                _this75._StudentsService.removethemobile({
                   "studentId": id
                 }).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
@@ -15704,25 +15749,25 @@
         _createClass(_InsertSubcoursecontentComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this75 = this;
+            var _this76 = this;
 
             this._SubcourseService.SubSubject.subscribe(function (res) {
-              _this75.getdropdowns();
+              _this76.getdropdowns();
 
               if (res == null) {
-                _this75._SubcoursecontentService.SubjectContent.subscribe(function (updatedata) {
+                _this76._SubcoursecontentService.SubjectContent.subscribe(function (updatedata) {
                   if (updatedata == null) {
-                    _this75.initiate();
+                    _this76.initiate();
                   } else {
-                    _this75.recordtoupdate = updatedata;
+                    _this76.recordtoupdate = updatedata;
 
-                    _this75.checkedit(_this75.recordtoupdate);
+                    _this76.checkedit(_this76.recordtoupdate);
 
-                    _this75.update = true;
+                    _this76.update = true;
                   }
                 });
               } else {
-                _this75.initiate(res);
+                _this76.initiate(res);
               }
             });
           }
@@ -15745,10 +15790,10 @@
         }, {
           key: "getdropdowns",
           value: function getdropdowns() {
-            var _this76 = this;
+            var _this77 = this;
 
             this._SubcourseService.GetSubCourse().subscribe(function (res) {
-              _this76.subsubjects = res.data;
+              _this77.subsubjects = res.data;
             });
           }
         }, {
@@ -15759,7 +15804,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this77 = this;
+            var _this78 = this;
 
             this.button = true;
 
@@ -15772,17 +15817,17 @@
                   timer: 1500
                 });
 
-                _this77.subcoursecontentForm.reset();
+                _this78.subcoursecontentForm.reset();
 
-                _this77._Router.navigate(['content/admin/ViewSubCourseContent']);
+                _this78._Router.navigate(['content/admin/ViewSubCourseContent']);
               }, function (err) {
-                _this77.button = false;
+                _this78.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this77.button = false;
+                _this78.button = false;
               });
             } else if (this.subcoursecontentForm.status == "VALID" && this.update == true) {
               this._SubcoursecontentService.UpdateSubjectContent(this.subcoursecontentForm.value, this.recordtoupdate.beforSubjectContentId).subscribe(function (res) {
@@ -15793,17 +15838,17 @@
                   timer: 1500
                 });
 
-                _this77.subcoursecontentForm.reset();
+                _this78.subcoursecontentForm.reset();
 
-                _this77._Router.navigate(['content/admin/ViewSubCourseContent']);
+                _this78._Router.navigate(['content/admin/ViewSubCourseContent']);
               }, function (err) {
-                _this77.button = false;
+                _this78.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'لم تقم بتغيير اي شئ'
                 });
-                _this77.button = false;
+                _this78.button = false;
               });
             } else {
               this.button = false;
@@ -16099,18 +16144,18 @@
         _createClass(_RearrangeSubcourseContentComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this78 = this;
+            var _this79 = this;
 
             this._SubcoursecontentService.RearrangeSubjectContent.subscribe(function (res) {
               if (res != null) {
-                _this78.Toast.fire({
+                _this79.Toast.fire({
                   icon: 'warning',
                   title: 'قم بسحب اي من عناصر الجدول للموقع المراد'
                 });
 
-                _this78.getfiltersubcoursecontent(res);
+                _this79.getfiltersubcoursecontent(res);
               } else {
-                _this78._Router.navigate(['content/admin/ViewSubCourseContent']);
+                _this79._Router.navigate(['content/admin/ViewSubCourseContent']);
               }
             });
           }
@@ -16123,19 +16168,19 @@
         }, {
           key: "getfiltersubcoursecontent",
           value: function getfiltersubcoursecontent(id) {
-            var _this79 = this;
+            var _this80 = this;
 
             this._SubcoursecontentService.filtersubjectcontent(id).subscribe(function (res) {
-              _this79.records = res.data;
+              _this80.records = res.data;
             });
           }
         }, {
           key: "gettheprimarykeysoftherecords",
           value: function gettheprimarykeysoftherecords() {
-            var _this80 = this;
+            var _this81 = this;
 
             this.records.forEach(function (element) {
-              _this80.arrangedrecords.push(element.subjectContentId);
+              _this81.arrangedrecords.push(element.subjectContentId);
             });
           }
         }, {
@@ -16564,10 +16609,10 @@
         }, {
           key: "getsubcontent",
           value: function getsubcontent() {
-            var _this81 = this;
+            var _this82 = this;
 
             this._SubcoursecontentService.GetSubjectContent().subscribe(function (res) {
-              _this81.subsubjects = res.data;
+              _this82.subsubjects = res.data;
             });
           }
         }, {
@@ -16593,7 +16638,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this82 = this;
+            var _this83 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح الكورس ؟',
@@ -16606,7 +16651,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this82._SubcoursecontentService.DeleteSubjectContent(id).subscribe(function (res) {
+                _this83._SubcoursecontentService.DeleteSubjectContent(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -16614,7 +16659,7 @@
                     timer: 1500
                   });
 
-                  _this82.getsubcontent();
+                  _this83.getsubcontent();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -16622,7 +16667,7 @@
                     text: err.error.message
                   });
 
-                  _this82.getsubcontent();
+                  _this83.getsubcontent();
                 }, function () {
                   console.log("completed");
                 });
@@ -16982,18 +17027,18 @@
         _createClass(_InsertSubcourseComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this83 = this;
+            var _this84 = this;
 
             this.getdropdown();
 
             this._SubcourseService.SubSubject.subscribe(function (res) {
               if (res == null) {
-                _this83.initiate();
+                _this84.initiate();
               } else {
-                _this83.recordtoupdate = res;
-                _this83.update = true;
+                _this84.recordtoupdate = res;
+                _this84.update = true;
 
-                _this83.checkupdate(_this83.recordtoupdate);
+                _this84.checkupdate(_this84.recordtoupdate);
               }
             });
           }
@@ -17021,16 +17066,16 @@
         }, {
           key: "getdropdown",
           value: function getdropdown() {
-            var _this84 = this;
+            var _this85 = this;
 
             this._CoursesService.GetCourse().subscribe(function (res) {
-              _this84.courses = res.data;
+              _this85.courses = res.data;
             });
           }
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this85 = this;
+            var _this86 = this;
 
             this.button = true;
 
@@ -17043,17 +17088,17 @@
                   timer: 1500
                 });
 
-                _this85.SubSubjectForm.reset();
+                _this86.SubSubjectForm.reset();
 
-                _this85._Router.navigate(['content/admin/ViewSubSubject']);
+                _this86._Router.navigate(['content/admin/ViewSubSubject']);
               }, function (err) {
-                _this85.button = false;
+                _this86.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this85.button = false;
+                _this86.button = false;
               });
             } else if (this.SubSubjectForm.status == "VALID" && this.update == true) {
               this._SubcourseService.UpdateSubCourse(this.SubSubjectForm.value, this.recordtoupdate.subSubjectId).subscribe(function (res) {
@@ -17064,17 +17109,17 @@
                   timer: 1500
                 });
 
-                _this85.SubSubjectForm.reset();
+                _this86.SubSubjectForm.reset();
 
-                _this85._Router.navigate(['content/admin/ViewSubSubject']);
+                _this86._Router.navigate(['content/admin/ViewSubSubject']);
               }, function (err) {
-                _this85.button = false;
+                _this86.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this85.button = false;
+                _this86.button = false;
               });
             } else {
               this.button = false;
@@ -17362,7 +17407,7 @@
         _createClass(_RearrangeSubcourseComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this86 = this;
+            var _this87 = this;
 
             this.Toast.fire({
               icon: 'warning',
@@ -17370,7 +17415,7 @@
             });
 
             this._ActivatedRoute.queryParams.subscribe(function (params) {
-              _this86.getsubcourse(params['id']);
+              _this87.getsubcourse(params['id']);
             });
           }
         }, {
@@ -17381,19 +17426,19 @@
         }, {
           key: "getsubcourse",
           value: function getsubcourse(id) {
-            var _this87 = this;
+            var _this88 = this;
 
             this._SubcourseService.filterSubCourse(id).subscribe(function (res) {
-              _this87.records = res.data;
+              _this88.records = res.data;
             });
           }
         }, {
           key: "gettheprimarykeysoftherecords",
           value: function gettheprimarykeysoftherecords() {
-            var _this88 = this;
+            var _this89 = this;
 
             this.records.forEach(function (element) {
-              _this88.arrangedrecords.push(element.beforSubjectContentId);
+              _this89.arrangedrecords.push(element.beforSubjectContentId);
             });
           }
         }, {
@@ -17779,16 +17824,16 @@
         }, {
           key: "getsubsubjects",
           value: function getsubsubjects() {
-            var _this89 = this;
+            var _this90 = this;
 
             this._SubcourseService.GetSubCourse().subscribe(function (res) {
-              _this89.subsubjects = res.data;
+              _this90.subsubjects = res.data;
             });
           }
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this90 = this;
+            var _this91 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح الكورس ؟',
@@ -17801,7 +17846,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this90._SubcourseService.DeleteSubCourse(id).subscribe(function (res) {
+                _this91._SubcourseService.DeleteSubCourse(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -17809,7 +17854,7 @@
                     timer: 1500
                   });
 
-                  _this90.getsubsubjects();
+                  _this91.getsubsubjects();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -17817,7 +17862,7 @@
                     text: err.error.message
                   });
 
-                  _this90.getsubsubjects();
+                  _this91.getsubsubjects();
                 }, function () {
                   console.log("completed");
                 });
@@ -18129,22 +18174,22 @@
         _createClass(_ViewTeachercoursesComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this91 = this;
+            var _this92 = this;
 
             this.route.params.subscribe(function (params) {
-              _this91.TeacherId = +params['id'];
-              _this91.TeacherName = params['teacherName'];
+              _this92.TeacherId = +params['id'];
+              _this92.TeacherName = params['teacherName'];
             });
             this.getTeacherCourses();
           }
         }, {
           key: "getTeacherCourses",
           value: function getTeacherCourses() {
-            var _this92 = this;
+            var _this93 = this;
 
             //this to fetch courses related to the teacher
             this._TeachersService.TeacherCourse(this.TeacherId).subscribe(function (res) {
-              _this92.courselectures = res.data;
+              _this93.courselectures = res.data;
             }, function (err) {
               sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
                 icon: 'error',
@@ -18463,32 +18508,32 @@
         _createClass(_InsertTeachersComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this93 = this;
+            var _this94 = this;
 
             this.getdropdowns();
 
             this._TeachersService.Teacher.subscribe(function (res) {
               if (res == null) {
-                _this93.initiate();
+                _this94.initiate();
               } else {
-                _this93.update = true;
-                _this93.recordtoupdate = res;
+                _this94.update = true;
+                _this94.recordtoupdate = res;
 
-                _this93.checkupdate(_this93.recordtoupdate);
+                _this94.checkupdate(_this94.recordtoupdate);
               }
             });
           }
         }, {
           key: "getdropdowns",
           value: function getdropdowns() {
-            var _this94 = this;
+            var _this95 = this;
 
             this._EducationLevelService.GetEducationLevel().subscribe(function (res) {
-              _this94.educationlevels = res.data;
+              _this95.educationlevels = res.data;
             });
 
             this._CoursesService.GetCourse().subscribe(function (res) {
-              _this94.subjects = res.data;
+              _this95.subjects = res.data;
             });
           }
         }, {
@@ -18513,10 +18558,10 @@
         }, {
           key: "insertarray",
           value: function insertarray(data) {
-            var _this95 = this;
+            var _this96 = this;
 
             data.forEach(function (element) {
-              return _this95.selectedid.push(element.educationId);
+              return _this96.selectedid.push(element.educationId);
             });
             this.TeacherForm.value.educationIds = this.selectedid;
           }
@@ -18528,7 +18573,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this96 = this;
+            var _this97 = this;
 
             this.button = true;
 
@@ -18543,17 +18588,17 @@
                   timer: 1500
                 });
 
-                _this96.TeacherForm.reset();
+                _this97.TeacherForm.reset();
 
-                _this96._Router.navigate(['content/admin/ViewTeachers']);
+                _this97._Router.navigate(['content/admin/ViewTeachers']);
               }, function (err) {
-                _this96.button = false;
+                _this97.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'تأكد من ملئ جميع الخانات'
                 });
-                _this96.button = false;
+                _this97.button = false;
               });
             } else if (this.TeacherForm.status == "VALID" && this.update == true) {
               this.insertarray(this.selectedItems);
@@ -18566,17 +18611,17 @@
                   timer: 1500
                 });
 
-                _this96.TeacherForm.reset();
+                _this97.TeacherForm.reset();
 
-                _this96._Router.navigate(['content/admin/ViewTeachers']);
+                _this97._Router.navigate(['content/admin/ViewTeachers']);
               }, function (err) {
-                _this96.button = false;
+                _this97.button = false;
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: 'error',
                   title: 'خطأ',
                   text: 'لم تقم بتغيير اي شئ'
                 });
-                _this96.button = false;
+                _this97.button = false;
               });
             } else {
               this.button = false;
@@ -18975,10 +19020,10 @@
         }, {
           key: "getteachers",
           value: function getteachers() {
-            var _this97 = this;
+            var _this98 = this;
 
             this._TeachersService.GetTeacher().subscribe(function (res) {
-              _this97.teachers = res.data;
+              _this98.teachers = res.data;
             });
           }
         }, {
@@ -18995,7 +19040,7 @@
         }, {
           key: "delete",
           value: function _delete(id) {
-            var _this98 = this;
+            var _this99 = this;
 
             sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
               title: 'هل تريد مسح المدرس ؟',
@@ -19008,7 +19053,7 @@
               confirmButtonText: 'امسح العنصر !'
             }).then(function (result) {
               if (result.isConfirmed) {
-                _this98._TeachersService.DeleteTeacher(id).subscribe(function (res) {
+                _this99._TeachersService.DeleteTeacher(id).subscribe(function (res) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: "success",
                     title: "تم المسح بنجاح",
@@ -19016,7 +19061,7 @@
                     timer: 1500
                   });
 
-                  _this98.getteachers();
+                  _this99.getteachers();
                 }, function (err) {
                   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                     icon: 'error',
@@ -19024,7 +19069,7 @@
                     text: err.error.message
                   });
 
-                  _this98.getteachers(); //     Swal.fire({
+                  _this99.getteachers(); //     Swal.fire({
                   //       icon: "success",
                   //       title: "تم المسح بنجاح",
                   //       showConfirmButton: false,
@@ -20432,6 +20477,11 @@
             return this._HttpClient.post("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/updateQROffers/").concat(id), data);
           }
         }, {
+          key: "UpdateSubjectQR",
+          value: function UpdateSubjectQR(data, id) {
+            return this._HttpClient.post("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/updateQRSubjectContent/").concat(id), data);
+          }
+        }, {
           key: "GetQR",
           value: function GetQR() {
             return this._HttpClient.get("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/listQROffers"));
@@ -20445,6 +20495,11 @@
           key: "DeleteQR",
           value: function DeleteQR(id) {
             return this._HttpClient["delete"]("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/deleteQROffers/").concat(id));
+          }
+        }, {
+          key: "DeleteSubjectQR",
+          value: function DeleteSubjectQR(id) {
+            return this._HttpClient["delete"]("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/deleteQRSubjectContent/").concat(id));
           } // for the subject offers 
 
         }, {
@@ -21170,7 +21225,7 @@
         }, {
           key: "onSubmit",
           value: function onSubmit() {
-            var _this99 = this;
+            var _this100 = this;
 
             this._LoginService.user_login(this.person.value).subscribe(function (res) {
               console.log(res);
@@ -21182,7 +21237,7 @@
               });
               localStorage.setItem('Authorization', res.token);
 
-              _this99._Router.navigate(["/content/admin/ViewStudents"]);
+              _this100._Router.navigate(["/content/admin/ViewStudents"]);
             }, function (err) {
               console.log("their is an error");
               sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
@@ -22017,20 +22072,20 @@
         _createClass(_BookmarkComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            var _this100 = this;
+            var _this101 = this;
 
             this.navServices.items.subscribe(function (menuItems) {
-              _this100.items = menuItems;
+              _this101.items = menuItems;
 
-              _this100.items.filter(function (items) {
+              _this101.items.filter(function (items) {
                 if (items.bookmark) {
-                  _this100.bookmarkItems.push(items);
+                  _this101.bookmarkItems.push(items);
                 }
 
                 if (!items.children) return false;
                 items.children.filter(function (subItems) {
                   if (subItems.bookmark) {
-                    _this100.bookmarkItems.push(subItems);
+                    _this101.bookmarkItems.push(subItems);
                   }
                 });
               });
@@ -22049,7 +22104,7 @@
         }, {
           key: "searchTerm",
           value: function searchTerm(term) {
-            var _this101 = this;
+            var _this102 = this;
 
             term ? this.addFix() : this.removeFix();
 
@@ -22089,9 +22144,9 @@
                 });
               });
 
-              _this101.checkSearchResultEmpty(items);
+              _this102.checkSearchResultEmpty(items);
 
-              _this101.menuItems = items;
+              _this102.menuItems = items;
             });
           }
         }, {
@@ -23407,16 +23462,16 @@
 
       var _MegaMenuComponent = /*#__PURE__*/function () {
         function _MegaMenuComponent(navServices) {
-          var _this102 = this;
+          var _this103 = this;
 
           _classCallCheck(this, _MegaMenuComponent);
 
           this.navServices = navServices;
           this.navServices.megaItems.subscribe(function (megaItems) {
-            return _this102.megaItems = megaItems;
+            return _this103.megaItems = megaItems;
           });
           this.navServices.levelmenuitems.subscribe(function (levelmenuitems) {
-            return _this102.levelmenuitems = levelmenuitems;
+            return _this103.levelmenuitems = levelmenuitems;
           });
         }
 
@@ -23447,11 +23502,11 @@
         }, {
           key: "toggletNavActive",
           value: function toggletNavActive(item) {
-            var _this103 = this;
+            var _this104 = this;
 
             if (!item.active) {
               this.megaItems.forEach(function (a) {
-                if (_this103.megaItems.includes(item)) {
+                if (_this104.megaItems.includes(item)) {
                   a.active = false;
                 }
 
@@ -24215,7 +24270,7 @@
 
       var _SearchComponent = /*#__PURE__*/function () {
         function _SearchComponent(navServices) {
-          var _this104 = this;
+          var _this105 = this;
 
           _classCallCheck(this, _SearchComponent);
 
@@ -24223,7 +24278,7 @@
           this.searchResult = false;
           this.searchResultEmpty = false;
           this.navServices.items.subscribe(function (menuItems) {
-            return _this104.items = menuItems;
+            return _this105.items = menuItems;
           });
         }
 
@@ -24238,7 +24293,7 @@
         }, {
           key: "searchTerm",
           value: function searchTerm(term) {
-            var _this105 = this;
+            var _this106 = this;
 
             term ? this.addFix() : this.removeFix();
             if (!term) return this.menuItems = [];
@@ -24267,9 +24322,9 @@
                 });
               });
 
-              _this105.checkSearchResultEmpty(items);
+              _this106.checkSearchResultEmpty(items);
 
-              _this105.menuItems = items;
+              _this106.menuItems = items;
             });
           }
         }, {
@@ -24752,7 +24807,7 @@
 
       var _ContentComponent = /*#__PURE__*/function () {
         function _ContentComponent(route, navServices, layout) {
-          var _this106 = this;
+          var _this107 = this;
 
           _classCallCheck(this, _ContentComponent);
 
@@ -24760,7 +24815,7 @@
           this.navServices = navServices;
           this.layout = layout;
           this.route.queryParams.subscribe(function (params) {
-            _this106.layout.config.settings.layout = params.layout ? params.layout : _this106.layout.config.settings.layout;
+            _this107.layout.config.settings.layout = params.layout ? params.layout : _this107.layout.config.settings.layout;
           });
         }
 
@@ -25015,13 +25070,13 @@
 
       var _LoaderComponent = /*#__PURE__*/function () {
         function _LoaderComponent() {
-          var _this107 = this;
+          var _this108 = this;
 
           _classCallCheck(this, _LoaderComponent);
 
           this.show = true;
           setTimeout(function () {
-            _this107.show = false;
+            _this108.show = false;
           }, 3000);
         }
 
@@ -26629,7 +26684,7 @@
 
       var _SidebarComponent = /*#__PURE__*/function () {
         function _SidebarComponent(router, navServices, layout) {
-          var _this108 = this;
+          var _this109 = this;
 
           _classCallCheck(this, _SidebarComponent);
 
@@ -26644,15 +26699,15 @@
           this.Role = localStorage.getItem('RiskRole'); // this.UserRole =  Roles.Agent;
 
           this.navServices.items.subscribe(function (res) {
-            _this108.menuRolus = res; // this.navServices.itemss.subscribe((res)=>{
+            _this109.menuRolus = res; // this.navServices.itemss.subscribe((res)=>{
             //   this.donationRolus = res
             // })
 
-            _this108.router.events.subscribe(function (event) {
+            _this109.router.events.subscribe(function (event) {
               if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_4__.NavigationEnd) {
                 res.filter(function (items) {
                   if (items.path === event.url) {
-                    _this108.setNavActive(items);
+                    _this109.setNavActive(items);
                   }
 
                   if (!items.children) {
@@ -26661,7 +26716,7 @@
 
                   items.children.filter(function (subItems) {
                     if (subItems.path === event.url) {
-                      _this108.setNavActive(subItems);
+                      _this109.setNavActive(subItems);
                     }
 
                     if (!subItems.children) {
@@ -26670,7 +26725,7 @@
 
                     subItems.children.filter(function (subSubItems) {
                       if (subSubItems.path === event.url) {
-                        _this108.setNavActive(subSubItems);
+                        _this109.setNavActive(subSubItems);
                       }
                     });
                   });
@@ -26720,11 +26775,11 @@
         }, {
           key: "toggletNavActive",
           value: function toggletNavActive(item) {
-            var _this109 = this;
+            var _this110 = this;
 
             if (!item.active) {
               this.menuRolus.forEach(function (a) {
-                if (_this109.menuRolus.includes(item)) {
+                if (_this110.menuRolus.includes(item)) {
                   a.active = false;
                 }
 
@@ -27982,7 +28037,7 @@
 
       var _NavService = /*#__PURE__*/function () {
         function _NavService(router) {
-          var _this110 = this;
+          var _this111 = this;
 
           _classCallCheck(this, _NavService);
 
@@ -28331,25 +28386,25 @@
           this.levelmenuitems = new rxjs__WEBPACK_IMPORTED_MODULE_1__.BehaviorSubject(this.LEVELMENUITEMS);
           this.setScreenWidth(window.innerWidth);
           (0, rxjs__WEBPACK_IMPORTED_MODULE_2__.fromEvent)(window, "resize").pipe((0, rxjs_operators__WEBPACK_IMPORTED_MODULE_3__.debounceTime)(1000), (0, rxjs_operators__WEBPACK_IMPORTED_MODULE_4__.takeUntil)(this.unsubscriber)).subscribe(function (evt) {
-            _this110.setScreenWidth(evt.target.innerWidth);
+            _this111.setScreenWidth(evt.target.innerWidth);
 
             if (evt.target.innerWidth < 991) {
-              _this110.collapseSidebar = true;
-              _this110.megaMenu = false;
-              _this110.levelMenu = false;
+              _this111.collapseSidebar = true;
+              _this111.megaMenu = false;
+              _this111.levelMenu = false;
             }
 
             if (evt.target.innerWidth < 1199) {
-              _this110.megaMenuColapse = true;
+              _this111.megaMenuColapse = true;
             }
           });
 
           if (window.innerWidth < 991) {
             // Detect Route change sidebar close
             this.router.events.subscribe(function (event) {
-              _this110.collapseSidebar = true;
-              _this110.megaMenu = false;
-              _this110.levelMenu = false;
+              _this111.collapseSidebar = true;
+              _this111.megaMenu = false;
+              _this111.levelMenu = false;
             });
           }
         }

@@ -5281,8 +5281,14 @@ class InsertOffersComponent {
             this.getdropdowns();
             this._QroffersService.Data.subscribe((res) => {
                 if (res != null) {
+                    if (res.QRSubjectContentId != null) {
+                        this.case = 2;
+                        this.OfferId = res.QRSubjectContentId;
+                    }
+                    else {
+                        this.OfferId = res.offersId;
+                    }
                     this.initiate(res);
-                    this.OfferId = res.offersId;
                     this.update = true;
                     this.QrCode = res.QR;
                     this.NumberOfStudents = this.QrCode.length;
@@ -5297,7 +5303,6 @@ class InsertOffersComponent {
     }
     initiate(data) {
         this.OfferFrom = this._FormBuilder.group({
-            teacherId: [''],
             subjectContentId: [''],
             date_start: [(data === null || data === void 0 ? void 0 : data.date_start) || '', _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required],
             date_end: [(data === null || data === void 0 ? void 0 : data.date_end) || '', _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required],
@@ -5735,7 +5740,7 @@ function ViewOffersComponent_tr_55_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](11, "i", 21);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](12, "button", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function ViewOffersComponent_tr_55_Template_button_click_12_listener() { const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r10); const view_r7 = restoredCtx.$implicit; const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r11.deleteLesson(view_r7.offersId); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function ViewOffersComponent_tr_55_Template_button_click_12_listener() { const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵrestoreView"](_r10); const view_r7 = restoredCtx.$implicit; const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"](); return ctx_r11.deleteLesson(view_r7.QRSubjectContentId); });
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](13, "i", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
@@ -5808,8 +5813,41 @@ class ViewOffersComponent {
         });
     }
     deleteLesson(id) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
+            title: 'هل تريد مسح العرض ؟',
+            text: "لن يكون لك صلاحية إعادته مره اخرى",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'الغاء',
+            confirmButtonText: 'امسح العنصر !'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this._QroffersService.DeleteSubjectQR(id).subscribe((res) => {
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
+                        icon: "success",
+                        title: "تم المسح بنجاح",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                    this.getoffers();
+                }, (err) => {
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
+                        icon: 'error',
+                        title: 'خطأ',
+                        text: err.error.message
+                    });
+                    this.getoffers();
+                }, () => {
+                    console.log("completed");
+                });
+            }
+        });
     }
     updateLesson(data) {
+        this._QroffersService.Data.next(data);
+        this._Router.navigate(['content/admin/InsertOffer']);
     }
 }
 ViewOffersComponent.ɵfac = function ViewOffersComponent_Factory(t) { return new (t || ViewOffersComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormBuilder), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__.DomSanitizer), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_shared_API_Service_services_qroffers_service__WEBPACK_IMPORTED_MODULE_0__.QroffersService), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__.Router)); };
@@ -10702,6 +10740,9 @@ class QroffersService {
     UpdateQR(data, id) {
         return this._HttpClient.post(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/updateQROffers/${id}`, data);
     }
+    UpdateSubjectQR(data, id) {
+        return this._HttpClient.post(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/updateQRSubjectContent/${id}`, data);
+    }
     GetQR() {
         return this._HttpClient.get(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/listQROffers`);
     }
@@ -10710,6 +10751,9 @@ class QroffersService {
     }
     DeleteQR(id) {
         return this._HttpClient.delete(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/deleteQROffers/${id}`);
+    }
+    DeleteSubjectQR(id) {
+        return this._HttpClient.delete(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/deleteQRSubjectContent/${id}`);
     }
     // for the subject offers 
     CreateSubjectQR(data) {
