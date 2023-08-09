@@ -14505,7 +14505,7 @@
         selectors: [["app-student-reporting"]],
         decls: 104,
         vars: 7,
-        consts: [[1, "row"], [1, "col-xl-4", "col-sm-6", "box-col-6"], [1, "card", "ecommerce-widget"], [1, "card-body", "support-ticket-font"], [2, "text-align", "right !important"], [1, "text-primary"], [1, "col-12", "numbers"], [1, "text-md-right"], [1, ""], [1, "product-stts", "ml-2", 2, "font-size", "20px !important", "font-weight", "bold"], [1, "container"], [1, "col-md-12"], [1, "text-center"], ["id", "myChart1", "width", "400", "height", "300"], [1, "container-fluid"], [1, "col-sm-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "col-6"], [1, "pb-2"], [1, "card-block", "row"], [1, "col-sm-12", "col-lg-12", "col-xl-12"], [1, "table-responsive"], [1, "table", "table-responsive-sm"], ["scope", "col"], ["cdkDrag", "", 4, "ngFor", "ngForOf"], ["cdkDrag", ""], ["scope", "row", 1, "p-2"]],
+        consts: [[1, "row"], [1, "col-xl-4", "col-sm-6", "box-col-6"], [1, "card", "ecommerce-widget"], [1, "card-body", "support-ticket-font"], [2, "text-align", "right !important"], [1, "text-primary"], [1, "col-12", "numbers"], [1, "text-md-right"], [1, ""], [1, "product-stts", "ml-2", 2, "font-size", "20px !important", "font-weight", "bold"], [1, "container"], [1, "col-md-12"], [1, "text-center"], ["id", "myChart1", 1, "m-auto"], [1, "container-fluid"], [1, "col-sm-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "col-6"], [1, "pb-2"], [1, "card-block", "row"], [1, "col-sm-12", "col-lg-12", "col-xl-12"], [1, "table-responsive"], [1, "table", "table-responsive-sm"], ["scope", "col"], ["cdkDrag", "", 4, "ngFor", "ngForOf"], ["cdkDrag", ""], ["scope", "row", 1, "p-2"]],
         template: function StudentReportingComponent_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0);
@@ -14886,7 +14886,7 @@
           }
         },
         directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.NgForOf, _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__.CdkDrag],
-        styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHVkZW50LXJlcG9ydGluZy5jb21wb25lbnQuY3NzIn0= */"]
+        styles: ["canvas[_ngcontent-%COMP%]{\r\n        display: block;\r\n        box-sizing: border-box;\r\n        height: 500px !important;\r\n        width: 500px !important;   \r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN0dWRlbnQtcmVwb3J0aW5nLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7UUFDUSxjQUFjO1FBQ2Qsc0JBQXNCO1FBQ3RCLHdCQUF3QjtRQUN4Qix1QkFBdUI7QUFDL0IiLCJmaWxlIjoic3R1ZGVudC1yZXBvcnRpbmcuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImNhbnZhc3tcclxuICAgICAgICBkaXNwbGF5OiBibG9jaztcclxuICAgICAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gICAgICAgIGhlaWdodDogNTAwcHggIWltcG9ydGFudDtcclxuICAgICAgICB3aWR0aDogNTAwcHggIWltcG9ydGFudDsgICBcclxufSJdfQ== */"]
       });
       /***/
     },
