@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment.prod';
 export class QroffersService {
 
   public Data = new BehaviorSubject(null);
+  public Lesson = new BehaviorSubject(null);
   constructor(private _HttpClient:HttpClient) { }
 
   CreateQR(data : object):Observable<any>{
@@ -17,8 +18,8 @@ export class QroffersService {
   UpdateQR(data : object, id : number):Observable<any>{
     return this._HttpClient.post(`${environment.Server_URL}/updateQROffers/${id}`, data);
    }
-  UpdateSubjectQR(data : object, id : number):Observable<any>{
-    return this._HttpClient.post(`${environment.Server_URL}/updateQRSubjectContent/${id}`, data);
+  UpdateSubjectQR(data : any, id : number):Observable<any>{
+    return this._HttpClient.put(`${environment.Server_URL}/updateQRSubjectContent/${id}?`, data);
    }
   GetQR():Observable<any>{
     return this._HttpClient.get(`${environment.Server_URL}/listQROffers`);

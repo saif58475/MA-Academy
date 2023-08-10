@@ -66,20 +66,22 @@ oneoffour:any []= [{name:'teacher', state:true} , {name:'subcoursecontent',state
   this.getdropdowns();
   this._QroffersService.Data.subscribe((res) => {
     if( res != null){
-      if( res.QRSubjectContentId != null){
-       this.case = 2;
-      this.OfferId = res.QRSubjectContentId;
-      }
-      else{
-        this.OfferId = res.offersId;
-        }
+
       this.initiate(res);
+      this.OfferId = res.offersId;
        this.update = true;
        this.QrCode = res.QR;
        this.NumberOfStudents = this.QrCode.length;
+      this._QroffersService.Lesson.subscribe((responce) => {
+        if(responce){
+                 this.case = 2;
+                 this.selectedsubcourse = res.beforSubjectContentId;
+        }else{
+          this.selectedsubcoursecontent = res.beforSubjectContentId
+        }  
+      })
       
   //  this.filterObjectsById(this.subcoursecontent, res.beforSubjectContentId);
-   this.selectedsubcoursecontent = res.beforSubjectContentId
     }  else{
       this.initiate();
   }
@@ -171,12 +173,6 @@ printWindow.document.write('</html>');
     }
   }
   getdropdowns(){
-  // this._CourseContentService.GetCourseContent().subscribe((res) => {
-  //    this.courses = res.data;
-  // });
-  // this._SubcourseService.GetSubCourse().subscribe((res) => {
-  //    this.subcourse = res.data;
-  // });
   this._CourseContentService.GetCourseContent().subscribe((res) => {
     this.subcourse = res.data;
   });
@@ -204,11 +200,15 @@ printWindow.document.write('</html>');
   }
   appendLessonData(){
    this.OfferFromData = new FormData();
-   this.OfferFromData.append("teacherId", this.OfferFrom.value.teacherId);    
-   this.OfferFromData.append("subSubjectId", this.OfferFrom.value.subSubjectId);    
-   this.selectedsubcourse.forEach(element => {
-    this.OfferFromData.append("subjectContentId[]", element.subSubjectId);        
-   });
+   if(this.update == false){
+    this.selectedsubcourse.forEach(element => {
+      this.OfferFromData.append("subjectContentId[]", element.subSubjectId);        
+     });
+   }else{
+    this.selectedsubcourse.forEach(element => {
+      this.OfferFromData.append("subjectContentId[]", element);        
+     });
+   }
    this.OfferFromData.append("date_start", this.OfferFrom.value.date_start);    
    this.OfferFromData.append("date_end", this.OfferFrom.value.date_end);    
    this.OfferFromData.append("status", this.OfferFrom.value.status); 
@@ -278,9 +278,28 @@ printWindow.document.write('</html>');
         this.button = false;
       })
     }
-    else if(this.OfferFrom.status == "VALID" && this.update == true){
+    else if(this.OfferFrom.status == "VALID" && this.update == true && this.case == 1){
       this.appendData();
       this._QroffersService.UpdateQR(this.OfferFromData, this.OfferId).subscribe((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "تم تعديل العرض بنجاح",
+          showConfirmButton: false,
+          timer: 1500,
+        }); 
+        this._Router.navigate(['content/admin/ViewOffer']);
+      },(err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'خطأ',
+          text: 'تأكد من ملئ جميع الخانات',
+        });
+        this.button = false;
+      })
+    }
+    else if(this.OfferFrom.status == "VALID" && this.update == true && this.case == 2){
+      this.appendLessonData();
+      this._QroffersService.UpdateSubjectQR(this.OfferFromData, this.OfferId).subscribe((res) => {
         Swal.fire({
           icon: "success",
           title: "تم تعديل العرض بنجاح",
@@ -301,5 +320,6 @@ printWindow.document.write('</html>');
 
   ngOnDestroy(){
     this._QroffersService.Data.next(null);
+    this._QroffersService.Lesson.next(null);
   }
 }

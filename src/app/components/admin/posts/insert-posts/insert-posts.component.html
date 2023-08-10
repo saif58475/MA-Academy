@@ -43,10 +43,8 @@
                             <div class="col-6 mb-3">
                                 <label for="validation01"><span class="validation-required">*</span> رابط الفيديو</label>
                                 <input class="form-control" id="validation01" type="text" formControlName="availableOfferVideo"
-                                [tooltip]="fc.availableOfferVideo.errors?.required ? 'الحقل مطلوب' : null"
                                 [class.is-valid]="fc.availableOfferVideo.valid && (fc.availableOfferVideo.touched)"
                                 [class.is-invalid]="fc.availableOfferVideo.invalid && (fc.availableOfferVideo.touched)"
-                                     required
                                      placeholder="رابط الفيديو"/>
                             </div>
                               <!-- course content -->

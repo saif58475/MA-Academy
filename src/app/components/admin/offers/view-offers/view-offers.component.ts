@@ -102,6 +102,7 @@ deleteLesson(id :number){
 }
 updateLesson(data:object){
   this._QroffersService.Data.next(data);
+  this._QroffersService.Lesson.next(true);
   this._Router.navigate(['content/admin/InsertOffer']);
 }
 
