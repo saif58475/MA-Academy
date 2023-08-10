@@ -9941,20 +9941,22 @@
 
                       this._QroffersService.Data.subscribe(function (res) {
                         if (res != null) {
-                          if (res.QRSubjectContentId != null) {
-                            _this43["case"] = 2;
-                            _this43.OfferId = res.QRSubjectContentId;
-                          } else {
-                            _this43.OfferId = res.offersId;
-                          }
-
                           _this43.initiate(res);
 
+                          _this43.OfferId = res.offersId;
                           _this43.update = true;
                           _this43.QrCode = res.QR;
-                          _this43.NumberOfStudents = _this43.QrCode.length; //  this.filterObjectsById(this.subcoursecontent, res.beforSubjectContentId);
+                          _this43.NumberOfStudents = _this43.QrCode.length;
 
-                          _this43.selectedsubcoursecontent = res.beforSubjectContentId;
+                          _this43._QroffersService.Lesson.subscribe(function (responce) {
+                            if (responce) {
+                              _this43["case"] = 2;
+                              _this43.selectedsubcourse = res.beforSubjectContentId;
+                            } else {
+                              _this43.selectedsubcoursecontent = res.beforSubjectContentId;
+                            }
+                          }); //  this.filterObjectsById(this.subcoursecontent, res.beforSubjectContentId);
+
                         } else {
                           _this43.initiate();
                         }
@@ -10071,12 +10073,6 @@
           value: function getdropdowns() {
             var _this44 = this;
 
-            // this._CourseContentService.GetCourseContent().subscribe((res) => {
-            //    this.courses = res.data;
-            // });
-            // this._SubcourseService.GetSubCourse().subscribe((res) => {
-            //    this.subcourse = res.data;
-            // });
             this._CourseContentService.GetCourseContent().subscribe(function (res) {
               _this44.subcourse = res.data;
             });
@@ -10113,11 +10109,17 @@
             var _this46 = this;
 
             this.OfferFromData = new FormData();
-            this.OfferFromData.append("teacherId", this.OfferFrom.value.teacherId);
-            this.OfferFromData.append("subSubjectId", this.OfferFrom.value.subSubjectId);
-            this.selectedsubcourse.forEach(function (element) {
-              _this46.OfferFromData.append("subjectContentId[]", element.subSubjectId);
-            });
+
+            if (this.update == false) {
+              this.selectedsubcourse.forEach(function (element) {
+                _this46.OfferFromData.append("subjectContentId[]", element.subjectContentId);
+              });
+            } else {
+              this.selectedsubcourse.forEach(function (element) {
+                _this46.OfferFromData.append("subjectContentId[]", element);
+              });
+            }
+
             this.OfferFromData.append("date_start", this.OfferFrom.value.date_start);
             this.OfferFromData.append("date_end", this.OfferFrom.value.date_end);
             this.OfferFromData.append("status", this.OfferFrom.value.status);
@@ -10197,10 +10199,30 @@
                 });
                 _this47.button = false;
               });
-            } else if (this.OfferFrom.status == "VALID" && this.update == true) {
+            } else if (this.OfferFrom.status == "VALID" && this.update == true && this["case"] == 1) {
               this.appendData();
 
               this._QroffersService.UpdateQR(this.OfferFromData, this.OfferId).subscribe(function (res) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+                  icon: "success",
+                  title: "تم تعديل العرض بنجاح",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+
+                _this47._Router.navigate(['content/admin/ViewOffer']);
+              }, function (err) {
+                sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+                  icon: 'error',
+                  title: 'خطأ',
+                  text: 'تأكد من ملئ جميع الخانات'
+                });
+                _this47.button = false;
+              });
+            } else if (this.OfferFrom.status == "VALID" && this.update == true && this["case"] == 2) {
+              this.appendLessonData();
+
+              this._QroffersService.UpdateSubjectQR(this.OfferFromData, this.OfferId).subscribe(function (res) {
                 sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
                   icon: "success",
                   title: "تم تعديل العرض بنجاح",
@@ -10223,6 +10245,8 @@
           key: "ngOnDestroy",
           value: function ngOnDestroy() {
             this._QroffersService.Data.next(null);
+
+            this._QroffersService.Lesson.next(null);
           }
         }]);
 
@@ -10751,7 +10775,7 @@
 
             var ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
 
-            return ctx_r11.deleteLesson(view_r7.QRSubjectContentId);
+            return ctx_r11.deleteLesson(view_r7.offersId);
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](13, "i", 23);
@@ -10902,6 +10926,8 @@
           key: "updateLesson",
           value: function updateLesson(data) {
             this._QroffersService.Data.next(data);
+
+            this._QroffersService.Lesson.next(true);
 
             this._Router.navigate(['content/admin/InsertOffer']);
           }
@@ -12376,8 +12402,8 @@
         type: _InsertPostsComponent,
         selectors: [["app-insert-posts"]],
         decls: 50,
-        vars: 21,
-        consts: [[1, "container-fluid"], [1, "row"], [1, "col-md-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "pb-2"], [1, "card-body"], ["autocomplete", "off", "novalidate", "", 1, "needs-validation", 3, "formGroup", "ngSubmit"], [1, "form-row"], [1, "col-6", "mb-3"], ["for", "validation01"], [1, "validation-required"], ["id", "validation01", "type", "text", "formControlName", "availableOfferName", "required", "", "placeholder", "\u0627\u0633\u0645 \u0627\u0644\u0645\u0646\u0634\u0648\u0631", 1, "form-control", 3, "tooltip"], ["id", "validation01", "type", "text", "formControlName", "description", "required", "", "placeholder", "\u062A\u0641\u0627\u0635\u064A\u0644 \u0627\u0644\u0645\u0646\u0634\u0648\u0631", 1, "form-control", 3, "tooltip"], ["id", "validation01", "type", "text", "formControlName", "availableOfferVideo", "required", "", "placeholder", "\u0631\u0627\u0628\u0637 \u0627\u0644\u0641\u064A\u062F\u064A\u0648", 1, "form-control", 3, "tooltip"], [1, "col-lg-6", "col-sm-12", "mb-3"], ["for", "validationCustom05"], ["formControlName", "subjectContentId", "placeholder", "\u0627\u062E\u062A\u0631  \u0645\u062D\u062A\u0648\u0649 \u0627\u0644\u0645\u0627\u062F\u0629", "id", "validationCustom05", 1, "form-control", "p-0", 3, "selectOnTab"], ["Governorate", ""], [3, "value", 4, "ngFor", "ngForOf"], [1, "col-lg-6", "my-4", 2, "padding", "1%"], ["style", "width: 60%; height: 220px;", "class", "image-style p-2", 3, "src", 4, "ngIf"], ["type", "file", "accept", "image/*", "id", "getLogo", 2, "display", "none", 3, "change"], ["file", ""], ["type", "button", "onclick", "document.getElementById('getLogo').click()", 1, "btn", "d-block", 2, "width", "60%"], ["elseBlock", ""], [4, "ngIf", "ngIfElse"], [3, "value"], [1, "image-style", "p-2", 2, "width", "60%", "height", "220px", 3, "src"], ["type", "submit", 1, "btn", "pull-right", 3, "disabled"], ["type", "submit", 1, "btn", "pull-right"]],
+        vars: 20,
+        consts: [[1, "container-fluid"], [1, "row"], [1, "col-md-12"], [1, "card"], [1, "card-header", 2, "padding-bottom", "5px !important"], [1, "pb-2"], [1, "card-body"], ["autocomplete", "off", "novalidate", "", 1, "needs-validation", 3, "formGroup", "ngSubmit"], [1, "form-row"], [1, "col-6", "mb-3"], ["for", "validation01"], [1, "validation-required"], ["id", "validation01", "type", "text", "formControlName", "availableOfferName", "required", "", "placeholder", "\u0627\u0633\u0645 \u0627\u0644\u0645\u0646\u0634\u0648\u0631", 1, "form-control", 3, "tooltip"], ["id", "validation01", "type", "text", "formControlName", "description", "required", "", "placeholder", "\u062A\u0641\u0627\u0635\u064A\u0644 \u0627\u0644\u0645\u0646\u0634\u0648\u0631", 1, "form-control", 3, "tooltip"], ["id", "validation01", "type", "text", "formControlName", "availableOfferVideo", "placeholder", "\u0631\u0627\u0628\u0637 \u0627\u0644\u0641\u064A\u062F\u064A\u0648", 1, "form-control"], [1, "col-lg-6", "col-sm-12", "mb-3"], ["for", "validationCustom05"], ["formControlName", "subjectContentId", "placeholder", "\u0627\u062E\u062A\u0631  \u0645\u062D\u062A\u0648\u0649 \u0627\u0644\u0645\u0627\u062F\u0629", "id", "validationCustom05", 1, "form-control", "p-0", 3, "selectOnTab"], ["Governorate", ""], [3, "value", 4, "ngFor", "ngForOf"], [1, "col-lg-6", "my-4", 2, "padding", "1%"], ["style", "width: 60%; height: 220px;", "class", "image-style p-2", 3, "src", 4, "ngIf"], ["type", "file", "accept", "image/*", "id", "getLogo", 2, "display", "none", 3, "change"], ["file", ""], ["type", "button", "onclick", "document.getElementById('getLogo').click()", 1, "btn", "d-block", 2, "width", "60%"], ["elseBlock", ""], [4, "ngIf", "ngIfElse"], [3, "value"], [1, "image-style", "p-2", 2, "width", "60%", "height", "220px", 3, "src"], ["type", "submit", 1, "btn", "pull-right", 3, "disabled"], ["type", "submit", 1, "btn", "pull-right"]],
         template: function InsertPostsComponent_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](0, "div", 0);
@@ -12559,8 +12585,6 @@
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](6);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵclassProp"]("is-valid", ctx.fc.availableOfferVideo.valid && ctx.fc.availableOfferVideo.touched)("is-invalid", ctx.fc.availableOfferVideo.invalid && ctx.fc.availableOfferVideo.touched);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"]("tooltip", (ctx.fc.availableOfferVideo.errors == null ? null : ctx.fc.availableOfferVideo.errors.required) ? "\u0627\u0644\u062D\u0642\u0644 \u0645\u0637\u0644\u0648\u0628" : null);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](6);
 
@@ -20464,6 +20488,7 @@
 
           this._HttpClient = _HttpClient;
           this.Data = new rxjs__WEBPACK_IMPORTED_MODULE_1__.BehaviorSubject(null);
+          this.Lesson = new rxjs__WEBPACK_IMPORTED_MODULE_1__.BehaviorSubject(null);
         }
 
         _createClass(_QroffersService2, [{
@@ -20479,7 +20504,7 @@
         }, {
           key: "UpdateSubjectQR",
           value: function UpdateSubjectQR(data, id) {
-            return this._HttpClient.post("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/updateQRSubjectContent/").concat(id), data);
+            return this._HttpClient.put("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/updateQRSubjectContent/").concat(id, "?"), data);
           }
         }, {
           key: "GetQR",

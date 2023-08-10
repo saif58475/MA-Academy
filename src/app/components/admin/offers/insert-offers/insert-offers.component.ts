@@ -202,7 +202,7 @@ printWindow.document.write('</html>');
    this.OfferFromData = new FormData();
    if(this.update == false){
     this.selectedsubcourse.forEach(element => {
-      this.OfferFromData.append("subjectContentId[]", element.subSubjectId);        
+      this.OfferFromData.append("subjectContentId[]", element.subjectContentId);        
      });
    }else{
     this.selectedsubcourse.forEach(element => {
