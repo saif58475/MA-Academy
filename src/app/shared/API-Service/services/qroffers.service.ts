@@ -19,7 +19,7 @@ export class QroffersService {
     return this._HttpClient.post(`${environment.Server_URL}/updateQROffers/${id}`, data);
    }
   UpdateSubjectQR(data : any, id : number):Observable<any>{
-    return this._HttpClient.put(`${environment.Server_URL}/updateQRSubjectContent/${id}?`, data);
+    return this._HttpClient.post(`${environment.Server_URL}/updateQRSubjectContent/${id}?`, data);
    }
   GetQR():Observable<any>{
     return this._HttpClient.get(`${environment.Server_URL}/listQROffers`);
