@@ -108,18 +108,22 @@ export class InsertExamsComponent implements OnInit {
       case id==1 :
         this.initiate(1);
         this.question1 = true;
+        this.scrollToBottom();
         break;
         case id==2 : 
         this.initiate(2);
         this.question2 = true;
+        this.scrollToBottom();
         break;
         case id==3:
           this.initiate(3);
           this.question3 = true;
+          this.scrollToBottom();
           break;
         case id==4:
           this.initiate(4);
           this.question4 = true;
+          this.scrollToBottom();
           break;
           default : 
           alert('ververbre');
@@ -182,6 +186,11 @@ export class InsertExamsComponent implements OnInit {
     }
     this.Exams.splice(this.Exams.findIndex(r => r.id == this.ExamForm.value.id),1);
   }
+
+  scrollToBottom(){
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+
   onSubmit(){
     this.Exams.push(this.ExamForm.value);
     this.ExamForm.reset();

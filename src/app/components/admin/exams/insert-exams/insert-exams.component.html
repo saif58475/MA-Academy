@@ -38,10 +38,6 @@
  <button class="btn w-100 mt-5" (click)="Exam()">سؤال جديد</button>
 </div> 
 
-
-
-
-
 <!-- ======================================================================================================================================== -->
 <!--                                          Questions Of The Exams                                                                          -->
 <!-- ======================================================================================================================================== -->
@@ -89,34 +85,6 @@
   </div>
   </div>
 </div>
-<!-- ======================================================================================================================================== -->
-<!--                                          Questions Of The Images Exams                                                                   -->
-<!-- ======================================================================================================================================== -->
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-12" *ngFor="let view of Exams">
-      <div class="card">  
-          <div class="card-header">
-              <h5>سؤال :- {{view.Imagequsetion}}</h5>
-          </div>
-          <div class="card-body">
-              <p [ngSwitch]="view.typeid">
-                <span *ngSwitchCase="'4'">
-                  <span><input type="radio" class="mx-3">{{view.firstImageChoice}}</span>
-                  <span><input type="radio" class="mx-3">{{view.secondImageChoice}}</span>
-                  <span><input type="radio" class="mx-3">{{view.thirdImageChoice}}</span>
-                  <span><input type="radio" class="mx-3">{{view.fourImageChoice}}</span>
-                </span>
-                <span *ngSwitchCase="'5'">
-                  <span><input type="radio" class="mx-3">صح</span>
-                  <span><input type="radio" class="mx-3">خطأ</span>
-                </span>
-              </p>
-          </div>
-      </div>
-  </div>
-  </div>
-</div> -->
 <!-- ======================================================================================================================================== -->
 <!-- ======================================================================================================================================== -->
 <div class="card-body" *ngIf="question1">

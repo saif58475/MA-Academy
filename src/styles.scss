@@ -40,9 +40,7 @@
  
 
 body   {
-    font-family: "Cairo" !important;
- 
-    
+    font-family: "Cairo" !important; 
   }
 
   select{
@@ -60,6 +58,10 @@ ngx-qrcode{
     }
 }
 
+body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
 .dropdown-multiselect__caret{
     right: 93% !important;
     top: 3px !important;
