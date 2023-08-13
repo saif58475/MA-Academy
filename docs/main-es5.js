@@ -8852,21 +8852,25 @@
               case id == 1:
                 this.initiate(1);
                 this.question1 = true;
+                this.scrollToBottom();
                 break;
 
               case id == 2:
                 this.initiate(2);
                 this.question2 = true;
+                this.scrollToBottom();
                 break;
 
               case id == 3:
                 this.initiate(3);
                 this.question3 = true;
+                this.scrollToBottom();
                 break;
 
               case id == 4:
                 this.initiate(4);
                 this.question4 = true;
+                this.scrollToBottom();
                 break;
 
               default:
@@ -8946,6 +8950,11 @@
             this.Exams.splice(this.Exams.findIndex(function (r) {
               return r.id == _this37.ExamForm.value.id;
             }), 1);
+          }
+        }, {
+          key: "scrollToBottom",
+          value: function scrollToBottom() {
+            window.scrollTo(0, document.body.scrollHeight);
           }
         }, {
           key: "onSubmit",
@@ -9210,7 +9219,7 @@
           }
         },
         directives: [_angular_common__WEBPACK_IMPORTED_MODULE_6__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_6__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_6__.NgSwitch, _angular_common__WEBPACK_IMPORTED_MODULE_6__.NgSwitchCase, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵNgNoValidate"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__.NgControlStatusGroup, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormGroupDirective, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControlName, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.RequiredValidator, ngx_bootstrap_tooltip__WEBPACK_IMPORTED_MODULE_7__.TooltipDirective, _ng_select_ng_select__WEBPACK_IMPORTED_MODULE_8__.NgSelectComponent, _ng_select_ng_select__WEBPACK_IMPORTED_MODULE_8__["ɵr"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__.RadioControlValueAccessor],
-        styles: [".selectquestion[_ngcontent-%COMP%]:hover{\r\n    cursor: pointer;\r\n}\r\n\r\nlabel[_ngcontent-%COMP%]{\r\n    float: right;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluc2VydC1leGFtcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksZUFBZTtBQUNuQjs7QUFFQTtJQUNJLFlBQVk7QUFDaEIiLCJmaWxlIjoiaW5zZXJ0LWV4YW1zLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2VsZWN0cXVlc3Rpb246aG92ZXJ7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuXHJcbmxhYmVse1xyXG4gICAgZmxvYXQ6IHJpZ2h0O1xyXG59XHJcblxyXG4iXX0= */"]
+        styles: [".selectquestion[_ngcontent-%COMP%]:hover{\r\n    cursor: pointer;\r\n}\r\n\r\nlabel[_ngcontent-%COMP%]{\r\n    float: right;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluc2VydC1leGFtcy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtJQUNJLGVBQWU7QUFDbkI7O0FBRUE7SUFDSSxZQUFZO0FBQ2hCIiwiZmlsZSI6Imluc2VydC1leGFtcy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbi5zZWxlY3RxdWVzdGlvbjpob3ZlcntcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG5cclxubGFiZWx7XHJcbiAgICBmbG9hdDogcmlnaHQ7XHJcbn1cclxuXHJcbiJdfQ== */"]
       });
       /***/
     },
