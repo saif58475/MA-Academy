@@ -20513,7 +20513,7 @@
         }, {
           key: "UpdateSubjectQR",
           value: function UpdateSubjectQR(data, id) {
-            return this._HttpClient.put("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/updateQRSubjectContent/").concat(id, "?"), data);
+            return this._HttpClient.post("".concat(src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL, "/updateQRSubjectContent/").concat(id, "?"), data);
           }
         }, {
           key: "GetQR",

@@ -10770,7 +10770,7 @@ class QroffersService {
         return this._HttpClient.post(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/updateQROffers/${id}`, data);
     }
     UpdateSubjectQR(data, id) {
-        return this._HttpClient.put(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/updateQRSubjectContent/${id}?`, data);
+        return this._HttpClient.post(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/updateQRSubjectContent/${id}?`, data);
     }
     GetQR() {
         return this._HttpClient.get(`${src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_0__.environment.Server_URL}/listQROffers`);
