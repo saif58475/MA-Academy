@@ -8529,129 +8529,21 @@
 
           _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, " \u0627\u0631\u0641\u0642 \u0635\u0648\u0631\u0629 \u0645\u0639 \u0631\u0623\u0633 \u0627\u0644\u0633\u0624\u0627\u0644");
+          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](7, " \u0627\u0631\u0641\u0642 \u0631\u0627\u0628\u0637 \u0627\u0644\u0641\u064A\u062F\u064A\u0648");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](8, "input", 28);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](9, "div", 21);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](10, "label", 22);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](11, "span", 23);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](12, "*");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](13, " \u0627\u0631\u0641\u0642 \u0635\u0648\u0631\u0629 \u0645\u0639 \u0631\u0623\u0633 \u0627\u0644\u0633\u0624\u0627\u0644");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](14, "input", 28);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](15, "div", 29);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](16, "label", 22);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](17, "span", 23);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](18, "*");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](19, " \u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u0627\u0648\u0644");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](20, "input", 30);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](21, "div", 29);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](22, "label", 22);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](23, "span", 23);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](24, "*");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](25, " \u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u062B\u0627\u0646\u064A");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](26, "input", 31);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](27, "div", 29);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](28, "label", 22);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](29, "span", 23);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](30, "*");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](31, " \u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u062B\u0627\u0644\u062B");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](32, "input", 32);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](33, "div", 29);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](34, "label", 22);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](35, "span", 23);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](36, "*");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](37, " \u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u0631\u0627\u0628\u0639");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](38, "input", 33);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](39, "div", 21);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](40, "label", 22);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](41, "span", 23);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](42, "*");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](43, " \u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u0635\u062D\u064A\u062D");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](44, "input", 45);
+          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](8, "input", 45);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](45, "br");
+          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](9, "br");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](46, "button", 27);
+          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](10, "button", 27);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](47, " \u062D\u0641\u0638 ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](11, " \u062D\u0641\u0638 ");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
 
@@ -8672,42 +8564,6 @@
           _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵclassProp"]("is-valid", ctx_r4.fc.qusetion.valid && ctx_r4.fc.qusetion.touched)("is-invalid", ctx_r4.fc.qusetion.invalid && ctx_r4.fc.qusetion.touched);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("tooltip", (ctx_r4.fc.qusetion.errors == null ? null : ctx_r4.fc.qusetion.errors.required) ? "\u0627\u0644\u062D\u0642\u0644 \u0645\u0637\u0644\u0648\u0628" : null);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](6);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵclassProp"]("is-valid", ctx_r4.fc.qusetion.valid && ctx_r4.fc.qusetion.touched)("is-invalid", ctx_r4.fc.qusetion.invalid && ctx_r4.fc.qusetion.touched);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("tooltip", (ctx_r4.fc.qusetion.errors == null ? null : ctx_r4.fc.qusetion.errors.required) ? "\u0627\u0644\u062D\u0642\u0644 \u0645\u0637\u0644\u0648\u0628" : null);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](6);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵclassProp"]("is-valid", ctx_r4.fc.firstChoice.valid && ctx_r4.fc.firstChoice.touched)("is-invalid", ctx_r4.fc.firstChoice.invalid && ctx_r4.fc.firstChoice.touched);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("tooltip", (ctx_r4.fc.firstChoice.errors == null ? null : ctx_r4.fc.firstChoice.errors.required) ? "\u0627\u0644\u062D\u0642\u0644 \u0645\u0637\u0644\u0648\u0628" : null);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](6);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵclassProp"]("is-valid", ctx_r4.fc.secondChoice.valid && ctx_r4.fc.secondChoice.touched)("is-invalid", ctx_r4.fc.secondChoice.invalid && ctx_r4.fc.secondChoice.touched);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("tooltip", (ctx_r4.fc.secondChoice.errors == null ? null : ctx_r4.fc.secondChoice.errors.required) ? "\u0627\u0644\u062D\u0642\u0644 \u0645\u0637\u0644\u0648\u0628" : null);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](6);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵclassProp"]("is-valid", ctx_r4.fc.thirdChoice.valid && ctx_r4.fc.thirdChoice.touched)("is-invalid", ctx_r4.fc.thirdChoice.invalid && ctx_r4.fc.thirdChoice.touched);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("tooltip", (ctx_r4.fc.thirdChoice.errors == null ? null : ctx_r4.fc.thirdChoice.errors.required) ? "\u0627\u0644\u062D\u0642\u0644 \u0645\u0637\u0644\u0648\u0628" : null);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](6);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵclassProp"]("is-valid", ctx_r4.fc.fourChoice.valid && ctx_r4.fc.fourChoice.touched)("is-invalid", ctx_r4.fc.fourChoice.invalid && ctx_r4.fc.fourChoice.touched);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("tooltip", (ctx_r4.fc.fourChoice.errors == null ? null : ctx_r4.fc.fourChoice.errors.required) ? "\u0627\u0644\u062D\u0642\u0644 \u0645\u0637\u0644\u0648\u0628" : null);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](6);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵclassProp"]("is-valid", ctx_r4.fc.correctChoice.valid && ctx_r4.fc.correctChoice.touched)("is-invalid", ctx_r4.fc.correctChoice.invalid && ctx_r4.fc.correctChoice.touched);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("tooltip", (ctx_r4.fc.correctChoice.errors == null ? null : ctx_r4.fc.correctChoice.errors.required) ? "\u0627\u0644\u062D\u0642\u0644 \u0645\u0637\u0644\u0648\u0628" : null);
         }
       }
 
@@ -8825,13 +8681,7 @@
                 this.ExamForm = this._FormBuilder.group({
                   id: [this.Exams.length + 1],
                   typeid: [4, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required],
-                  Imagequsetion: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required],
-                  firstImageChoice: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required],
-                  secondImageChoice: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required],
-                  thirdImageChoice: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required],
-                  fourImageChoice: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required],
-                  correctImageChoice: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required],
-                  selectedImageChoice: ['']
+                  qusetion: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]
                 });
                 break;
 
@@ -8942,6 +8792,15 @@
                 this.question3 = true;
                 break;
 
+              case 4:
+                this.ExamForm = this._FormBuilder.group({
+                  id: [data.id],
+                  typeid: [4, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required],
+                  qusetion: [data.qusetion, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]
+                });
+                this.question4 = true;
+                break;
+
               default:
                 alert('no record to update');
                 break;
@@ -8965,6 +8824,7 @@
             this.question1 = false;
             this.question2 = false;
             this.question3 = false;
+            this.question4 = false;
           }
         }, {
           key: "Exam",
@@ -8983,7 +8843,8 @@
                         inputOptions: {
                           // 'essayQuestion':'اضافة سؤال مقالي', 
                           'SelectQuestion': 'اضافة سؤال اختيار من متعدد',
-                          'TrueFalse': 'اضافة سؤال صح و خطأ'
+                          'TrueFalse': 'اضافة سؤال صح و خطأ',
+                          'video': 'اضافة سؤال فيديو'
                         },
                         inputPlaceholder: 'اختر نوع السؤال',
                         showCancelButton: true,
@@ -9010,7 +8871,7 @@
                                 document.getElementsByClassName('swal2-container')[0].remove();
                                 break;
 
-                              case 'ImageSelectQuestion':
+                              case 'video':
                                 _this38.newquestion(4);
 
                                 document.getElementsByClassName('swal2-container')[0].remove();
@@ -9154,7 +9015,7 @@
         selectors: [["app-insert-exams"]],
         decls: 11,
         vars: 6,
-        consts: [[1, "container"], [1, "btn", "w-100", "mt-5", 3, "click"], [1, "row"], ["class", "col-12", 4, "ngFor", "ngForOf"], ["class", "card-body", 4, "ngIf"], [1, "col-12"], [1, "card"], [1, "card-header"], [1, "col-9"], [1, "col-3"], [1, "btn", "pull-left", 2, "color", "rgba(35, 118, 241, 0.667)", "background-color", "white !important", "padding", "7px", 3, "click"], [1, "fa", "fa-pencil"], [1, "btn", "pull-left", 2, "color", "red", "background-color", "white !important", "padding", "7px", 3, "click"], [1, "fa", "fa-trash"], [1, "card-body"], [3, "ngSwitch"], [4, "ngSwitchCase"], ["type", "text", 1, "form-control", "w-100"], ["type", "radio", 1, "mx-3"], ["autocomplete", "off", "novalidate", "", 1, "needs-validation", 3, "formGroup", "ngSubmit"], [1, "form-row"], [1, "col-6", "mb-3"], ["for", "validation01"], [1, "validation-required"], ["id", "validation01", "type", "text", "formControlName", "qusetion", "required", "", "placeholder", "\u0627\u0643\u062A\u0628 \u0646\u0635 \u0627\u0644\u0633\u0624\u0627\u0644 \u0627\u0644\u0645\u0642\u0627\u0644\u064A", 1, "form-control", 3, "tooltip"], [1, "col-12", "mb-3"], ["id", "validation01", "type", "text", "formControlName", "fitanswer", "required", "", "placeholder", "\u0627\u0643\u062A\u0628 \u0627\u0644\u0627\u062C\u0627\u0628\u0629 \u0627\u0644\u0646\u0645\u0648\u0630\u062C\u064A\u0629", 1, "form-control", 3, "tooltip"], ["type", "submit", 1, "btn", "pull-right"], ["id", "validation01", "type", "text", "formControlName", "qusetion", "required", "", "placeholder", "\u0627\u0643\u062A\u0628 \u0646\u0635 \u0627\u0644\u0633\u0624\u0627\u0644", "containerClass", "", 1, "form-control", 3, "tooltip"], [1, "col-3", "mb-3"], ["id", "validation01", "type", "text", "formControlName", "firstChoice", "required", "", "placeholder", "\u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u0627\u0648\u0644", 1, "form-control", 3, "tooltip"], ["id", "validation01", "type", "text", "formControlName", "secondChoice", "required", "", "placeholder", "\u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u062B\u0627\u0646\u064A", 1, "form-control", 3, "tooltip"], ["id", "validation01", "type", "text", "formControlName", "thirdChoice", "required", "", "placeholder", "\u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u062B\u0627\u0644\u062B", 1, "form-control", 3, "tooltip"], ["id", "validation01", "type", "text", "formControlName", "fourChoice", "required", "", "placeholder", "\u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u0631\u0627\u0628\u0639", 1, "form-control", 3, "tooltip"], [1, "col-lg-6", "mb-3"], ["for", "validationCustom05"], ["formControlName", "correctChoice", "placeholder", "\u0627\u062E\u062A\u0631 \u0627\u0644\u0627\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629", "id", "validationCustom05", 1, "form-control", "p-0", 3, "selectOnTab"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], [1, "col-6", "mb-3", "px-5"], [1, "radio", "radio-primary"], ["id", "radioinline1", "type", "radio", "name", "radio1", "value", "true", "formControlName", "correctChoice"], ["for", "radioinline1", 1, "mb-0"], ["id", "radioinline2", "type", "radio", "name", "radio1", "value", "false", "formControlName", "correctChoice"], ["for", "radioinline2", 1, "mb-0"], ["id", "validation01", "type", "text", "formControlName", "correctChoice", "required", "", "placeholder", "\u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u0635\u062D\u064A\u062D", 1, "form-control", 3, "tooltip"], [1, "btn", "pull-right", 3, "click"]],
+        consts: [[1, "container"], [1, "btn", "w-100", "mt-5", 3, "click"], [1, "row"], ["class", "col-12", 4, "ngFor", "ngForOf"], ["class", "card-body", 4, "ngIf"], [1, "col-12"], [1, "card"], [1, "card-header"], [1, "col-9"], [1, "col-3"], [1, "btn", "pull-left", 2, "color", "rgba(35, 118, 241, 0.667)", "background-color", "white !important", "padding", "7px", 3, "click"], [1, "fa", "fa-pencil"], [1, "btn", "pull-left", 2, "color", "red", "background-color", "white !important", "padding", "7px", 3, "click"], [1, "fa", "fa-trash"], [1, "card-body"], [3, "ngSwitch"], [4, "ngSwitchCase"], ["type", "text", 1, "form-control", "w-100"], ["type", "radio", 1, "mx-3"], ["autocomplete", "off", "novalidate", "", 1, "needs-validation", 3, "formGroup", "ngSubmit"], [1, "form-row"], [1, "col-6", "mb-3"], ["for", "validation01"], [1, "validation-required"], ["id", "validation01", "type", "text", "formControlName", "qusetion", "required", "", "placeholder", "\u0627\u0643\u062A\u0628 \u0646\u0635 \u0627\u0644\u0633\u0624\u0627\u0644 \u0627\u0644\u0645\u0642\u0627\u0644\u064A", 1, "form-control", 3, "tooltip"], [1, "col-12", "mb-3"], ["id", "validation01", "type", "text", "formControlName", "fitanswer", "required", "", "placeholder", "\u0627\u0643\u062A\u0628 \u0627\u0644\u0627\u062C\u0627\u0628\u0629 \u0627\u0644\u0646\u0645\u0648\u0630\u062C\u064A\u0629", 1, "form-control", 3, "tooltip"], ["type", "submit", 1, "btn", "pull-right"], ["id", "validation01", "type", "text", "formControlName", "qusetion", "required", "", "placeholder", "\u0627\u0643\u062A\u0628 \u0646\u0635 \u0627\u0644\u0633\u0624\u0627\u0644", "containerClass", "", 1, "form-control", 3, "tooltip"], [1, "col-3", "mb-3"], ["id", "validation01", "type", "text", "formControlName", "firstChoice", "required", "", "placeholder", "\u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u0627\u0648\u0644", 1, "form-control", 3, "tooltip"], ["id", "validation01", "type", "text", "formControlName", "secondChoice", "required", "", "placeholder", "\u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u062B\u0627\u0646\u064A", 1, "form-control", 3, "tooltip"], ["id", "validation01", "type", "text", "formControlName", "thirdChoice", "required", "", "placeholder", "\u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u062B\u0627\u0644\u062B", 1, "form-control", 3, "tooltip"], ["id", "validation01", "type", "text", "formControlName", "fourChoice", "required", "", "placeholder", "\u0627\u0644\u0627\u062E\u062A\u064A\u0627\u0631 \u0627\u0644\u0631\u0627\u0628\u0639", 1, "form-control", 3, "tooltip"], [1, "col-lg-6", "mb-3"], ["for", "validationCustom05"], ["formControlName", "correctChoice", "placeholder", "\u0627\u062E\u062A\u0631 \u0627\u0644\u0627\u062C\u0627\u0628\u0629 \u0627\u0644\u0635\u062D\u064A\u062D\u0629", "id", "validationCustom05", 1, "form-control", "p-0", 3, "selectOnTab"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], [1, "col-6", "mb-3", "px-5"], [1, "radio", "radio-primary"], ["id", "radioinline1", "type", "radio", "name", "radio1", "value", "true", "formControlName", "correctChoice"], ["for", "radioinline1", 1, "mb-0"], ["id", "radioinline2", "type", "radio", "name", "radio1", "value", "false", "formControlName", "correctChoice"], ["for", "radioinline2", 1, "mb-0"], ["id", "validation01", "type", "text", "formControlName", "qusetion", "required", "", "placeholder", "\u0627\u0643\u062A\u0628 \u0631\u0627\u0628\u0637 \u0627\u0644\u0641\u064A\u062F\u064A\u0648", "containerClass", "", 1, "form-control", 3, "tooltip"], [1, "btn", "pull-right", 3, "click"]],
         template: function InsertExamsComponent_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "div", 0);
@@ -9187,7 +9048,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](8, InsertExamsComponent_div_8_Template, 26, 6, "div", 4);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](9, InsertExamsComponent_div_9_Template, 48, 36, "div", 4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](9, InsertExamsComponent_div_9_Template, 12, 6, "div", 4);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](10, InsertExamsComponent_div_10_Template, 3, 0, "div", 4);
           }
