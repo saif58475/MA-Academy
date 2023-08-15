@@ -243,75 +243,14 @@
                         <div class="form-row">
                             <!-- qusetion  -->
                             <div class="col-6 mb-3">
-                                <label for="validation01"><span class="validation-required">*</span> ارفق صورة مع رأس السؤال</label>
+                                <label for="validation01"><span class="validation-required">*</span> ارفق رابط الفيديو</label>
                                 <input class="form-control" id="validation01" type="text" formControlName="qusetion"
                                 [tooltip]="fc.qusetion.errors?.required ? 'الحقل مطلوب' : null"
                                 [class.is-valid]="fc.qusetion.valid && (fc.qusetion.touched)"
                                 [class.is-invalid]="fc.qusetion.invalid && (fc.qusetion.touched)"
                                      required
-                                     placeholder="اكتب نص السؤال"
+                                     placeholder="اكتب رابط الفيديو"
                                     containerClass="" />
-                            </div>
-                            <!-- qusetion  -->
-                            <div class="col-6 mb-3">
-                                <label for="validation01"><span class="validation-required">*</span> ارفق صورة مع رأس السؤال</label>
-                                <input class="form-control" id="validation01" type="text" formControlName="qusetion"
-                                [tooltip]="fc.qusetion.errors?.required ? 'الحقل مطلوب' : null"
-                                [class.is-valid]="fc.qusetion.valid && (fc.qusetion.touched)"
-                                [class.is-invalid]="fc.qusetion.invalid && (fc.qusetion.touched)"
-                                     required
-                                     placeholder="اكتب نص السؤال"
-                                    containerClass="" />
-                            </div>
-                            <!-- firstChoice  -->
-                            <div class="col-3 mb-3">
-                                <label for="validation01"><span class="validation-required">*</span> الاختيار الاول</label>
-                                <input class="form-control" id="validation01" type="text" formControlName="firstChoice"
-                                [tooltip]="fc.firstChoice.errors?.required ? 'الحقل مطلوب' : null"
-                                [class.is-valid]="fc.firstChoice.valid && (fc.firstChoice.touched)"
-                                [class.is-invalid]="fc.firstChoice.invalid && (fc.firstChoice.touched)"
-                                     required
-                                     placeholder="الاختيار الاول"/>
-                            </div>
-                            <!-- secondChoice  -->
-                            <div class="col-3 mb-3">
-                                <label for="validation01"><span class="validation-required">*</span> الاختيار الثاني</label>
-                                <input class="form-control" id="validation01" type="text" formControlName="secondChoice"
-                                [tooltip]="fc.secondChoice.errors?.required ? 'الحقل مطلوب' : null"
-                                [class.is-valid]="fc.secondChoice.valid && (fc.secondChoice.touched)"
-                                [class.is-invalid]="fc.secondChoice.invalid && (fc.secondChoice.touched)"
-                                     required
-                                     placeholder="الاختيار الثاني"/>
-                            </div>
-                            <!-- thirdChoice  -->
-                            <div class="col-3 mb-3">
-                                <label for="validation01"><span class="validation-required">*</span> الاختيار الثالث</label>
-                                <input class="form-control" id="validation01" type="text" formControlName="thirdChoice"
-                                [tooltip]="fc.thirdChoice.errors?.required ? 'الحقل مطلوب' : null"
-                                [class.is-valid]="fc.thirdChoice.valid && (fc.thirdChoice.touched)"
-                                [class.is-invalid]="fc.thirdChoice.invalid && (fc.thirdChoice.touched)"
-                                     required
-                                     placeholder="الاختيار الثالث"/>
-                            </div>
-                            <!-- fourChoice  -->
-                            <div class="col-3 mb-3">
-                                <label for="validation01"><span class="validation-required">*</span> الاختيار الرابع</label>
-                                <input class="form-control" id="validation01" type="text" formControlName="fourChoice"
-                                [tooltip]="fc.fourChoice.errors?.required ? 'الحقل مطلوب' : null"
-                                [class.is-valid]="fc.fourChoice.valid && (fc.fourChoice.touched)"
-                                [class.is-invalid]="fc.fourChoice.invalid && (fc.fourChoice.touched)"
-                                     required
-                                     placeholder="الاختيار الرابع"/>
-                            </div>
-                            <!-- correctChoice -->
-                            <div class="col-6 mb-3">
-                                <label for="validation01"><span class="validation-required">*</span> الاختيار الصحيح</label>
-                                <input class="form-control" id="validation01" type="text" formControlName="correctChoice"
-                                [tooltip]="fc.correctChoice.errors?.required ? 'الحقل مطلوب' : null"
-                                [class.is-valid]="fc.correctChoice.valid && (fc.correctChoice.touched)"
-                                [class.is-invalid]="fc.correctChoice.invalid && (fc.correctChoice.touched)"
-                                     required
-                                     placeholder="الاختيار الصحيح"/>
                             </div>
                         </div>
                         <br>

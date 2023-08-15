@@ -85,13 +85,7 @@ export class InsertExamsComponent implements OnInit {
         this.ExamForm = this._FormBuilder.group({
           id:[this.Exams.length + 1],
           typeid: [ 4, Validators.required],
-          Imagequsetion: ['', Validators.required],
-          firstImageChoice: ['', Validators.required],
-          secondImageChoice: ['', Validators.required],
-          thirdImageChoice: ['', Validators.required],
-          fourImageChoice: ['', Validators.required],
-          correctImageChoice: ['', Validators.required],
-          selectedImageChoice: ['']
+         qusetion: ['', Validators.required ]
         });
         break;
         default : 
@@ -180,6 +174,14 @@ export class InsertExamsComponent implements OnInit {
     });
     this.question3 = true;
     break;
+    case 4:
+      this.ExamForm = this._FormBuilder.group({
+        id:[data.id],
+        typeid: [ 4, Validators.required],
+        qusetion: [data.qusetion, Validators.required],
+      });
+      this.question4 = true;
+    break;
     default:
       alert('no record to update');
       break;
@@ -198,6 +200,7 @@ export class InsertExamsComponent implements OnInit {
     this.question1 = false;
     this.question2 = false;
     this.question3 = false;
+    this.question4 = false;
   }
  
   async Exam(){
@@ -208,6 +211,7 @@ export class InsertExamsComponent implements OnInit {
         // 'essayQuestion':'اضافة سؤال مقالي', 
         'SelectQuestion': 'اضافة سؤال اختيار من متعدد',
         'TrueFalse': 'اضافة سؤال صح و خطأ',
+        'video': 'اضافة سؤال فيديو',
       },
       inputPlaceholder: 'اختر نوع السؤال',
       showCancelButton: true,
@@ -228,7 +232,7 @@ export class InsertExamsComponent implements OnInit {
             this.newquestion(3);
             document.getElementsByClassName('swal2-container')[0].remove();
             break;
-          case 'ImageSelectQuestion':
+          case 'video':
             this.newquestion(4);
             document.getElementsByClassName('swal2-container')[0].remove();
             break;
