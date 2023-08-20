@@ -12,11 +12,14 @@ import { ExamsService } from './../../../../shared/API-Service/services/exams.se
 })
 export class InsertExamsComponent implements OnInit {
   ExamForm:FormGroup;
+  ExamFormTimer:FormGroup;
   button:boolean = false;
   coursecontentId:number;
   writeorwrong:boolean;
   update:boolean = false;
   exam_id:number;
+  timerinput:number;
+  btnstop:boolean = false;
   questionDropDown:Object [] = [
     { text : 'firstChoice', type: 'الاختيار الاول'},
     { text : 'secondChoice', type: 'الاختيار الثاني'},
@@ -40,6 +43,7 @@ export class InsertExamsComponent implements OnInit {
       this.update = true;
       this.exam_id = res.exam_id;
       this.coursecontentId = res.subjectContentId;
+      this.timerinput = res.timer;
      }else{
       this._ActivatedRoute.params.subscribe(params => {
         this.coursecontentId = params['id'];
@@ -48,7 +52,20 @@ export class InsertExamsComponent implements OnInit {
     });
     
   }
-
+  onInputChange(value: string) {
+    const parsedValue = +value; // Convert the input value to a number
+    if (parsedValue >= 1 && parsedValue <= 180) {
+      this.timerinput = parsedValue;
+      this.btnstop = false;
+    } else {
+      this.btnstop = true;
+      Swal.fire({
+        icon: 'error',
+        title: 'خطأ',
+        text: 'لا يمكن ان يكون وقت الامتحان اقل من دقيقة ولا اكثر من 180 دقيقة',
+      });
+    }
+  }
   initiate(id?:number){
     switch(id != null) {
     case id == 1 :
@@ -244,13 +261,6 @@ export class InsertExamsComponent implements OnInit {
       }
     })
   }
- 
-  
-  
-
-
-
-
   // onSubmit(){
   //   this.button = true;
   //   if( this.ExamForm.status == "VALID" && this.update == false){
@@ -305,7 +315,8 @@ export class InsertExamsComponent implements OnInit {
   // }
   examSubmit(){
     if( this.update == false ){
-    this._ExamsService.CreateExam({subjectContentId : this.coursecontentId, examBody: this.Exams }).subscribe((res) => {
+    this._ExamsService.CreateExam({subjectContentId : this.coursecontentId, examBody: this.Exams ,timer : this.timerinput}).subscribe((res) => {
+      debugger
       Swal.fire({
         icon: "success",
         title: "تم تسجيل الامتحان بنجاح",
@@ -323,7 +334,7 @@ export class InsertExamsComponent implements OnInit {
       });
     })
     }else if( this.update == true ){
-     this._ExamsService.UpdateExam({subjectContentId : this.coursecontentId, examBody: this.Exams }, this.exam_id).subscribe((res) => {
+     this._ExamsService.UpdateExam({subjectContentId : this.coursecontentId, examBody: this.Exams, timer: this.timerinput }, this.exam_id).subscribe((res) => {
       Swal.fire({
         icon: "success",
         title: "تم تعديل الامتحان بنجاح",

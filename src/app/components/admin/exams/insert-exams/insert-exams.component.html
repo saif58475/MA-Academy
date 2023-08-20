@@ -261,7 +261,11 @@
 </div>
 
 <div class="card-body" *ngIf="button">
-  <button class="btn pull-right" (click)="examSubmit()">
+  <input class="form-control" id="validation01" type="text" [(ngModel)]="timerinput"
+  (input)="onInputChange($event.target.value)"
+                                     required
+                                     placeholder="اكتب وقت الامتحان"/>
+  <button class="btn pull-right mt-3" [disabled]="btnstop" (click)="examSubmit()">
     حفظ المتحان
  </button>
 </div>

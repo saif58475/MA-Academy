@@ -2,11 +2,27 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header" style="padding-bottom: 5px !important">
-                    <div >
+                <div class="card-header row" style="padding-bottom: 5px !important">
+                    <div class="col-6">
                         <h5 class="pb-2">تفعيل طالب</h5>
 
                        <span> يرجى ملئ جميع الخانات </span>
+                    </div>
+                    <div class="col-6 row">
+                        <div class="col-6 header-titles">
+                            <a class="d-block">
+                                <button class="btn pull-right" (click)="selectactive('babcontent')" type="button" *ngIf="content">
+                                    <span class="m-2"> تفعيل باب مادة</span>
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-6 header-titles">
+                            <a class="d-block">
+                                <button class="btn pull-right" (click)="selectactive('content')" type="button" *ngIf="babcontent">
+                                    <span class="m-2"> تفعيل حصة</span>
+                                </button>
+                            </a>
+                        </div>
                     </div>
                     <ng-template >
                         
@@ -40,7 +56,7 @@
                             </div>
                             
                              <!-- choose education level  -->
-                             <!-- <div class="col-lg-6 col-sm-12  mb-3">
+                             <!-- <div class="col-lg-6 col-sm-12  mb-3" *ngIf="babcontent">
                                 <label for="validationCustom05"><span class="validation-required">*</span> اختر من قائمة المحتوى</label>
                                 <ng-select  [selectOnTab]="true" formControlName="subjectId"
                                     class="form-control p-0" placeholder="اختر من قائمة المحتوى"
@@ -51,29 +67,26 @@
                             </div> -->
                             
                                                                      <!-- select subjects -->
-                     <div class="col-lg-6 col-sm-12  mb-3">
+                     <div class="col-lg-6 col-sm-12  mb-3" *ngIf="babcontent">
                         <label for="validationCustom06"><span class="validation-required">*</span> اختر من قائمة المحتوى</label>
                         <ng-multiselect-dropdown
                                formControlName="beforSubjectContentIds"
                                [placeholder]="'اختر من القائمة'"
                                [settings]="dropdownSettingssubcourse"
                                [data]="subcoursecontent"
-                               
                                [(ngModel)]="selectedbeforecourse">
                         </ng-multiselect-dropdown>
                     </div>
-                <!--     <div class="col-lg-6 col-sm-12  mb-3">
+                    <div class="col-lg-6 col-sm-12  mb-3" *ngIf="content">
                         <label for="validationCustom06"><span class="validation-required">*</span> اختر من قائمة المحتوى</label>
                         <ng-multiselect-dropdown
-                               formControlName="SubjectContentIds"
                                [placeholder]="'اختر من القائمة'"
                                [settings]="dropdownSettings"
                                [data]="courses"
                                [(ngModel)]="selectedItems">
                         </ng-multiselect-dropdown>
-                    </div> -->
+                    </div>
                         </div>
-
                         <br>
                         <ng-template #elseBlock>
                             <button [disabled]="button" class="btn pull-right" type="submit">

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentsService } from './../../../../shared/API-Service/services/students.service';
 import { CourseContentService } from './../../../../shared/API-Service/services/course-content.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { SubcoursecontentService } from './../../../../shared/API-Service/services/subcoursecontent.service';
@@ -16,9 +16,12 @@ courses:any [];
 ActivateForm:FormGroup;
 update:boolean = false;
 button:boolean = false;
+babcontent:boolean = true;
+content:boolean = false;
 recordtoupdate:any;
 selectedItems:object [] = [];
 selectedbeforecourse:object [] = [];
+coursecontentid:number [] = [];
 selectid:number [] = [];
 beforesubjectselectid:number [] = [];
 subjectid:any [] = [];
@@ -66,15 +69,32 @@ dropdownSettingssubcourse = {
   initiate(data?:any){
     this.ActivateForm = this._FormBuilder.group({
       studentId: [ data?.studentId || '', Validators.required],
-      beforSubjectContentIds: ['', Validators.required],
+      beforSubjectContentIds: [''],
     });
+  }
+
+  selectactive(data:string){
+   switch(data){
+   case 'content':
+    this.content = true;
+    this.babcontent = false;
+    break;
+   case 'babcontent':
+    this.content = false;
+    this.babcontent = true;
+    break;
+    default:
+      this.content = false;
+      this.babcontent = true;
+      break;
+   }
   }
   checkupdate(data:any){
     this.selectedItems = data.subjectContentIds;
     this.selectedbeforecourse = data.beforSubjectContentIds;
     this.ActivateForm = this._FormBuilder.group({
       studentId: [ data.studentId, Validators.required],
-      beforSubjectContentIds: [this.beforesubjectselectid, Validators.required],
+      beforSubjectContentIds: [this.beforesubjectselectid, Validators.required]
     });
   }
   get fc(){
@@ -93,35 +113,63 @@ dropdownSettingssubcourse = {
     });
   }
 insertarray(beforecoursecontent:any){
-
 // ===============================================
 beforecoursecontent.forEach(element => {
   this.beforesubjectselectid.push(element.beforSubjectContentId);
 });
 this.ActivateForm.value.beforSubjectContentIds = this.beforesubjectselectid;
 }
+
+insertcoursearray(data:any){
+  data.forEach((element : any) => {
+  this.coursecontentid.push(element.subjectContentId);
+ });
+ this.ActivateForm.addControl('subjectContentId[]', new FormControl(this.coursecontentid));
+}
   onSubmit(){
     this.button = true;
     if( this.ActivateForm.status == "VALID" && this.update == false){
-      this.insertarray(this.selectedbeforecourse);
-      this._CourseContentService.insertactivation(this.ActivateForm.value).subscribe((res) => {
-        Swal.fire({
-         icon: "success",
-         title: "تم تفعيل الطالب على الحصص",
-         showConfirmButton: false,
-         timer: 1500,
-       }); 
-       this.ActivateForm.reset();
-       this._Router.navigate(['content/admin/ViewStudents']);
-       },(err) => {
-        this.button = false;
-             Swal.fire({
-               icon: 'error',
-               title: 'خطأ',
-               text: 'تأكد من ملئ جميع الخانات',
-             });
-             this.button = false;
-       })
+      if(this.babcontent){
+        this.insertarray(this.selectedbeforecourse);
+        this._CourseContentService.insertactivation(this.ActivateForm.value).subscribe((res) => {
+          Swal.fire({
+           icon: "success",
+           title: "تم تفعيل الطالب على الحصص",
+           showConfirmButton: false,
+           timer: 1500,
+         }); 
+         this.ActivateForm.reset();
+         this._Router.navigate(['content/admin/ViewStudents']);
+         },(err) => {
+          this.button = false;
+               Swal.fire({
+                 icon: 'error',
+                 title: 'خطأ',
+                 text: 'تأكد من ملئ جميع الخانات',
+               });
+               this.button = false;
+         })
+      } else if( this.content ){
+        this.insertcoursearray(this.selectedItems);
+        this._CourseContentService.insertactivationcoursecontent(this.ActivateForm.value).subscribe((res) => {
+          Swal.fire({
+           icon: "success",
+           title: "تم تفعيل الطالب على الحصص",
+           showConfirmButton: false,
+           timer: 1500,
+         }); 
+         this.ActivateForm.reset();
+         this._Router.navigate(['content/admin/ViewStudents']);
+         },(err) => {
+          this.button = false;
+               Swal.fire({
+                 icon: 'error',
+                 title: 'خطأ',
+                 text: 'تأكد من ملئ جميع الخانات',
+               });
+               this.button = false;
+         })
+      }
     }else if(this.ActivateForm.status == "VALID" && this.update == true){
       this.insertarray(this.selectedbeforecourse);
       this._CourseContentService.updateactivation({"beforSubjectContentIds" : this.beforesubjectselectid}, this.recordtoupdate.studentId).subscribe((res) => {
