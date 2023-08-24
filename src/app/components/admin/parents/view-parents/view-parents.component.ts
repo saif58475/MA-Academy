@@ -24,7 +24,7 @@ export class ViewParentsComponent implements OnInit {
 
 getparents(){
   this._ParentsService.GetParents().subscribe((res) => {
-    this.parents = res.data;
+    this.parents = res;
   })
 }
 onTableDataChange(event:any){

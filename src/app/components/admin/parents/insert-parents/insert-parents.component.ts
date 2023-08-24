@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormBuilder, Validators } from '@angular/forms';
+import { FormGroup,FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ParentsService } from './../../../../shared/API-Service/services/parents.service';
+import { StudentsService } from './../../../../shared/API-Service/services/students.service';
+
 @Component({
   selector: 'app-insert-parents',
   templateUrl: './insert-parents.component.html',
@@ -12,16 +14,27 @@ export class InsertParentsComponent implements OnInit {
 ParentForm:FormGroup;
 ParentFormData:FormData;
 recordtoupdate:any;
+students:any[];
 update:boolean = false;
 button:boolean = false;
 Image:File;
 imageLogo:string;
 gender:String []= [ 'ذكر', 'انثى'];
+selectedItems:any [] = [];
+dropdownSettings = {
+  singleSelection: false,
+  idField: 'studentId',
+  textField: 'email',
+  selectAllText: 'Select All',  
+  unSelectAllText: 'UnSelect All',
+};
   constructor(private _FormBuilder:FormBuilder
-              ,private _Router:Router
-              ,private _ParentsService:ParentsService) { }
+            , private _Router:Router
+            , private _ParentsService:ParentsService
+            , private _StudentsService:StudentsService) { }
 
   ngOnInit(): void {
+    this.getDropDown();
     this._ParentsService.updateparent.subscribe((res) => {
       if( res != null){
         this.recordtoupdate = res;
@@ -36,14 +49,18 @@ gender:String []= [ 'ذكر', 'انثى'];
   initiate(data?:any){
     this.ParentForm = this._FormBuilder.group({
       fatherName: [data?.fatherName || '', Validators.required],
-      phone: [data?.phone || '', Validators.required],
       gender: [data?.gender || '', Validators.required],
       location: [data?.location || '', Validators.required],
       email: [data?.email || '', [Validators.required,Validators.email]],
-      password: [data?.password || '', Validators.required]
-    });
+      password: [data?.password || '', Validators.required],
+      studentemail: [data?.studentemail || []],
+    }); 
   }
-
+   getDropDown(){
+    this._StudentsService.GetStudent().subscribe((res) => {
+      this.students = res.data;
+    })
+   }
   get fc(){
     return this.ParentForm.controls;
   }
@@ -51,8 +68,10 @@ gender:String []= [ 'ذكر', 'انثى'];
 
   onSubmit(){
     this.button = true;
+    this.ParentForm.value.studentemail = this.selectedItems;
     if( this.ParentForm.status == "VALID" && this.update == false){
       this._ParentsService.CreateParents(this.ParentForm.value).subscribe((res) => {
+        // this.ParentForm.addControl('studentemail', new FormControl[this.selectedItems])
         Swal.fire({
          icon: "success",
          title: "تم تسجيل ولي الامر بنجاح",
@@ -91,6 +110,7 @@ gender:String []= [ 'ذكر', 'انثى'];
        })
     }
     else{
+      debugger
       this.button = false;
              Swal.fire({
                icon: 'error',

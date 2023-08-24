@@ -159,7 +159,7 @@
                             </div>
                             <!-- thirdChoice  -->
                             <div class="col-3 mb-3">
-                                <label for="validation01"><span class="validation-required">*</span> الاختيار الثالث</label>
+                                <label for="validation01"><span class="validation-required"></span> الاختيار الثالث</label>
                                 <input class="form-control" id="validation01" type="text" formControlName="thirdChoice"
                                 [tooltip]="fc.thirdChoice.errors?.required ? 'الحقل مطلوب' : null"
                                 [class.is-valid]="fc.thirdChoice.valid && (fc.thirdChoice.touched)"
@@ -169,7 +169,7 @@
                             </div>
                             <!-- fourChoice  -->
                             <div class="col-3 mb-3">
-                                <label for="validation01"><span class="validation-required">*</span> الاختيار الرابع</label>
+                                <label for="validation01"><span class="validation-required"></span> الاختيار الرابع</label>
                                 <input class="form-control" id="validation01" type="text" formControlName="fourChoice"
                                 [tooltip]="fc.fourChoice.errors?.required ? 'الحقل مطلوب' : null"
                                 [class.is-valid]="fc.fourChoice.valid && (fc.fourChoice.touched)"
@@ -187,8 +187,14 @@
                         <ng-option *ngFor="let item of questionDropDown" [value]="item.text">{{item.type}}</ng-option>
                     </ng-select>
                 </div>
-
-
+                <div class="col-lg-6 p-5">
+                  <input class="form-check-input" type="checkbox" value="true" formControlName="commentAnswer" id="flexCheckIndeterminate">
+                  <label class="form-check-label" for="flexCheckIndeterminate">
+                    <h5>اضافة تعليل لاجابته</h5>
+                  </label>
+                </div>
+                
+                     
 
                       </div>
                         <br>
@@ -249,8 +255,7 @@
                                 [class.is-valid]="fc.qusetion.valid && (fc.qusetion.touched)"
                                 [class.is-invalid]="fc.qusetion.invalid && (fc.qusetion.touched)"
                                      required
-                                     placeholder="اكتب رابط الفيديو"
-                                    containerClass="" />
+                                     placeholder="اكتب رابط الفيديو"/>
                             </div>
                         </div>
                         <br>

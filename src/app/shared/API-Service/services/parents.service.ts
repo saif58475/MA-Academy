@@ -13,7 +13,7 @@ export class ParentsService {
   constructor(private _HttpClient:HttpClient) { }
 
   GetParents():Observable<any>{
-    return this._HttpClient.get(`${environment.Server_URL}/listFather`);
+    return this._HttpClient.get(`${environment.Server_URL}/fatherList`);
    }
  
     CreateParents(data : object):Observable<any>{

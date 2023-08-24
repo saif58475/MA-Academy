@@ -25,21 +25,30 @@
                                 [tooltip]="fc.teacherName.errors?.required ? 'الحقل مطلوب' : null"
                                 [class.is-valid]="fc.teacherName.valid && (fc.teacherName.touched)"
                                 [class.is-invalid]="fc.teacherName.invalid && (fc.teacherName.touched)"
-                                
                                      required
                                      placeholder="الأسم"
                                     containerClass="" />
                             </div>
-                             <!-- choose education level  -->
-                             <!-- <div class="col-lg-6 col-sm-12  mb-3">
-                                <label for="validationCustom05"><span class="validation-required">*</span> المرحلة الدراسية</label>
-                                <ng-select  [selectOnTab]="true" formControlName="educationId"
-                                    class="form-control p-0" placeholder="اختر المرحلة الدراسية"
-                                    containerClass="" 
-                                    id="validationCustom05">
-                                    <ng-option *ngFor="let item of educationlevels" [value]="item.educationId" >{{item.nameAr}}</ng-option>
-                                </ng-select>
-                            </div> -->
+                            <!-- Email  -->
+                            <div class="col-6 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> البريد الالكتروني</label>
+                                <input class="form-control" id="validation01" type="text" formControlName="email"
+                                [tooltip]="fc.email.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.email.valid && (fc.email.touched)"
+                                [class.is-invalid]="fc.email.invalid && (fc.email.touched)"
+                                     required
+                                     placeholder="البريد الالكتروني"/>
+                            </div>
+                            <!-- password  -->
+                            <div class="col-6 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> كلمة المرور</label>
+                                <input class="form-control" id="validation01" type="text" formControlName="password"
+                                [tooltip]="fc.password.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.password.valid && (fc.password.touched)"
+                                [class.is-invalid]="fc.password.invalid && (fc.password.touched)"
+                                     required
+                                     placeholder="كلمة المرور"/>
+                            </div>
                             
                                                                      <!-- select subjects -->
                      <div class="col-lg-6 col-sm-12  mb-3">
@@ -62,7 +71,27 @@
                                     <ng-option *ngFor="let item of subjects" [value]="item.subjectId">{{item.subjectName}}</ng-option>
                                 </ng-select>
                             </div>
+                              <!-- Gender  -->
+                              <div class="col-lg-6 col-sm-12  mb-3">
+                                <label for="validationCustom05"><span class="validation-required">*</span> النوع</label>
+                                <ng-select  [selectOnTab]="true" formControlName="gender"
+                                    class="form-control p-0" placeholder="اختر النوع "
+                                    containerClass="" 
+                                    id="validationCustom05">
+                                    <ng-option *ngFor="let item of genders" [value]="item.name">{{item.name}}</ng-option>
+                                </ng-select>
+                            </div>
 
+                             <!-- Location  -->
+                             <div class="col-6 mb-3">
+                                <label for="validation01"><span class="validation-required">*</span> عنوان السكن</label>
+                                <input class="form-control" id="validation01" type="text" formControlName="location"
+                                [tooltip]="fc.location.errors?.required ? 'الحقل مطلوب' : null"
+                                [class.is-valid]="fc.location.valid && (fc.location.touched)"
+                                [class.is-invalid]="fc.location.invalid && (fc.location.touched)"
+                                     required
+                                     placeholder="العنوان" />
+                            </div>
            
                            
                         </div>

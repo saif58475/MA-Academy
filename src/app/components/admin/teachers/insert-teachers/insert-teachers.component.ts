@@ -32,6 +32,10 @@ data:any [];
   TeacherForm:FormGroup;
   imageLogo:string;
   Image:File;
+  genders:object [] = [
+    { id: 1 , name:'ذكر'},
+    { id: 2 , name: 'انثى'}
+  ]
   constructor(private _FormBuilder:FormBuilder
              ,private _TeachersService:TeachersService
              ,private _Router:Router
@@ -63,7 +67,11 @@ data:any [];
     this.TeacherForm = this._FormBuilder.group({
       teacherName: ['', Validators.required],
       educationIds: ['', Validators.required],
-      subjectId: ['', Validators.required]
+      subjectId: ['', Validators.required],
+      location: ['', Validators.required],
+      gender: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
   checkupdate(data:any){   
@@ -71,7 +79,11 @@ data:any [];
   this.TeacherForm = this._FormBuilder.group({
       teacherName: [data.teacherName, Validators.required],
       educationIds: [this.selectedItems, Validators.required],
-      subjectId: [data.subjectId, Validators.required]
+      subjectId: [data.subjectId, Validators.required],
+      location: [data.location, Validators.required],
+      gender: [data.gender, Validators.required],
+      email: [data.email, Validators.required],
+      password: [data.password, Validators.required]
     });
   }
 

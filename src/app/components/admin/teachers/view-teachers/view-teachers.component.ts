@@ -28,6 +28,9 @@ getteachers(){
 teacherRelated(id:number, teacherName:string){
   this._Router.navigate(['content/admin/ViewTeacherCourses', id , teacherName]); 
 }
+GetTeachersStudents(id:number){
+  this._Router.navigate([`content/admin/ViewTeacherStudents/${id}`]); 
+}
 onTableDataChange(event:any){
   this.page = event;
   this.getteachers();

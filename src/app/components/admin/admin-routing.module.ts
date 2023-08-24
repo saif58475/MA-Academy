@@ -40,6 +40,8 @@ import { ViewExamsComponent } from "./exams/view-exams/view-exams.component";
 import { StudentReportingComponent } from "./students/student-reporting/student-reporting.component";
 import { ViewPostsComponent } from "./posts/view-posts/view-posts.component";
 import { InsertPostsComponent } from "./posts/insert-posts/insert-posts.component";
+import { ViewTeacherRequestComponent } from "./teacher-request/view-teacher-request/view-teacher-request.component";
+import { ViewTeachersStudentsComponent } from "./teachers/view-teachers-students/view-teachers-students.component";
 
 
 
@@ -196,6 +198,14 @@ const routes: Routes = [
             {
              path: "InsertPosts",
              component: InsertPostsComponent
+            },
+            {
+             path: "ViewTeacherRequests",
+             component: ViewTeacherRequestComponent
+            },
+            {
+             path: "ViewTeacherStudents/:teacherId",
+             component: ViewTeachersStudentsComponent
             }
             
 ],

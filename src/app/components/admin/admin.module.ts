@@ -51,6 +51,9 @@ import { InsertExamsComponent } from './exams/insert-exams/insert-exams.componen
 import { StudentReportingComponent } from './students/student-reporting/student-reporting.component';
 import { ViewPostsComponent } from './posts/view-posts/view-posts.component';
 import { InsertPostsComponent } from './posts/insert-posts/insert-posts.component';
+import { ViewTeacherRequestComponent } from './teacher-request/view-teacher-request/view-teacher-request.component';
+import { InsertTeacherRequestComponent } from './teacher-request/insert-teacher-request/insert-teacher-request.component';
+import { ViewTeachersStudentsComponent } from './teachers/view-teachers-students/view-teachers-students.component';
 
  @NgModule({
   declarations: [
@@ -90,6 +93,9 @@ import { InsertPostsComponent } from './posts/insert-posts/insert-posts.componen
     StudentReportingComponent,
     ViewPostsComponent,
     InsertPostsComponent,
+    ViewTeacherRequestComponent,
+    InsertTeacherRequestComponent,
+    ViewTeachersStudentsComponent,
   ],
   imports: [
     DxReportViewerModule,

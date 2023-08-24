@@ -203,6 +203,19 @@ export class NavService implements OnDestroy {
       ],
     },
     {
+      title: "طلبات المدرسين",
+      icon: "user",
+      type: "sub",
+      badgeType: "success",
+      children: [
+        {
+          path: "admin/ViewTeacherRequests",
+          title: "ادارة طلبات المدرسين",
+          type: "link",
+        },
+      ],
+    },
+    {
       title: "اولياء الأمور",
       icon: "user",
       type: "sub",

@@ -27,4 +27,8 @@ export class TeachersService {
   TeacherCourse(id:number):Observable<any>{
     return this._HttpClient.get(`${environment.Server_URL}/listTeacherSubjectContent/${id}`);
   }
+
+  GetStudentForTeacher(teacherId:number):Observable<any>{
+    return this._HttpClient.get(`${environment.Server_URL}/listStudentTeacher/${teacherId}`);
+  }
 }

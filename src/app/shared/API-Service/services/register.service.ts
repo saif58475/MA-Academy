@@ -15,7 +15,7 @@ export class RegisterService {
    
 
    CreateAdmin(data : object):Observable<any>{
-   return this._HttpClient.post(`${environment.Server_URL}/register`, data);
+   return this._HttpClient.post(`${environment.Server_URL}/createUser`, data);
   }
 
    GetUsers():Observable<any>{

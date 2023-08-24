@@ -84,9 +84,11 @@ export class InsertExamsComponent implements OnInit {
         firstChoice: ['', Validators.required],
         secondChoice: ['', Validators.required],
         thirdChoice: ['', Validators.required],
-        fourChoice: ['', Validators.required],
-        correctChoice: ['', Validators.required],
-        selectedChoice: ['']
+        fourChoice: [''],
+        correctChoice: [''],
+        selectedChoice: [''],
+        commentAnswer:[false],
+        commentText:['']
       });
       break;
       case id == 3 :
