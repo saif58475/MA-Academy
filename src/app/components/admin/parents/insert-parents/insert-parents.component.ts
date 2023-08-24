@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup,FormBuilder, Validators, FormControl, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ParentsService } from './../../../../shared/API-Service/services/parents.service';
@@ -11,6 +11,7 @@ import { StudentsService } from './../../../../shared/API-Service/services/stude
   styleUrls: ['./insert-parents.component.css']
 })
 export class InsertParentsComponent implements OnInit {
+try:string = 'fwewe';
 ParentForm:FormGroup;
 ParentFormData:FormData;
 recordtoupdate:any;
@@ -24,7 +25,7 @@ selectedItems:any [] = [];
 dropdownSettings = {
   singleSelection: false,
   idField: 'studentId',
-  textField: 'email',
+  textField: 'studentName',
   selectAllText: 'Select All',  
   unSelectAllText: 'UnSelect All',
 };
@@ -53,7 +54,7 @@ dropdownSettings = {
       location: [data?.location || '', Validators.required],
       email: [data?.email || '', [Validators.required,Validators.email]],
       password: [data?.password || '', Validators.required],
-      studentemail: [data?.studentemail || []],
+      studentemail: [data?.studentemail || this.selectedItems],
     }); 
   }
    getDropDown(){
@@ -66,12 +67,18 @@ dropdownSettings = {
   }
 
 
+  studentEmails(){
+    this.selectedItems.forEach(element => {
+      this.ParentForm.value.studentemail.push(element.email);
+      debugger
+    });
+  }
   onSubmit(){
     this.button = true;
-    this.ParentForm.value.studentemail = this.selectedItems;
+    // this.ParentForm.value.studentemail = this.selectedItems;
+    this.studentEmails();
     if( this.ParentForm.status == "VALID" && this.update == false){
       this._ParentsService.CreateParents(this.ParentForm.value).subscribe((res) => {
-        // this.ParentForm.addControl('studentemail', new FormControl[this.selectedItems])
         Swal.fire({
          icon: "success",
          title: "تم تسجيل ولي الامر بنجاح",
