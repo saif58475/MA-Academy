@@ -21,7 +21,7 @@ page: number = 1;
 
   getteachersRequests(){
     this._TeacherRequestService.GetPdfRequests().subscribe((res) => {
-     this.teacherRequests = res;
+     this.teacherRequests = res.data;
     
     });
  }
@@ -29,8 +29,7 @@ page: number = 1;
   this.page = event;
   this.getteachersRequests();
     }
-
-    approveRequest(id : number){
+   proveRequest(id : number){
       Swal.fire({
         title: 'هل تريد الموافقة على الطلب ؟',
         icon: 'warning',

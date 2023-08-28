@@ -27,7 +27,9 @@
                                     <tr class=" ">
                                         <th scope="col"></th>
                                         <th scope="col">اسم الطلب</th>
-                                        <th scope="col">تاريخ التسجيل</th>
+                                        <th scope="col">اسم المدرس</th>
+                                        <th scope="col">محتوى المادة</th>
+                                        <th scope="col">الملف</th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
@@ -38,7 +40,16 @@
                                         totalItems: count };;let x = index" class=" ">
                                         <td scope="row" class="p-2">{{x+1}}</td>
                                         <td scope="row" class="p-2">{{view.namePdf}}</td>
-                                        <td scope="row" class="p-2">{{view.created_at}}</td>
+                                        <td scope="row" class="p-2">{{view.teacherName}}</td>
+                                        <td scope="row" class="p-2">{{view.subjectContentName}}</td>
+                                        <td scope="row" class="p-2">
+                                            <button
+                                                style="color: rgba(35, 118, 241, 0.667); padding: 7px">
+                                                    <a href='https://www.maapp.misrpedia.com/public/{{view.pdfs}}' target="_blank">
+                                                        <i class="fa fa-file"></i>
+                                                    </a>
+                                            </button>
+                                        </td>
                                             <td class="font-style chose">
                                                 <button class="btn pull-right"
                                                     style="color: rgba(35, 118, 241, 0.667); padding: 7px"

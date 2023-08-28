@@ -71,7 +71,7 @@ data:any [];
       location: ['', Validators.required],
       gender: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.pattern(`^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$`)]]
     });
   }
   checkupdate(data:any){   
@@ -83,7 +83,7 @@ data:any [];
       location: [data.location, Validators.required],
       gender: [data.gender, Validators.required],
       email: [data.email, Validators.required],
-      password: [data.password, Validators.required]
+      password: [data.password, [Validators.required, Validators.pattern(`^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$`)]]
     });
   }
 
